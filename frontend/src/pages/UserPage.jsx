@@ -2,12 +2,14 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PickList } from "../components/pick/PickList.jsx";
 import { DATA_URLS, IS_REPOSITORY_CONFIGURED } from "../lib/constants";
+import { useI18n } from "../i18n/I18nContext.jsx";
 import { formatReturn } from "../lib/formatters.js";
 import { fetchJson } from "../hooks/usePicks.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 export function UserPage() {
   const { username } = useParams();
+  const { t } = useI18n();
   const [picks, setPicks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -52,30 +54,32 @@ export function UserPage() {
     return { total, wins, avgTarget };
   }, [picks]);
 
-  if (loading) return <p className="px-4 py-8 text-zinc-500">Loading…</p>;
-  if (error) return <p className="px-4 py-8 text-red-400">{dataLoadErrorMessage(error)}</p>;
+  if (loading) return <p className="px-4 py-8 text-zinc-500 light:text-zinc-600">{t("common.loading")}</p>;
+  if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
       <Link to="/" className="text-sm text-emerald-500 hover:underline">
-        Home
+        {t("common.home")}
       </Link>
-      <h1 className="mt-4 text-2xl font-bold text-white dark:text-zinc-900">@{username}</h1>
+      <h1 className="mt-4 text-2xl font-bold text-white light:text-zinc-900">
+        {t("user.title", { name: username })}
+      </h1>
       <div className="mt-4 grid gap-4 sm:grid-cols-3">
-        <div className="rounded-lg border border-zinc-800 p-4 dark:border-zinc-200">
-          <p className="text-xs text-zinc-500">Total picks</p>
+        <div className="rounded-lg border border-zinc-800 p-4 light:border-zinc-200">
+          <p className="text-xs text-zinc-500">{t("user.totalPicks")}</p>
           <p className="text-2xl font-semibold">{stats.total}</p>
         </div>
-        <div className="rounded-lg border border-zinc-800 p-4 dark:border-zinc-200">
-          <p className="text-xs text-zinc-500">Achieved</p>
+        <div className="rounded-lg border border-zinc-800 p-4 light:border-zinc-200">
+          <p className="text-xs text-zinc-500">{t("user.achieved")}</p>
           <p className="text-2xl font-semibold">{stats.wins}</p>
         </div>
-        <div className="rounded-lg border border-zinc-800 p-4 dark:border-zinc-200">
-          <p className="text-xs text-zinc-500">Avg target return</p>
+        <div className="rounded-lg border border-zinc-800 p-4 light:border-zinc-200">
+          <p className="text-xs text-zinc-500">{t("user.avgTarget")}</p>
           <p className="text-2xl font-semibold">{formatReturn(stats.avgTarget)}</p>
         </div>
       </div>
-      <h2 className="mt-8 text-lg font-semibold text-white dark:text-zinc-900">All picks</h2>
+      <h2 className="mt-8 text-lg font-semibold text-white light:text-zinc-900">{t("user.allPicks")}</h2>
       <div className="mt-4">
         <PickList picks={picks} />
       </div>

@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { DocumentTitle } from "./components/DocumentTitle.jsx";
 import { Header } from "./components/layout/Header.jsx";
 import { Footer } from "./components/layout/Footer.jsx";
 import { ActivePage } from "./pages/ActivePage.jsx";
@@ -11,6 +12,7 @@ import { AboutPage } from "./pages/AboutPage.jsx";
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col">
+      <DocumentTitle />
       <Header />
       <main className="flex-1">
         <Routes>

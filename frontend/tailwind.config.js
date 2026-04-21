@@ -1,3 +1,5 @@
+import tailwindPlugin from "tailwindcss/plugin";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
@@ -5,5 +7,9 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    tailwindPlugin(({ addVariant }) => {
+      addVariant("light", "html.light &");
+    }),
+  ],
 };

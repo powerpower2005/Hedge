@@ -1,41 +1,45 @@
 import { Link, NavLink } from "react-router-dom";
 import { IS_REPOSITORY_CONFIGURED, NEW_PICK_URL } from "../../lib/constants";
+import { useI18n } from "../../i18n/I18nContext.jsx";
+import { LangToggle } from "./LangToggle.jsx";
 import { ThemeToggle } from "./ThemeToggle.jsx";
 
 const linkClass = ({ isActive }) =>
   `px-3 py-2 rounded-md text-sm font-medium ${
     isActive
-      ? "bg-zinc-800 text-white dark:bg-zinc-800"
-      : "text-zinc-400 hover:text-white dark:text-zinc-600 dark:hover:text-zinc-900"
+      ? "bg-zinc-800 text-white light:bg-zinc-200 light:text-zinc-900"
+      : "text-zinc-400 hover:text-white light:text-zinc-600 light:hover:text-zinc-900"
   }`;
 
 export function Header() {
+  const { t } = useI18n();
   return (
-    <header className="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur dark:border-zinc-200 dark:bg-white/80">
+    <header className="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur light:border-zinc-200 light:bg-white/80">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-3">
-        <Link to="/" className="text-lg font-semibold tracking-tight text-white dark:text-zinc-900">
-          Stock Challenge
+        <Link to="/" className="text-lg font-semibold tracking-tight text-white light:text-zinc-900">
+          {t("app.title")}
         </Link>
         <nav className="flex flex-wrap items-center gap-1">
           <NavLink to="/" end className={linkClass}>
-            Active
+            {t("nav.active")}
           </NavLink>
           <NavLink to="/hall-of-fame" className={linkClass}>
-            Hall of Fame
+            {t("nav.hallOfFame")}
           </NavLink>
           <NavLink to="/expired" className={linkClass}>
-            Expired
+            {t("nav.expired")}
           </NavLink>
           <NavLink to="/about" className={linkClass}>
-            About
+            {t("nav.about")}
           </NavLink>
+          <LangToggle />
           <ThemeToggle />
           {IS_REPOSITORY_CONFIGURED && (
             <a
               href={NEW_PICK_URL}
               className="ml-2 rounded-md bg-emerald-600 px-3 py-2 text-sm font-medium text-white hover:bg-emerald-500"
             >
-              New pick
+              {t("nav.newPick")}
             </a>
           )}
         </nav>

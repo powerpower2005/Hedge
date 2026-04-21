@@ -1,3 +1,5 @@
+import { useI18n } from "../../i18n/I18nContext.jsx";
+
 const styles = {
   active: "bg-emerald-900/50 text-emerald-300 ring-1 ring-emerald-700",
   achieved: "bg-amber-900/50 text-amber-200 ring-1 ring-amber-700",
@@ -7,9 +9,11 @@ const styles = {
 };
 
 export function StatusBadge({ status }) {
+  const { t } = useI18n();
   const s = status || "active";
   const cls = styles[s] || styles.active;
+  const label = t(`status.${s}`) || s;
   return (
-    <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${cls}`}>{s}</span>
+    <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${cls}`}>{label}</span>
   );
 }

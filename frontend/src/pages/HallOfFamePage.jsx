@@ -2,10 +2,12 @@ import { useMemo, useState } from "react";
 import { FilterBar } from "../components/filters/FilterBar.jsx";
 import { PickList } from "../components/pick/PickList.jsx";
 import { applyFilters, SORTERS } from "../lib/filters.js";
+import { useI18n } from "../i18n/I18nContext.jsx";
 import { usePicks } from "../hooks/usePicks.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 export function HallOfFamePage() {
+  const { t } = useI18n();
   const { picks, loading, error } = usePicks("hallOfFame");
   const [filters, setFilters] = useState({});
   const [sortKey, setSortKey] = useState("latest");
@@ -16,12 +18,13 @@ export function HallOfFamePage() {
     return [...f].sort(sorter);
   }, [picks, filters, sortKey]);
 
-  if (loading) return <p className="px-4 py-8 text-zinc-500">Loading…</p>;
-  if (error) return <p className="px-4 py-8 text-red-400">{dataLoadErrorMessage(error)}</p>;
+  if (loading) return <p className="px-4 py-8 text-zinc-500 light:text-zinc-600">{t("common.loading")}</p>;
+  if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold text-white dark:text-zinc-900">Hall of Fame</h1>
+      <h1 className="mb-2 text-2xl font-bold text-white light:text-zinc-900">{t("hallOfFame.title")}</h1>
+      <p className="mb-6 text-sm text-zinc-400 light:text-zinc-600">{t("hallOfFame.subtitle")}</p>
       <FilterBar
         filters={filters}
         setFilters={setFilters}
