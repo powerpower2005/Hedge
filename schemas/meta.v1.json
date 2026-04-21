@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "meta.v1.json",
+  "title": "Repository meta v1",
+  "type": "object",
+  "required": ["schema_version", "next_pick_id"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^1\\." },
+    "next_pick_id": { "type": "integer", "minimum": 1 }
+  },
+  "additionalProperties": true
+}

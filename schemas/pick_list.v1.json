@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "pick_list.v1.json",
+  "title": "Pick list file wrapper v1",
+  "type": "object",
+  "required": ["schema_version", "generator", "generated_at", "data"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^1\\." },
+    "generator": {
+      "type": "object",
+      "required": ["name", "version", "commit"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "commit": { "type": "string" }
+      }
+    },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "data": {
+      "type": "object",
+      "required": ["count", "picks"],
+      "properties": {
+        "count": { "type": "integer", "minimum": 0 },
+        "picks": {
+          "type": "array",
+          "items": { "$ref": "pick.v1.json" }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

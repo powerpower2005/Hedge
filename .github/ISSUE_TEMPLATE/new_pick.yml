@@ -1,0 +1,63 @@
+name: New Pick
+description: Register a stock pick and target return challenge
+title: "[PICK] "
+labels: ["pick-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before submitting: fewer than **10** active picks per user; only **one** active pick per ticker per user. Invalid submissions receive a comment on this issue.
+
+  - type: input
+    id: ticker
+    attributes:
+      label: Ticker
+      description: "Alphanumeric only, e.g. AAPL or 005930"
+      placeholder: "AAPL"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: country
+    attributes:
+      label: Country
+      options:
+        - US
+        - KR
+    validations:
+      required: true
+
+  - type: dropdown
+    id: market
+    attributes:
+      label: Market
+      description: Must match country (US -> NASDAQ/NYSE, KR -> KOSPI/KOSDAQ)
+      options:
+        - NASDAQ
+        - NYSE
+        - KOSPI
+        - KOSDAQ
+    validations:
+      required: true
+
+  - type: input
+    id: target_return
+    attributes:
+      label: Target return (%)
+      description: "Number from 3 to 100 (e.g. 10 means +10%)"
+      placeholder: "10"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: duration
+    attributes:
+      label: Duration (days)
+      options:
+        - "7"
+        - "14"
+        - "30"
+        - "90"
+        - "180"
+    validations:
+      required: true

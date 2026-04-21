@@ -1,0 +1,53 @@
+name: Validate Data
+
+on:
+  pull_request:
+    paths:
+      - "data/**"
+      - "schemas/**"
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "schemas/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - run: npm install -g ajv-cli@5
+
+      - name: Validate list JSON
+        run: |
+          ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d data/active.json --strict=false
+          ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d data/hall_of_fame.json --strict=false
+          ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d data/expired_recent.json --strict=false
+
+      - name: Validate meta.json
+        run: ajv validate -s schemas/meta.v1.json -d data/meta.json --strict=false
+
+      - name: Validate archive JSON
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for f in data/archive/*.json; do
+            echo "validate $f"
+            ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d "$f" --strict=false
+          done
+
+      - name: Validate votes JSON
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for f in data/votes/*.json; do
+            echo "validate $f"
+            ajv validate -s schemas/votes.v1.json -d "$f" --strict=false
+          done

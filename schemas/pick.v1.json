@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "pick.v1.json",
+  "title": "Pick Record v1",
+  "type": "object",
+  "required": [
+    "id",
+    "schema_version",
+    "created_with",
+    "created_at",
+    "author",
+    "issue_number",
+    "ticker",
+    "country",
+    "market",
+    "entry",
+    "target",
+    "duration",
+    "status"
+  ],
+  "properties": {
+    "id": { "type": "integer", "minimum": 1 },
+    "schema_version": { "type": "string", "pattern": "^1\\." },
+    "created_with": {
+      "type": "object",
+      "required": ["engine_version", "rules_version"],
+      "properties": {
+        "engine_version": { "type": "string" },
+        "rules_version": { "type": "string" },
+        "commit": { "type": "string" }
+      }
+    },
+    "created_at": { "type": "string", "minLength": 1 },
+    "author": { "type": "string", "minLength": 1 },
+    "issue_number": { "type": "integer", "minimum": 1 },
+    "ticker": { "type": "string", "pattern": "^[A-Z0-9]{1,10}$" },
+    "country": { "enum": ["US", "KR"] },
+    "market": { "enum": ["NASDAQ", "NYSE", "KOSPI", "KOSDAQ"] },
+    "entry": {
+      "type": "object",
+      "required": ["price", "date", "source"],
+      "properties": {
+        "price": { "type": "number", "exclusiveMinimum": 0 },
+        "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "source": { "type": "string" }
+      }
+    },
+    "target": {
+      "type": "object",
+      "required": ["return_rate", "price"],
+      "properties": {
+        "return_rate": { "type": "number", "minimum": 0.03, "maximum": 1.0 },
+        "price": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "duration": {
+      "type": "object",
+      "required": ["days", "deadline"],
+      "properties": {
+        "days": { "type": "integer", "enum": [7, 14, 30, 90, 180] },
+        "deadline": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+      }
+    },
+    "status": {
+      "type": "object",
+      "required": ["current", "history"],
+      "properties": {
+        "current": {
+          "enum": ["active", "achieved", "expired", "suspended", "delisted"]
+        },
+        "history": { "type": "array" }
+      }
+    },
+    "progress": { "type": "object" },
+    "votes": { "type": "object" },
+    "achievement": { "type": "object" },
+    "extensions": { "type": "object" },
+    "expired_at": { "type": "string", "minLength": 1 },
+    "suspended_at": { "type": "string", "minLength": 1 },
+    "delisted_at": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": true
+}

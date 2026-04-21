@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "rules_version": "1.0.0",
+  "effective_from": "2026-04-17",
+  "rules": {
+    "supported_markets": {
+      "US": ["NASDAQ", "NYSE"],
+      "KR": ["KOSPI", "KOSDAQ"]
+    },
+    "target_return_range": [0.03, 1.0],
+    "duration_options": [7, 14, 30, 90, 180],
+    "max_active_picks_per_user": 10,
+    "same_ticker_per_user": 1,
+    "judgment_method": "close_touch",
+    "judgment_schedule": "daily_kst_07",
+    "expired_retention_days": 30,
+    "hall_of_fame_size": 100,
+    "suspended_threshold_days": 5,
+    "delisted_threshold_days": 14
+  }
+}
