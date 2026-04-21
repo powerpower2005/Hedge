@@ -40,6 +40,9 @@ export function Footer() {
           {rules && <span className="ml-2">{t("footer.rulesLine", { version: rules.rules_version })}</span>}
         </div>
         <div className="flex gap-4">
+          <Link to="/guide" className="hover:text-zinc-300 light:hover:text-zinc-900">
+            {t("footer.guide")}
+          </Link>
           <Link to="/about" className="hover:text-zinc-300 light:hover:text-zinc-900">
             {t("footer.about")}
           </Link>

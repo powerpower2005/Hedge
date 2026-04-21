@@ -5,6 +5,7 @@ export default {
     hallOfFame: "Hall of Fame",
     expired: "Expired",
     about: "About",
+    guide: "Guide",
     newPick: "New pick",
   },
   lang: { label: "Language", ko: "한국어", en: "English" },
@@ -33,7 +34,31 @@ export default {
     title: "Expired picks",
     subtitle: "Picks that did not reach the target before the deadline.",
   },
+  guide: {
+    documentTitle: "Guide | Stock Challenge",
+    title: "Guide",
+    lead: "Follow these steps if you are new or unsure how things work.",
+    s1Title: "Browse lists and details",
+    s1Body:
+      "Use the top tabs: Active, Hall of Fame, and Expired. Click a card to open its detail page. Click an @username on a card to see that participant’s picks only. Use filters and sort to narrow the list.",
+    s2Title: "Submit a new pick",
+    s2Body:
+      "While signed in, click New pick in the header to open the registration form. Enter ticker, country & market, target return (%), and duration (days). US names pair with NASDAQ/NYSE; KR with KOSPI/KOSDAQ. Tickers are alphanumeric only. After submission, checks run automatically; if accepted, the pick appears under Active.",
+    s3Title: "Limits and rules",
+    s3Body:
+      "There are caps on how many active picks you may have at once and on duplicate tickers per user. Target return and duration must be chosen from the allowed ranges shown on the form. If something is wrong, a message may appear on the same submission thread.",
+    s4Title: "Progress and outcomes",
+    s4Body:
+      "Picks are refreshed daily using official closing levels. If the target is reached in time, the pick moves to Hall of Fame; otherwise it moves to Expired after the deadline. The detail page shows entry, targets, and current return.",
+    s5Title: "Votes (reactions)",
+    s5Body:
+      "Reactions left on the thread linked to a pick may be aggregated. The numbers on cards reflect that tally when available.",
+    s6Title: "Display settings",
+    s6Body:
+      "Use the language control for Korean or English, and the theme toggle for light or dark. Choices are saved in this browser.",
+  },
   about: {
+    documentTitle: "About | Stock Challenge",
     title: "About",
     lead:
       "Stock Challenge is a community event: you choose a ticker, a target return, and a time window. Registered picks appear in public lists, and progress is updated daily using official closing prices.",
@@ -87,6 +112,7 @@ export default {
   },
   footer: {
     about: "About",
+    guide: "Guide",
     rulesLine: "· Rules {version}",
   },
 };

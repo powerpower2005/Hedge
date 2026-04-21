@@ -32,6 +32,9 @@ export function Header() {
           <NavLink to="/about" className={linkClass}>
             {t("nav.about")}
           </NavLink>
+          <NavLink to="/guide" className={linkClass}>
+            {t("nav.guide")}
+          </NavLink>
           <LangToggle />
           <ThemeToggle />
           {IS_REPOSITORY_CONFIGURED && (

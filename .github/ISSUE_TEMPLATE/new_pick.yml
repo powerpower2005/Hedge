@@ -1,18 +1,22 @@
-name: New Pick
-description: Register a stock pick and target return challenge
+name: "새 픽 (New Pick)"
+description: "주식 픽과 목표 수익률 챌린지를 등록합니다 · Register a stock pick and target-return challenge"
 title: "[PICK] "
 labels: ["pick-submission"]
 body:
   - type: markdown
     attributes:
       value: |
-        Before submitting: fewer than **10** active picks per user; only **one** active pick per ticker per user. Invalid submissions receive a comment on this issue.
+        ### 한국어
+        제출 전 확인: 사용자당 **진행 중 픽 10개 미만**, **같은 티커는 사용자당 1개**만 가능합니다. 규칙 위반 시 이 이슈에 안내 댓글이 달릴 수 있습니다.
+
+        ### English
+        Before submitting: fewer than **10** active picks per user; only **one** active pick per ticker per user. Invalid submissions may receive a comment on this issue.
 
   - type: input
     id: ticker
     attributes:
-      label: Ticker
-      description: "Alphanumeric only, e.g. AAPL or 005930"
+      label: "Ticker / 티커"
+      description: "영문·숫자만 (예 AAPL, 005930) · Alphanumeric only, e.g. AAPL or 005930"
       placeholder: "AAPL"
     validations:
       required: true
@@ -20,7 +24,7 @@ body:
   - type: dropdown
     id: country
     attributes:
-      label: Country
+      label: "Country / 국가"
       options:
         - US
         - KR
@@ -30,8 +34,8 @@ body:
   - type: dropdown
     id: market
     attributes:
-      label: Market
-      description: Must match country (US -> NASDAQ/NYSE, KR -> KOSPI/KOSDAQ)
+      label: "Market / 시장"
+      description: "국가와 짝 맞추기 (미국 → NASDAQ·NYSE, 한국 → KOSPI·KOSDAQ) · Must match country (US → NASDAQ/NYSE, KR → KOSPI/KOSDAQ)"
       options:
         - NASDAQ
         - NYSE
@@ -43,8 +47,8 @@ body:
   - type: input
     id: target_return
     attributes:
-      label: Target return (%)
-      description: "Number from 3 to 100 (e.g. 10 means +10%)"
+      label: "Target return (%) / 목표 수익률 (%)"
+      description: "3~100 사이 숫자 (10이면 +10%) · Number from 3 to 100 (e.g. 10 means +10%)"
       placeholder: "10"
     validations:
       required: true
@@ -52,7 +56,7 @@ body:
   - type: dropdown
     id: duration
     attributes:
-      label: Duration (days)
+      label: "Duration (days) / 기간 (일)"
       options:
         - "7"
         - "14"

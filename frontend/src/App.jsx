@@ -8,6 +8,7 @@ import { ExpiredPage } from "./pages/ExpiredPage.jsx";
 import { PickDetailPage } from "./pages/PickDetailPage.jsx";
 import { UserPage } from "./pages/UserPage.jsx";
 import { AboutPage } from "./pages/AboutPage.jsx";
+import { GuidePage } from "./pages/GuidePage.jsx";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/pick/:id" element={<PickDetailPage />} />
           <Route path="/user/:username" element={<UserPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/guide" element={<GuidePage />} />
         </Routes>
       </main>
       <Footer />
