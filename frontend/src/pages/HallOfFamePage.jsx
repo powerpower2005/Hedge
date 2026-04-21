@@ -3,6 +3,7 @@ import { FilterBar } from "../components/filters/FilterBar.jsx";
 import { PickList } from "../components/pick/PickList.jsx";
 import { applyFilters, SORTERS } from "../lib/filters.js";
 import { usePicks } from "../hooks/usePicks.js";
+import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 export function HallOfFamePage() {
   const { picks, loading, error } = usePicks("hallOfFame");
@@ -16,7 +17,7 @@ export function HallOfFamePage() {
   }, [picks, filters, sortKey]);
 
   if (loading) return <p className="px-4 py-8 text-zinc-500">Loading…</p>;
-  if (error) return <p className="px-4 py-8 text-red-400">Failed to load: {String(error)}</p>;
+  if (error) return <p className="px-4 py-8 text-red-400">{dataLoadErrorMessage(error)}</p>;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">

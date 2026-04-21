@@ -22,3 +22,17 @@ Thumbs.db
 
 # Local-only notes (not pushed to remote)
 locals/
+
+# Narrative / marketing / long-form docs (keep locally; omit from public remote)
+/README.md
+/CHANGELOG.md
+/plan.md
+/CONTRIBUTING.md
+/SECURITY.md
+/CODE_OF_CONDUCT.md
+/docs/
+/scripts/migrations/README.md
+
+# Cursor / agent handbooks (clone-specific; avoid publishing ops layout)
+.agent
+.cursor/

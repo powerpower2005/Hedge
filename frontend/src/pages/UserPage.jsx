@@ -1,18 +1,26 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PickList } from "../components/pick/PickList.jsx";
-import { DATA_URLS } from "../lib/constants";
+import { DATA_URLS, IS_REPOSITORY_CONFIGURED } from "../lib/constants";
 import { formatReturn } from "../lib/formatters.js";
 import { fetchJson } from "../hooks/usePicks.js";
+import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 export function UserPage() {
   const { username } = useParams();
   const [picks, setPicks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
+    setError(null);
     (async () => {
+      if (!IS_REPOSITORY_CONFIGURED) {
+        if (!cancelled) setLoading(false);
+        setError(new Error("Repository is not configured."));
+        return;
+      }
       try {
         const lists = await Promise.all([
           fetchJson(DATA_URLS.active),
@@ -25,6 +33,8 @@ export function UserPage() {
           ...(lists[2].data?.picks ?? []),
         ].filter((p) => p.author === username);
         if (!cancelled) setPicks(merged);
+      } catch (e) {
+        if (!cancelled) setError(e instanceof Error ? e : new Error(String(e)));
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -43,6 +53,7 @@ export function UserPage() {
   }, [picks]);
 
   if (loading) return <p className="px-4 py-8 text-zinc-500">Loading…</p>;
+  if (error) return <p className="px-4 py-8 text-red-400">{dataLoadErrorMessage(error)}</p>;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DATA_URLS } from "../lib/constants";
+import { DATA_URLS, IS_REPOSITORY_CONFIGURED } from "../lib/constants";
 
 const CACHE_TTL = 60_000;
 const cache = new Map();
@@ -11,6 +11,11 @@ export function usePicks(kind) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!IS_REPOSITORY_CONFIGURED) {
+      setLoading(false);
+      setError(new Error("Repository is not configured."));
+      return undefined;
+    }
     const url = DATA_URLS[kind];
     if (!url) return undefined;
 

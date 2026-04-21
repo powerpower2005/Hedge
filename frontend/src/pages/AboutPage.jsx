@@ -1,14 +1,21 @@
-import { DATA_URLS } from "../lib/constants";
+import { DATA_URLS, IS_REPOSITORY_CONFIGURED } from "../lib/constants";
 import { useEffect, useState } from "react";
 
 export function AboutPage() {
   const [rules, setRules] = useState(null);
 
   useEffect(() => {
+    if (!IS_REPOSITORY_CONFIGURED) return undefined;
     fetch(DATA_URLS.rules)
-      .then((r) => r.json())
-      .then(setRules)
+      .then((r) => {
+        if (!r.ok) return null;
+        return r.json();
+      })
+      .then((j) => {
+        if (j != null) setRules(j);
+      })
       .catch(() => {});
+    return undefined;
   }, []);
 
   return (

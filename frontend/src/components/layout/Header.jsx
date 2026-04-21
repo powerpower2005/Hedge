@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { NEW_PICK_URL } from "../../lib/constants";
+import { IS_REPOSITORY_CONFIGURED, NEW_PICK_URL } from "../../lib/constants";
 import { ThemeToggle } from "./ThemeToggle.jsx";
 
 const linkClass = ({ isActive }) =>
@@ -30,12 +30,14 @@ export function Header() {
             About
           </NavLink>
           <ThemeToggle />
-          <a
-            href={NEW_PICK_URL}
-            className="ml-2 rounded-md bg-emerald-600 px-3 py-2 text-sm font-medium text-white hover:bg-emerald-500"
-          >
-            New pick
-          </a>
+          {IS_REPOSITORY_CONFIGURED && (
+            <a
+              href={NEW_PICK_URL}
+              className="ml-2 rounded-md bg-emerald-600 px-3 py-2 text-sm font-medium text-white hover:bg-emerald-500"
+            >
+              New pick
+            </a>
+          )}
         </nav>
       </div>
     </header>

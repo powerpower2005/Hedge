@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { StatusBadge } from "../components/pick/StatusBadge.jsx";
-import { DATA_URLS } from "../lib/constants";
+import { DATA_URLS, IS_REPOSITORY_CONFIGURED } from "../lib/constants";
+import { pickDetailErrorMessage } from "../lib/userMessages.js";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
 import { fetchJson } from "../hooks/usePicks.js";
 
@@ -13,7 +14,13 @@ export function PickDetailPage() {
   useEffect(() => {
     let cancelled = false;
     const want = Number(id);
+    setPick(null);
+    setErr(null);
     (async () => {
+      if (!IS_REPOSITORY_CONFIGURED) {
+        if (!cancelled) setErr({ code: "loadfailed" });
+        return;
+      }
       try {
         const lists = await Promise.all([
           fetchJson(DATA_URLS.active),
@@ -28,10 +35,10 @@ export function PickDetailPage() {
         const found = merged.find((p) => p.id === want);
         if (!cancelled) {
           if (found) setPick(found);
-          else setErr("Not found");
+          else setErr({ code: "notfound" });
         }
       } catch (e) {
-        if (!cancelled) setErr(String(e));
+        if (!cancelled) setErr({ code: "loadfailed", dev: String(e?.message ?? e) });
       }
     })();
     return () => {
@@ -39,7 +46,7 @@ export function PickDetailPage() {
     };
   }, [id]);
 
-  if (err && !pick) return <p className="px-4 py-8 text-red-400">{err}</p>;
+  if (err && !pick) return <p className="px-4 py-8 text-red-400">{pickDetailErrorMessage(err)}</p>;
   if (!pick) return <p className="px-4 py-8 text-zinc-500">Loading…</p>;
 
   return (

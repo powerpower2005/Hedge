@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const KEY = "stock-challenge-theme";
+const KEY = "hedge-theme-pref";
 
 export function useTheme() {
   const [light, setLight] = useState(() => {
