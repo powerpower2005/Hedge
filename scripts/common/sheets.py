@@ -16,6 +16,9 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive",
 ]
 
+# Worksheet tab name in the Google Sheet (must match exactly).
+WORKSHEET_NAME = "PriceLookup-v1"
+
 
 def _creds() -> Credentials:
     path = Path("config/service_account.json")
@@ -34,7 +37,7 @@ def get_worksheet() -> gspread.Worksheet:
         raise RuntimeError("GOOGLE_SHEET_ID is required")
     client = get_client()
     sh = client.open_by_key(sheet_id)
-    return sh.worksheet("PriceLookup")
+    return sh.worksheet(WORKSHEET_NAME)
 
 
 def append_ticker_row(pick_id: int, ticker: str, market: str) -> int:
@@ -84,7 +87,7 @@ def fetch_all_prices_rows() -> list[dict[str, Any]]:
         raise RuntimeError("GOOGLE_SHEET_ID is required")
     url = (
         f"https://docs.google.com/spreadsheets/d/{sheet_id}"
-        f"/gviz/tq?tqx=out:csv&sheet=PriceLookup"
+        f"/gviz/tq?tqx=out:csv&sheet={WORKSHEET_NAME}"
     )
     try:
         with urlopen(url, timeout=60) as resp:

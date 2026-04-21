@@ -19,3 +19,6 @@ Thumbs.db
 
 .vscode/
 .idea/
+
+# Local-only notes (not pushed to remote)
+locals/
