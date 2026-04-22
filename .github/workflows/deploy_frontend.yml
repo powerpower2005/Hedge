@@ -50,3 +50,9 @@ jobs:
 
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Deploy frontend failed — context (no secrets)
+        if: failure()
+        run: |
+          echo "Hints: repo variable VITE_BASE for Pages path; build needs VITE_REPO_OWNER/NAME from the workflow env."
+          bash scripts/ci_failure_context.sh

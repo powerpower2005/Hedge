@@ -26,4 +26,11 @@ jobs:
           cache: pip
           cache-dependency-path: scripts/requirements.txt
       - run: pip install -r scripts/requirements.txt pytest
-      - run: python -m pytest tests/ -q
+      - name: Pytest
+        run: python -m pytest tests/ -q --tb=short
+
+      - name: Pytest failed — context (no secrets)
+        if: failure()
+        run: |
+          echo "Re-run locally: python -m pytest tests/ -vv --tb=long"
+          bash scripts/ci_failure_context.sh

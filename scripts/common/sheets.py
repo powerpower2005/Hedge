@@ -11,6 +11,8 @@ from urllib.request import urlopen
 import gspread
 from google.oauth2.service_account import Credentials
 
+from .models import market_for_google_finance
+
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive",
@@ -44,12 +46,13 @@ def append_ticker_row(pick_id: int, ticker: str, market: str) -> int:
     ws = get_worksheet()
     values = ws.get_all_values()
     next_row = len(values) + 1
+    fin_market = market_for_google_finance(market)
     # "closeyest" = previous regular session close (GOOGLEFINANCE real-time attribute,
     # single cell). Used as entry baseline, not last trade. Avoid bare "close" without
     # dates (historical; often #N/A via Sheets API per Google docs).
     formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"closeyest"),"N/A")'
     ws.append_row(
-        [pick_id, ticker, market, formula],
+        [pick_id, ticker, fin_market, formula],
         value_input_option="USER_ENTERED",
     )
     return next_row

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useDataCacheRevision } from "../context/DataCacheContext.jsx";
 import { IS_REPOSITORY_CONFIGURED } from "../lib/constants.js";
 import { loadHallArchivePicksCached } from "../lib/publicPickFetch.js";
 
 export function useHallArchivePicks() {
+  const dataRevision = useDataCacheRevision();
   const [picks, setPicks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,7 +31,7 @@ export function useHallArchivePicks() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [dataRevision]);
 
   return { picks, loading, error };
 }

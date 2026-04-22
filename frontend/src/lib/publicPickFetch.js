@@ -1,10 +1,10 @@
-import { BASE_URL, DATA_URLS, IS_REPOSITORY_CONFIGURED } from "./constants.js";
+import { DATA_CACHE_TTL_MS } from "./cacheConstants.js";
+import { IS_REPOSITORY_CONFIGURED } from "./constants.js";
+import { getResolvedRawRootUrl } from "./githubRawRoot.js";
 import { fetchJson, fetchJsonAllow404 } from "./fetchJson.js";
 
 /** Earliest calendar year to probe for `data/archive/{year}.json` (404s ignored). */
 export const ARCHIVE_PROBE_YEAR_MIN = 2015;
-
-const CACHE_TTL_MS = 60_000;
 const cacheSlots = {
   all: /** @type {{ ts: number, picks: object[] } | null} */ (null),
   hallArchive: /** @type {{ ts: number, picks: object[] } | null} */ (null),
@@ -35,24 +35,26 @@ export function archiveYearsDescending() {
   return years;
 }
 
-/** @param {number | string} year */
-export function dataArchiveJsonUrl(year) {
-  if (!BASE_URL) return "";
-  const y = String(year).replace(/\D/g, "");
-  return `${BASE_URL}/data/archive/${y}.json`;
-}
-
 async function picksFromArchiveYears() {
-  if (!IS_REPOSITORY_CONFIGURED || !BASE_URL) return [];
+  if (!IS_REPOSITORY_CONFIGURED) return [];
+  const root = await getResolvedRawRootUrl();
+  if (!root) return [];
   const years = archiveYearsDescending();
-  const jsons = await Promise.all(years.map((y) => fetchJsonAllow404(dataArchiveJsonUrl(y))));
+  const jsons = await Promise.all(
+    years.map((y) => {
+      const yy = String(y).replace(/\D/g, "");
+      return fetchJsonAllow404(`${root}/data/archive/${yy}.json`);
+    }),
+  );
   return jsons.flatMap((j) => j?.data?.picks ?? []);
 }
 
 async function loadHallArchiveUncached() {
   if (!IS_REPOSITORY_CONFIGURED) return [];
+  const root = await getResolvedRawRootUrl();
+  if (!root) return [];
   const [hallJson, archivePicks] = await Promise.all([
-    fetchJson(DATA_URLS.hallOfFame),
+    fetchJson(`${root}/data/hall_of_fame.json`),
     picksFromArchiveYears(),
   ]);
   const hallPicks = hallJson?.data?.picks ?? [];
@@ -61,13 +63,17 @@ async function loadHallArchiveUncached() {
 
 async function loadAllPublicUncached() {
   if (!IS_REPOSITORY_CONFIGURED) return [];
+  const root = await getResolvedRawRootUrl();
+  if (!root) return [];
   const years = archiveYearsDescending();
-  const archiveUrls = years.map((y) => dataArchiveJsonUrl(y));
   const [activeJson, hallJson, expiredJson, ...archiveJsons] = await Promise.all([
-    fetchJson(DATA_URLS.active),
-    fetchJson(DATA_URLS.hallOfFame),
-    fetchJson(DATA_URLS.expired),
-    ...archiveUrls.map((u) => fetchJsonAllow404(u)),
+    fetchJson(`${root}/data/active.json`),
+    fetchJson(`${root}/data/hall_of_fame.json`),
+    fetchJson(`${root}/data/expired_recent.json`),
+    ...years.map((y) => {
+      const yy = String(y).replace(/\D/g, "");
+      return fetchJsonAllow404(`${root}/data/archive/${yy}.json`);
+    }),
   ]);
   const active = activeJson?.data?.picks ?? [];
   const hall = hallJson?.data?.picks ?? [];
@@ -82,7 +88,7 @@ async function loadAllPublicUncached() {
  */
 export function peekAllPublicPicksIfFresh() {
   const slot = cacheSlots.all;
-  if (slot && Date.now() - slot.ts < CACHE_TTL_MS) return slot.picks;
+  if (slot && Date.now() - slot.ts < DATA_CACHE_TTL_MS) return slot.picks;
   return null;
 }
 
@@ -93,7 +99,7 @@ export function peekAllPublicPicksIfFresh() {
  */
 async function withCache(key, loader) {
   const slot = cacheSlots[key];
-  if (slot && Date.now() - slot.ts < CACHE_TTL_MS) return /** @type {T} */ (slot.picks);
+  if (slot && Date.now() - slot.ts < DATA_CACHE_TTL_MS) return /** @type {T} */ (slot.picks);
   const pending = inflight[key];
   if (pending) return /** @type {T} */ (pending);
   const task = (async () => {
@@ -115,4 +121,12 @@ export function loadHallArchivePicksCached() {
 
 export function loadAllPublicPicksCached() {
   return withCache("all", loadAllPublicUncached);
+}
+
+/** Clears merged pick caches so the next fetch hits the network again. */
+export function invalidatePublicPickFetchCache() {
+  cacheSlots.all = null;
+  cacheSlots.hallArchive = null;
+  inflight.all = null;
+  inflight.hallArchive = null;
 }

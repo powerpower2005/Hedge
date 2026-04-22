@@ -9,8 +9,12 @@ body:
         ### 한국어
         제출 전 확인: 사용자당 **진행 중 픽 10개 미만**, **같은 티커는 사용자당 1개**만 가능합니다. 규칙 위반 시 이 이슈에 안내 댓글이 달릴 수 있습니다.
 
+        한국(KR) 종목은 시장에 **KRX**를 선택하세요. Google 스프레드시트 `GOOGLEFINANCE`는 `KRX:티커` 형식을 사용합니다. 등록이 실패하면 [Google Finance](https://www.google.com/finance/)에서 **시장 접두(KRX 등)**와 **티커** 조합이 맞는지 확인해 보세요.
+
         ### English
         Before submitting: fewer than **10** active picks per user; only **one** active pick per ticker per user. Invalid submissions may receive a comment on this issue.
+
+        For **KR** picks, choose market **KRX** (Sheets `GOOGLEFINANCE` uses `KRX:ticker`, not KOSPI/KOSDAQ prefixes). If registration fails, verify the **exchange prefix and ticker** on [Google Finance](https://www.google.com/finance/).
 
   - type: input
     id: ticker
@@ -35,12 +39,11 @@ body:
     id: market
     attributes:
       label: "Market / 시장"
-      description: "국가와 짝 맞추기 (미국 → NASDAQ·NYSE, 한국 → KOSPI·KOSDAQ) · Must match country (US → NASDAQ/NYSE, KR → KOSPI/KOSDAQ)"
+      description: "국가와 짝 맞추기 (미국 → NASDAQ·NYSE, 한국 → KRX) · Must match country (US → NASDAQ/NYSE, KR → KRX)"
       options:
         - NASDAQ
         - NYSE
-        - KOSPI
-        - KOSDAQ
+        - KRX
     validations:
       required: true
 

@@ -47,3 +47,11 @@ jobs:
             git pull --rebase origin "$BRANCH" && git push origin "$BRANCH" && break
             sleep $((i * 3))
           done
+
+      - name: Job failed — context (no secrets)
+        if: failure()
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          echo "Sync: needs REPO + GITHUB_TOKEN; only active picks get reactions from GitHub API."
+          bash scripts/ci_failure_context.sh

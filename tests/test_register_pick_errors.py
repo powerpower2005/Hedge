@@ -1,4 +1,8 @@
-from common.register_public_messages import format_price_fetch_public, scrub_machine_paths
+from common.register_public_messages import (
+    GOOGLE_FINANCE_VERIFY_TIP,
+    format_price_fetch_public,
+    scrub_machine_paths,
+)
 
 
 def test_format_price_fetch_public_shape():
@@ -14,6 +18,11 @@ def test_format_price_fetch_public_shape():
     assert "N/A" in msg
     assert "ValueError" in msg
     assert "GOOGLEFINANCE" in msg
+    assert "google.com/finance" in msg.lower()
+
+
+def test_google_finance_verify_tip_nonempty():
+    assert "google.com/finance" in GOOGLE_FINANCE_VERIFY_TIP.lower()
 
 
 def test_scrub_paths_shortens():

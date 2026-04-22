@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { DATA_URLS, IS_REPOSITORY_CONFIGURED } from "../lib/constants";
+import { useDataCacheRevision } from "../context/DataCacheContext.jsx";
+import { IS_REPOSITORY_CONFIGURED } from "../lib/constants";
+import { getResolvedDataUrls } from "../lib/githubRawRoot.js";
 import { fetchJson } from "../lib/fetchJson.js";
-
-export { fetchJson };
-
-const CACHE_TTL = 60_000;
-const cache = new Map();
+import { readWarmUrlPickCache, writeUrlPickCache } from "../lib/urlPickListCache.js";
 
 export function usePicks(kind) {
+  const dataRevision = useDataCacheRevision();
   const [picks, setPicks] = useState([]);
   const [meta, setMeta] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -19,46 +18,64 @@ export function usePicks(kind) {
       setError(new Error("Repository is not configured."));
       return undefined;
     }
-    const url = DATA_URLS[kind];
-    if (!url) return undefined;
-
-    const cached = cache.get(url);
-    if (cached && Date.now() - cached.ts < CACHE_TTL) {
-      setPicks(cached.data.picks);
-      setMeta(cached.data.meta);
-      setLoading(false);
-      return undefined;
-    }
 
     let cancelled = false;
-    setLoading(true);
-    setError(null);
-    fetchJson(url)
-      .then((json) => {
-        if (cancelled) return;
-        const data = {
-          picks: json.data?.picks ?? [],
-          meta: {
-            schemaVersion: json.schema_version,
-            generator: json.generator,
-            generatedAt: json.generated_at,
-            count: json.data?.count ?? 0,
-          },
-        };
-        cache.set(url, { data, ts: Date.now() });
-        setPicks(data.picks);
-        setMeta(data.meta);
-      })
-      .catch((e) => {
-        if (!cancelled) setError(e);
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
+
+    (async () => {
+      let url = "";
+      try {
+        const urls = await getResolvedDataUrls();
+        url = kind === "expired" ? urls.expired : urls.active;
+      } catch (e) {
+        if (!cancelled) {
+          setError(e instanceof Error ? e : new Error(String(e)));
+          setLoading(false);
+        }
+        return;
+      }
+
+      const warm = readWarmUrlPickCache(url);
+      if (warm) {
+        if (!cancelled) {
+          setPicks(warm.picks);
+          setMeta(warm.meta);
+          setLoading(false);
+        }
+        return;
+      }
+
+      if (!cancelled) {
+        setLoading(true);
+        setError(null);
+      }
+      fetchJson(url)
+        .then((json) => {
+          if (cancelled) return;
+          const data = {
+            picks: json.data?.picks ?? [],
+            meta: {
+              schemaVersion: json.schema_version,
+              generator: json.generator,
+              generatedAt: json.generated_at,
+              count: json.data?.count ?? 0,
+            },
+          };
+          writeUrlPickCache(url, data);
+          setPicks(data.picks);
+          setMeta(data.meta);
+        })
+        .catch((e) => {
+          if (!cancelled) setError(e);
+        })
+        .finally(() => {
+          if (!cancelled) setLoading(false);
+        });
+    })();
+
     return () => {
       cancelled = true;
     };
-  }, [kind]);
+  }, [kind, dataRevision]);
 
   return { picks, meta, loading, error };
 }

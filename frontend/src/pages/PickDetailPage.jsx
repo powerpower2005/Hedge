@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { StatusBadge } from "../components/pick/StatusBadge.jsx";
+import { useDataCacheRevision } from "../context/DataCacheContext.jsx";
 import { IS_REPOSITORY_CONFIGURED, pickIssueUrl } from "../lib/constants.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
@@ -10,6 +11,7 @@ import { pickDetailErrorMessage } from "../lib/userMessages.js";
 export function PickDetailPage() {
   const { id } = useParams();
   const { t } = useI18n();
+  const dataRevision = useDataCacheRevision();
   const [pick, setPick] = useState(null);
   const [err, setErr] = useState(null);
 
@@ -37,7 +39,7 @@ export function PickDetailPage() {
     return () => {
       cancelled = true;
     };
-  }, [id]);
+  }, [id, dataRevision]);
 
   if (err && !pick) return <p className="px-4 py-8 text-red-400 light:text-red-600">{pickDetailErrorMessage(err, t)}</p>;
   if (!pick) return <p className="px-4 py-8 text-zinc-500 light:text-zinc-600">{t("common.loading")}</p>;

@@ -23,16 +23,19 @@ jobs:
 
       - run: npm install -g ajv-cli@5
 
-      - name: Validate list JSON
-        run: |
-          ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d data/active.json --strict=false
-          ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d data/hall_of_fame.json --strict=false
-          ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d data/expired_recent.json --strict=false
+      - name: Validate data/active.json
+        run: ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d data/active.json --strict=false
 
-      - name: Validate meta.json
+      - name: Validate data/hall_of_fame.json
+        run: ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d data/hall_of_fame.json --strict=false
+
+      - name: Validate data/expired_recent.json
+        run: ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d data/expired_recent.json --strict=false
+
+      - name: Validate data/meta.json
         run: ajv validate -s schemas/meta.v1.json -d data/meta.json --strict=false
 
-      - name: Validate archive JSON
+      - name: Validate data/archive/*.json
         shell: bash
         run: |
           set -euo pipefail
@@ -42,7 +45,7 @@ jobs:
             ajv validate -s schemas/pick_list.v1.json -r schemas/pick.v1.json -d "$f" --strict=false
           done
 
-      - name: Validate votes JSON
+      - name: Validate data/votes/*.json
         shell: bash
         run: |
           set -euo pipefail
@@ -51,3 +54,9 @@ jobs:
             echo "validate $f"
             ajv validate -s schemas/votes.v1.json -d "$f" --strict=false
           done
+
+      - name: Validate data failed — context (no secrets)
+        if: failure()
+        run: |
+          echo "The first red X above is the failing file or archive/votes loop."
+          bash scripts/ci_failure_context.sh

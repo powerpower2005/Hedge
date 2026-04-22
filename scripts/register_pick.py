@@ -16,7 +16,10 @@ from common.github_api import (
 )
 from common.issue_parse import normalized_fields, parse_issue_form
 from common.meta import bump_next_pick_id, peek_next_pick_id
-from common.register_public_messages import format_price_fetch_public
+from common.register_public_messages import (
+    GOOGLE_FINANCE_VERIFY_TIP,
+    format_price_fetch_public,
+)
 from common.sheets import append_ticker_row, delete_row_for_pick_id, read_close_at_row
 from common.storage import get_picks, load_list_file, save_list_file
 from common.validation import (
@@ -48,6 +51,8 @@ def fail(code: str, message: str, issue_number: int) -> None:
     body = f"""**Registration failed** (`{code}`)
 
 {message}
+
+{GOOGLE_FINANCE_VERIFY_TIP}
 
 Please fix the form and open a new issue if needed.
 """

@@ -47,12 +47,6 @@ jobs:
           REPO: ${{ github.repository }}
         run: python scripts/register_pick.py
 
-      - name: Registration failed (see logs + issue comment)
-        if: failure()
-        run: |
-          echo "Registration failed. Expand the step 'Register pick' above for a sanitized technical summary (no secrets)."
-          echo "The issue also receives a bot comment with the same summary."
-
       - name: Commit and push
         env:
           BRANCH: main
@@ -69,6 +63,15 @@ jobs:
             git pull --rebase origin "$BRANCH" && git push origin "$BRANCH" && break
             sleep $((i * 3))
           done
+
+      - name: Job failed — context (no secrets)
+        if: failure()
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          echo "issue=#${{ github.event.issue.number }} author=${{ github.event.issue.user.login }}"
+          echo "Expand 'Register pick' for script stderr; issue may have a bot comment. Secrets (names only): GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_JSON."
+          bash scripts/ci_failure_context.sh
 
       - name: Cleanup service account
         if: always()

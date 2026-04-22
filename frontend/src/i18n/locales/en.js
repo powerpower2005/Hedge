@@ -8,6 +8,8 @@ export default {
     about: "About",
     guide: "Guide",
     newPick: "New pick",
+    refreshData: "Refresh data",
+    refreshDataTitle: "Clears this tab’s cache only. The next load fetches data again.",
   },
   lang: { label: "Language", ko: "한국어", en: "English" },
   theme: { light: "Light", dark: "Dark" },
@@ -25,7 +27,8 @@ export default {
   },
   active: {
     title: "Active picks",
-    subtitle: "{count} open picks (cached ~1 min).",
+    subtitle:
+      "{count} open picks. The UI may show cached values; this tab reuses the same fetched data for up to ~1 minute. Use “Refresh data” in the header to fetch immediately.",
   },
   hallOfFame: {
     title: "Hall of Fame",
@@ -52,7 +55,7 @@ export default {
       "Use the top tabs: Active, Hall of Fame, and Expired. Click a card to open its detail page. Click an @username on a card to see that participant’s picks only. Use filters and sort to narrow the list.",
     s2Title: "Submit a new pick",
     s2Body:
-      "While signed in, click New pick in the header to open the registration form. Enter ticker, country & market, target return (%), and duration (days). US names pair with NASDAQ/NYSE; KR with KOSPI/KOSDAQ. Tickers are alphanumeric only. After submission, checks run automatically; if accepted, the pick appears under Active.",
+      "While signed in, click New pick in the header to open the registration form. Enter ticker, country & market, target return (%), and duration (days). US names pair with NASDAQ/NYSE; KR with KRX (Sheets GOOGLEFINANCE uses KRX:ticker). Tickers are alphanumeric only. If registration fails, check the exchange prefix and ticker on Google Finance (https://www.google.com/finance/). After submission, checks run automatically; if accepted, the pick appears under Active.",
     s3Title: "Limits and rules",
     s3Body:
       "There are caps on how many active picks you may have at once and on duplicate tickers per user. Target return and duration must be chosen from the allowed ranges shown on the form. If something is wrong, a message may appear on the same submission thread.",

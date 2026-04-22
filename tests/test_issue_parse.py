@@ -56,3 +56,26 @@ def test_parse_markdown_bold_duration():
 
 def test_parse_empty():
     assert parse_issue_form("") == {}
+
+
+def test_kr_market_legacy_normalized_to_krx():
+    raw = {
+        "ticker": "005930",
+        "country": "KR",
+        "market": "KOSPI",
+        "target_return_pct": "10",
+        "duration_days": "30",
+    }
+    fields = normalized_fields(raw)
+    assert fields["market"] == "KRX"
+
+
+def test_kr_kosdaq_legacy_normalized_to_krx():
+    raw = {
+        "ticker": "035420",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "target_return_pct": "5",
+        "duration_days": "90",
+    }
+    assert normalized_fields(raw)["market"] == "KRX"

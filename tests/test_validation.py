@@ -1,5 +1,6 @@
 import pytest
 
+from common.models import market_for_google_finance
 from common.validation import (
     ValidationError,
     validate_no_duplicate_ticker,
@@ -14,7 +15,7 @@ def test_validate_pick_ok():
 
 def test_validate_pick_bad_market():
     with pytest.raises(ValidationError) as e:
-        validate_pick_input("AAPL", "US", "KOSPI", 0.1, 30)
+        validate_pick_input("AAPL", "US", "KRX", 0.1, 30)
     assert e.value.code == "COUNTRY_MARKET_MISMATCH"
 
 
@@ -37,7 +38,14 @@ def test_validate_duration():
 
 
 def test_validate_kr_ticker():
-    validate_pick_input("005930", "KR", "KOSPI", 0.05, 90)
+    validate_pick_input("005930", "KR", "KRX", 0.05, 90)
+
+
+def test_market_for_google_finance_korea_legacy():
+    assert market_for_google_finance("KOSPI") == "KRX"
+    assert market_for_google_finance("KOSDAQ") == "KRX"
+    assert market_for_google_finance("KRX") == "KRX"
+    assert market_for_google_finance("NASDAQ") == "NASDAQ"
 
 
 def test_quota():

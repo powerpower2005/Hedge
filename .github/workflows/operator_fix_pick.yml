@@ -102,3 +102,12 @@ jobs:
             git pull --rebase origin "$BRANCH" && git push origin "$BRANCH" && break
             sleep $((i * 3))
           done
+
+      - name: Job failed — context (no secrets)
+        if: failure()
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          echo "pick_id=${{ inputs.pick_id }} action=${{ inputs.action }} delete_sheet_row=${{ inputs.delete_sheet_row }}"
+          echo "remove: id must exist on main in active|hall|expired|archive. delist: id in active only."
+          bash scripts/ci_failure_context.sh

@@ -35,7 +35,10 @@
     "issue_number": { "type": "integer", "minimum": 1 },
     "ticker": { "type": "string", "pattern": "^[A-Z0-9]{1,10}$" },
     "country": { "enum": ["US", "KR"] },
-    "market": { "enum": ["NASDAQ", "NYSE", "KOSPI", "KOSDAQ"] },
+    "market": {
+      "enum": ["NASDAQ", "NYSE", "KRX", "KOSPI", "KOSDAQ"],
+      "description": "KR picks must use KRX for GOOGLEFINANCE; KOSPI/KOSDAQ are legacy values only."
+    },
     "entry": {
       "type": "object",
       "required": ["price", "date", "source"],

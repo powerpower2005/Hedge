@@ -114,6 +114,26 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     return p.parse_args(argv)
 
 
+def _hint_active_pick_ids(root: Path) -> str:
+    path = root / "data" / "active.json"
+    if not path.is_file():
+        return "data/active.json is missing."
+    picks = get_picks(load_list_file(path))
+    ids: list[int] = []
+    for p in picks:
+        pid = p.get("id")
+        if pid is None:
+            continue
+        try:
+            ids.append(int(pid))
+        except (TypeError, ValueError):
+            continue
+    ids = sorted(set(ids))
+    if not ids:
+        return "data/active.json has no picks (count=0)."
+    return f"data/active.json pick ids: {ids}"
+
+
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
     root = repo_root()
@@ -121,7 +141,16 @@ def main(argv: list[str] | None = None) -> None:
     if args.action == "remove":
         changed = remove_pick_from_lists(root, args.pick_id)
         if not changed:
-            print(f"No pick with id={args.pick_id} found in list files under {root}.", file=sys.stderr)
+            print(
+                f"No pick with id={args.pick_id} found under {root} "
+                f"(searched data/active.json, hall_of_fame.json, expired_recent.json, data/archive/*.json).",
+                file=sys.stderr,
+            )
+            print(f"HINT: {_hint_active_pick_ids(root)}", file=sys.stderr)
+            print(
+                "On GitHub Actions this is the default branch checkout; use a pick id that exists on main.",
+                file=sys.stderr,
+            )
             sys.exit(1)
         for c in changed:
             rel = c.relative_to(root) if c.is_relative_to(root) else c

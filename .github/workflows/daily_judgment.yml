@@ -56,6 +56,15 @@ jobs:
             sleep $((i * 3))
           done
 
+      - name: Job failed — context (no secrets)
+        if: failure()
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          echo "Judgment: Sheet CSV/gspread + Secrets (GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_JSON, names only)."
+          echo "Push: see commit step; rebase/push loop may conflict with concurrent data commits."
+          bash scripts/ci_failure_context.sh
+
       - name: Cleanup service account
         if: always()
         run: rm -f config/service_account.json

@@ -5,6 +5,12 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Optional
 
+GOOGLE_FINANCE_VERIFY_TIP = (
+    "If you believe the values are correct, confirm the **exchange-style prefix** "
+    "and **ticker** on [Google Finance](https://www.google.com/finance/) "
+    "(Korea should use **KRX**, e.g. `KRX:005930`, matching what `GOOGLEFINANCE` expects)."
+)
+
 
 def scrub_machine_paths(text: str) -> str:
     out = text.replace("\\", "/")
@@ -51,6 +57,8 @@ def format_price_fetch_public(
             "Verify in the sheet that a test cell with:",
             f"`=IFERROR(GOOGLEFINANCE(\"{attr}\",\"closeyest\"),\"N/A\")`",
             "Registration uses **`closeyest`** (previous session official close), not intraday `price`. Bare `close` without dates is historical-oriented and often `#N/A` via API. Wrong exchange or unsupported symbol is another common cause.",
+            "",
+            GOOGLE_FINANCE_VERIFY_TIP,
         ]
     )
     return "\n".join(lines)

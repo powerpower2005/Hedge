@@ -5,7 +5,7 @@
   "rules": {
     "supported_markets": {
       "US": ["NASDAQ", "NYSE"],
-      "KR": ["KOSPI", "KOSDAQ"]
+      "KR": ["KRX"]
     },
     "target_return_range": [0.03, 1.0],
     "duration_options": [7, 14, 30, 90, 180],

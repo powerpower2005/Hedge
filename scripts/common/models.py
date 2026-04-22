@@ -19,14 +19,22 @@ class Country(str, Enum):
 class Market(str, Enum):
     NASDAQ = "NASDAQ"
     NYSE = "NYSE"
-    KOSPI = "KOSPI"
-    KOSDAQ = "KOSDAQ"
+    # Korea: GOOGLEFINANCE uses KRX:SYMBOL (not KOSPI:/KOSDAQ:).
+    KRX = "KRX"
 
 
 COUNTRY_MARKETS = {
     Country.US: {Market.NASDAQ, Market.NYSE},
-    Country.KR: {Market.KOSPI, Market.KOSDAQ},
+    Country.KR: {Market.KRX},
 }
+
+
+def market_for_google_finance(market: str) -> str:
+    """Prefix for GOOGLEFINANCE C:B (Korea must be KRX, not KOSPI/KOSDAQ)."""
+    if market in ("KOSPI", "KOSDAQ"):
+        return "KRX"
+    return market
+
 
 ALLOWED_DURATIONS = [7, 14, 30, 90, 180]
 TARGET_RETURN_MIN = 0.03
