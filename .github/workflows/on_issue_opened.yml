@@ -47,6 +47,12 @@ jobs:
           REPO: ${{ github.repository }}
         run: python scripts/register_pick.py
 
+      - name: Registration failed (see logs + issue comment)
+        if: failure()
+        run: |
+          echo "Registration failed. Expand the step 'Register pick' above for a sanitized technical summary (no secrets)."
+          echo "The issue also receives a bot comment with the same summary."
+
       - name: Commit and push
         env:
           BRANCH: main

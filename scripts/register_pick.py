@@ -16,6 +16,7 @@ from common.github_api import (
 )
 from common.issue_parse import normalized_fields, parse_issue_form
 from common.meta import bump_next_pick_id, peek_next_pick_id
+from common.register_public_messages import format_price_fetch_public
 from common.sheets import append_ticker_row, delete_row_for_pick_id, read_close_at_row
 from common.storage import get_picks, load_list_file, save_list_file
 from common.validation import (
@@ -50,9 +51,10 @@ def fail(code: str, message: str, issue_number: int) -> None:
 
 Please fix the form and open a new issue if needed.
 """
+    print(f"[register_pick] FAILED {code}\n{message}", file=sys.stderr)
     add_issue_comment(issue_number, body)
     add_issue_label(issue_number, "invalid")
-    sys.exit(0)
+    sys.exit(1)
 
 
 def build_pick(
@@ -161,9 +163,9 @@ def main() -> None:
 
     pick_id = peek_next_pick_id()
     row_index: int | None = None
+    raw_close: str | None = None
     try:
         row_index = append_ticker_row(pick_id, ticker, market)
-        raw_close = None
         for _ in range(5):
             raw_close = read_close_at_row(row_index)
             try:
@@ -172,20 +174,21 @@ def main() -> None:
             except ValueError:
                 time.sleep(2)
         else:
-            raise ValueError(f"close not ready: {raw_close!r}")
+            raise ValueError(f"close not_ready last={raw_close!r}")
     except Exception as e:
         if row_index is not None:
             try:
                 delete_row_for_pick_id(pick_id)
             except Exception:
                 pass
-        fail(
-            "PRICE_FETCH_ERROR",
-            "Could not read a valid closing price from Google Sheets. "
-            "Check ticker/market, or try again later. "
-            f"Detail: {e}",
-            issue_number,
+        msg = format_price_fetch_public(
+            e,
+            ticker=ticker,
+            market=market,
+            row_index=row_index,
+            last_raw=raw_close,
         )
+        fail("PRICE_FETCH_ERROR", msg, issue_number)
 
     pick = build_pick(
         pick_id,
