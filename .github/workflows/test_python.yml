@@ -7,11 +7,13 @@ on:
       - "scripts/**"
       - "tests/**"
       - "pytest.ini"
+      - ".github/workflows/operator_fix_pick.yml"
   pull_request:
     paths:
       - "scripts/**"
       - "tests/**"
       - "pytest.ini"
+      - ".github/workflows/operator_fix_pick.yml"
 
 jobs:
   pytest:
