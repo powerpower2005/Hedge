@@ -20,7 +20,13 @@ from common.register_public_messages import (
     GOOGLE_FINANCE_VERIFY_TIP,
     format_price_fetch_public,
 )
-from common.sheets import append_ticker_row, delete_row_for_pick_id, read_close_at_row
+from common.goog_finance_parse import parse_instrument_name_cell
+from common.sheets import (
+    append_ticker_row,
+    delete_row_for_pick_id,
+    read_close_at_row,
+    read_instrument_name_at_row,
+)
 from common.storage import get_picks, load_list_file, save_list_file
 from common.validation import (
     ValidationError,
@@ -72,11 +78,13 @@ def build_pick(
     target_return: float,
     duration_days: int,
     entry_price: float,
+    *,
+    instrument_name: str | None = None,
 ) -> dict:
     entry_date = datetime.now(timezone.utc).date()
     deadline = entry_date + timedelta(days=duration_days)
     target_price = round(entry_price * (1 + target_return), 4)
-    return {
+    out: dict = {
         "id": pick_id,
         "schema_version": "1.0.0",
         "created_with": {
@@ -128,6 +136,9 @@ def build_pick(
         "votes": {"likes": 0, "dislikes": 0, "last_synced": now_iso()},
         "extensions": {},
     }
+    if instrument_name:
+        out["instrument_name"] = instrument_name
+    return out
 
 
 def _parse_close_value(raw: str | None) -> float:
@@ -170,7 +181,7 @@ def main() -> None:
     row_index: int | None = None
     raw_close: str | None = None
     try:
-        row_index = append_ticker_row(pick_id, ticker, market)
+        row_index = append_ticker_row(pick_id, ticker, market, country)
         print(
             f"[register_pick] SHEETS_APPEND_OK pick_id={pick_id} worksheet_row={row_index} tab=PriceLookup-v1",
             file=sys.stderr,
@@ -184,6 +195,13 @@ def main() -> None:
                 time.sleep(2)
         else:
             raise ValueError(f"close not_ready last={raw_close!r}")
+        instrument_name: str | None = None
+        for _ in range(5):
+            raw_name = read_instrument_name_at_row(row_index)
+            instrument_name = parse_instrument_name_cell(raw_name)
+            if instrument_name:
+                break
+            time.sleep(1)
     except Exception as e:
         if row_index is not None:
             print(
@@ -214,6 +232,7 @@ def main() -> None:
         target_return,
         duration_days,
         entry_price,
+        instrument_name=instrument_name,
     )
     active_picks.append(pick)
     save_list_file(ACTIVE_PATH, active_picks)
@@ -227,6 +246,7 @@ def main() -> None:
 | --- | --- |
 | Pick ID | #{pick_id} |
 | Ticker | `{ticker}` ({market}) |
+| Name | {pick.get("instrument_name") or "—"} |
 | Entry | {start_s} |
 | Target | {target_s} (+{target_return_pct:.1f}%) |
 | Deadline | {pick['duration']['deadline']} ({duration_days} days) |

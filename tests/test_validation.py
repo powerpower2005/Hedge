@@ -1,6 +1,6 @@
 import pytest
 
-from common.models import market_for_google_finance
+from common.models import market_for_google_finance, ticker_cell_for_price_lookup
 from common.validation import (
     ValidationError,
     validate_no_duplicate_ticker,
@@ -46,6 +46,19 @@ def test_market_for_google_finance_korea_legacy():
     assert market_for_google_finance("KOSDAQ") == "KRX"
     assert market_for_google_finance("KRX") == "KRX"
     assert market_for_google_finance("NASDAQ") == "NASDAQ"
+
+
+def test_ticker_cell_for_price_lookup_kr_formula_preserves_zeros():
+    assert ticker_cell_for_price_lookup("005930", "KR") == '="005930"'
+    assert ticker_cell_for_price_lookup("035420", "KR") == '="035420"'
+
+
+def test_ticker_cell_for_price_lookup_us_plain():
+    assert ticker_cell_for_price_lookup("AAPL", "US") == "AAPL"
+
+
+def test_ticker_cell_for_price_lookup_kr_escapes_quotes():
+    assert ticker_cell_for_price_lookup('X"Y', "KR") == '="X""Y"'
 
 
 def test_quota():

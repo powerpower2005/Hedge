@@ -39,6 +39,11 @@
       "enum": ["NASDAQ", "NYSE", "KRX", "KOSPI", "KOSDAQ"],
       "description": "KR picks must use KRX for GOOGLEFINANCE; KOSPI/KOSDAQ are legacy values only."
     },
+    "instrument_name": {
+      "type": "string",
+      "maxLength": 280,
+      "description": "Optional display name from GOOGLEFINANCE(..., \"name\") at registration (Sheets)."
+    },
     "entry": {
       "type": "object",
       "required": ["price", "date", "source"],

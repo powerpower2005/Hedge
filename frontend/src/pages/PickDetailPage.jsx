@@ -52,7 +52,12 @@ export function PickDetailPage() {
         {t("common.backToList")}
       </Link>
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        <h1 className="text-3xl font-bold text-white light:text-zinc-900">{pick.ticker}</h1>
+        <div>
+          <h1 className="text-3xl font-bold text-white light:text-zinc-900">{pick.ticker}</h1>
+          {pick.instrument_name ? (
+            <p className="mt-1 text-base text-zinc-400 light:text-zinc-600">{pick.instrument_name}</p>
+          ) : null}
+        </div>
         <StatusBadge status={pick.status?.current} />
       </div>
       <p className="text-zinc-400 light:text-zinc-600">

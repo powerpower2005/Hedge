@@ -40,7 +40,8 @@ def format_price_fetch_public(
     lines = [
         "Google Sheets **previous close** (column D, GOOGLEFINANCE `closeyest`) never became a numeric value after **5** reads (~10s, 2s apart).",
         "",
-        f"- **GOOGLEFINANCE attribute:** `{attr}` (columns **C=market**, **B=ticker** on the new row).",
+        f"- **GOOGLEFINANCE attribute:** `{attr}` (columns **C=market**, **B=ticker**; **D**=closeyest, **E**=optional `name` on the new row).",
+        "For **KR** picks, column **B** is written as a string formula so **leading zeros** in tickers (e.g. `005930`) are not lost; if B became a plain number, Sheets would build `KRX:5930` and `GOOGLEFINANCE` returns **N/A**.",
     ]
     if row_index is not None:
         lines.append(f"- **Row index** (1-based, tab `PriceLookup-v1`): **{row_index}**")

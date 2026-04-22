@@ -11,7 +11,7 @@ from urllib.request import urlopen
 import gspread
 from google.oauth2.service_account import Credentials
 
-from .models import market_for_google_finance
+from .models import market_for_google_finance, ticker_cell_for_price_lookup
 
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -42,17 +42,20 @@ def get_worksheet() -> gspread.Worksheet:
     return sh.worksheet(WORKSHEET_NAME)
 
 
-def append_ticker_row(pick_id: int, ticker: str, market: str) -> int:
+def append_ticker_row(pick_id: int, ticker: str, market: str, country: str) -> int:
     ws = get_worksheet()
     values = ws.get_all_values()
     next_row = len(values) + 1
     fin_market = market_for_google_finance(market)
+    ticker_cell = ticker_cell_for_price_lookup(ticker, country)
     # "closeyest" = previous regular session close (GOOGLEFINANCE real-time attribute,
     # single cell). Used as entry baseline, not last trade. Avoid bare "close" without
     # dates (historical; often #N/A via Sheets API per Google docs).
-    formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"closeyest"),"N/A")'
+    close_formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"closeyest"),"N/A")'
+    # "name" = full security name (same symbol as D); stored in pick JSON for the UI.
+    name_formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"name"),"")'
     ws.append_row(
-        [pick_id, ticker, fin_market, formula],
+        [pick_id, ticker_cell, fin_market, close_formula, name_formula],
         value_input_option="USER_ENTERED",
     )
     return next_row
@@ -61,6 +64,14 @@ def append_ticker_row(pick_id: int, ticker: str, market: str) -> int:
 def read_close_at_row(row_index: int) -> str | None:
     ws = get_worksheet()
     cell = ws.cell(row_index, 4)
+    v = cell.value
+    return str(v).strip() if v is not None else None
+
+
+def read_instrument_name_at_row(row_index: int) -> str | None:
+    """Column E: GOOGLEFINANCE(..., \"name\") (optional; may lag behind close)."""
+    ws = get_worksheet()
+    cell = ws.cell(row_index, 5)
     v = cell.value
     return str(v).strip() if v is not None else None
 

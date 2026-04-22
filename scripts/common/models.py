@@ -36,6 +36,14 @@ def market_for_google_finance(market: str) -> str:
     return market
 
 
+def ticker_cell_for_price_lookup(ticker: str, country: str) -> str:
+    """Cell value for column B so GOOGLEFINANCE(C:B) keeps leading zeros (KR tickers)."""
+    if country == "KR":
+        escaped = ticker.replace('"', '""')
+        return f'="{escaped}"'
+    return ticker
+
+
 ALLOWED_DURATIONS = [7, 14, 30, 90, 180]
 TARGET_RETURN_MIN = 0.03
 TARGET_RETURN_MAX = 1.0

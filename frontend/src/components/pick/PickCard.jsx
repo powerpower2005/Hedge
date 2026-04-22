@@ -18,6 +18,9 @@ export function PickCard({ pick }) {
           >
             {pick.ticker}
           </Link>
+          {pick.instrument_name ? (
+            <p className="text-sm font-medium text-zinc-300 light:text-zinc-700">{pick.instrument_name}</p>
+          ) : null}
           <p className="text-sm text-zinc-400 light:text-zinc-600">
             {pick.market} ·{" "}
             <Link className="hover:underline" to={`/user/${pick.author}`}>
