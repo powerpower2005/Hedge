@@ -44,7 +44,9 @@ def append_ticker_row(pick_id: int, ticker: str, market: str) -> int:
     ws = get_worksheet()
     values = ws.get_all_values()
     next_row = len(values) + 1
-    formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"close"),"N/A")'
+    # Use "price" (real-time / delayed quote, single cell). "close" without dates is
+    # historical-oriented and often returns #N/A when read via Sheets API (Google docs).
+    formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"price"),"N/A")'
     ws.append_row(
         [pick_id, ticker, market, formula],
         value_input_option="USER_ENTERED",

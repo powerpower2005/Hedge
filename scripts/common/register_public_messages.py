@@ -32,7 +32,7 @@ def format_price_fetch_public(
     """Human + technical summary for issue comment / CI logs."""
     attr = f"{market}:{ticker}".replace("`", "'")
     lines = [
-        "Google Sheets **close** (column D) never became a numeric price after **5** reads (~10s, 2s apart).",
+        "Google Sheets **price** (column D, GOOGLEFINANCE `price`) never became a numeric value after **5** reads (~10s, 2s apart).",
         "",
         f"- **GOOGLEFINANCE attribute:** `{attr}` (columns **C=market**, **B=ticker** on the new row).",
     ]
@@ -49,8 +49,8 @@ def format_price_fetch_public(
         [
             "",
             "Verify in the sheet that a test cell with:",
-            f"`=IFERROR(GOOGLEFINANCE(\"{attr}\",\"close\"),\"N/A\")`",
-            "returns a number (not `#N/A` / `#VALUE!`). Wrong exchange or unsupported symbol is the usual cause.",
+            f"`=IFERROR(GOOGLEFINANCE(\"{attr}\",\"price\"),\"N/A\")`",
+            "Use attribute **`price`** (real-time, single cell). `close` without dates is historical-oriented and often `#N/A` via API. Wrong exchange or unsupported symbol is another common cause.",
         ]
     )
     return "\n".join(lines)
