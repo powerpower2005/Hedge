@@ -17,7 +17,7 @@ def read_current_commit() -> str:
 
 def build_generator_meta() -> dict:
     return {
-        "name": "stock-challenge",
+        "name": "called-it",
         "version": read_engine_version(),
         "commit": read_current_commit(),
     }

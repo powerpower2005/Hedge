@@ -3,7 +3,6 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useAllMergedPicks } from "../hooks/useAllMergedPicks.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { formatReturn } from "../lib/formatters.js";
-import { ARCHIVE_PROBE_YEAR_MIN } from "../lib/publicPickFetch.js";
 import { aggregateUserStats, sortUserStats } from "../lib/userLeaderboard.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
@@ -56,9 +55,7 @@ export function UsersLeaderboardPage() {
       <h1 id="users-page-title" className="mt-4 text-2xl font-bold text-white light:text-zinc-900">
         {t("users.title")}
       </h1>
-      <p className="mt-2 text-sm text-zinc-400 light:text-zinc-600">
-        {t("users.subtitle", { minYear: String(ARCHIVE_PROBE_YEAR_MIN) })}
-      </p>
+      <p className="mt-2 text-sm text-zinc-400 light:text-zinc-600">{t("users.subtitle")}</p>
 
       <div className="mt-6 flex flex-wrap items-end gap-4">
         <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600" htmlFor="users-sort">
@@ -74,7 +71,9 @@ export function UsersLeaderboardPage() {
             <option value="wins">{t("users.sortWins")}</option>
           </select>
         </label>
-        <p className="text-xs text-zinc-500 light:text-zinc-600">{t("users.winRateHint")}</p>
+        <p className="max-w-xl text-xs text-zinc-500 light:text-zinc-600">
+          {t("users.winRateHint")} {t("users.totalReturnHint")}
+        </p>
       </div>
 
       {sorted.length === 0 ? (
@@ -86,7 +85,7 @@ export function UsersLeaderboardPage() {
           <div className="hidden md:mt-6 md:block">
             <div className="overflow-x-auto rounded-lg border border-zinc-800 light:border-zinc-200">
               <table
-                className="w-full min-w-[36rem] border-collapse text-left text-sm"
+                className="w-full min-w-[42rem] border-collapse text-left text-sm"
                 aria-labelledby="users-page-title"
               >
                 <thead>
@@ -105,6 +104,9 @@ export function UsersLeaderboardPage() {
                     </th>
                     <th scope="col" className="px-3 py-2 font-medium text-zinc-400 light:text-zinc-600">
                       {t("users.colWinRate")}
+                    </th>
+                    <th scope="col" className="px-3 py-2 font-medium text-zinc-400 light:text-zinc-600">
+                      {t("users.colTotalReturn")}
                     </th>
                   </tr>
                 </thead>
@@ -130,6 +132,7 @@ export function UsersLeaderboardPage() {
                         <td className="px-3 py-2 tabular-nums">
                           {row.winRate == null ? "—" : formatReturn(row.winRate)}
                         </td>
+                        <td className="px-3 py-2 tabular-nums">{formatReturn(row.totalReturn)}</td>
                       </tr>
                     );
                   })}
@@ -169,11 +172,15 @@ export function UsersLeaderboardPage() {
                       <dt className="text-xs text-zinc-500 light:text-zinc-600">{t("users.colWins")}</dt>
                       <dd className="tabular-nums font-medium">{row.wins}</dd>
                     </div>
-                    <div className="col-span-2">
+                    <div>
                       <dt className="text-xs text-zinc-500 light:text-zinc-600">{t("users.colWinRate")}</dt>
                       <dd className="tabular-nums font-medium">
                         {row.winRate == null ? "—" : formatReturn(row.winRate)}
                       </dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs text-zinc-500 light:text-zinc-600">{t("users.colTotalReturn")}</dt>
+                      <dd className="tabular-nums font-medium">{formatReturn(row.totalReturn)}</dd>
                     </div>
                   </dl>
                 </li>

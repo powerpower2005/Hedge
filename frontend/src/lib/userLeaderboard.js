@@ -1,4 +1,16 @@
-/** @typedef {{ author: string, total: number, wins: number, expired: number, resolved: number, winRate: number | null }} UserStatRow */
+/** @typedef {{ author: string, total: number, wins: number, expired: number, resolved: number, winRate: number | null, totalReturn: number }} UserStatRow */
+
+/**
+ * @param {object} p
+ * @returns {number}
+ */
+export function pickReturnForLeaderboard(p) {
+  if (p?.status?.current === "achieved" && typeof p?.achievement?.final_return_rate === "number") {
+    return p.achievement.final_return_rate;
+  }
+  const r = p?.progress?.current?.return_rate;
+  return typeof r === "number" && !Number.isNaN(r) ? r : 0;
+}
 
 /**
  * @param {object[]} allPicks
@@ -17,15 +29,17 @@ export function aggregateUserStats(allPicks) {
   for (const [author, ps] of byAuthor) {
     let wins = 0;
     let expired = 0;
+    let totalReturn = 0;
     for (const p of ps) {
       const s = p?.status?.current;
       if (s === "achieved") wins += 1;
       else if (s === "expired") expired += 1;
+      totalReturn += pickReturnForLeaderboard(p);
     }
     const total = ps.length;
     const resolved = wins + expired;
     const winRate = resolved > 0 ? wins / resolved : null;
-    rows.push({ author, total, wins, expired, resolved, winRate });
+    rows.push({ author, total, wins, expired, resolved, winRate, totalReturn });
   }
   return rows;
 }

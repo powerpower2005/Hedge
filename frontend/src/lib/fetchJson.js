@@ -1,5 +1,7 @@
+const fetchInit = { cache: "no-store" };
+
 export async function fetchJson(url) {
-  const r = await fetch(url);
+  const r = await fetch(url, fetchInit);
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return r.json();
 }
@@ -10,7 +12,7 @@ export async function fetchJson(url) {
  */
 export async function fetchJsonAllow404(url) {
   if (!url) return null;
-  const r = await fetch(url);
+  const r = await fetch(url, fetchInit);
   if (r.status === 404) return null;
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return r.json();

@@ -1,5 +1,5 @@
 export default {
-  app: { title: "Stock Challenge", documentTitle: "Stock Challenge" },
+  app: { title: "Called It", documentTitle: "Called It" },
   nav: {
     active: "Active",
     hallOfFame: "Hall of Fame",
@@ -25,29 +25,26 @@ export default {
   },
   active: {
     title: "Active picks",
-    subtitle: "{count} open challenges (cached ~1 min).",
+    subtitle: "{count} open picks (cached ~1 min).",
   },
   hallOfFame: {
     title: "Hall of Fame",
-    subtitle:
-      "Picks that reached their target. Combines data/hall_of_fame.json with per-year files under data/archive/ (probes {minYear} through the current UTC year; missing files are ignored).",
+    subtitle: "Picks that reached their target and were recorded as achieved.",
     periodLabel: "Period",
     periodAll: "All",
     periodMonth: "Monthly",
     periodYear: "Yearly",
     selectMonth: "Achieved month",
     selectYear: "Achieved year",
-    periodMonthHint:
-      "Shows picks whose achievement date falls in the selected calendar month (UTC), using the merged Hall of Fame + yearly archive list. If the same pick id appears twice, the copy from hall_of_fame.json wins.",
-    periodYearHint:
-      "Shows picks whose achievement date falls in the selected calendar year (UTC), using the merged Hall of Fame + yearly archive list. If the same pick id appears twice, the copy from hall_of_fame.json wins.",
+    periodMonthHint: "Only picks whose achievement date falls in the selected month (UTC).",
+    periodYearHint: "Only picks whose achievement date falls in the selected year (UTC).",
   },
   expired: {
     title: "Expired picks",
     subtitle: "Picks that did not reach the target before the deadline.",
   },
   guide: {
-    documentTitle: "Guide | Stock Challenge",
+    documentTitle: "Guide | Called It",
     title: "Guide",
     lead: "Follow these steps if you are new or unsure how things work.",
     s1Title: "Browse lists and details",
@@ -64,16 +61,16 @@ export default {
       "Picks are refreshed daily using official closing levels. If the target is reached in time, the pick moves to Hall of Fame; otherwise it moves to Expired after the deadline. The detail page shows entry, targets, and current return.",
     s5Title: "Votes (reactions)",
     s5Body:
-      "Reactions left on the thread linked to a pick may be aggregated. The numbers on cards reflect that tally when available.",
+      "Each pick is tied to its GitHub registration issue. Add a +1 (approve) or −1 (disapprove) reaction on that issue’s first post to vote. Counts on cards and detail pages refresh after the repository syncs reactions from GitHub (about hourly UTC, or when a maintainer runs the job manually).",
     s6Title: "Display settings",
     s6Body:
       "Use the language control for Korean or English, and the theme toggle for light or dark. Choices are saved in this browser.",
   },
   about: {
-    documentTitle: "About | Stock Challenge",
+    documentTitle: "About | Called It",
     title: "About",
     lead:
-      "Stock Challenge is a community event: you choose a ticker, a target return, and a time window. Registered picks appear in public lists, and progress is updated daily using official closing prices.",
+      "Called It is a community event: you choose a ticker, a target return, and a time window. Registered picks appear in public lists, and progress is updated daily using official closing prices.",
     bullet1: "Judgment: if the daily close touches the target price within the window, the pick is marked achieved.",
     bullet2: "Submissions use a fixed form; entries that break the rules may be rejected.",
     bullet3: "No unofficial price scraping; only published closing references are used.",
@@ -86,6 +83,12 @@ export default {
     targetPrice: "Target price",
     deadline: "Deadline",
     currentReturn: "Current return",
+    votes: "Votes",
+    votesTally: "+{likes} / −{dislikes}",
+    voteCtaTitle: "How to vote",
+    voteCtaBody:
+      "Open the registration issue below and use the reactions menu on the first post: choose +1 or −1. This site does not post reactions for you; counts refresh after the repository vote-sync job updates the JSON (hourly UTC by default).",
+    openIssue: "Open registration issue #{n}",
     achieved: "Achieved",
     achievedMeta: "Date {date} · Days {days} · Final {final}",
   },
@@ -94,24 +97,27 @@ export default {
     totalPicks: "Total picks",
     achieved: "Achieved",
     avgTarget: "Avg target return",
+    totalReturn: "Total return",
+    totalReturnHint: "Sum of per-pick returns (same rules as the participants table).",
     allPicks: "All picks",
   },
   users: {
-    documentTitle: "Participants | Stock Challenge",
+    documentTitle: "Participants | Called It",
     title: "Participants",
-    subtitle:
-      "Aggregates active, Hall of Fame, and expired JSON plus data/archive yearly files (probes {minYear} through the current UTC year; missing files are ignored). On duplicate ids, active picks take precedence.",
+    subtitle: "Per-user stats from all public picks.",
     sortLabel: "Sort by",
     sortWinRate: "Win rate (high first)",
     sortAttempts: "Most attempts",
     sortWins: "Most wins",
-    winRateHint:
-      "Win rate is achieved ÷ (achieved + expired). Shown as — if neither exists. Achieved picks that only exist in yearly archives are included in totals.",
+    winRateHint: "Win rate is achieved ÷ (achieved + expired). Shown as — if neither exists.",
+    totalReturnHint:
+      "Total return is the sum of each pick’s return (active: latest; achieved: recorded final; expired: last recorded). Not a capital-weighted portfolio return.",
     colRank: "Rank",
     colUser: "User",
     colAttempts: "Attempts",
     colWins: "Wins",
     colWinRate: "Win rate",
+    colTotalReturn: "Total return",
     pageSummary: "{from}–{to} of {total}",
     prev: "Previous",
     next: "Next",
@@ -128,6 +134,8 @@ export default {
     entry: "Entry",
     progress: "Progress",
     votes: "Votes",
+    voteOnGithub: "Vote on GitHub",
+    voteHint: "+1 / −1 on the issue · counts update after repo sync",
   },
   pickList: { empty: "No picks yet." },
   filters: {

@@ -1,5 +1,5 @@
 export default {
-  app: { title: "스톡 챌린지", documentTitle: "스톡 챌린지" },
+  app: { title: "햇제", documentTitle: "햇제" },
   nav: {
     active: "진행 중",
     hallOfFame: "명예의 전당",
@@ -25,29 +25,26 @@ export default {
   },
   active: {
     title: "진행 중인 픽",
-    subtitle: "진행 중인 챌린지 {count}건 (약 1분 캐시).",
+    subtitle: "진행 중인 픽 {count}건 (약 1분 캐시).",
   },
   hallOfFame: {
     title: "명예의 전당",
-    subtitle:
-      "목표를 달성한 픽입니다. data/hall_of_fame.json과 data/archive 아래 연도별 JSON을 합칩니다({minYear}년~현재 연도 UTC 조회, 없는 파일은 무시).",
+    subtitle: "목표에 도달해 달성으로 기록된 픽입니다.",
     periodLabel: "기간",
     periodAll: "전체",
     periodMonth: "월간",
     periodYear: "연간",
     selectMonth: "달성 월",
     selectYear: "달성 연도",
-    periodMonthHint:
-      "달성일이 선택한 달력 월(UTC)에 속한 픽만 보입니다. 위에 안내된 명예 JSON + 연도별 아카이브를 합친 목록을 기준으로 하며, 같은 픽 id는 hall 파일 쪽이 우선합니다.",
-    periodYearHint:
-      "달성일이 선택한 달력 연도(UTC)에 속한 픽만 보입니다. 위에 안내된 명예 JSON + 연도별 아카이브를 합친 목록을 기준으로 하며, 같은 픽 id는 hall 파일 쪽이 우선합니다.",
+    periodMonthHint: "달성일이 선택한 달(UTC 기준)에 들어가는 픽만 보여 줍니다.",
+    periodYearHint: "달성일이 선택한 연도(UTC 기준)에 들어가는 픽만 보여 줍니다.",
   },
   expired: {
     title: "만료된 픽",
     subtitle: "기한 내 목표에 도달하지 못한 픽입니다.",
   },
   guide: {
-    documentTitle: "이용 안내 | 스톡 챌린지",
+    documentTitle: "이용 안내 | 햇제",
     title: "이용 안내",
     lead: "처음 참여하거나 절차가 헷갈릴 때 아래 순서를 참고하세요.",
     s1Title: "목록과 상세 보기",
@@ -64,16 +61,16 @@ export default {
       "등록된 픽은 매일 기준가를 기준으로 진행률이 갱신됩니다. 기한 안에 목표가에 도달하면 명예의 전당으로, 기한이 지나면 만료 목록으로 이동합니다. 상세 화면에서 진입가·목표·현재 수익률 등을 확인할 수 있습니다.",
     s5Title: "투표(반응)",
     s5Body:
-      "제출과 연결된 토론에 남긴 반응이 집계에 반영될 수 있습니다. 카드에 표시되는 숫자는 그 집계 결과입니다.",
+      "각 픽은 GitHub 등록 이슈와 연결되어 있습니다. 그 이슈 본문에 +1(찬성) 또는 -1(반대) 리액션을 달면 투표로 집계됩니다. 카드·상세의 숫자는 저장소에서 주기적으로 GitHub 반응을 읽어 맞춘 뒤, 이 사이트가 다시 불러올 때 반영됩니다.",
     s6Title: "화면 설정",
     s6Body:
       "상단에서 한국어·English를 바꿀 수 있고, 라이트·다크 테마를 전환할 수 있습니다. 설정은 이 브라우저에 저장됩니다.",
   },
   about: {
-    documentTitle: "소개 | 스톡 챌린지",
+    documentTitle: "소개 | 햇제",
     title: "소개",
     lead:
-      "스톡 챌린지는 종목과 목표 수익률·기간을 정해 도전하는 커뮤니티 이벤트입니다. 등록된 픽은 공개 목록으로 관리되며, 종가 기준으로 매일 진행 상황이 갱신됩니다.",
+      "햇제는 종목과 목표 수익률·기간을 정해 도전하는 커뮤니티 이벤트입니다. 등록된 픽은 공개 목록으로 관리되며, 종가 기준으로 매일 진행 상황이 갱신됩니다.",
     bullet1: "판정: 기간 안에 일별 종가가 목표가에 닿으면 달성으로 처리합니다.",
     bullet2: "참가는 정해진 양식으로 제출하며, 규칙에 맞지 않으면 반려될 수 있습니다.",
     bullet3: "비공식 시세 스크래핑 없이, 공개된 기준가만 사용합니다.",
@@ -86,6 +83,12 @@ export default {
     targetPrice: "목표가",
     deadline: "기한",
     currentReturn: "현재 수익률",
+    votes: "투표",
+    votesTally: "+{likes} / -{dislikes}",
+    voteCtaTitle: "투표하려면",
+    voteCtaBody:
+      "아래 링크로 등록 이슈를 연 뒤, 본문 상단의 반응에서 +1(찬성) 또는 -1(반대)을 선택하세요. 이 사이트에는 바로 반영되지 않을 수 있으며, 저장소의 투표 동기화 작업(매 정각 UTC 등) 이후 JSON이 갱신되면 숫자가 맞춰집니다.",
+    openIssue: "등록 이슈 #{n} 열기",
     achieved: "달성",
     achievedMeta: "일자 {date} · 경과 {days}일 · 최종 {final}",
   },
@@ -94,24 +97,27 @@ export default {
     totalPicks: "전체 픽",
     achieved: "달성",
     avgTarget: "평균 목표 수익률",
+    totalReturn: "총 수익률",
+    totalReturnHint: "픽별 수익률의 합(진행·달성·만료 기준은 참가자 목록과 동일).",
     allPicks: "전체 목록",
   },
   users: {
-    documentTitle: "참가자 | 스톡 챌린지",
+    documentTitle: "참가자 | 햇제",
     title: "참가자",
-    subtitle:
-      "진행·명예·만료 JSON과 data/archive 연도별 JSON({minYear}년~현재 UTC, 있는 파일만)을 합친 뒤 사용자별로 집계합니다. id가 겹치면 진행 중이 가장 우선입니다.",
+    subtitle: "공개된 모든 픽을 사용자별로 모은 통계입니다.",
     sortLabel: "정렬",
     sortWinRate: "승률 높은 순",
     sortAttempts: "시도 많은 순",
     sortWins: "달성 많은 순",
-    winRateHint:
-      "승률은 달성 ÷ (달성 + 만료)입니다. 둘 다 없으면 표시하지 않습니다. 집계에는 명예의 전당에 넘어간 달성(아카이브에만 있는 과거 달성 포함)도 포함됩니다.",
+    winRateHint: "승률은 달성 ÷ (달성 + 만료)입니다. 둘 다 없으면 — 입니다.",
+    totalReturnHint:
+      "총 수익률은 픽마다의 수익률을 더한 값입니다(진행 중은 현재, 달성은 기록된 최종, 만료는 마지막으로 집계된 수익률). 자본 비중을 반영한 포트폴리오 수익률은 아닙니다.",
     colRank: "순위",
     colUser: "사용자",
     colAttempts: "시도",
     colWins: "달성",
     colWinRate: "승률",
+    colTotalReturn: "총 수익률",
     pageSummary: "{from}–{to} / 전체 {total}명",
     prev: "이전",
     next: "다음",
@@ -128,6 +134,8 @@ export default {
     entry: "진입",
     progress: "진행",
     votes: "투표",
+    voteOnGithub: "GitHub에서 투표",
+    voteHint: "이슈에 +1 / -1 리액션 · 집계는 저장소 작업 후 반영",
   },
   pickList: { empty: "아직 픽이 없습니다." },
   filters: {

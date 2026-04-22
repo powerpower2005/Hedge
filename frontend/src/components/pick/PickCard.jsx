@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { formatPrice, formatReturn } from "../../lib/formatters.js";
+import { pickIssueUrl } from "../../lib/constants.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
 import { StatusBadge } from "./StatusBadge.jsx";
 
 export function PickCard({ pick }) {
   const { t } = useI18n();
   const st = pick.status?.current;
+  const issueUrl = pickIssueUrl(pick.issue_number);
   return (
     <article className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 shadow-sm light:border-zinc-200 light:bg-white">
       <div className="flex flex-wrap items-start justify-between gap-2">
@@ -43,8 +45,23 @@ export function PickCard({ pick }) {
           <dd>{formatReturn(pick.progress?.current?.return_rate)}</dd>
         </div>
       </dl>
-      <div className="mt-2 text-xs text-zinc-500 light:text-zinc-600">
-        {t("pickCard.votes")}: +{pick.votes?.likes ?? 0} / -{pick.votes?.dislikes ?? 0}
+      <div className="mt-2 space-y-1 text-xs text-zinc-500 light:text-zinc-600">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <span>
+            {t("pickCard.votes")}: +{pick.votes?.likes ?? 0} / -{pick.votes?.dislikes ?? 0}
+          </span>
+          {issueUrl ? (
+            <a
+              href={issueUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-emerald-500 hover:underline light:text-emerald-700"
+            >
+              {t("pickCard.voteOnGithub")}
+            </a>
+          ) : null}
+        </div>
+        {issueUrl ? <p className="text-[11px] leading-snug">{t("pickCard.voteHint")}</p> : null}
       </div>
     </article>
   );

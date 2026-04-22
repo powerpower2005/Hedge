@@ -1,5 +1,5 @@
 name: "새 픽 (New Pick)"
-description: "주식 픽과 목표 수익률 챌린지를 등록합니다 · Register a stock pick and target-return challenge"
+description: "햇제 픽(종목·목표 수익률) 등록 · Register a Called It pick (ticker and target return)"
 title: "[PICK] "
 labels: ["pick-submission"]
 body:

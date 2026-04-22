@@ -4,6 +4,7 @@ import { PickList } from "../components/pick/PickList.jsx";
 import { useAllMergedPicks } from "../hooks/useAllMergedPicks.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { formatReturn } from "../lib/formatters.js";
+import { pickReturnForLeaderboard } from "../lib/userLeaderboard.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 export function UserPage() {
@@ -17,7 +18,8 @@ export function UserPage() {
     const wins = picks.filter((p) => p.status?.current === "achieved").length;
     const avgTarget =
       total > 0 ? picks.reduce((s, p) => s + (p.target?.return_rate ?? 0), 0) / total : 0;
-    return { total, wins, avgTarget };
+    const totalReturn = picks.reduce((s, p) => s + pickReturnForLeaderboard(p), 0);
+    return { total, wins, avgTarget, totalReturn };
   }, [picks]);
 
   if (loading) return <p className="px-4 py-8 text-zinc-500 light:text-zinc-600">{t("common.loading")}</p>;
@@ -31,7 +33,7 @@ export function UserPage() {
       <h1 className="mt-4 text-2xl font-bold text-white light:text-zinc-900">
         {t("user.title", { name: username })}
       </h1>
-      <div className="mt-4 grid gap-4 sm:grid-cols-3">
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-lg border border-zinc-800 p-4 light:border-zinc-200">
           <p className="text-xs text-zinc-500">{t("user.totalPicks")}</p>
           <p className="text-2xl font-semibold">{stats.total}</p>
@@ -43,6 +45,13 @@ export function UserPage() {
         <div className="rounded-lg border border-zinc-800 p-4 light:border-zinc-200">
           <p className="text-xs text-zinc-500">{t("user.avgTarget")}</p>
           <p className="text-2xl font-semibold">{formatReturn(stats.avgTarget)}</p>
+        </div>
+        <div className="rounded-lg border border-zinc-800 p-4 light:border-zinc-200">
+          <p className="text-xs text-zinc-500">{t("user.totalReturn")}</p>
+          <p className="text-2xl font-semibold">{formatReturn(stats.totalReturn)}</p>
+          <p className="mt-1 text-[11px] leading-snug text-zinc-500 light:text-zinc-600">
+            {t("user.totalReturnHint")}
+          </p>
         </div>
       </div>
       <h2 className="mt-8 text-lg font-semibold text-white light:text-zinc-900">{t("user.allPicks")}</h2>

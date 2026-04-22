@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { StatusBadge } from "../components/pick/StatusBadge.jsx";
-import { IS_REPOSITORY_CONFIGURED } from "../lib/constants";
+import { IS_REPOSITORY_CONFIGURED, pickIssueUrl } from "../lib/constants.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
 import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
@@ -42,6 +42,8 @@ export function PickDetailPage() {
   if (err && !pick) return <p className="px-4 py-8 text-red-400 light:text-red-600">{pickDetailErrorMessage(err, t)}</p>;
   if (!pick) return <p className="px-4 py-8 text-zinc-500 light:text-zinc-600">{t("common.loading")}</p>;
 
+  const issueUrl = pickIssueUrl(pick.issue_number);
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
       <Link to="/" className="text-sm text-emerald-500 hover:underline">
@@ -75,7 +77,25 @@ export function PickDetailPage() {
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.currentReturn")}</dt>
           <dd>{formatReturn(pick.progress?.current?.return_rate)}</dd>
         </div>
+        <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
+          <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.votes")}</dt>
+          <dd>{t("pickDetail.votesTally", { likes: pick.votes?.likes ?? 0, dislikes: pick.votes?.dislikes ?? 0 })}</dd>
+        </div>
       </dl>
+      {issueUrl ? (
+        <div className="mt-6 rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 text-sm light:border-zinc-200 light:bg-zinc-50">
+          <p className="font-medium text-white light:text-zinc-900">{t("pickDetail.voteCtaTitle")}</p>
+          <p className="mt-2 text-zinc-400 light:text-zinc-600">{t("pickDetail.voteCtaBody")}</p>
+          <a
+            href={issueUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-block font-medium text-emerald-500 hover:underline light:text-emerald-700"
+          >
+            {t("pickDetail.openIssue", { n: pick.issue_number })}
+          </a>
+        </div>
+      ) : null}
       {pick.achievement && (
         <div className="mt-6 rounded-lg bg-amber-950/40 p-4 text-sm light:bg-amber-50">
           <p className="font-medium text-amber-200 light:text-amber-900">{t("pickDetail.achieved")}</p>

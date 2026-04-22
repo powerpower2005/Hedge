@@ -26,6 +26,14 @@ export const NEW_PICK_URL = IS_REPOSITORY_CONFIGURED
   ? `https://github.com/${owner}/${repo}/issues/new?template=new_pick.yml`
   : "";
 
+/** @param {number | string | undefined | null} issueNumber */
+export function pickIssueUrl(issueNumber) {
+  if (!IS_REPOSITORY_CONFIGURED || issueNumber == null || issueNumber === "") return "";
+  const n = String(issueNumber).replace(/\D/g, "");
+  if (!n) return "";
+  return `https://github.com/${owner}/${repo}/issues/${n}`;
+}
+
 export const MARKETS = {
   US: ["NASDAQ", "NYSE"],
   KR: ["KOSPI", "KOSDAQ"],

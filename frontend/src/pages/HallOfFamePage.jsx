@@ -12,7 +12,6 @@ import {
 } from "../lib/hallPeriod.js";
 import { useHallArchivePicks } from "../hooks/useHallArchivePicks.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
-import { ARCHIVE_PROBE_YEAR_MIN } from "../lib/publicPickFetch.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 const periodBtn = (active) =>
@@ -64,7 +63,7 @@ export function HallOfFamePage() {
     <div className="mx-auto max-w-6xl px-4 py-8">
       <h1 className="mb-2 text-2xl font-bold text-white light:text-zinc-900">{t("hallOfFame.title")}</h1>
       <p className="mb-4 text-sm text-zinc-400 light:text-zinc-600">
-        {t("hallOfFame.subtitle", { minYear: String(ARCHIVE_PROBE_YEAR_MIN) })}
+        {t("hallOfFame.subtitle")}
       </p>
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <span className="mr-1 text-xs text-zinc-500 light:text-zinc-600">{t("hallOfFame.periodLabel")}</span>
@@ -103,7 +102,7 @@ export function HallOfFamePage() {
             </select>
           </label>
           <p className="mt-2 text-xs text-zinc-500 light:text-zinc-600">
-            {t("hallOfFame.periodMonthHint", { minYear: String(ARCHIVE_PROBE_YEAR_MIN) })}
+            {t("hallOfFame.periodMonthHint")}
           </p>
         </div>
       )}
@@ -124,7 +123,7 @@ export function HallOfFamePage() {
             </select>
           </label>
           <p className="mt-2 text-xs text-zinc-500 light:text-zinc-600">
-            {t("hallOfFame.periodYearHint", { minYear: String(ARCHIVE_PROBE_YEAR_MIN) })}
+            {t("hallOfFame.periodYearHint")}
           </p>
         </div>
       )}
