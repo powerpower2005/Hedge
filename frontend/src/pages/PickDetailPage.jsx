@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { StatusBadge } from "../components/pick/StatusBadge.jsx";
-import { DATA_URLS, IS_REPOSITORY_CONFIGURED } from "../lib/constants";
+import { IS_REPOSITORY_CONFIGURED } from "../lib/constants";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
-import { fetchJson } from "../hooks/usePicks.js";
+import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
 import { pickDetailErrorMessage } from "../lib/userMessages.js";
 
 export function PickDetailPage() {
@@ -24,16 +24,7 @@ export function PickDetailPage() {
         return;
       }
       try {
-        const lists = await Promise.all([
-          fetchJson(DATA_URLS.active),
-          fetchJson(DATA_URLS.hallOfFame),
-          fetchJson(DATA_URLS.expired),
-        ]);
-        const merged = [
-          ...(lists[0].data?.picks ?? []),
-          ...(lists[1].data?.picks ?? []),
-          ...(lists[2].data?.picks ?? []),
-        ];
+        const merged = await loadAllPublicPicksCached();
         const found = merged.find((p) => p.id === want);
         if (!cancelled) {
           if (found) setPick(found);

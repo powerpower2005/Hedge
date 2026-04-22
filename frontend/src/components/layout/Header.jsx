@@ -29,6 +29,9 @@ export function Header() {
           <NavLink to="/expired" className={linkClass}>
             {t("nav.expired")}
           </NavLink>
+          <NavLink to="/users" className={linkClass}>
+            {t("nav.users")}
+          </NavLink>
           <NavLink to="/about" className={linkClass}>
             {t("nav.about")}
           </NavLink>

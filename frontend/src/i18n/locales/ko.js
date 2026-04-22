@@ -4,6 +4,7 @@ export default {
     active: "진행 중",
     hallOfFame: "명예의 전당",
     expired: "만료",
+    users: "참가자",
     about: "소개",
     guide: "이용 안내",
     newPick: "새 픽",
@@ -28,7 +29,18 @@ export default {
   },
   hallOfFame: {
     title: "명예의 전당",
-    subtitle: "목표를 달성한 픽입니다.",
+    subtitle:
+      "목표를 달성한 픽입니다. data/hall_of_fame.json과 data/archive 아래 연도별 JSON을 합칩니다({minYear}년~현재 연도 UTC 조회, 없는 파일은 무시).",
+    periodLabel: "기간",
+    periodAll: "전체",
+    periodMonth: "월간",
+    periodYear: "연간",
+    selectMonth: "달성 월",
+    selectYear: "달성 연도",
+    periodMonthHint:
+      "달성일이 선택한 달력 월(UTC)에 속한 픽만 보입니다. 위에 안내된 명예 JSON + 연도별 아카이브를 합친 목록을 기준으로 하며, 같은 픽 id는 hall 파일 쪽이 우선합니다.",
+    periodYearHint:
+      "달성일이 선택한 달력 연도(UTC)에 속한 픽만 보입니다. 위에 안내된 명예 JSON + 연도별 아카이브를 합친 목록을 기준으로 하며, 같은 픽 id는 hall 파일 쪽이 우선합니다.",
   },
   expired: {
     title: "만료된 픽",
@@ -83,6 +95,32 @@ export default {
     achieved: "달성",
     avgTarget: "평균 목표 수익률",
     allPicks: "전체 목록",
+  },
+  users: {
+    documentTitle: "참가자 | 스톡 챌린지",
+    title: "참가자",
+    subtitle:
+      "진행·명예·만료 JSON과 data/archive 연도별 JSON({minYear}년~현재 UTC, 있는 파일만)을 합친 뒤 사용자별로 집계합니다. id가 겹치면 진행 중이 가장 우선입니다.",
+    sortLabel: "정렬",
+    sortWinRate: "승률 높은 순",
+    sortAttempts: "시도 많은 순",
+    sortWins: "달성 많은 순",
+    winRateHint:
+      "승률은 달성 ÷ (달성 + 만료)입니다. 둘 다 없으면 표시하지 않습니다. 집계에는 명예의 전당에 넘어간 달성(아카이브에만 있는 과거 달성 포함)도 포함됩니다.",
+    colRank: "순위",
+    colUser: "사용자",
+    colAttempts: "시도",
+    colWins: "달성",
+    colWinRate: "승률",
+    pageSummary: "{from}–{to} / 전체 {total}명",
+    prev: "이전",
+    next: "다음",
+    empty: "집계할 사용자가 없습니다.",
+    mobileListLabel: "참가자 카드 목록",
+    cardRankLabel: "순위 {rank}",
+    paginationNav: "참가자 목록 페이지 이동",
+    pagePrevAria: "이전 페이지, 현재 {page} / {total}",
+    pageNextAria: "다음 페이지, 현재 {page} / {total}",
   },
   pickCard: {
     target: "목표",

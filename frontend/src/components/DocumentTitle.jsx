@@ -10,6 +10,7 @@ export function DocumentTitle() {
     let key = "app.documentTitle";
     if (pathname === "/about") key = "about.documentTitle";
     else if (pathname === "/guide") key = "guide.documentTitle";
+    else if (pathname === "/users") key = "users.documentTitle";
     document.title = t(key);
     document.documentElement.lang = locale === "en" ? "en" : "ko";
   }, [t, locale, pathname]);

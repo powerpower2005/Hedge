@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { DATA_URLS, IS_REPOSITORY_CONFIGURED } from "../lib/constants";
+import { fetchJson } from "../lib/fetchJson.js";
+
+export { fetchJson };
 
 const CACHE_TTL = 60_000;
 const cache = new Map();
@@ -30,11 +33,7 @@ export function usePicks(kind) {
     let cancelled = false;
     setLoading(true);
     setError(null);
-    fetch(url)
-      .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
+    fetchJson(url)
       .then((json) => {
         if (cancelled) return;
         const data = {
@@ -62,10 +61,4 @@ export function usePicks(kind) {
   }, [kind]);
 
   return { picks, meta, loading, error };
-}
-
-export async function fetchJson(url) {
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`HTTP ${r.status}`);
-  return r.json();
 }

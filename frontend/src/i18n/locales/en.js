@@ -4,6 +4,7 @@ export default {
     active: "Active",
     hallOfFame: "Hall of Fame",
     expired: "Expired",
+    users: "Participants",
     about: "About",
     guide: "Guide",
     newPick: "New pick",
@@ -28,7 +29,18 @@ export default {
   },
   hallOfFame: {
     title: "Hall of Fame",
-    subtitle: "Picks that reached their target.",
+    subtitle:
+      "Picks that reached their target. Combines data/hall_of_fame.json with per-year files under data/archive/ (probes {minYear} through the current UTC year; missing files are ignored).",
+    periodLabel: "Period",
+    periodAll: "All",
+    periodMonth: "Monthly",
+    periodYear: "Yearly",
+    selectMonth: "Achieved month",
+    selectYear: "Achieved year",
+    periodMonthHint:
+      "Shows picks whose achievement date falls in the selected calendar month (UTC), using the merged Hall of Fame + yearly archive list. If the same pick id appears twice, the copy from hall_of_fame.json wins.",
+    periodYearHint:
+      "Shows picks whose achievement date falls in the selected calendar year (UTC), using the merged Hall of Fame + yearly archive list. If the same pick id appears twice, the copy from hall_of_fame.json wins.",
   },
   expired: {
     title: "Expired picks",
@@ -83,6 +95,32 @@ export default {
     achieved: "Achieved",
     avgTarget: "Avg target return",
     allPicks: "All picks",
+  },
+  users: {
+    documentTitle: "Participants | Stock Challenge",
+    title: "Participants",
+    subtitle:
+      "Aggregates active, Hall of Fame, and expired JSON plus data/archive yearly files (probes {minYear} through the current UTC year; missing files are ignored). On duplicate ids, active picks take precedence.",
+    sortLabel: "Sort by",
+    sortWinRate: "Win rate (high first)",
+    sortAttempts: "Most attempts",
+    sortWins: "Most wins",
+    winRateHint:
+      "Win rate is achieved ÷ (achieved + expired). Shown as — if neither exists. Achieved picks that only exist in yearly archives are included in totals.",
+    colRank: "Rank",
+    colUser: "User",
+    colAttempts: "Attempts",
+    colWins: "Wins",
+    colWinRate: "Win rate",
+    pageSummary: "{from}–{to} of {total}",
+    prev: "Previous",
+    next: "Next",
+    empty: "No participants to show.",
+    mobileListLabel: "Participant cards",
+    cardRankLabel: "Rank {rank}",
+    paginationNav: "Participant list pagination",
+    pagePrevAria: "Go to previous page, currently {page} of {total}",
+    pageNextAria: "Go to next page, currently {page} of {total}",
   },
   pickCard: {
     target: "Target",

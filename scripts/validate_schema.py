@@ -15,7 +15,7 @@ def _run(args: list[str]) -> None:
 
 
 def main() -> None:
-    base = [
+    pick_list = [
         "ajv",
         "validate",
         "-s",
@@ -25,7 +25,28 @@ def main() -> None:
         "--strict=false",
     ]
     for data in ("data/active.json", "data/hall_of_fame.json", "data/expired_recent.json"):
-        _run(base + ["-d", data])
+        _run(pick_list + ["-d", data])
+
+    archive_dir = ROOT / "data" / "archive"
+    if archive_dir.is_dir():
+        for path in sorted(archive_dir.glob("*.json")):
+            _run(pick_list + ["-d", str(path.relative_to(ROOT))])
+
+    votes_dir = ROOT / "data" / "votes"
+    if votes_dir.is_dir():
+        for path in sorted(votes_dir.glob("*.json")):
+            _run(
+                [
+                    "ajv",
+                    "validate",
+                    "-s",
+                    "schemas/votes.v1.json",
+                    "-d",
+                    str(path.relative_to(ROOT)),
+                    "--strict=false",
+                ]
+            )
+
     _run(["ajv", "validate", "-s", "schemas/meta.v1.json", "-d", "data/meta.json", "--strict=false"])
 
 
