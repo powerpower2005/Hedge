@@ -166,6 +166,10 @@ def main() -> None:
     raw_close: str | None = None
     try:
         row_index = append_ticker_row(pick_id, ticker, market)
+        print(
+            f"[register_pick] SHEETS_APPEND_OK pick_id={pick_id} worksheet_row={row_index} tab=PriceLookup-v1",
+            file=sys.stderr,
+        )
         for _ in range(5):
             raw_close = read_close_at_row(row_index)
             try:
@@ -177,10 +181,15 @@ def main() -> None:
             raise ValueError(f"close not_ready last={raw_close!r}")
     except Exception as e:
         if row_index is not None:
+            print(
+                f"[register_pick] SHEETS_ROLLBACK try pick_id={pick_id} row={row_index} (delete_row_for_pick_id)",
+                file=sys.stderr,
+            )
             try:
                 delete_row_for_pick_id(pick_id)
-            except Exception:
-                pass
+                print(f"[register_pick] SHEETS_ROLLBACK_OK pick_id={pick_id}", file=sys.stderr)
+            except Exception as del_exc:
+                print(f"[register_pick] SHEETS_ROLLBACK_FAIL pick_id={pick_id}: {del_exc}", file=sys.stderr)
         msg = format_price_fetch_public(
             e,
             ticker=ticker,
