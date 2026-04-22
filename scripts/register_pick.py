@@ -89,7 +89,7 @@ def build_pick(
         "schema_version": "1.0.0",
         "created_with": {
             "engine_version": read_engine_version(),
-            "rules_version": "1.0.0",
+            "rules_version": "1.0.1",
             "commit": read_current_commit(),
         },
         "created_at": now_iso(),

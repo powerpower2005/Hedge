@@ -6,6 +6,7 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 
+from common.goog_finance_parse import parse_instrument_name_cell
 from common.sheets import fetch_all_prices_rows
 from common.storage import get_picks, load_list_file, save_list_file
 from common.versioning import now_iso, read_engine_version
@@ -109,6 +110,7 @@ def main() -> None:
         sys.exit(1)
 
     price_map: dict[int, object] = {}
+    name_map: dict[int, object] = {}
     for row in rows:
         raw_id = row.get("pick_id")
         if raw_id is None:
@@ -118,18 +120,28 @@ def main() -> None:
         except (TypeError, ValueError):
             continue
         price_map[pid] = row.get("close")
+        if "name" in row:
+            name_map[pid] = row.get("name")
 
     remaining_active: list[dict] = []
     newly_achieved: list[dict] = []
     newly_expired: list[dict] = []
 
     for pick in active_picks:
+        pick_id = pick["id"]
+        if not pick.get("instrument_name"):
+            raw_n = name_map.get(pick_id)
+            parsed = parse_instrument_name_cell(
+                str(raw_n).strip() if raw_n is not None else None
+            )
+            if parsed:
+                pick["instrument_name"] = parsed
+
         st = pick["status"]["current"]
         if st in ("suspended", "delisted"):
             remaining_active.append(pick)
             continue
 
-        pick_id = pick["id"]
         price_raw = price_map.get(pick_id)
 
         if price_raw is None or str(price_raw).strip() in ("N/A", "#N/A", "", "nan"):

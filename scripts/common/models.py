@@ -45,7 +45,7 @@ def ticker_cell_for_price_lookup(ticker: str, country: str) -> str:
 
 
 ALLOWED_DURATIONS = [7, 14, 30, 90, 180]
-TARGET_RETURN_MIN = 0.03
+TARGET_RETURN_MIN = 0.10
 TARGET_RETURN_MAX = 1.0
 MAX_ACTIVE_PICKS_PER_USER = 10
 

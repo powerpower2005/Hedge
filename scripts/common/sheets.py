@@ -125,6 +125,12 @@ def fetch_all_prices_rows() -> list[dict[str, Any]]:
             ci = len(names) - 1
         pid_key = names[pi]
         close_key = names[ci]
+        name_key = None
+        if len(names) >= 5:
+            try:
+                name_key = names[lower.index("name")]
+            except ValueError:
+                name_key = names[4]
         for row in reader:
             raw_id = row.get(pid_key)
             if raw_id is None or str(raw_id).strip() == "":
@@ -133,7 +139,10 @@ def fetch_all_prices_rows() -> list[dict[str, Any]]:
                 pid = int(float(str(raw_id).replace(",", "")))
             except (TypeError, ValueError):
                 continue
-            out.append({"pick_id": pid, "close": row.get(close_key)})
+            item: dict[str, Any] = {"pick_id": pid, "close": row.get(close_key)}
+            if name_key is not None:
+                item["name"] = row.get(name_key)
+            out.append(item)
         if out:
             return out
     except (URLError, OSError, ValueError, IndexError):
@@ -152,5 +161,8 @@ def _fetch_via_gspread_list() -> list[dict[str, Any]]:
             pid = int(float(str(row[0]).replace(",", "")))
         except (TypeError, ValueError):
             continue
-        out.append({"pick_id": pid, "close": row[3]})
+        item: dict[str, Any] = {"pick_id": pid, "close": row[3]}
+        if len(row) >= 5:
+            item["name"] = row[4]
+        out.append(item)
     return out

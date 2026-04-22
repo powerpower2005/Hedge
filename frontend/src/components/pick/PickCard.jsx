@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { formatPrice, formatReturn } from "../../lib/formatters.js";
+import { googleFinanceQuoteUrl } from "../../lib/googleFinanceUrl.js";
 import { pickIssueUrl } from "../../lib/constants.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
 import { StatusBadge } from "./StatusBadge.jsx";
@@ -8,6 +9,7 @@ export function PickCard({ pick }) {
   const { t } = useI18n();
   const st = pick.status?.current;
   const issueUrl = pickIssueUrl(pick.issue_number);
+  const financeUrl = googleFinanceQuoteUrl(pick);
   return (
     <article className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 shadow-sm light:border-zinc-200 light:bg-white">
       <div className="flex flex-wrap items-start justify-between gap-2">
@@ -20,6 +22,17 @@ export function PickCard({ pick }) {
           </Link>
           {pick.instrument_name ? (
             <p className="text-sm font-medium text-zinc-300 light:text-zinc-700">{pick.instrument_name}</p>
+          ) : financeUrl ? (
+            <p className="text-sm">
+              <a
+                href={financeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-emerald-500 hover:underline light:text-emerald-700"
+              >
+                {t("pickCard.nameOnGoogleFinance")}
+              </a>
+            </p>
           ) : null}
           <p className="text-sm text-zinc-400 light:text-zinc-600">
             {pick.market} ·{" "}

@@ -51,7 +51,7 @@ body:
     id: target_return
     attributes:
       label: "Target return (%) / 목표 수익률 (%)"
-      description: "3~100 사이 숫자 (10이면 +10%) · Number from 3 to 100 (e.g. 10 means +10%)"
+      description: "10~100 사이 숫자 (10이면 +10%, 15면 +15%) · Number from 10 to 100 (e.g. 10 means +10%)"
       placeholder: "10"
     validations:
       required: true

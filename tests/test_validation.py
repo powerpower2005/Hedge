@@ -31,6 +31,12 @@ def test_validate_target_too_low():
     assert e.value.code == "INVALID_TARGET_RETURN"
 
 
+def test_validate_target_below_ten_percent():
+    with pytest.raises(ValidationError) as e:
+        validate_pick_input("AAPL", "US", "NASDAQ", 0.09, 30)
+    assert e.value.code == "INVALID_TARGET_RETURN"
+
+
 def test_validate_duration():
     with pytest.raises(ValidationError) as e:
         validate_pick_input("AAPL", "US", "NASDAQ", 0.1, 5)
@@ -38,7 +44,7 @@ def test_validate_duration():
 
 
 def test_validate_kr_ticker():
-    validate_pick_input("005930", "KR", "KRX", 0.05, 90)
+    validate_pick_input("005930", "KR", "KRX", 0.12, 90)
 
 
 def test_market_for_google_finance_korea_legacy():

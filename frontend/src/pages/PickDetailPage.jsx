@@ -5,6 +5,7 @@ import { useDataCacheRevision } from "../context/DataCacheContext.jsx";
 import { IS_REPOSITORY_CONFIGURED, pickIssueUrl } from "../lib/constants.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
+import { googleFinanceQuoteUrl } from "../lib/googleFinanceUrl.js";
 import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
 import { pickDetailErrorMessage } from "../lib/userMessages.js";
 
@@ -45,6 +46,7 @@ export function PickDetailPage() {
   if (!pick) return <p className="px-4 py-8 text-zinc-500 light:text-zinc-600">{t("common.loading")}</p>;
 
   const issueUrl = pickIssueUrl(pick.issue_number);
+  const financeUrl = googleFinanceQuoteUrl(pick);
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
@@ -56,6 +58,17 @@ export function PickDetailPage() {
           <h1 className="text-3xl font-bold text-white light:text-zinc-900">{pick.ticker}</h1>
           {pick.instrument_name ? (
             <p className="mt-1 text-base text-zinc-400 light:text-zinc-600">{pick.instrument_name}</p>
+          ) : financeUrl ? (
+            <p className="mt-1 text-base">
+              <a
+                href={financeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-emerald-500 hover:underline light:text-emerald-700"
+              >
+                {t("pickCard.nameOnGoogleFinance")}
+              </a>
+            </p>
           ) : null}
         </div>
         <StatusBadge status={pick.status?.current} />

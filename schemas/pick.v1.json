@@ -57,7 +57,7 @@
       "type": "object",
       "required": ["return_rate", "price"],
       "properties": {
-        "return_rate": { "type": "number", "minimum": 0.03, "maximum": 1.0 },
+        "return_rate": { "type": "number", "minimum": 0.10, "maximum": 1.0 },
         "price": { "type": "number", "exclusiveMinimum": 0 }
       }
     },

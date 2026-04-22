@@ -139,6 +139,7 @@ export default {
     votes: "Votes",
     voteOnGithub: "Vote on GitHub",
     voteHint: "+1 / −1 on the issue · counts update after repo sync",
+    nameOnGoogleFinance: "View instrument on Google Finance",
   },
   pickList: { empty: "No picks yet." },
   filters: {

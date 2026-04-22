@@ -43,7 +43,7 @@ def validate_pick_input(
     if not (TARGET_RETURN_MIN <= target_return <= TARGET_RETURN_MAX):
         raise ValidationError(
             "INVALID_TARGET_RETURN",
-            f"Target return must be between {TARGET_RETURN_MIN} and {TARGET_RETURN_MAX} (fraction, e.g. 0.10 for 10%).",
+            f"Target return must be between {TARGET_RETURN_MIN:.0%} and {TARGET_RETURN_MAX:.0%} as a fraction (e.g. 0.12 for +12%).",
         )
     if duration_days not in ALLOWED_DURATIONS:
         raise ValidationError(

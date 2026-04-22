@@ -139,6 +139,7 @@ export default {
     votes: "투표",
     voteOnGithub: "GitHub에서 투표",
     voteHint: "이슈에 +1 / -1 리액션 · 집계는 저장소 작업 후 반영",
+    nameOnGoogleFinance: "Google Finance에서 종목 보기",
   },
   pickList: { empty: "아직 픽이 없습니다." },
   filters: {
