@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "55d7ac5"
+    "commit": "9535073"
   },
-  "generated_at": "2026-04-23T01:17:14.076152Z",
+  "generated_at": "2026-04-23T01:21:49.673911Z",
   "data": {
-    "count": 2,
+    "count": 3,
     "picks": [
       {
         "id": 3,
@@ -128,6 +128,66 @@
         },
         "extensions": {},
         "instrument_name": "AST SpaceMobile Inc"
+      },
+      {
+        "id": 5,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "9535073"
+        },
+        "created_at": "2026-04-23T01:21:49.673823Z",
+        "author": "kimgwanghoon",
+        "issue_number": 11,
+        "ticker": "NVTS",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 15.33,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 18.396
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-23"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T01:21:49.673837Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-23",
+          "current": {
+            "close": 15.33,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 15.33,
+            "close_date": "2026-04-23",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T01:21:49.673875Z"
+        },
+        "extensions": {},
+        "instrument_name": "Navitas Semiconductor Corp"
       }
     ]
   }
