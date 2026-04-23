@@ -19,13 +19,17 @@ class Country(str, Enum):
 class Market(str, Enum):
     NASDAQ = "NASDAQ"
     NYSE = "NYSE"
-    # Korea: GOOGLEFINANCE uses KRX:SYMBOL (not KOSPI:/KOSDAQ:).
+    NYSEARCA = "NYSEARCA"
+    NYSEAMERICAN = "NYSEAMERICAN"
+    # Korea: GOOGLEFINANCE uses KRX:SYMBOL; KOSPI/KOSDAQ are board labels mapped in market_for_google_finance.
     KRX = "KRX"
+    KOSPI = "KOSPI"
+    KOSDAQ = "KOSDAQ"
 
 
 COUNTRY_MARKETS = {
-    Country.US: {Market.NASDAQ, Market.NYSE},
-    Country.KR: {Market.KRX},
+    Country.US: {Market.NASDAQ, Market.NYSE, Market.NYSEARCA, Market.NYSEAMERICAN},
+    Country.KR: {Market.KRX, Market.KOSPI, Market.KOSDAQ},
 }
 
 

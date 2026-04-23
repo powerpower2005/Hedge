@@ -47,9 +47,6 @@ def normalized_fields(raw: dict[str, Any]) -> dict[str, Any]:
     ticker = _strip(str(raw["ticker"])).upper().replace(" ", "")
     country = _strip(str(raw.get("country", ""))).upper()
     market = _strip(str(raw.get("market", ""))).upper()
-    # Legacy issue forms used KOSPI/KOSDAQ; Sheets GOOGLEFINANCE expects KRX:.
-    if country == "KR" and market in ("KOSPI", "KOSDAQ"):
-        market = "KRX"
     pct = float(_strip(str(raw.get("target_return_pct", ""))).replace("%", ""))
     duration_days = int(_strip(str(raw.get("duration_days", ""))))
     return {

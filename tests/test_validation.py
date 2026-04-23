@@ -52,6 +52,16 @@ def test_market_for_google_finance_korea_legacy():
     assert market_for_google_finance("KOSDAQ") == "KRX"
     assert market_for_google_finance("KRX") == "KRX"
     assert market_for_google_finance("NASDAQ") == "NASDAQ"
+    assert market_for_google_finance("NYSEARCA") == "NYSEARCA"
+    assert market_for_google_finance("NYSEAMERICAN") == "NYSEAMERICAN"
+
+
+def test_validate_pick_us_nysearca():
+    validate_pick_input("SCO", "US", "NYSEARCA", 0.1, 30)
+
+
+def test_validate_pick_kr_kosdaq():
+    validate_pick_input("035420", "KR", "KOSDAQ", 0.12, 90)
 
 
 def test_ticker_cell_for_price_lookup_kr_formula_preserves_zeros():

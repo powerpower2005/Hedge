@@ -58,7 +58,7 @@ def test_parse_empty():
     assert parse_issue_form("") == {}
 
 
-def test_kr_market_legacy_normalized_to_krx():
+def test_kr_market_kospi_preserved():
     raw = {
         "ticker": "005930",
         "country": "KR",
@@ -67,10 +67,10 @@ def test_kr_market_legacy_normalized_to_krx():
         "duration_days": "30",
     }
     fields = normalized_fields(raw)
-    assert fields["market"] == "KRX"
+    assert fields["market"] == "KOSPI"
 
 
-def test_kr_kosdaq_legacy_normalized_to_krx():
+def test_kr_kosdaq_preserved():
     raw = {
         "ticker": "035420",
         "country": "KR",
@@ -78,4 +78,4 @@ def test_kr_kosdaq_legacy_normalized_to_krx():
         "target_return_pct": "5",
         "duration_days": "90",
     }
-    assert normalized_fields(raw)["market"] == "KRX"
+    assert normalized_fields(raw)["market"] == "KOSDAQ"
