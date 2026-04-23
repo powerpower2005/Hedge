@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "b5b639d"
+    "commit": "d8b45db"
   },
-  "generated_at": "2026-04-23T22:39:09.968477Z",
+  "generated_at": "2026-04-23T23:36:16.205874Z",
   "data": {
-    "count": 5,
+    "count": 6,
     "picks": [
       {
         "id": 3,
@@ -308,6 +308,66 @@
         },
         "extensions": {},
         "instrument_name": "ProShares UltraShort Bloomberg Crude Oil"
+      },
+      {
+        "id": 9,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "d8b45db"
+        },
+        "created_at": "2026-04-23T23:36:16.205782Z",
+        "author": "LimJunYeol",
+        "issue_number": 23,
+        "ticker": "ASTS",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 84.66,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.8,
+          "price": 152.388
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-07-22"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T23:36:16.205794Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-23",
+          "current": {
+            "close": 84.66,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 84.66,
+            "close_date": "2026-04-23",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.8,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T23:36:16.205835Z"
+        },
+        "extensions": {},
+        "instrument_name": "AST SpaceMobile Inc"
       }
     ]
   }
