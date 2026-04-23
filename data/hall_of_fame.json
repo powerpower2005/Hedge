@@ -3,11 +3,84 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": ""
+    "commit": "b5b639d"
   },
-  "generated_at": "2026-04-17T00:00:00Z",
+  "generated_at": "2026-04-23T22:39:09.969139Z",
   "data": {
-    "count": 0,
-    "picks": []
+    "count": 1,
+    "picks": [
+      {
+        "id": 5,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "9535073"
+        },
+        "created_at": "2026-04-23T01:21:49.673823Z",
+        "author": "kimgwanghoon",
+        "issue_number": 11,
+        "ticker": "NVTS",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 15.33,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 18.396
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-23"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T01:21:49.673837Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-04-23T22:39:09.968245Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-23",
+          "current": {
+            "close": 18.47,
+            "return_rate": 0.204827
+          },
+          "highest": {
+            "close": 18.47,
+            "close_date": "2026-04-23",
+            "return_rate": 0.204827
+          },
+          "distance_to_target": -0.004827,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T01:21:49.673875Z"
+        },
+        "extensions": {},
+        "instrument_name": "Navitas Semiconductor Corp",
+        "achievement": {
+          "achieved_date": "2026-04-23",
+          "achieved_close": 18.47,
+          "days_taken": 0,
+          "final_return_rate": 0.204827
+        }
+      }
+    ]
   }
 }
