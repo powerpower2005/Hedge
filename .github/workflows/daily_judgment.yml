@@ -5,6 +5,11 @@ on:
     - cron: "0 22 * * *"
   workflow_dispatch:
 
+# Serialize with Register New Pick / operator fixes so only one data/ push to main at a time.
+concurrency:
+  group: repo-data-main-${{ github.repository }}
+  cancel-in-progress: false
+
 permissions:
   contents: write
   issues: write

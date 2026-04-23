@@ -4,8 +4,10 @@ on:
   issues:
     types: [opened]
 
+# One run at a time for this workflow (queued). Same group as other jobs that
+# commit data/*.json to main so register + daily judgment never push together.
 concurrency:
-  group: pick-register-${{ github.repository }}
+  group: repo-data-main-${{ github.repository }}
   cancel-in-progress: false
 
 permissions:

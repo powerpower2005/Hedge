@@ -24,8 +24,9 @@ on:
         type: boolean
         default: true
 
+# Same group as register + daily judgment — one committer to data/ on main at a time.
 concurrency:
-  group: operator-data-${{ github.repository }}
+  group: repo-data-main-${{ github.repository }}
   cancel-in-progress: false
 
 permissions:

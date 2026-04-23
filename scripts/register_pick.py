@@ -15,6 +15,7 @@ from common.github_api import (
     remove_issue_label,
 )
 from common.issue_parse import normalized_fields, parse_issue_form
+from common.issue_pick_lookup import find_pick_by_issue_number
 from common.meta import bump_next_pick_id, peek_next_pick_id
 from common.register_public_messages import (
     GOOGLE_FINANCE_VERIFY_TIP,
@@ -168,6 +169,15 @@ def main() -> None:
         validate_pick_input(ticker, country, market, target_return, duration_days)
     except ValidationError as e:
         fail(e.code, e.message, issue_number)
+
+    prior = find_pick_by_issue_number(issue_number)
+    if prior is not None:
+        print(
+            f"[register_pick] IDEMPOTENT issue={issue_number} pick_id={prior.get('id')} "
+            f"status={prior.get('status', {}).get('current')} — skip (already recorded).",
+            file=sys.stderr,
+        )
+        sys.exit(0)
 
     active_data = load_list_file(ACTIVE_PATH)
     active_picks = get_picks(active_data)
