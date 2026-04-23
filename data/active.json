@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "6368034"
+    "commit": "61aceae"
   },
-  "generated_at": "2026-04-23T09:44:34.181610Z",
+  "generated_at": "2026-04-23T14:12:43.044422Z",
   "data": {
-    "count": 5,
+    "count": 6,
     "picks": [
       {
         "id": 3,
@@ -308,6 +308,66 @@
         },
         "extensions": {},
         "instrument_name": "Pony AI Inc - ADR ADR"
+      },
+      {
+        "id": 8,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "61aceae"
+        },
+        "created_at": "2026-04-23T14:12:43.044315Z",
+        "author": "LimJunYeol",
+        "issue_number": 18,
+        "ticker": "SCO",
+        "country": "US",
+        "market": "NYSEARCA",
+        "entry": {
+          "price": 7.54,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 1.0,
+          "price": 15.08
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-07-22"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T14:12:43.044329Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-23",
+          "current": {
+            "close": 7.54,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 7.54,
+            "close_date": "2026-04-23",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 1.0,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T14:12:43.044377Z"
+        },
+        "extensions": {},
+        "instrument_name": "ProShares UltraShort Bloomberg Crude Oil"
       }
     ]
   }
