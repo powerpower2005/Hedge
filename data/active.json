@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "d25d5f7"
+    "commit": "55d7ac5"
   },
-  "generated_at": "2026-04-22T22:42:45.968026Z",
+  "generated_at": "2026-04-23T01:17:14.076152Z",
   "data": {
-    "count": 1,
+    "count": 2,
     "picks": [
       {
         "id": 3,
@@ -68,6 +68,66 @@
         },
         "extensions": {},
         "instrument_name": "Samsung Electronics Co Ltd"
+      },
+      {
+        "id": 4,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "55d7ac5"
+        },
+        "created_at": "2026-04-23T01:17:14.076043Z",
+        "author": "powerpower2005",
+        "issue_number": 10,
+        "ticker": "ASTS",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 80.01,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 96.012
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-23"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T01:17:14.076056Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-23",
+          "current": {
+            "close": 80.01,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 80.01,
+            "close_date": "2026-04-23",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T01:17:14.076111Z"
+        },
+        "extensions": {},
+        "instrument_name": "AST SpaceMobile Inc"
       }
     ]
   }
