@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "d25d5f7"
+    "commit": "6368034"
   },
-  "generated_at": "2026-04-22T22:42:45.968026Z",
+  "generated_at": "2026-04-23T09:44:34.181610Z",
   "data": {
-    "count": 1,
+    "count": 5,
     "picks": [
       {
         "id": 3,
@@ -68,6 +68,246 @@
         },
         "extensions": {},
         "instrument_name": "Samsung Electronics Co Ltd"
+      },
+      {
+        "id": 4,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "55d7ac5"
+        },
+        "created_at": "2026-04-23T01:17:14.076043Z",
+        "author": "powerpower2005",
+        "issue_number": 10,
+        "ticker": "ASTS",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 80.01,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 96.012
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-23"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T01:17:14.076056Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-23",
+          "current": {
+            "close": 80.01,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 80.01,
+            "close_date": "2026-04-23",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T01:17:14.076111Z"
+        },
+        "extensions": {},
+        "instrument_name": "AST SpaceMobile Inc"
+      },
+      {
+        "id": 5,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "9535073"
+        },
+        "created_at": "2026-04-23T01:21:49.673823Z",
+        "author": "kimgwanghoon",
+        "issue_number": 11,
+        "ticker": "NVTS",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 15.33,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 18.396
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-23"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T01:21:49.673837Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-23",
+          "current": {
+            "close": 15.33,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 15.33,
+            "close_date": "2026-04-23",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T01:21:49.673875Z"
+        },
+        "extensions": {},
+        "instrument_name": "Navitas Semiconductor Corp"
+      },
+      {
+        "id": 6,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "19b0cee"
+        },
+        "created_at": "2026-04-23T02:02:12.014697Z",
+        "author": "cieske",
+        "issue_number": 12,
+        "ticker": "000660",
+        "country": "KR",
+        "market": "KRX",
+        "entry": {
+          "price": 1223000.0,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 1467600.0
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-07-22"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T02:02:12.014708Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-23",
+          "current": {
+            "close": 1223000.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 1223000.0,
+            "close_date": "2026-04-23",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T02:02:12.014748Z"
+        },
+        "extensions": {},
+        "instrument_name": "SK Hynix Inc"
+      },
+      {
+        "id": 7,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "6368034"
+        },
+        "created_at": "2026-04-23T09:44:34.181506Z",
+        "author": "gre150",
+        "issue_number": 17,
+        "ticker": "PONY",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 11.15,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.25,
+          "price": 13.9375
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-23"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T09:44:34.181522Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-23",
+          "current": {
+            "close": 11.15,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 11.15,
+            "close_date": "2026-04-23",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.25,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T09:44:34.181568Z"
+        },
+        "extensions": {},
+        "instrument_name": "Pony AI Inc - ADR ADR"
       }
     ]
   }
