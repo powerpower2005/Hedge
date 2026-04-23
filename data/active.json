@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "19b0cee"
+    "commit": "6368034"
   },
-  "generated_at": "2026-04-23T02:02:12.014787Z",
+  "generated_at": "2026-04-23T09:44:34.181610Z",
   "data": {
-    "count": 4,
+    "count": 5,
     "picks": [
       {
         "id": 3,
@@ -248,6 +248,66 @@
         },
         "extensions": {},
         "instrument_name": "SK Hynix Inc"
+      },
+      {
+        "id": 7,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "6368034"
+        },
+        "created_at": "2026-04-23T09:44:34.181506Z",
+        "author": "gre150",
+        "issue_number": 17,
+        "ticker": "PONY",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 11.15,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.25,
+          "price": 13.9375
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-23"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T09:44:34.181522Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-23",
+          "current": {
+            "close": 11.15,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 11.15,
+            "close_date": "2026-04-23",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.25,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T09:44:34.181568Z"
+        },
+        "extensions": {},
+        "instrument_name": "Pony AI Inc - ADR ADR"
       }
     ]
   }
