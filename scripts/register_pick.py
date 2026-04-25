@@ -321,10 +321,11 @@ Daily close check runs around **07:00 KST**. Vote with reactions on issues.
     if country in ("KR", "US") and resolved_sheet_prefix is not None:
         chain = " → ".join(f"`{p}`" for p in tried_chain)
         comment += (
-            "\n\n**Sheets `GOOGLEFINANCE` (column C)**\n"
-            f"- **Prefix used:** `{resolved_sheet_prefix}` (first in try order that returned a numeric `closeyest`).\n"
+            "\n\n**Exchange prefix (price lookup) / 거래소 접두 (가격 조회)**\n"
+            f"- **EN:** **`{resolved_sheet_prefix}`** is the exchange prefix used for the **previous close** (first in the try list that succeeded).\n"
+            f"- **한:** **전일 종가** 조회에 **`{resolved_sheet_prefix}`** 거래소 접두를 썼습니다(아래 순서 중 먼저 성공한 접두).\n"
             f"- **Try order:** {chain}\n"
-            f"- 양식 시장(**{market}**)은 픽 데이터에 그대로 저장되며, 열 C는 위 접두로 맞춰 두었습니다.\n"
+            f"- 양식에서 고른 시장(**{market}**)은 픽에 그대로 저장되며, 위 접두는 가격 조회에만 쓰입니다.\n"
         )
     if submitter_note:
         preview = " ".join(submitter_note.split())

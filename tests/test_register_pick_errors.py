@@ -17,6 +17,9 @@ def test_format_price_fetch_public_user_shape():
     assert "Actions" in msg
     assert "GOOGLEFINANCE(" not in msg
     assert "PriceLookup" not in msg
+    assert "sheet" not in msg.lower()
+    assert "시트" not in msg
+    assert "spreadsheet" not in msg.lower()
 
 
 def test_google_finance_verify_tip_nonempty():
@@ -35,6 +38,7 @@ def test_format_price_fetch_public_user_with_fallback():
     assert "**한:**" in msg
     assert "Actions" in msg
     assert "GOOGLEFINANCE(" not in msg
+    assert "시트" not in msg
 
 
 def test_format_price_fetch_public_user_us_fallback():
@@ -46,6 +50,7 @@ def test_format_price_fetch_public_user_us_fallback():
     assert "SPY" in msg
     assert "`NASDAQ` → `NYSE` → `NYSEARCA` → `NYSEAMERICAN`" in msg
     assert "Actions" in msg
+    assert "시트" not in msg
 
 
 def test_format_price_fetch_ops_log_contains_sheet_detail():

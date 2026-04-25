@@ -55,7 +55,7 @@ export default {
       "Use the top tabs: Active, Hall of Fame, and Expired. Click a card to open its detail page. Click an @username on a card to see that participant’s picks only. Use filters and sort to narrow the list.",
     s2Title: "Submit a new pick",
     s2Body:
-      "While signed in, click New pick in the header to open the registration form. Enter ticker, country & market, target return (%), and duration (days). Optional **Additional note** appears on the pick detail only when provided (collapsed by default); it is not used for prices or judgment. US: NASDAQ, NYSE, NYSEARCA, or NYSEAMERICAN; KR: KRX, KOSPI, or KOSDAQ (Sheets still uses the KRX: prefix for all Korean rows). Tickers are alphanumeric only. If registration fails, check the exchange prefix and ticker on Google Finance (https://www.google.com/finance/). After submission, checks run automatically; if accepted, the pick appears under Active.",
+      "While signed in, click New pick in the header to open the registration form. Enter ticker, country & market, target return (%), and duration (days). Optional **Additional note** appears on the pick detail only when provided (collapsed by default); it is not used for prices or judgment. US: NASDAQ, NYSE, NYSEARCA, or NYSEAMERICAN; KR: KRX, KOSPI, or KOSDAQ (registration may try several exchange prefixes automatically, your chosen market first). Tickers are alphanumeric only. If registration fails, check the exchange prefix and ticker on Google Finance (https://www.google.com/finance/). After submission, checks run automatically; if accepted, the pick appears under Active.",
     s3Title: "Limits and rules",
     s3Body:
       "There are caps on how many active picks you may have at once and on duplicate tickers per user. Target return and duration must be chosen from the allowed ranges shown on the form. If something is wrong, a message may appear on the same submission thread.",
@@ -143,7 +143,18 @@ export default {
     voteHint: "+1 / −1 on the issue · counts update after repo sync",
     nameOnGoogleFinance: "View instrument on Google Finance",
   },
-  pickList: { empty: "No picks yet." },
+  pickList: {
+    empty: "No picks yet.",
+    viewLabel: "View",
+    viewCards: "Cards",
+    viewList: "List",
+    colTicker: "Ticker",
+    colMarket: "Market",
+    colTarget: "Target",
+    colDeadline: "Deadline",
+    colProgress: "Progress",
+    colStatus: "Status",
+  },
   filters: {
     country: "Country",
     market: "Market",

@@ -38,8 +38,8 @@ def format_price_fetch_public(
     safe_ticker = str(ticker).replace("`", "'")
     chain_md = " → ".join(f"`{p}`" for p in tried_prefixes) if tried_prefixes else ""
     tip_actions = (
-        "- **EN:** Sheet row, formulas, and last raw values are in the repository **Actions** log for this workflow run.\n"
-        "- **한:** 시트 행·수식·마지막 조회 값 등은 저장소 **Actions** 해당 워크플로 실행 로그에 있습니다."
+        "- **EN:** More technical detail for this run is in the repository **Actions** log (workflow run for this issue).\n"
+        "- **한:** 이 실행에 대한 자세한 기술 정보는 저장소 **Actions** 에서 이 이슈와 연결된 워크플로 실행 로그를 확인하세요."
     )
     if tried_prefixes:
         return "\n".join(
