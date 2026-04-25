@@ -26,7 +26,7 @@ def test_validate_pick_bad_market():
 
 def test_validate_target_too_high():
     with pytest.raises(ValidationError) as e:
-        validate_pick_input("AAPL", "US", "NASDAQ", 1.5, 30)
+        validate_pick_input("AAPL", "US", "NASDAQ", 10.5, 30)
     assert e.value.code == "INVALID_TARGET_RETURN"
 
 
@@ -40,6 +40,10 @@ def test_validate_target_below_ten_percent():
     with pytest.raises(ValidationError) as e:
         validate_pick_input("AAPL", "US", "NASDAQ", 0.09, 30)
     assert e.value.code == "INVALID_TARGET_RETURN"
+
+
+def test_validate_target_high_but_allowed():
+    validate_pick_input("AAPL", "US", "NASDAQ", 10.0, 30)
 
 
 def test_validate_duration():
@@ -58,6 +62,7 @@ def test_market_for_google_finance_korea_legacy():
     assert market_for_google_finance("KRX") == "KRX"
     assert market_for_google_finance("NASDAQ") == "NASDAQ"
     assert market_for_google_finance("NYSEARCA") == "NYSEARCA"
+    assert market_for_google_finance("BATS") == "BATS"
     assert market_for_google_finance("NYSEAMERICAN") == "NYSEAMERICAN"
 
 
@@ -72,24 +77,38 @@ def test_us_googlefinance_prefix_candidates_order():
         "NYSE",
         "NASDAQ",
         "NYSEARCA",
+        "BATS",
         "NYSEAMERICAN",
     ]
     assert us_googlefinance_prefix_candidates("NYSEARCA") == [
         "NYSEARCA",
         "NASDAQ",
         "NYSE",
+        "BATS",
+        "NYSEAMERICAN",
+    ]
+    assert us_googlefinance_prefix_candidates("BATS") == [
+        "BATS",
+        "NASDAQ",
+        "NYSE",
+        "NYSEARCA",
         "NYSEAMERICAN",
     ]
     assert us_googlefinance_prefix_candidates("NASDAQ") == [
         "NASDAQ",
         "NYSE",
         "NYSEARCA",
+        "BATS",
         "NYSEAMERICAN",
     ]
 
 
 def test_validate_pick_us_nysearca():
     validate_pick_input("SCO", "US", "NYSEARCA", 0.1, 30)
+
+
+def test_validate_pick_us_bats():
+    validate_pick_input("SPY", "US", "BATS", 0.1, 30)
 
 
 def test_validate_pick_kr_kosdaq():

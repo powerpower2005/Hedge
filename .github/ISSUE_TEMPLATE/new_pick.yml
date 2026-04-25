@@ -9,14 +9,14 @@ body:
         ### 한국어
         제출 전 확인: 사용자당 **진행 중 픽 10개 미만**, **같은 티커는 사용자당 1개**만 가능합니다. 규칙 위반 시 이 이슈에 안내 댓글이 달릴 수 있습니다.
 
-        한국(KR)은 **KRX / KOSPI / KOSDAQ** 중 해당하는 시장을 고르세요. 등록 시 **거래소 접두**는 자동으로 여러 순서를 시도하며, **양식에서 고른 시장을 먼저** 씁니다. 미국(US) ETF·Arca 종목은 **NYSEARCA**, 아멕스 계열은 **NYSEAMERICAN**을 고려하세요. 등록이 실패하면 [Google Finance](https://www.google.com/finance/)에서 **거래소 접두**와 **티커**가 맞는지 확인해 보세요.
+        한국(KR)은 **KRX / KOSPI / KOSDAQ** 중 해당하는 시장을 고르세요. 등록 시 **거래소 접두**는 자동으로 여러 순서를 시도하며, **양식에서 고른 시장을 먼저** 씁니다. 미국(US) ETF·Arca 종목은 **NYSEARCA** 또는 **BATS**, 아멕스 계열은 **NYSEAMERICAN**을 고려하세요. 등록이 실패하면 [Google Finance](https://www.google.com/finance/)에서 **거래소 접두**와 **티커**가 맞는지 확인해 보세요.
 
         맨 아래 **추가 메모**는 선택 사항이며, 입력하면 공개 사이트 픽 상세에서 접어 두었다가 볼 수 있습니다. 시스템 판정·목표가에는 사용되지 않습니다.
 
         ### English
         Before submitting: fewer than **10** active picks per user; only **one** active pick per ticker per user. Invalid submissions may receive a comment on this issue.
 
-        **KR:** pick **KRX**, **KOSPI**, or **KOSDAQ** by segment; registration **automatically tries several exchange prefixes** (your chosen market first) to fetch a price. **US:** many ETFs list on **NYSEARCA**; small caps may use **NYSEAMERICAN**. If registration fails, verify **exchange prefix + ticker** on [Google Finance](https://www.google.com/finance/).
+        **KR:** pick **KRX**, **KOSPI**, or **KOSDAQ** by segment; registration **automatically tries several exchange prefixes** (your chosen market first) to fetch a price. **US:** many ETFs list on **NYSEARCA** or **BATS**; small caps may use **NYSEAMERICAN**. If registration fails, verify **exchange prefix + ticker** on [Google Finance](https://www.google.com/finance/).
 
         **Optional note:** the last field below is optional; if filled, it appears on the public pick detail (collapsed by default). Not used for pricing or rules — e.g. personal context or a hypothetical stop level in prose only.
 
@@ -43,11 +43,12 @@ body:
     id: market
     attributes:
       label: "Market / 시장"
-      description: "국가와 짝 맞추기 · US: NASDAQ/NYSE/NYSEARCA/NYSEAMERICAN · KR: KRX/KOSPI/KOSDAQ (등록 시 접두 자동 시도)"
+      description: "국가와 짝 맞추기 · US: NASDAQ/NYSE/NYSEARCA/BATS/NYSEAMERICAN · KR: KRX/KOSPI/KOSDAQ (등록 시 접두 자동 시도)"
       options:
         - NASDAQ
         - NYSE
         - NYSEARCA
+        - BATS
         - NYSEAMERICAN
         - KRX
         - KOSPI
@@ -59,7 +60,7 @@ body:
     id: target_return
     attributes:
       label: "Target return (%) / 목표 수익률 (%)"
-      description: "10~100 사이 숫자 (10이면 +10%, 15면 +15%) · Number from 10 to 100 (e.g. 10 means +10%)"
+      description: "10~1000 사이 숫자 (10이면 +10%, 150이면 +150%) · Number from 10 to 1000 (e.g. 10 means +10%)"
       placeholder: "10"
     validations:
       required: true

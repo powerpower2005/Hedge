@@ -45,10 +45,10 @@ def test_format_price_fetch_public_user_us_fallback():
     msg = format_price_fetch_public(
         ticker="SPY",
         market="NASDAQ",
-        tried_prefixes=["NASDAQ", "NYSE", "NYSEARCA", "NYSEAMERICAN"],
+        tried_prefixes=["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN"],
     )
     assert "SPY" in msg
-    assert "`NASDAQ` → `NYSE` → `NYSEARCA` → `NYSEAMERICAN`" in msg
+    assert "`NASDAQ` → `NYSE` → `NYSEARCA` → `BATS` → `NYSEAMERICAN`" in msg
     assert "Actions" in msg
     assert "시트" not in msg
 
@@ -60,7 +60,7 @@ def test_format_price_fetch_ops_log_contains_sheet_detail():
         market="NASDAQ",
         row_index=5,
         last_raw="N/A",
-        tried_prefixes=["NASDAQ", "NYSE", "NYSEARCA", "NYSEAMERICAN"],
+        tried_prefixes=["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN"],
         country="US",
     )
     assert "PriceLookup-v1" in msg

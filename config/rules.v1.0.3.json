@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "rules_version": "1.0.4",
+  "rules_version": "1.0.3",
   "effective_from": "2026-04-25",
   "rules": {
     "supported_markets": {
-      "US": ["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN"],
+      "US": ["NASDAQ", "NYSE", "NYSEARCA", "NYSEAMERICAN"],
       "KR": ["KRX", "KOSPI", "KOSDAQ"]
     },
     "target_return_range": [0.10, 10.0],

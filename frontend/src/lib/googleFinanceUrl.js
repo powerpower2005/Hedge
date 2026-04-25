@@ -12,7 +12,7 @@ export function googleFinanceQuoteUrl(pick) {
     return `https://www.google.com/finance/quote/${encodeURIComponent(ticker)}:${encodeURIComponent(kex)}`;
   }
   const m = String(pick.market ?? "NASDAQ").toUpperCase();
-  const usExchanges = new Set(["NASDAQ", "NYSE", "NYSEARCA", "NYSEAMERICAN"]);
+  const usExchanges = new Set(["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN"]);
   const ex = usExchanges.has(m) ? m : "NASDAQ";
   return `https://www.google.com/finance/quote/${encodeURIComponent(ticker)}:${encodeURIComponent(ex)}`;
 }

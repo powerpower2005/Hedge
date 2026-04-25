@@ -20,8 +20,9 @@ class Market(str, Enum):
     NASDAQ = "NASDAQ"
     NYSE = "NYSE"
     NYSEARCA = "NYSEARCA"
+    BATS = "BATS"
     NYSEAMERICAN = "NYSEAMERICAN"
-    # US: Sheets GOOGLEFINANCE column C tries NASDAQ / NYSE / NYSEARCA / NYSEAMERICAN; see us_googlefinance_prefix_candidates.
+    # US: Sheets GOOGLEFINANCE column C tries NASDAQ / NYSE / NYSEARCA / BATS / NYSEAMERICAN; see us_googlefinance_prefix_candidates.
     # Korea: Sheets GOOGLEFINANCE column C may use KRX, KOSPI, or KOSDAQ prefix; see kr_googlefinance_prefix_candidates.
     KRX = "KRX"
     KOSPI = "KOSPI"
@@ -29,12 +30,12 @@ class Market(str, Enum):
 
 
 COUNTRY_MARKETS = {
-    Country.US: {Market.NASDAQ, Market.NYSE, Market.NYSEARCA, Market.NYSEAMERICAN},
+    Country.US: {Market.NASDAQ, Market.NYSE, Market.NYSEARCA, Market.BATS, Market.NYSEAMERICAN},
     Country.KR: {Market.KRX, Market.KOSPI, Market.KOSDAQ},
 }
 
 
-US_GOOGLEFINANCE_EXCHANGE_ORDER = ("NASDAQ", "NYSE", "NYSEARCA", "NYSEAMERICAN")
+US_GOOGLEFINANCE_EXCHANGE_ORDER = ("NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN")
 
 
 def market_for_google_finance(market: str) -> str:
@@ -92,7 +93,7 @@ def ticker_cell_for_price_lookup(ticker: str, country: str) -> str:
 
 ALLOWED_DURATIONS = [7, 14, 30, 90, 180]
 TARGET_RETURN_MIN = 0.10
-TARGET_RETURN_MAX = 1.0
+TARGET_RETURN_MAX = 10.0
 MAX_ACTIVE_PICKS_PER_USER = 10
 
 

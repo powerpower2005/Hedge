@@ -21,6 +21,6 @@ export function pickIssueUrl(issueNumber) {
 }
 
 export const MARKETS = {
-  US: ["NASDAQ", "NYSE", "NYSEARCA", "NYSEAMERICAN"],
+  US: ["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN"],
   KR: ["KRX", "KOSPI", "KOSDAQ"],
 };

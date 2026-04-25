@@ -36,7 +36,7 @@
     "ticker": { "type": "string", "pattern": "^[A-Z0-9]{1,10}$" },
     "country": { "enum": ["US", "KR"] },
     "market": {
-      "enum": ["NASDAQ", "NYSE", "NYSEARCA", "NYSEAMERICAN", "KRX", "KOSPI", "KOSDAQ"],
+      "enum": ["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN", "KRX", "KOSPI", "KOSDAQ"],
       "description": "US: GOOGLEFINANCE exchange prefix. KR: board label (KRX/KOSPI/KOSDAQ); Sheets use KRX: for all Korean rows via mapping."
     },
     "instrument_name": {
@@ -62,7 +62,7 @@
       "type": "object",
       "required": ["return_rate", "price"],
       "properties": {
-        "return_rate": { "type": "number", "minimum": 0.10, "maximum": 1.0 },
+        "return_rate": { "type": "number", "minimum": 0.10, "maximum": 10.0 },
         "price": { "type": "number", "exclusiveMinimum": 0 }
       }
     },
