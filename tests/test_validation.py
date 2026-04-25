@@ -1,6 +1,11 @@
 import pytest
 
-from common.models import market_for_google_finance, ticker_cell_for_price_lookup
+from common.models import (
+    kr_googlefinance_prefix_candidates,
+    market_for_google_finance,
+    ticker_cell_for_price_lookup,
+    us_googlefinance_prefix_candidates,
+)
 from common.validation import (
     ValidationError,
     validate_no_duplicate_ticker,
@@ -54,6 +59,33 @@ def test_market_for_google_finance_korea_legacy():
     assert market_for_google_finance("NASDAQ") == "NASDAQ"
     assert market_for_google_finance("NYSEARCA") == "NYSEARCA"
     assert market_for_google_finance("NYSEAMERICAN") == "NYSEAMERICAN"
+
+
+def test_kr_googlefinance_prefix_candidates_order():
+    assert kr_googlefinance_prefix_candidates("KOSDAQ") == ["KOSDAQ", "KRX", "KOSPI"]
+    assert kr_googlefinance_prefix_candidates("KOSPI") == ["KOSPI", "KRX", "KOSDAQ"]
+    assert kr_googlefinance_prefix_candidates("KRX") == ["KRX", "KOSDAQ", "KOSPI"]
+
+
+def test_us_googlefinance_prefix_candidates_order():
+    assert us_googlefinance_prefix_candidates("NYSE") == [
+        "NYSE",
+        "NASDAQ",
+        "NYSEARCA",
+        "NYSEAMERICAN",
+    ]
+    assert us_googlefinance_prefix_candidates("NYSEARCA") == [
+        "NYSEARCA",
+        "NASDAQ",
+        "NYSE",
+        "NYSEAMERICAN",
+    ]
+    assert us_googlefinance_prefix_candidates("NASDAQ") == [
+        "NASDAQ",
+        "NYSE",
+        "NYSEARCA",
+        "NYSEAMERICAN",
+    ]
 
 
 def test_validate_pick_us_nysearca():

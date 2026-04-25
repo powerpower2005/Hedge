@@ -21,7 +21,8 @@ class Market(str, Enum):
     NYSE = "NYSE"
     NYSEARCA = "NYSEARCA"
     NYSEAMERICAN = "NYSEAMERICAN"
-    # Korea: GOOGLEFINANCE uses KRX:SYMBOL; KOSPI/KOSDAQ are board labels mapped in market_for_google_finance.
+    # US: Sheets GOOGLEFINANCE column C tries NASDAQ / NYSE / NYSEARCA / NYSEAMERICAN; see us_googlefinance_prefix_candidates.
+    # Korea: Sheets GOOGLEFINANCE column C may use KRX, KOSPI, or KOSDAQ prefix; see kr_googlefinance_prefix_candidates.
     KRX = "KRX"
     KOSPI = "KOSPI"
     KOSDAQ = "KOSDAQ"
@@ -33,11 +34,52 @@ COUNTRY_MARKETS = {
 }
 
 
+US_GOOGLEFINANCE_EXCHANGE_ORDER = ("NASDAQ", "NYSE", "NYSEARCA", "NYSEAMERICAN")
+
+
 def market_for_google_finance(market: str) -> str:
-    """Prefix for GOOGLEFINANCE C:B (Korea must be KRX, not KOSPI/KOSDAQ)."""
+    """Legacy single-prefix mapping (US unchanged; KR maps KOSPI/KOSDAQ → KRX).
+
+    Registration uses us_googlefinance_prefix_candidates / kr_googlefinance_prefix_candidates.
+    """
     if market in ("KOSPI", "KOSDAQ"):
         return "KRX"
     return market
+
+
+def kr_googlefinance_prefix_candidates(form_market: str) -> list[str]:
+    """Exchange prefixes to try for Sheets column C when country is KR (deduped).
+
+    The form's board label is tried first, then the other two, so KOSDAQ-listed
+    symbols that only resolve under ``KOSDAQ:`` are picked up before ``KRX:``.
+    """
+    m = (form_market or "").strip().upper()
+    if m not in ("KRX", "KOSPI", "KOSDAQ"):
+        m = "KRX"
+    order = {
+        "KOSDAQ": ["KOSDAQ", "KRX", "KOSPI"],
+        "KOSPI": ["KOSPI", "KRX", "KOSDAQ"],
+        "KRX": ["KRX", "KOSDAQ", "KOSPI"],
+    }[m]
+    seen: set[str] = set()
+    out: list[str] = []
+    for p in order:
+        if p not in seen:
+            seen.add(p)
+            out.append(p)
+    return out
+
+
+def us_googlefinance_prefix_candidates(form_market: str) -> list[str]:
+    """Exchange prefixes to try for Sheets column C when country is US (deduped).
+
+    The form's exchange is tried first, then the other three in a fixed order.
+    """
+    m = (form_market or "").strip().upper()
+    if m not in US_GOOGLEFINANCE_EXCHANGE_ORDER:
+        m = "NASDAQ"
+    rest = [x for x in US_GOOGLEFINANCE_EXCHANGE_ORDER if x != m]
+    return [m, *rest]
 
 
 def ticker_cell_for_price_lookup(ticker: str, country: str) -> str:

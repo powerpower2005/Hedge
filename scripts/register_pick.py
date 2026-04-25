@@ -6,6 +6,7 @@ import json
 import os
 import sys
 import time
+from typing import cast
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
@@ -19,14 +20,21 @@ from common.issue_pick_lookup import find_pick_by_issue_number
 from common.meta import bump_next_pick_id, peek_next_pick_id
 from common.register_public_messages import (
     GOOGLE_FINANCE_VERIFY_TIP,
+    format_price_fetch_ops_log,
     format_price_fetch_public,
 )
 from common.goog_finance_parse import parse_instrument_name_cell
+from common.models import (
+    kr_googlefinance_prefix_candidates,
+    market_for_google_finance,
+    us_googlefinance_prefix_candidates,
+)
 from common.sheets import (
     append_ticker_row,
     delete_row_for_pick_id,
     read_close_at_row,
     read_instrument_name_at_row,
+    set_price_lookup_finance_prefix,
 )
 from common.storage import get_picks, load_list_file, save_list_file
 from common.validation import (
@@ -61,7 +69,8 @@ def fail(code: str, message: str, issue_number: int) -> None:
 
 {GOOGLE_FINANCE_VERIFY_TIP}
 
-Please fix the form and open a new issue if needed.
+Please fix the form and open a new issue if needed.  
+양식을 바로잡거나, 필요하면 **새 이슈**로 다시 제출해 주세요.
 """
     print(f"[register_pick] FAILED {code}\n{message}", file=sys.stderr)
     add_issue_comment(issue_number, body)
@@ -190,24 +199,55 @@ def main() -> None:
     except ValidationError as e:
         fail(e.code, e.message, issue_number)
 
+    if country == "KR":
+        finance_candidates = kr_googlefinance_prefix_candidates(market)
+    elif country == "US":
+        finance_candidates = us_googlefinance_prefix_candidates(market)
+    else:
+        finance_candidates = [market_for_google_finance(market)]
+    resolved_sheet_prefix: str | None = None
+    tried_chain: list[str] = []
+    entry_price: float | None = None
+
     pick_id = peek_next_pick_id()
     row_index: int | None = None
     raw_close: str | None = None
     try:
-        row_index = append_ticker_row(pick_id, ticker, market, country)
+        row_index = append_ticker_row(
+            pick_id,
+            ticker,
+            market,
+            country,
+            finance_exchange=finance_candidates[0],
+        )
         print(
             f"[register_pick] SHEETS_APPEND_OK pick_id={pick_id} worksheet_row={row_index} tab=PriceLookup-v1",
             file=sys.stderr,
         )
-        for _ in range(5):
-            raw_close = read_close_at_row(row_index)
-            try:
-                entry_price = _parse_close_value(raw_close)
-                break
-            except ValueError:
+        time.sleep(3)
+        for attempt_idx, prefix in enumerate(finance_candidates):
+            if attempt_idx > 0:
+                set_price_lookup_finance_prefix(row_index, prefix)
                 time.sleep(2)
+            tried_chain.append(prefix)
+            for _ in range(8):
+                raw_close = read_close_at_row(row_index)
+                try:
+                    entry_price = _parse_close_value(raw_close)
+                    resolved_sheet_prefix = prefix
+                    break
+                except ValueError:
+                    time.sleep(2)
+            if entry_price is not None:
+                break
         else:
             raise ValueError(f"close not_ready last={raw_close!r}")
+        if country in ("KR", "US") and resolved_sheet_prefix:
+            print(
+                f"[register_pick] SHEETS_FINANCE_PREFIX pick_id={pick_id} country={country} "
+                f"prefix={resolved_sheet_prefix} tried={'->'.join(tried_chain)}",
+                file=sys.stderr,
+            )
         instrument_name: str | None = None
         for _ in range(5):
             raw_name = read_instrument_name_at_row(row_index)
@@ -226,12 +266,22 @@ def main() -> None:
                 print(f"[register_pick] SHEETS_ROLLBACK_OK pick_id={pick_id}", file=sys.stderr)
             except Exception as del_exc:
                 print(f"[register_pick] SHEETS_ROLLBACK_FAIL pick_id={pick_id}: {del_exc}", file=sys.stderr)
+        print(
+            format_price_fetch_ops_log(
+                e,
+                ticker=ticker,
+                market=market,
+                row_index=row_index,
+                last_raw=raw_close,
+                tried_prefixes=tried_chain if country in ("KR", "US") and tried_chain else None,
+                country=country,
+            ),
+            file=sys.stderr,
+        )
         msg = format_price_fetch_public(
-            e,
             ticker=ticker,
             market=market,
-            row_index=row_index,
-            last_raw=raw_close,
+            tried_prefixes=tried_chain if country in ("KR", "US") and tried_chain else None,
         )
         fail("PRICE_FETCH_ERROR", msg, issue_number)
 
@@ -245,7 +295,7 @@ def main() -> None:
         market,
         target_return,
         duration_days,
-        entry_price,
+        cast(float, entry_price),
         instrument_name=instrument_name,
         author_note=submitter_note if isinstance(submitter_note, str) else None,
     )
@@ -253,7 +303,7 @@ def main() -> None:
     save_list_file(ACTIVE_PATH, active_picks)
     bump_next_pick_id(pick_id)
 
-    start_s = _format_money(country, entry_price)
+    start_s = _format_money(country, cast(float, entry_price))
     target_s = _format_money(country, pick["target"]["price"])
     comment = f"""**Registered**
 
@@ -268,6 +318,14 @@ def main() -> None:
 
 Daily close check runs around **07:00 KST**. Vote with reactions on issues.
 """
+    if country in ("KR", "US") and resolved_sheet_prefix is not None:
+        chain = " → ".join(f"`{p}`" for p in tried_chain)
+        comment += (
+            "\n\n**Sheets `GOOGLEFINANCE` (column C)**\n"
+            f"- **Prefix used:** `{resolved_sheet_prefix}` (first in try order that returned a numeric `closeyest`).\n"
+            f"- **Try order:** {chain}\n"
+            f"- 양식 시장(**{market}**)은 픽 데이터에 그대로 저장되며, 열 C는 위 접두로 맞춰 두었습니다.\n"
+        )
     if submitter_note:
         preview = " ".join(submitter_note.split())
         if len(preview) > 220:

@@ -42,11 +42,22 @@ def get_worksheet() -> gspread.Worksheet:
     return sh.worksheet(WORKSHEET_NAME)
 
 
-def append_ticker_row(pick_id: int, ticker: str, market: str, country: str) -> int:
+def append_ticker_row(
+    pick_id: int,
+    ticker: str,
+    market: str,
+    country: str,
+    *,
+    finance_exchange: str | None = None,
+) -> int:
     ws = get_worksheet()
     values = ws.get_all_values()
     next_row = len(values) + 1
-    fin_market = market_for_google_finance(market)
+    fin_market = (
+        finance_exchange
+        if finance_exchange is not None
+        else market_for_google_finance(market)
+    )
     ticker_cell = ticker_cell_for_price_lookup(ticker, country)
     # "closeyest" = previous regular session close (GOOGLEFINANCE real-time attribute,
     # single cell). Used as entry baseline, not last trade. Avoid bare "close" without
@@ -59,6 +70,12 @@ def append_ticker_row(pick_id: int, ticker: str, market: str, country: str) -> i
         value_input_option="USER_ENTERED",
     )
     return next_row
+
+
+def set_price_lookup_finance_prefix(row_index: int, exchange_prefix: str) -> None:
+    """Column C on PriceLookup-v1: GOOGLEFINANCE exchange prefix (row 1-based)."""
+    ws = get_worksheet()
+    ws.update_cell(row_index, 3, exchange_prefix)
 
 
 def read_close_at_row(row_index: int) -> str | None:
