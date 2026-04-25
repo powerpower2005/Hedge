@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "a16188b"
+    "commit": "337e266"
   },
-  "generated_at": "2026-04-25T04:35:39.298624Z",
+  "generated_at": "2026-04-25T14:30:55.093075Z",
   "data": {
-    "count": 11,
+    "count": 12,
     "picks": [
       {
         "id": 3,
@@ -673,6 +673,67 @@
         "extensions": {},
         "instrument_name": "Sungwoo Hitech Co Ltd",
         "author_note": "현재가 혹은 8760 매수, 8350 추매.\n7905 이탈시 손절"
+      },
+      {
+        "id": 16,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "337e266"
+        },
+        "created_at": "2026-04-25T14:30:55.092943Z",
+        "author": "LimJunYeol",
+        "issue_number": 36,
+        "ticker": "ASTX",
+        "country": "US",
+        "market": "BATS",
+        "entry": {
+          "price": 31.01,
+          "date": "2026-04-25",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.4,
+          "price": 43.414
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-07-24"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-25T14:30:55.092955Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-25",
+          "current": {
+            "close": 31.01,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 31.01,
+            "close_date": "2026-04-25",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.4,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-25T14:30:55.093027Z"
+        },
+        "extensions": {},
+        "instrument_name": "Tradr 2X Long Asts Daily ETF",
+        "author_note": "_No response_"
       }
     ]
   }
