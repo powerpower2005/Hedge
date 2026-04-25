@@ -55,7 +55,7 @@ export default {
       "Use the top tabs: Active, Hall of Fame, and Expired. Click a card to open its detail page. Click an @username on a card to see that participant’s picks only. Use filters and sort to narrow the list.",
     s2Title: "Submit a new pick",
     s2Body:
-      "While signed in, click New pick in the header to open the registration form. Enter ticker, country & market, target return (%), and duration (days). US: NASDAQ, NYSE, NYSEARCA, or NYSEAMERICAN; KR: KRX, KOSPI, or KOSDAQ (Sheets still uses the KRX: prefix for all Korean rows). Tickers are alphanumeric only. If registration fails, check the exchange prefix and ticker on Google Finance (https://www.google.com/finance/). After submission, checks run automatically; if accepted, the pick appears under Active.",
+      "While signed in, click New pick in the header to open the registration form. Enter ticker, country & market, target return (%), and duration (days). Optional **Additional note** appears on the pick detail only when provided (collapsed by default); it is not used for prices or judgment. US: NASDAQ, NYSE, NYSEARCA, or NYSEAMERICAN; KR: KRX, KOSPI, or KOSDAQ (Sheets still uses the KRX: prefix for all Korean rows). Tickers are alphanumeric only. If registration fails, check the exchange prefix and ticker on Google Finance (https://www.google.com/finance/). After submission, checks run automatically; if accepted, the pick appears under Active.",
     s3Title: "Limits and rules",
     s3Body:
       "There are caps on how many active picks you may have at once and on duplicate tickers per user. Target return and duration must be chosen from the allowed ranges shown on the form. If something is wrong, a message may appear on the same submission thread.",
@@ -92,6 +92,8 @@ export default {
     voteCtaBody:
       "Open the registration issue below and use the reactions menu on the first post: choose +1 or −1. This site does not post reactions for you; counts refresh after the repository vote-sync job updates the JSON (hourly UTC by default).",
     openIssue: "Open registration issue #{n}",
+    authorNoteSummary: "Submitter note (optional)",
+    authorNoteDisclaimer: "For context only; not used for targets or judgment.",
     achieved: "Achieved",
     achievedMeta: "Date {date} · Days {days} · Final {final}",
   },

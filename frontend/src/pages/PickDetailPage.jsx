@@ -76,6 +76,17 @@ export function PickDetailPage() {
       <p className="text-zinc-400 light:text-zinc-600">
         @{pick.author} · {pick.market} · {t("pickDetail.refLine", { n: pick.issue_number })}
       </p>
+      {pick.author_note ? (
+        <details className="mt-4 rounded-lg border border-zinc-800 bg-zinc-900/20 text-sm light:border-zinc-200 light:bg-zinc-50">
+          <summary className="cursor-pointer select-none px-3 py-2 font-medium text-zinc-200 light:text-zinc-800">
+            {t("pickDetail.authorNoteSummary")}
+          </summary>
+          <div className="border-t border-zinc-800 px-3 py-2 text-zinc-300 light:border-zinc-200 light:text-zinc-700">
+            <p className="whitespace-pre-wrap break-words">{pick.author_note}</p>
+            <p className="mt-2 text-xs text-zinc-500 light:text-zinc-500">{t("pickDetail.authorNoteDisclaimer")}</p>
+          </div>
+        </details>
+      ) : null}
       <dl className="mt-6 space-y-3 text-sm">
         <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.entry")}</dt>

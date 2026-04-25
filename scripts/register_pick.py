@@ -81,6 +81,7 @@ def build_pick(
     entry_price: float,
     *,
     instrument_name: str | None = None,
+    author_note: str | None = None,
 ) -> dict:
     entry_date = datetime.now(timezone.utc).date()
     deadline = entry_date + timedelta(days=duration_days)
@@ -139,6 +140,8 @@ def build_pick(
     }
     if instrument_name:
         out["instrument_name"] = instrument_name
+    if author_note:
+        out["author_note"] = author_note
     return out
 
 
@@ -232,6 +235,7 @@ def main() -> None:
         )
         fail("PRICE_FETCH_ERROR", msg, issue_number)
 
+    submitter_note = fields.get("author_note")
     pick = build_pick(
         pick_id,
         author,
@@ -243,6 +247,7 @@ def main() -> None:
         duration_days,
         entry_price,
         instrument_name=instrument_name,
+        author_note=submitter_note if isinstance(submitter_note, str) else None,
     )
     active_picks.append(pick)
     save_list_file(ACTIVE_PATH, active_picks)
@@ -263,6 +268,11 @@ def main() -> None:
 
 Daily close check runs around **07:00 KST**. Vote with reactions on issues.
 """
+    if submitter_note:
+        preview = " ".join(submitter_note.split())
+        if len(preview) > 220:
+            preview = preview[:217] + "…"
+        comment += f"\n**Submitter note** (full text on the pick detail page): {preview}\n"
     add_issue_comment(issue_number, comment)
     try:
         remove_issue_label(issue_number, "pick-submission")

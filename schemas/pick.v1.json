@@ -44,6 +44,11 @@
       "maxLength": 280,
       "description": "Optional display name from GOOGLEFINANCE(..., \"name\") at registration (Sheets)."
     },
+    "author_note": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Optional free text from the registration issue form (e.g. context); shown on the public pick detail when present."
+    },
     "entry": {
       "type": "object",
       "required": ["price", "date", "source"],

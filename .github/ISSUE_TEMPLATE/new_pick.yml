@@ -11,10 +11,14 @@ body:
 
         한국(KR)은 **KRX / KOSPI / KOSDAQ** 중 해당하는 시장을 고르세요. 스프레드시트 `GOOGLEFINANCE`에는 모두 **`KRX:티커`**로 들어갑니다. 미국(US) ETF·Arca 종목은 **NYSEARCA**, 아멕스 계열은 **NYSEAMERICAN**을 고려하세요. 등록이 실패하면 [Google Finance](https://www.google.com/finance/)에서 **거래소 접두**와 **티커**가 맞는지 확인해 보세요.
 
+        맨 아래 **추가 메모**는 선택 사항이며, 입력하면 공개 사이트 픽 상세에서 접어 두었다가 볼 수 있습니다. 시스템 판정·목표가에는 사용되지 않습니다.
+
         ### English
         Before submitting: fewer than **10** active picks per user; only **one** active pick per ticker per user. Invalid submissions may receive a comment on this issue.
 
         **KR:** pick **KRX**, **KOSPI**, or **KOSDAQ** by segment; Sheets still uses `KRX:ticker` for `GOOGLEFINANCE`. **US:** many ETFs list on **NYSEARCA**; small caps may use **NYSEAMERICAN**. If registration fails, verify **exchange prefix + ticker** on [Google Finance](https://www.google.com/finance/).
+
+        **Optional note:** the last field below is optional; if filled, it appears on the public pick detail (collapsed by default). Not used for pricing or rules — e.g. personal context or a hypothetical stop level in prose only.
 
   - type: input
     id: ticker
@@ -72,3 +76,12 @@ body:
         - "180"
     validations:
       required: true
+
+  - type: textarea
+    id: author_note
+    attributes:
+      label: "Additional note (optional) / 추가 메모 (선택)"
+      description: "Short free text (max ~2000 chars). Shown on the public pick detail only; not used for GOOGLEFINANCE or targets. · 짧은 부가 설명만. 공개 상세에만 표시되며 시세·목표 계산에는 반영되지 않습니다."
+      placeholder: "e.g. context, or a personal stop level in words (not enforced by the app)"
+    validations:
+      required: false

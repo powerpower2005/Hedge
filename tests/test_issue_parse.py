@@ -79,3 +79,21 @@ def test_kr_kosdaq_preserved():
         "duration_days": "90",
     }
     assert normalized_fields(raw)["market"] == "KOSDAQ"
+
+
+def test_author_note_multiline():
+    body = (
+        SAMPLE.strip()
+        + "\n\n### Additional note (optional) / 추가 메모 (선택)\n\n"
+        + "first line\n"
+        + "second line\n"
+    )
+    raw = parse_issue_form(body)
+    assert raw.get("author_note") == "first line\nsecond line"
+    fields = normalized_fields(raw)
+    assert fields["author_note"] == "first line\nsecond line"
+
+
+def test_author_note_absent_omits_key():
+    fields = normalized_fields(parse_issue_form(SAMPLE))
+    assert "author_note" not in fields
