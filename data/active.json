@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "3a17794"
+    "commit": "5c8e511"
   },
-  "generated_at": "2026-04-27T11:37:37.087445Z",
+  "generated_at": "2026-04-27T11:39:24.169853Z",
   "data": {
-    "count": 15,
+    "count": 16,
     "picks": [
       {
         "id": 3,
@@ -916,6 +916,67 @@
         },
         "extensions": {},
         "instrument_name": "TransMedics Group Inc",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 20,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "5c8e511"
+        },
+        "created_at": "2026-04-27T11:39:24.169729Z",
+        "author": "KHR0907",
+        "issue_number": 40,
+        "ticker": "ONTO",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 292.31,
+          "date": "2026-04-27",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.5,
+          "price": 438.465
+        },
+        "duration": {
+          "days": 180,
+          "deadline": "2026-10-24"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-27T11:39:24.169743Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-27",
+          "current": {
+            "close": 292.31,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 292.31,
+            "close_date": "2026-04-27",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.5,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-27T11:39:24.169799Z"
+        },
+        "extensions": {},
+        "instrument_name": "Onto Innovation Inc",
         "author_note": "_No response_"
       }
     ]
