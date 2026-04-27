@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "8f3bbea"
+    "commit": "757ea34"
   },
-  "generated_at": "2026-04-27T00:43:23.667422Z",
+  "generated_at": "2026-04-27T03:34:19.154699Z",
   "data": {
-    "count": 13,
+    "count": 14,
     "picks": [
       {
         "id": 3,
@@ -795,6 +795,67 @@
         "extensions": {},
         "instrument_name": "VT Co Ltd",
         "author_note": "16210, 15340 추매"
+      },
+      {
+        "id": 18,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "757ea34"
+        },
+        "created_at": "2026-04-27T03:34:19.154606Z",
+        "author": "Eonyong",
+        "issue_number": 38,
+        "ticker": "347850",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "price": 81800.0,
+          "date": "2026-04-27",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.3,
+          "price": 106340.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-27"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-27T03:34:19.154618Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-27",
+          "current": {
+            "close": 81800.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 81800.0,
+            "close_date": "2026-04-27",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.3,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-27T03:34:19.154660Z"
+        },
+        "extensions": {},
+        "instrument_name": "DND Pharmatech Inc",
+        "author_note": "_No response_"
       }
     ]
   }
