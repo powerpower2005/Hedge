@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "3e35574"
+    "commit": "8f3bbea"
   },
-  "generated_at": "2026-04-26T22:33:21.982807Z",
+  "generated_at": "2026-04-27T00:43:23.667422Z",
   "data": {
-    "count": 12,
+    "count": 13,
     "picks": [
       {
         "id": 3,
@@ -734,6 +734,67 @@
         "extensions": {},
         "instrument_name": "Tradr 2X Long Asts Daily ETF",
         "author_note": "_No response_"
+      },
+      {
+        "id": 17,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "8f3bbea"
+        },
+        "created_at": "2026-04-27T00:43:23.667333Z",
+        "author": "zerohoon0102",
+        "issue_number": 37,
+        "ticker": "018290",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "price": 16950.0,
+          "date": "2026-04-27",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 20340.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-27"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-27T00:43:23.667347Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-04-27",
+          "current": {
+            "close": 16950.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 16950.0,
+            "close_date": "2026-04-27",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-27T00:43:23.667386Z"
+        },
+        "extensions": {},
+        "instrument_name": "VT Co Ltd",
+        "author_note": "16210, 15340 추매"
       }
     ]
   }
