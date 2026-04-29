@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
 import { invalidateResolvedShaCache } from "../lib/githubRawRoot.js";
 import { invalidatePublicPickFetchCache } from "../lib/publicPickFetch.js";
+import { invalidateUrlMetaCache } from "../lib/urlMetaCache.js";
 import { invalidateUrlPickCache } from "../lib/urlPickListCache.js";
 
 const DataCacheContext = createContext({
@@ -14,6 +15,7 @@ export function DataCacheProvider({ children }) {
     invalidateResolvedShaCache();
     invalidatePublicPickFetchCache();
     invalidateUrlPickCache();
+    invalidateUrlMetaCache();
     setRevision((r) => r + 1);
   }, []);
 

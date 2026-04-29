@@ -6,7 +6,13 @@
   "required": ["schema_version", "next_pick_id"],
   "properties": {
     "schema_version": { "type": "string", "pattern": "^1\\." },
-    "next_pick_id": { "type": "integer", "minimum": 1 }
+    "next_pick_id": { "type": "integer", "minimum": 1 },
+    "updated_at": { "type": "string", "minLength": 1 },
+    "last_daily_judgment_at": {
+      "type": "string",
+      "minLength": 1,
+      "description": "ISO time when daily_judgment last finished successfully (repo batch close / progress)."
+    }
   },
   "additionalProperties": true
 }

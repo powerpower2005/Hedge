@@ -13,6 +13,9 @@ from google.oauth2.service_account import Credentials
 
 from .models import market_for_google_finance, ticker_cell_for_price_lookup
 
+# Calendar days to walk backward from TODAY()-1 when resolving session date (column F).
+_SESSION_DATE_LOOKBACK_DAYS = 14
+
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive",
@@ -31,6 +34,23 @@ def _creds() -> Credentials:
 
 def get_client() -> gspread.Client:
     return gspread.authorize(_creds())
+
+
+def _session_date_formula(next_row: int) -> str:
+    """Most recent calendar day in lookback with a numeric GOOGLEFINANCE(..., \"close\", date).
+
+    Nested IFERROR so Sheets can stop after the first hit (yesterday first, then older days).
+    Aligns with closeyest in practice: that close is the prior session's official close.
+    """
+    sym = f'C{next_row}&":"&B{next_row}'
+    nested = '"N/A"'
+    for k in range(_SESSION_DATE_LOOKBACK_DAYS, 0, -1):
+        block = (
+            f'LET(sym,{sym},dt,TODAY()-{k},c,GOOGLEFINANCE(sym,"close",dt),'
+            f'IF(ISNUMBER(c),TEXT(dt,"yyyy-mm-dd"),NA()))'
+        )
+        nested = f"IFERROR({block},{nested})"
+    return f"={nested}"
 
 
 def get_worksheet() -> gspread.Worksheet:
@@ -65,8 +85,16 @@ def append_ticker_row(
     close_formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"closeyest"),"N/A")'
     # "name" = full security name (same symbol as D); stored in pick JSON for the UI.
     name_formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"name"),"")'
+    session_date_formula = _session_date_formula(next_row)
     ws.append_row(
-        [pick_id, ticker_cell, fin_market, close_formula, name_formula],
+        [
+            pick_id,
+            ticker_cell,
+            fin_market,
+            close_formula,
+            name_formula,
+            session_date_formula,
+        ],
         value_input_option="USER_ENTERED",
     )
     return next_row
@@ -91,6 +119,13 @@ def read_instrument_name_at_row(row_index: int) -> str | None:
     cell = ws.cell(row_index, 5)
     v = cell.value
     return str(v).strip() if v is not None else None
+
+
+def read_close_session_date_at_row(row_index: int) -> object | None:
+    """Column F: calendar date (yyyy-mm-dd) of the last row in GOOGLEFINANCE(..., \"all\", …)."""
+    ws = get_worksheet()
+    cell = ws.cell(row_index, 6)
+    return cell.value
 
 
 def read_close_for_pick_id(pick_id: int) -> str | None:
@@ -181,5 +216,7 @@ def _fetch_via_gspread_list() -> list[dict[str, Any]]:
         item: dict[str, Any] = {"pick_id": pid, "close": row[3]}
         if len(row) >= 5:
             item["name"] = row[4]
+        if len(row) >= 6 and str(row[5]).strip():
+            item["close_session_date"] = str(row[5]).strip()
         out.append(item)
     return out

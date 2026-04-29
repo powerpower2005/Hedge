@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { useInvalidateDataCaches } from "../../context/DataCacheContext.jsx";
+import { useRepoMeta } from "../../hooks/useRepoMeta.js";
 import { IS_REPOSITORY_CONFIGURED, NEW_PICK_URL } from "../../lib/constants";
+import { formatJudgmentUtc } from "../../lib/formatters.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
 import { LangToggle } from "./LangToggle.jsx";
 import { ThemeToggle } from "./ThemeToggle.jsx";
@@ -13,8 +15,12 @@ const linkClass = ({ isActive }) =>
   }`;
 
 export function Header() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const invalidateDataCaches = useInvalidateDataCaches();
+  const { lastDailyJudgmentAt } = useRepoMeta();
+  const judgmentLabel = lastDailyJudgmentAt
+    ? formatJudgmentUtc(lastDailyJudgmentAt, locale)
+    : "";
   return (
     <header className="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur light:border-zinc-200 light:bg-white/80">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-3">
@@ -63,6 +69,11 @@ export function Header() {
           )}
         </nav>
       </div>
+      {IS_REPOSITORY_CONFIGURED && judgmentLabel ? (
+        <p className="mx-auto max-w-6xl px-4 pb-2 text-xs text-zinc-500 light:text-zinc-500">
+          {t("nav.lastJudgment", { time: judgmentLabel })}
+        </p>
+      ) : null}
     </header>
   );
 }

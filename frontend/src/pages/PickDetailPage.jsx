@@ -92,6 +92,12 @@ export function PickDetailPage() {
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.entry")}</dt>
           <dd>{formatPrice(pick.country, pick.entry?.price)}</dd>
         </div>
+        {pick.entry?.close_session_date ? (
+          <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
+            <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.entryCloseSessionDate")}</dt>
+            <dd>{pick.entry.close_session_date}</dd>
+          </div>
+        ) : null}
         <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.targetReturn")}</dt>
           <dd>{formatReturn(pick.target?.return_rate)}</dd>

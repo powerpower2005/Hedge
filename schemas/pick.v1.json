@@ -55,7 +55,12 @@
       "properties": {
         "price": { "type": "number", "exclusiveMinimum": 0 },
         "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
-        "source": { "type": "string" }
+        "source": { "type": "string" },
+        "close_session_date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Trading session calendar date for entry.price (GOOGLEFINANCE closeyest); at registration, Sheets column F walks backward up to 14 calendar days for the first numeric daily close."
+        }
       }
     },
     "target": {

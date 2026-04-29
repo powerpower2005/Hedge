@@ -23,7 +23,7 @@ from common.register_public_messages import (
     format_price_fetch_ops_log,
     format_price_fetch_public,
 )
-from common.goog_finance_parse import parse_instrument_name_cell
+from common.goog_finance_parse import parse_close_session_date_cell, parse_instrument_name_cell
 from common.models import (
     kr_googlefinance_prefix_candidates,
     market_for_google_finance,
@@ -33,6 +33,7 @@ from common.sheets import (
     append_ticker_row,
     delete_row_for_pick_id,
     read_close_at_row,
+    read_close_session_date_at_row,
     read_instrument_name_at_row,
     set_price_lookup_finance_prefix,
 )
@@ -91,6 +92,7 @@ def build_pick(
     *,
     instrument_name: str | None = None,
     author_note: str | None = None,
+    entry_close_session_date: date | None = None,
 ) -> dict:
     entry_date = datetime.now(timezone.utc).date()
     deadline = entry_date + timedelta(days=duration_days)
@@ -113,7 +115,12 @@ def build_pick(
             "price": entry_price,
             "date": entry_date.isoformat(),
             "source": "google_sheets",
-        },
+        }
+        | (
+            {"close_session_date": entry_close_session_date.isoformat()}
+            if entry_close_session_date is not None
+            else {}
+        ),
         "target": {
             "return_rate": target_return,
             "price": target_price,
@@ -212,6 +219,8 @@ def main() -> None:
     pick_id = peek_next_pick_id()
     row_index: int | None = None
     raw_close: str | None = None
+    instrument_name: str | None = None
+    entry_close_session_date: date | None = None
     try:
         row_index = append_ticker_row(
             pick_id,
@@ -248,13 +257,18 @@ def main() -> None:
                 f"prefix={resolved_sheet_prefix} tried={'->'.join(tried_chain)}",
                 file=sys.stderr,
             )
-        instrument_name: str | None = None
         for _ in range(5):
             raw_name = read_instrument_name_at_row(row_index)
             instrument_name = parse_instrument_name_cell(raw_name)
             if instrument_name:
                 break
             time.sleep(1)
+        for _ in range(8):
+            raw_sess = read_close_session_date_at_row(row_index)
+            entry_close_session_date = parse_close_session_date_cell(raw_sess)
+            if entry_close_session_date is not None:
+                break
+            time.sleep(2)
     except Exception as e:
         if row_index is not None:
             print(
@@ -298,6 +312,7 @@ def main() -> None:
         cast(float, entry_price),
         instrument_name=instrument_name,
         author_note=submitter_note if isinstance(submitter_note, str) else None,
+        entry_close_session_date=entry_close_session_date,
     )
     active_picks.append(pick)
     save_list_file(ACTIVE_PATH, active_picks)
@@ -305,6 +320,11 @@ def main() -> None:
 
     start_s = _format_money(country, cast(float, entry_price))
     target_s = _format_money(country, pick["target"]["price"])
+    session_line = ""
+    csd = pick.get("entry", {}).get("close_session_date")
+    if csd:
+        session_line = f"| Entry close (session) date | `{csd}` |\n"
+
     comment = f"""**Registered**
 
 | Field | Value |
@@ -313,7 +333,7 @@ def main() -> None:
 | Ticker | `{ticker}` ({market}) |
 | Name | {pick.get("instrument_name") or "—"} |
 | Entry | {start_s} |
-| Target | {target_s} (+{target_return_pct:.1f}%) |
+{session_line}| Target | {target_s} (+{target_return_pct:.1f}%) |
 | Deadline | {pick['duration']['deadline']} ({duration_days} days) |
 
 Daily close check runs around **07:00 KST**. Vote with reactions on issues.

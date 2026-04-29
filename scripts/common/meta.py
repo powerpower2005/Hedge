@@ -30,3 +30,10 @@ def bump_next_pick_id(current_id: int) -> None:
     meta["next_pick_id"] = current_id + 1
     meta["updated_at"] = now_iso()
     save_meta(meta)
+
+
+def touch_last_daily_judgment_at() -> None:
+    """Record successful completion of daily_judgment (batch return / progress update)."""
+    meta = load_meta()
+    meta["last_daily_judgment_at"] = now_iso()
+    save_meta(meta)

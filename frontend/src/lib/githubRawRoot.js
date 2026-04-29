@@ -1,5 +1,6 @@
 import { DATA_CACHE_TTL_MS } from "./cacheConstants.js";
 import { BRANCH, IS_REPOSITORY_CONFIGURED, REPO_NAME, REPO_OWNER } from "./constants.js";
+import { invalidateUrlMetaCache } from "./urlMetaCache.js";
 import { invalidateUrlPickCache } from "./urlPickListCache.js";
 
 /**
@@ -52,7 +53,10 @@ export async function getResolvedRawRootUrl() {
       }
       const prevSha = shaCache.sha;
       shaCache = { sha, ts: Date.now() };
-      if (prevSha != null && prevSha !== sha) invalidateUrlPickCache();
+      if (prevSha != null && prevSha !== sha) {
+        invalidateUrlPickCache();
+        invalidateUrlMetaCache();
+      }
       return `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${sha}`;
     } finally {
       if (resolveInflight === task) resolveInflight = null;
@@ -62,13 +66,14 @@ export async function getResolvedRawRootUrl() {
   return task;
 }
 
-/** @returns {Promise<{ active: string, hallOfFame: string, expired: string, version: string, rules: string }>} */
+/** @returns {Promise<{ active: string, hallOfFame: string, expired: string, meta: string, version: string, rules: string }>} */
 export async function getResolvedDataUrls() {
   const root = await getResolvedRawRootUrl();
   return {
     active: `${root}/data/active.json`,
     hallOfFame: `${root}/data/hall_of_fame.json`,
     expired: `${root}/data/expired_recent.json`,
+    meta: `${root}/data/meta.json`,
     version: `${root}/VERSION`,
     rules: `${root}/config/rules.current.json`,
   };

@@ -7,6 +7,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 from common.goog_finance_parse import parse_instrument_name_cell
+from common.meta import touch_last_daily_judgment_at
 from common.sheets import fetch_all_prices_rows
 from common.storage import get_picks, load_list_file, save_list_file
 from common.versioning import now_iso, read_engine_version
@@ -101,6 +102,7 @@ def main() -> None:
     active_picks = get_picks(active_data)
     if not active_picks:
         print("No active picks.")
+        touch_last_daily_judgment_at()
         return
 
     try:
@@ -197,6 +199,7 @@ def main() -> None:
     print(
         f"Active: {len(remaining_active)}, achieved: {len(newly_achieved)}, expired: {len(newly_expired)}"
     )
+    touch_last_daily_judgment_at()
 
 
 if __name__ == "__main__":
