@@ -29,7 +29,7 @@ export default {
   active: {
     title: "Active picks",
     subtitle:
-      "{count} open picks. The UI may show cached values; this tab reuses the same fetched data for up to ~1 minute. Use “Refresh data” in the header to fetch immediately. Daily judgment (prior session close) runs on the repository around **22:00 UTC** each day (~**07:00 KST** the next calendar day).",
+      "{count} open picks. The UI may show cached values; this tab reuses the same fetched data for up to ~1 minute. Use “Refresh data” in the header to fetch immediately. Daily judgment (prior session close) runs separately by country: **KR batch (07:10 UTC / 16:10 KST)** and **US batch (21:10 UTC, after US market close ET)**.",
   },
   hallOfFame: {
     title: "Hall of Fame",
@@ -62,7 +62,7 @@ export default {
       "There are caps on how many active picks you may have at once and on duplicate tickers per user. Target return and duration must be chosen from the allowed ranges shown on the form. If something is wrong, a message may appear on the same submission thread.",
     s4Title: "Progress and outcomes",
     s4Body:
-      "Progress uses the **prior session’s official close**. The repository **Daily Judgment** job runs around **22:00 UTC** each day (~**07:00 KST** the next calendar day); after that updates `main`, this site reflects them on the next fetch. If the target is reached in time, the pick moves to Hall of Fame; otherwise it moves to Expired after the deadline. The detail page shows entry, targets, and current return.",
+      "Progress uses the **prior session’s official close**. Daily judgment is split by country: **Daily Judgment KR (07:10 UTC / 16:10 KST)** and **Daily Judgment US (21:10 UTC, after US market close ET)**. After each run updates `main`, this site reflects it on the next fetch. If the target is reached in time, the pick moves to Hall of Fame; otherwise it moves to Expired after the deadline. The detail page shows entry, targets, and current return.",
     s5Title: "Votes (reactions)",
     s5Body:
       "Each pick is tied to its GitHub registration issue. Add a +1 (approve) or −1 (disapprove) reaction on that issue’s first post to vote. Counts on cards and detail pages refresh after the repository syncs reactions from GitHub (about hourly UTC, or when a maintainer runs the job manually).",
@@ -75,7 +75,8 @@ export default {
     title: "About",
     lead:
       "Called It is a community event: you choose a ticker, a target return, and a time window. Registered picks appear in public lists, and progress is updated daily using official closing prices.",
-    bullet1: "Judgment: if the daily close touches the target price within the window, the pick is marked achieved. Automated daily judgment runs around 22:00 UTC (~07:00 KST the next calendar day).",
+    bullet1:
+      "Judgment: if the daily close touches the target price within the window, the pick is marked achieved. Automated daily judgment is split by country (KR: 07:10 UTC / 16:10 KST, US: 21:10 UTC after market close ET).",
     bullet2: "Submissions use a fixed form; entries that break the rules may be rejected.",
     bullet3: "No unofficial price scraping; only published closing references are used.",
     rulesLoaded: "Rules version {version} (effective {from}).",
