@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import argparse
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from common.goog_finance_parse import parse_instrument_name_cell
 from common.meta import touch_last_daily_judgment_at
@@ -19,10 +21,23 @@ ARCHIVE_DIR = Path("data/archive")
 
 HALL_OF_FAME_SIZE = 100
 SUSPENDED_THRESHOLD = 5
+COUNTRY_TIMEZONES = {
+    "KR": "Asia/Seoul",
+    "US": "America/New_York",
+}
 
 
 def today_utc() -> date:
     return datetime.now(timezone.utc).date()
+
+
+def today_by_country(country: str | None) -> date:
+    if country is None:
+        return today_utc()
+    tz_name = COUNTRY_TIMEZONES.get(country)
+    if tz_name is None:
+        return today_utc()
+    return datetime.now(ZoneInfo(tz_name)).date()
 
 
 def transition(pick: dict, new_status: str, reason: str) -> None:
@@ -37,12 +52,12 @@ def transition(pick: dict, new_status: str, reason: str) -> None:
     )
 
 
-def update_progress(pick: dict, close: float) -> None:
+def update_progress(pick: dict, close: float, judgment_day: date) -> None:
     entry_price = pick["entry"]["price"]
     target_price = pick["target"]["price"]
     return_rate = (close - entry_price) / entry_price
 
-    pick["progress"]["updated_at"] = today_utc().isoformat()
+    pick["progress"]["updated_at"] = judgment_day.isoformat()
     pick["progress"]["current"] = {
         "close": close,
         "return_rate": round(return_rate, 6),
@@ -52,7 +67,7 @@ def update_progress(pick: dict, close: float) -> None:
     if close > highest["close"]:
         pick["progress"]["highest"] = {
             "close": close,
-            "close_date": today_utc().isoformat(),
+            "close_date": judgment_day.isoformat(),
             "return_rate": round(return_rate, 6),
         }
 
@@ -97,7 +112,20 @@ def archive_to_yearly(archive_picks: list[dict]) -> None:
         save_list_file(path, existing + picks)
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Run daily judgment for active picks.")
+    parser.add_argument(
+        "--country",
+        choices=sorted(COUNTRY_TIMEZONES.keys()),
+        help="Process only one country and use its local market date.",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
+    selected_country = args.country
+
     active_data = load_list_file(ACTIVE_PATH)
     active_picks = get_picks(active_data)
     if not active_picks:
@@ -128,8 +156,16 @@ def main() -> None:
     remaining_active: list[dict] = []
     newly_achieved: list[dict] = []
     newly_expired: list[dict] = []
+    processed = 0
 
     for pick in active_picks:
+        country = pick.get("country")
+        if selected_country and country != selected_country:
+            remaining_active.append(pick)
+            continue
+
+        judgment_day = today_by_country(country)
+        processed += 1
         pick_id = pick["id"]
         if not pick.get("instrument_name"):
             raw_n = name_map.get(pick_id)
@@ -158,7 +194,7 @@ def main() -> None:
             remaining_active.append(pick)
             continue
 
-        update_progress(pick, close)
+        update_progress(pick, close, judgment_day)
 
         target = pick["target"]["price"]
         deadline = date.fromisoformat(pick["duration"]["deadline"])
@@ -166,9 +202,9 @@ def main() -> None:
         if close >= target:
             entry_date = date.fromisoformat(pick["entry"]["date"])
             pick["achievement"] = {
-                "achieved_date": today_utc().isoformat()[:10],
+                "achieved_date": judgment_day.isoformat(),
                 "achieved_close": close,
-                "days_taken": (today_utc() - entry_date).days,
+                "days_taken": (judgment_day - entry_date).days,
                 "final_return_rate": round(
                     (close - pick["entry"]["price"]) / pick["entry"]["price"],
                     6,
@@ -176,7 +212,7 @@ def main() -> None:
             }
             transition(pick, "achieved", "close_touched_target")
             newly_achieved.append(pick)
-        elif today_utc() > deadline:
+        elif judgment_day > deadline:
             transition(pick, "expired", "deadline_passed_without_achievement")
             pick["expired_at"] = now_iso()
             newly_expired.append(pick)
@@ -196,8 +232,9 @@ def main() -> None:
         expired = get_picks(load_list_file(EXPIRED_PATH)) + newly_expired
         save_list_file(EXPIRED_PATH, expired)
 
+    country_label = selected_country or "ALL"
     print(
-        f"Active: {len(remaining_active)}, achieved: {len(newly_achieved)}, expired: {len(newly_expired)}"
+        f"Country: {country_label}, processed: {processed}, active: {len(remaining_active)}, achieved: {len(newly_achieved)}, expired: {len(newly_expired)}"
     )
     touch_last_daily_judgment_at()
 

@@ -1,11 +1,11 @@
-name: Daily Judgment KR
+name: Daily Judgment US
 
 on:
   schedule:
-    - cron: "10 7 * * *"
+    - cron: "10 21 * * *"
   workflow_dispatch:
 
-# Serialize with Register New Pick / operator fixes so only one data/ push to main at a time.
+# Serialize with other data writers so only one data/ push to main at a time.
 concurrency:
   group: repo-data-main-${{ github.repository }}
   cancel-in-progress: false
@@ -38,12 +38,12 @@ jobs:
         run: |
           python -c "import os, pathlib; pathlib.Path('config').mkdir(exist_ok=True); pathlib.Path('config/service_account.json').write_text(os.environ['GOOGLE_SERVICE_ACCOUNT_JSON'], encoding='utf-8')"
 
-      - name: Run judgment (KR)
+      - name: Run judgment (US)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           REPO: ${{ github.repository }}
-        run: python scripts/daily_judgment.py --country KR
+        run: python scripts/daily_judgment.py --country US
 
       - name: Commit and push
         env:
@@ -55,7 +55,7 @@ jobs:
           if git diff --staged --quiet; then
             exit 0
           fi
-          git commit -m "chore(data): daily judgment KR $(date -u +%Y-%m-%d)"
+          git commit -m "chore(data): daily judgment US $(date -u +%Y-%m-%d)"
           for i in 1 2 3 4 5; do
             git pull --rebase origin "$BRANCH" && git push origin "$BRANCH" && break
             sleep $((i * 3))
@@ -66,7 +66,7 @@ jobs:
         env:
           REPO: ${{ github.repository }}
         run: |
-          echo "Judgment(KR): Sheet CSV/gspread + Secrets (GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_JSON, names only)."
+          echo "Judgment(US): Sheet CSV/gspread + Secrets (GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_JSON, names only)."
           echo "Push: see commit step; rebase/push loop may conflict with concurrent data commits."
           bash scripts/ci_failure_context.sh
 
@@ -82,7 +82,7 @@ jobs:
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `[AUTO] Daily judgment KR failed - ${new Date().toISOString().split('T')[0]}`,
-              body: `Daily judgment KR workflow failed.\n\nRun: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              title: `[AUTO] Daily judgment US failed - ${new Date().toISOString().split('T')[0]}`,
+              body: `Daily judgment US workflow failed.\n\nRun: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
               labels: ['system-error', 'priority-high']
             });
