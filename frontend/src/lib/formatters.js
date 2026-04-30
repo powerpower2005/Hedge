@@ -19,8 +19,11 @@ export function formatJudgmentUtc(iso, locale) {
   if (Number.isNaN(d.getTime())) return "";
   const loc = locale === "en" ? "en-US" : "ko-KR";
   return new Intl.DateTimeFormat(loc, {
-    dateStyle: "medium",
-    timeStyle: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
     timeZone: "UTC",
     timeZoneName: "short",
   }).format(d);
