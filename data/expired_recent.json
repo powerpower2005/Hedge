@@ -3,11 +3,79 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "a099668"
+    "commit": "c05d056"
   },
-  "generated_at": "2026-04-26T03:27:00.200162Z",
+  "generated_at": "2026-05-01T09:06:19.495654Z",
   "data": {
-    "count": 0,
-    "picks": []
+    "count": 1,
+    "picks": [
+      {
+        "id": 3,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "be4c367"
+        },
+        "created_at": "2026-04-22T15:08:10.076096Z",
+        "author": "powerpower2005",
+        "issue_number": 8,
+        "ticker": "005930",
+        "country": "KR",
+        "market": "KRX",
+        "entry": {
+          "price": 219000.0,
+          "date": "2026-04-22",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.1,
+          "price": 240900.0
+        },
+        "duration": {
+          "days": 7,
+          "deadline": "2026-04-29"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-22T15:08:10.076112Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-05-01T09:06:19.493904Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-01",
+          "current": {
+            "close": 226000.0,
+            "return_rate": 0.031963
+          },
+          "highest": {
+            "close": 226000.0,
+            "close_date": "2026-05-01",
+            "return_rate": 0.031963
+          },
+          "distance_to_target": 0.068037,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-22T15:08:10.076157Z"
+        },
+        "extensions": {},
+        "instrument_name": "Samsung Electronics Co Ltd",
+        "expired_at": "2026-05-01T09:06:19.493986Z"
+      }
+    ]
   }
 }
