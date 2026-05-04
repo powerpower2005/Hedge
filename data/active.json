@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "4bf3444"
+    "commit": "3bf0ad1"
   },
-  "generated_at": "2026-05-04T12:30:38.177265Z",
+  "generated_at": "2026-05-04T13:54:52.520105Z",
   "data": {
     "count": 16,
     "picks": [
@@ -972,9 +972,9 @@
           "error_count": 0
         },
         "votes": {
-          "likes": 0,
+          "likes": 1,
           "dislikes": 0,
-          "last_synced": "2026-05-04T12:30:38.177214Z"
+          "last_synced": "2026-05-04T13:54:52.519955Z"
         },
         "extensions": {},
         "instrument_name": "Credo Technology Group Holding Ltd",
