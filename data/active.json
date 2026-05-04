@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "3eefda1"
+    "commit": "4bf3444"
   },
-  "generated_at": "2026-05-04T09:30:08.096625Z",
+  "generated_at": "2026-05-04T12:30:38.177265Z",
   "data": {
-    "count": 15,
+    "count": 16,
     "picks": [
       {
         "id": 4,
@@ -917,6 +917,67 @@
         },
         "extensions": {},
         "instrument_name": "Onto Innovation Inc",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 21,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "4bf3444"
+        },
+        "created_at": "2026-05-04T12:30:38.177144Z",
+        "author": "saechimdaeki",
+        "issue_number": 41,
+        "ticker": "CRDO",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 174.01,
+          "date": "2026-05-04",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.1,
+          "price": 191.411
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-03"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-04T12:30:38.177160Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-04",
+          "current": {
+            "close": 174.01,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 174.01,
+            "close_date": "2026-05-04",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.1,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-04T12:30:38.177214Z"
+        },
+        "extensions": {},
+        "instrument_name": "Credo Technology Group Holding Ltd",
         "author_note": "_No response_"
       }
     ]
