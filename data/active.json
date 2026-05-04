@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "889059c"
+    "commit": "3eefda1"
   },
-  "generated_at": "2026-05-03T21:55:50.405026Z",
+  "generated_at": "2026-05-04T09:30:08.096625Z",
   "data": {
     "count": 15,
     "picks": [
@@ -108,10 +108,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-03",
+          "updated_at": "2026-05-04",
           "current": {
-            "close": 1293000.0,
-            "return_rate": 0.057236
+            "close": 1286000.0,
+            "return_rate": 0.051513
           },
           "highest": {
             "close": 1300000.0,
@@ -470,10 +470,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-03",
+          "updated_at": "2026-05-04",
           "current": {
-            "close": 180000.0,
-            "return_rate": -0.019074
+            "close": 175900.0,
+            "return_rate": -0.041417
           },
           "highest": {
             "close": 196800.0,
@@ -592,10 +592,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-03",
+          "updated_at": "2026-05-04",
           "current": {
-            "close": 9230.0,
-            "return_rate": 0.024417
+            "close": 8890.0,
+            "return_rate": -0.013319
           },
           "highest": {
             "close": 9320.0,
@@ -714,10 +714,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-03",
+          "updated_at": "2026-05-04",
           "current": {
-            "close": 17470.0,
-            "return_rate": 0.030678
+            "close": 16960.0,
+            "return_rate": 0.00059
           },
           "highest": {
             "close": 17470.0,
@@ -775,10 +775,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-03",
+          "updated_at": "2026-05-04",
           "current": {
-            "close": 77500.0,
-            "return_rate": -0.052567
+            "close": 74200.0,
+            "return_rate": -0.09291
           },
           "highest": {
             "close": 81800.0,
