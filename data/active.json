@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "f68f172"
+    "commit": "2ca889a"
   },
-  "generated_at": "2026-05-05T09:17:21.951375Z",
+  "generated_at": "2026-05-05T11:43:43.769665Z",
   "data": {
-    "count": 16,
+    "count": 17,
     "picks": [
       {
         "id": 4,
@@ -979,6 +979,67 @@
         "extensions": {},
         "instrument_name": "Credo Technology Group Holding Ltd",
         "author_note": "_No response_"
+      },
+      {
+        "id": 22,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "2ca889a"
+        },
+        "created_at": "2026-05-05T11:43:43.769478Z",
+        "author": "powerpower2005",
+        "issue_number": 42,
+        "ticker": "HOOD",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 73.66,
+          "date": "2026-05-05",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.3,
+          "price": 95.758
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-04"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-05T11:43:43.769495Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-05",
+          "current": {
+            "close": 73.66,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 73.66,
+            "close_date": "2026-05-05",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.3,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-05T11:43:43.769590Z"
+        },
+        "extensions": {},
+        "instrument_name": "Robinhood Markets Inc",
+        "author_note": "올라간다"
       }
     ]
   }
