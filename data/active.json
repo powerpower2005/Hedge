@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "5c1a647"
+    "commit": "4e0f239"
   },
-  "generated_at": "2026-05-06T09:34:07.029122Z",
+  "generated_at": "2026-05-06T22:09:22.335492Z",
   "data": {
-    "count": 17,
+    "count": 16,
     "picks": [
       {
         "id": 4,
@@ -48,10 +48,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 68.43,
-            "return_rate": -0.144732
+            "close": 63.87,
+            "return_rate": -0.201725
           },
           "highest": {
             "close": 84.66,
@@ -168,10 +168,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 10.4,
-            "return_rate": -0.067265
+            "close": 10.2,
+            "return_rate": -0.085202
           },
           "highest": {
             "close": 11.15,
@@ -228,10 +228,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 6.17,
-            "return_rate": -0.181698
+            "close": 6.35,
+            "return_rate": -0.157825
           },
           "highest": {
             "close": 7.54,
@@ -288,10 +288,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 68.43,
-            "return_rate": -0.191708
+            "close": 63.87,
+            "return_rate": -0.245571
           },
           "highest": {
             "close": 84.66,
@@ -348,17 +348,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 21.1,
-            "return_rate": 0.013936
+            "close": 22.19,
+            "return_rate": 0.066314
           },
           "highest": {
-            "close": 21.1,
-            "close_date": "2026-04-28",
-            "return_rate": 0.013936
+            "close": 22.19,
+            "close_date": "2026-05-06",
+            "return_rate": 0.066314
           },
-          "distance_to_target": 0.886064,
+          "distance_to_target": 0.833686,
           "error_count": 0
         },
         "votes": {
@@ -409,17 +409,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 976.18,
-            "return_rate": 0.152664
+            "close": 994.56,
+            "return_rate": 0.174367
           },
           "highest": {
-            "close": 976.18,
-            "close_date": "2026-05-05",
-            "return_rate": 0.152664
+            "close": 994.56,
+            "close_date": "2026-05-06",
+            "return_rate": 0.174367
           },
-          "distance_to_target": 0.547336,
+          "distance_to_target": 0.525633,
           "error_count": 0
         },
         "votes": {
@@ -531,17 +531,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 288.49,
-            "return_rate": 0.214337
+            "close": 295.28,
+            "return_rate": 0.242918
           },
           "highest": {
-            "close": 290.52,
-            "close_date": "2026-05-04",
-            "return_rate": 0.222882
+            "close": 295.28,
+            "close_date": "2026-05-06",
+            "return_rate": 0.242918
           },
-          "distance_to_target": 0.177118,
+          "distance_to_target": 0.157082,
           "error_count": 0
         },
         "votes": {
@@ -653,10 +653,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 22.91,
-            "return_rate": -0.261206
+            "close": 19.87,
+            "return_rate": -0.359239
           },
           "highest": {
             "close": 31.01,
@@ -836,10 +836,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 97.08,
-            "return_rate": -0.142479
+            "close": 94.93,
+            "return_rate": -0.16147
           },
           "highest": {
             "close": 113.21,
@@ -897,10 +897,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 299.55,
-            "return_rate": 0.024768
+            "close": 305.0,
+            "return_rate": 0.043413
           },
           "highest": {
             "close": 307.86,
@@ -917,67 +917,6 @@
         },
         "extensions": {},
         "instrument_name": "Onto Innovation Inc",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 21,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "4bf3444"
-        },
-        "created_at": "2026-05-04T12:30:38.177144Z",
-        "author": "saechimdaeki",
-        "issue_number": 41,
-        "ticker": "CRDO",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "price": 174.01,
-          "date": "2026-05-04",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.1,
-          "price": 191.411
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-06-03"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-05-04T12:30:38.177160Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-05-05",
-          "current": {
-            "close": 180.06,
-            "return_rate": 0.034768
-          },
-          "highest": {
-            "close": 184.38,
-            "close_date": "2026-05-04",
-            "return_rate": 0.059594
-          },
-          "distance_to_target": 0.040406,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 1,
-          "dislikes": 0,
-          "last_synced": "2026-05-04T13:54:52.519955Z"
-        },
-        "extensions": {},
-        "instrument_name": "Credo Technology Group Holding Ltd",
         "author_note": "_No response_"
       },
       {
@@ -1019,17 +958,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-05",
+          "updated_at": "2026-05-06",
           "current": {
-            "close": 76.55,
-            "return_rate": 0.039234
+            "close": 77.03,
+            "return_rate": 0.045751
           },
           "highest": {
-            "close": 76.55,
-            "close_date": "2026-05-05",
-            "return_rate": 0.039234
+            "close": 77.03,
+            "close_date": "2026-05-06",
+            "return_rate": 0.045751
           },
-          "distance_to_target": 0.260766,
+          "distance_to_target": 0.254249,
           "error_count": 0
         },
         "votes": {

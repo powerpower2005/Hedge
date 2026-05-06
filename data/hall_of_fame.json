@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "b5b639d"
+    "commit": "4e0f239"
   },
-  "generated_at": "2026-04-23T22:39:09.969139Z",
+  "generated_at": "2026-05-06T22:09:22.337028Z",
   "data": {
-    "count": 1,
+    "count": 2,
     "picks": [
       {
         "id": 5,
@@ -79,6 +79,79 @@
           "achieved_close": 18.47,
           "days_taken": 0,
           "final_return_rate": 0.204827
+        }
+      },
+      {
+        "id": 21,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "4bf3444"
+        },
+        "created_at": "2026-05-04T12:30:38.177144Z",
+        "author": "saechimdaeki",
+        "issue_number": 41,
+        "ticker": "CRDO",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 174.01,
+          "date": "2026-05-04",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.1,
+          "price": 191.411
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-03"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-04T12:30:38.177160Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-05-06T22:09:22.335350Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-06",
+          "current": {
+            "close": 193.57,
+            "return_rate": 0.112407
+          },
+          "highest": {
+            "close": 193.57,
+            "close_date": "2026-05-06",
+            "return_rate": 0.112407
+          },
+          "distance_to_target": -0.012407,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 1,
+          "dislikes": 0,
+          "last_synced": "2026-05-04T13:54:52.519955Z"
+        },
+        "extensions": {},
+        "instrument_name": "Credo Technology Group Holding Ltd",
+        "author_note": "_No response_",
+        "achievement": {
+          "achieved_date": "2026-05-06",
+          "achieved_close": 193.57,
+          "days_taken": 2,
+          "final_return_rate": 0.112407
         }
       }
     ]
