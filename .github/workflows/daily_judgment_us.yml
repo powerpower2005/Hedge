@@ -2,7 +2,8 @@ name: Daily Judgment US
 
 on:
   schedule:
-    - cron: "10 21 * * *"
+    # Stagger from sync_votes / KR judgment (UTC).
+    - cron: "17 21 * * *"
   workflow_dispatch:
 
 # Serialize with other data writers so only one data/ push to main at a time.
