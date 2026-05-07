@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "e1a4e16"
+    "commit": "96e0cc2"
   },
-  "generated_at": "2026-05-07T04:31:48.524572Z",
+  "generated_at": "2026-05-07T09:42:32.473351Z",
   "data": {
-    "count": 21,
+    "count": 20,
     "picks": [
       {
         "id": 4,
@@ -68,66 +68,6 @@
         },
         "extensions": {},
         "instrument_name": "AST SpaceMobile Inc"
-      },
-      {
-        "id": 6,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "19b0cee"
-        },
-        "created_at": "2026-04-23T02:02:12.014697Z",
-        "author": "cieske",
-        "issue_number": 12,
-        "ticker": "000660",
-        "country": "KR",
-        "market": "KRX",
-        "entry": {
-          "price": 1223000.0,
-          "date": "2026-04-23",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.2,
-          "price": 1467600.0
-        },
-        "duration": {
-          "days": 90,
-          "deadline": "2026-07-22"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-04-23T02:02:12.014708Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-05-06",
-          "current": {
-            "close": 1447000.0,
-            "return_rate": 0.183156
-          },
-          "highest": {
-            "close": 1447000.0,
-            "close_date": "2026-05-06",
-            "return_rate": 0.183156
-          },
-          "distance_to_target": 0.016844,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-04-23T02:02:12.014748Z"
-        },
-        "extensions": {},
-        "instrument_name": "SK Hynix Inc"
       },
       {
         "id": 7,
@@ -470,10 +410,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-06",
+          "updated_at": "2026-05-07",
           "current": {
-            "close": 174500.0,
-            "return_rate": -0.049046
+            "close": 167500.0,
+            "return_rate": -0.087193
           },
           "highest": {
             "close": 196800.0,
@@ -592,10 +532,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-06",
+          "updated_at": "2026-05-07",
           "current": {
-            "close": 9050.0,
-            "return_rate": 0.00444
+            "close": 8890.0,
+            "return_rate": -0.013319
           },
           "highest": {
             "close": 9320.0,
@@ -714,10 +654,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-06",
+          "updated_at": "2026-05-07",
           "current": {
-            "close": 16730.0,
-            "return_rate": -0.012979
+            "close": 16410.0,
+            "return_rate": -0.031858
           },
           "highest": {
             "close": 17470.0,
@@ -775,10 +715,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-06",
+          "updated_at": "2026-05-07",
           "current": {
-            "close": 74900.0,
-            "return_rate": -0.084352
+            "close": 71900.0,
+            "return_rate": -0.121027
           },
           "highest": {
             "close": 81800.0,

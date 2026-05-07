@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "4e0f239"
+    "commit": "96e0cc2"
   },
-  "generated_at": "2026-05-06T22:09:22.337028Z",
+  "generated_at": "2026-05-07T09:42:32.475349Z",
   "data": {
-    "count": 2,
+    "count": 3,
     "picks": [
       {
         "id": 5,
@@ -152,6 +152,78 @@
           "achieved_close": 193.57,
           "days_taken": 2,
           "final_return_rate": 0.112407
+        }
+      },
+      {
+        "id": 6,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "19b0cee"
+        },
+        "created_at": "2026-04-23T02:02:12.014697Z",
+        "author": "cieske",
+        "issue_number": 12,
+        "ticker": "000660",
+        "country": "KR",
+        "market": "KRX",
+        "entry": {
+          "price": 1223000.0,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 1467600.0
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-07-22"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T02:02:12.014708Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-05-07T09:42:32.473107Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-07",
+          "current": {
+            "close": 1601000.0,
+            "return_rate": 0.309076
+          },
+          "highest": {
+            "close": 1601000.0,
+            "close_date": "2026-05-07",
+            "return_rate": 0.309076
+          },
+          "distance_to_target": -0.109076,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T02:02:12.014748Z"
+        },
+        "extensions": {},
+        "instrument_name": "SK Hynix Inc",
+        "achievement": {
+          "achieved_date": "2026-05-07",
+          "achieved_close": 1601000.0,
+          "days_taken": 14,
+          "final_return_rate": 0.309076
         }
       }
     ]
