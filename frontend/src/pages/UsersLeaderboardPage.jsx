@@ -169,7 +169,7 @@ export function UsersLeaderboardPage() {
                               @{row.author}
                             </Link>
                             {titleSticker ? (
-                              <span className="rounded-full border border-amber-300/70 bg-amber-400/20 px-2 py-0.5 text-[11px] font-semibold tracking-tight text-amber-200 light:border-amber-400 light:bg-amber-100 light:text-amber-800">
+                              <span className="rounded-full border border-amber-500 bg-amber-300 px-2.5 py-0.5 text-xs font-extrabold tracking-tight text-zinc-900 shadow-sm light:border-amber-500 light:bg-amber-300 light:text-zinc-900">
                                 {titleSticker}
                               </span>
                             ) : null}
@@ -213,7 +213,7 @@ export function UsersLeaderboardPage() {
                         @{row.author}
                       </Link>
                       {titleSticker ? (
-                        <span className="rounded-full border border-amber-300/70 bg-amber-400/20 px-2 py-0.5 text-[11px] font-semibold tracking-tight text-amber-200 light:border-amber-400 light:bg-amber-100 light:text-amber-800">
+                        <span className="rounded-full border border-amber-500 bg-amber-300 px-2.5 py-0.5 text-xs font-extrabold tracking-tight text-zinc-900 shadow-sm light:border-amber-500 light:bg-amber-300 light:text-zinc-900">
                           {titleSticker}
                         </span>
                       ) : null}
