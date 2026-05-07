@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "2e7b598"
+    "commit": "4f475b2"
   },
-  "generated_at": "2026-05-07T11:19:34.928389Z",
+  "generated_at": "2026-05-07T14:23:14.279468Z",
   "data": {
-    "count": 21,
+    "count": 22,
     "picks": [
       {
         "id": 4,
@@ -1285,6 +1285,67 @@
         "extensions": {},
         "instrument_name": "Snowflake Inc",
         "author_note": "눈송이 가즈아"
+      },
+      {
+        "id": 29,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "4f475b2"
+        },
+        "created_at": "2026-05-07T14:23:14.279342Z",
+        "author": "saechimdaeki",
+        "issue_number": 49,
+        "ticker": "475150",
+        "country": "KR",
+        "market": "KRX",
+        "entry": {
+          "price": 54700.0,
+          "date": "2026-05-07",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.15,
+          "price": 62905.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-06"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-07T14:23:14.279356Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-07",
+          "current": {
+            "close": 54700.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 54700.0,
+            "close_date": "2026-05-07",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.15,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-07T14:23:14.279415Z"
+        },
+        "extensions": {},
+        "instrument_name": "SK Eternix Co Ltd",
+        "author_note": "드가자"
       }
     ]
   }
