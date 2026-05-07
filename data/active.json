@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "c9bd9fa"
+    "commit": "e1a4e16"
   },
-  "generated_at": "2026-05-07T02:26:39.832020Z",
+  "generated_at": "2026-05-07T04:31:48.524572Z",
   "data": {
-    "count": 20,
+    "count": 21,
     "picks": [
       {
         "id": 4,
@@ -1222,6 +1222,67 @@
         },
         "extensions": {},
         "instrument_name": "Intuitive Machines Inc",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 27,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "e1a4e16"
+        },
+        "created_at": "2026-05-07T04:31:48.524474Z",
+        "author": "kimgwanghoon",
+        "issue_number": 47,
+        "ticker": "432720",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "price": 28000.0,
+          "date": "2026-05-07",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 1.2,
+          "price": 61600.0
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-08-05"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-07T04:31:48.524490Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-07",
+          "current": {
+            "close": 28000.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 28000.0,
+            "close_date": "2026-05-07",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 1.2,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-07T04:31:48.524540Z"
+        },
+        "extensions": {},
+        "instrument_name": "Qualitas Semiconductor Co Ltd",
         "author_note": "_No response_"
       }
     ]
