@@ -5,9 +5,9 @@
     "version": "1.0.0",
     "commit": "c9bd9fa"
   },
-  "generated_at": "2026-05-07T02:25:51.456432Z",
+  "generated_at": "2026-05-07T02:26:39.832020Z",
   "data": {
-    "count": 19,
+    "count": 20,
     "picks": [
       {
         "id": 4,
@@ -1161,6 +1161,67 @@
         },
         "extensions": {},
         "instrument_name": "Advanced Micro Devices Inc",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 26,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "c9bd9fa"
+        },
+        "created_at": "2026-05-07T02:26:39.831919Z",
+        "author": "chance0523",
+        "issue_number": 46,
+        "ticker": "LUNR",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 24.8,
+          "date": "2026-05-07",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 2.5,
+          "price": 86.8
+        },
+        "duration": {
+          "days": 180,
+          "deadline": "2026-11-03"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-07T02:26:39.831936Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-07",
+          "current": {
+            "close": 24.8,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 24.8,
+            "close_date": "2026-05-07",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 2.5,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-07T02:26:39.831980Z"
+        },
+        "extensions": {},
+        "instrument_name": "Intuitive Machines Inc",
         "author_note": "_No response_"
       }
     ]
