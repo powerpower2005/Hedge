@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "d5da95b"
+    "commit": "c9bd9fa"
   },
-  "generated_at": "2026-05-07T02:22:11.751835Z",
+  "generated_at": "2026-05-07T02:25:51.456432Z",
   "data": {
-    "count": 18,
+    "count": 19,
     "picks": [
       {
         "id": 4,
@@ -1100,6 +1100,67 @@
         },
         "extensions": {},
         "instrument_name": "SK Hynix Inc",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 25,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "c9bd9fa"
+        },
+        "created_at": "2026-05-07T02:25:51.456307Z",
+        "author": "chance0523",
+        "issue_number": 45,
+        "ticker": "AMD",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 355.26,
+          "date": "2026-05-07",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.5,
+          "price": 532.89
+        },
+        "duration": {
+          "days": 180,
+          "deadline": "2026-11-03"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-07T02:25:51.456325Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-07",
+          "current": {
+            "close": 355.26,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 355.26,
+            "close_date": "2026-05-07",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.5,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-07T02:25:51.456381Z"
+        },
+        "extensions": {},
+        "instrument_name": "Advanced Micro Devices Inc",
         "author_note": "_No response_"
       }
     ]
