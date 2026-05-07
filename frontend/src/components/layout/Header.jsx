@@ -70,8 +70,10 @@ export function Header() {
         </nav>
       </div>
       {IS_REPOSITORY_CONFIGURED && judgmentLabel ? (
-        <p className="mx-auto max-w-6xl px-4 pb-2 text-xs text-zinc-500 light:text-zinc-500">
-          {t("nav.lastJudgment", { time: judgmentLabel })}
+        <p className="mx-auto max-w-6xl px-4 pb-2 text-xs">
+          <span className="inline-block rounded-sm bg-lime-300 px-2 py-1 font-medium text-zinc-900 shadow-[0_0_10px_rgba(190,242,100,0.55)] light:bg-lime-300 light:text-zinc-900">
+            {t("nav.lastJudgment", { time: judgmentLabel })}
+          </span>
         </p>
       ) : null}
     </header>

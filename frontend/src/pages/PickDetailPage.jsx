@@ -47,6 +47,10 @@ export function PickDetailPage() {
 
   const issueUrl = pickIssueUrl(pick.issue_number);
   const financeUrl = googleFinanceQuoteUrl(pick);
+  const registeredOn =
+    typeof pick.created_at === "string" && pick.created_at.length >= 10
+      ? pick.created_at.slice(0, 10)
+      : pick.entry?.date || null;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
@@ -88,6 +92,12 @@ export function PickDetailPage() {
         </details>
       ) : null}
       <dl className="mt-6 space-y-3 text-sm">
+        {registeredOn ? (
+          <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
+            <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.registeredOn")}</dt>
+            <dd>{registeredOn}</dd>
+          </div>
+        ) : null}
         <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.entry")}</dt>
           <dd>{formatPrice(pick.country, pick.entry?.price)}</dd>

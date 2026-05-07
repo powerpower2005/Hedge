@@ -90,6 +90,15 @@ export function PickList({ picks }) {
                       @{p.author}
                     </Link>
                   </p>
+                  {typeof p.created_at === "string" && p.created_at.length >= 10 ? (
+                    <p className="text-xs text-zinc-500 light:text-zinc-600">
+                      {t("pickList.registeredOn", { date: p.created_at.slice(0, 10) })}
+                    </p>
+                  ) : p.entry?.date ? (
+                    <p className="text-xs text-zinc-500 light:text-zinc-600">
+                      {t("pickList.registeredOn", { date: p.entry.date })}
+                    </p>
+                  ) : null}
                   {p.status?.current === "achieved" && p.achievement?.achieved_date ? (
                     <p className="text-xs text-emerald-400 light:text-emerald-700">
                       {t("pickList.achievedOn", { date: p.achievement.achieved_date })}

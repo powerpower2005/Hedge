@@ -10,6 +10,13 @@ const PAGE_SIZE = 20;
 
 const VALID_USER_SORT = new Set(["winRate", "attempts", "wins"]);
 
+function rankStickerText(t, rank) {
+  if (rank === 1) return t("users.rankTitle1");
+  if (rank === 2) return t("users.rankTitle2");
+  if (rank === 3) return t("users.rankTitle3");
+  return "";
+}
+
 function TotalReturnHelp({ text, triggerAriaLabel }) {
   const [open, setOpen] = useState(false);
 
@@ -146,6 +153,7 @@ export function UsersLeaderboardPage() {
                 <tbody>
                   {pageRows.map((row, i) => {
                     const rank = sliceStart + i + 1;
+                    const titleSticker = rankStickerText(t, rank);
                     return (
                       <tr
                         key={row.author}
@@ -153,12 +161,19 @@ export function UsersLeaderboardPage() {
                       >
                         <td className="px-3 py-2 tabular-nums text-zinc-500 light:text-zinc-600">{rank}</td>
                         <td className="px-3 py-2 font-medium">
-                          <Link
-                            className="text-emerald-500 hover:underline"
-                            to={`/user/${encodeURIComponent(row.author)}`}
-                          >
-                            @{row.author}
-                          </Link>
+                          <span className="inline-flex items-center gap-2">
+                            <Link
+                              className="text-emerald-500 hover:underline"
+                              to={`/user/${encodeURIComponent(row.author)}`}
+                            >
+                              @{row.author}
+                            </Link>
+                            {titleSticker ? (
+                              <span className="rounded-full border border-amber-300/70 bg-amber-400/20 px-2 py-0.5 text-[11px] font-semibold tracking-tight text-amber-200 light:border-amber-400 light:bg-amber-100 light:text-amber-800">
+                                {titleSticker}
+                              </span>
+                            ) : null}
+                          </span>
                         </td>
                         <td className="px-3 py-2 tabular-nums">{row.total}</td>
                         <td className="px-3 py-2 tabular-nums">{row.wins}</td>
@@ -180,6 +195,7 @@ export function UsersLeaderboardPage() {
           >
             {pageRows.map((row, i) => {
               const rank = sliceStart + i + 1;
+              const titleSticker = rankStickerText(t, rank);
               return (
                 <li
                   key={row.author}
@@ -189,12 +205,19 @@ export function UsersLeaderboardPage() {
                     <span className="text-xs tabular-nums text-zinc-500 light:text-zinc-600">
                       {t("users.cardRankLabel", { rank })}
                     </span>
-                    <Link
-                      className="font-medium text-emerald-500 hover:underline"
-                      to={`/user/${encodeURIComponent(row.author)}`}
-                    >
-                      @{row.author}
-                    </Link>
+                    <span className="inline-flex items-center gap-2">
+                      <Link
+                        className="font-medium text-emerald-500 hover:underline"
+                        to={`/user/${encodeURIComponent(row.author)}`}
+                      >
+                        @{row.author}
+                      </Link>
+                      {titleSticker ? (
+                        <span className="rounded-full border border-amber-300/70 bg-amber-400/20 px-2 py-0.5 text-[11px] font-semibold tracking-tight text-amber-200 light:border-amber-400 light:bg-amber-100 light:text-amber-800">
+                          {titleSticker}
+                        </span>
+                      ) : null}
+                    </span>
                   </div>
                   <dl className="mt-3 grid grid-cols-2 gap-2 text-sm">
                     <div>

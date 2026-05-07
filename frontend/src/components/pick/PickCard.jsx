@@ -10,6 +10,10 @@ export function PickCard({ pick }) {
   const st = pick.status?.current;
   const issueUrl = pickIssueUrl(pick.issue_number);
   const financeUrl = googleFinanceQuoteUrl(pick);
+  const registeredOn =
+    typeof pick.created_at === "string" && pick.created_at.length >= 10
+      ? pick.created_at.slice(0, 10)
+      : pick.entry?.date || null;
   return (
     <article className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 shadow-sm light:border-zinc-200 light:bg-white">
       <div className="flex flex-wrap items-start justify-between gap-2">
@@ -40,6 +44,11 @@ export function PickCard({ pick }) {
               @{pick.author}
             </Link>
           </p>
+          {registeredOn ? (
+            <p className="text-xs text-zinc-500 light:text-zinc-600">
+              {t("pickCard.registeredOn", { date: registeredOn })}
+            </p>
+          ) : null}
           {st === "achieved" && pick.achievement?.achieved_date ? (
             <p className="text-xs text-emerald-400 light:text-emerald-700">
               {t("pickCard.achievedOn", { date: pick.achievement.achieved_date })}
