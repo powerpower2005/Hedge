@@ -120,6 +120,9 @@ export default {
     winRateHint: "Win rate is achieved ÷ (achieved + expired). Shown as — if neither exists.",
     totalReturnHint:
       "Total return is the sum of each pick’s return (active: latest; achieved: recorded final; expired: last recorded). Not a capital-weighted portfolio return.",
+    totalReturnFormula:
+      "Total return = simple sum of each pick return. Active uses current return, achieved uses recorded final return (final_return_rate), and expired uses the last recorded return. This is not capital-weighted.",
+    totalReturnFormulaAria: "Show total return formula",
     colRank: "Rank",
     colUser: "User",
     colAttempts: "Attempts",
@@ -141,6 +144,7 @@ export default {
     deadline: "Deadline",
     entry: "Entry",
     progress: "Progress",
+    achievedOn: "Achieved on {date}",
     votes: "Votes",
     voteOnGithub: "Vote on GitHub",
     voteHint: "+1 / −1 on the issue · counts update after repo sync",
@@ -151,6 +155,7 @@ export default {
     viewLabel: "View",
     viewCards: "Cards",
     viewList: "List",
+    achievedOn: "Achieved on {date}",
     colTicker: "Ticker",
     colMarket: "Market",
     colTarget: "Target",

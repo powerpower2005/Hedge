@@ -16,12 +16,12 @@ export function PickCard({ pick }) {
         <div>
           <Link
             to={`/pick/${pick.id}`}
-            className="text-lg font-semibold text-white hover:text-emerald-400 light:text-zinc-900 light:hover:text-emerald-700"
+            className="text-xl font-semibold text-white hover:text-emerald-400 light:text-zinc-900 light:hover:text-emerald-700"
           >
-            {pick.ticker}
+            {pick.instrument_name || pick.ticker}
           </Link>
           {pick.instrument_name ? (
-            <p className="text-sm font-medium text-zinc-300 light:text-zinc-700">{pick.instrument_name}</p>
+            <p className="mt-0.5 text-xs font-medium tracking-wide text-zinc-400 light:text-zinc-600">{pick.ticker}</p>
           ) : financeUrl ? (
             <p className="text-sm">
               <a
@@ -40,6 +40,11 @@ export function PickCard({ pick }) {
               @{pick.author}
             </Link>
           </p>
+          {st === "achieved" && pick.achievement?.achieved_date ? (
+            <p className="text-xs text-emerald-400 light:text-emerald-700">
+              {t("pickCard.achievedOn", { date: pick.achievement.achieved_date })}
+            </p>
+          ) : null}
         </div>
         <StatusBadge status={st} />
       </div>

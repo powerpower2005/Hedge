@@ -10,6 +10,33 @@ const PAGE_SIZE = 20;
 
 const VALID_USER_SORT = new Set(["winRate", "attempts", "wins"]);
 
+function TotalReturnHelp({ text, triggerAriaLabel }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <span className="group/total-return-help relative ml-1 inline-flex items-center align-middle">
+      <button
+        type="button"
+        aria-label={triggerAriaLabel}
+        aria-expanded={open}
+        className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-zinc-500 text-[10px] font-bold leading-none text-zinc-400 transition hover:border-emerald-500 hover:text-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/70 light:border-zinc-400 light:text-zinc-600 light:hover:border-emerald-700 light:hover:text-emerald-700"
+        onClick={() => setOpen((v) => !v)}
+        title={text}
+      >
+        ?
+      </button>
+      <span
+        role="tooltip"
+        className={`pointer-events-none absolute right-0 top-full z-20 mt-2 w-72 rounded-md border border-zinc-700 bg-zinc-950 px-2 py-1.5 text-[11px] font-normal leading-relaxed text-zinc-200 shadow-lg transition-opacity light:border-zinc-300 light:bg-white light:text-zinc-700 ${
+          open ? "opacity-100" : "opacity-0 group-hover/total-return-help:opacity-100 group-focus-within/total-return-help:opacity-100"
+        }`}
+      >
+        {text}
+      </span>
+    </span>
+  );
+}
+
 export function UsersLeaderboardPage() {
   const { t } = useI18n();
   const { picks, loading, error } = useAllMergedPicks();
@@ -106,7 +133,13 @@ export function UsersLeaderboardPage() {
                       {t("users.colWinRate")}
                     </th>
                     <th scope="col" className="px-3 py-2 font-medium text-zinc-400 light:text-zinc-600">
-                      {t("users.colTotalReturn")}
+                      <span className="inline-flex items-center">
+                        {t("users.colTotalReturn")}
+                        <TotalReturnHelp
+                          text={t("users.totalReturnFormula")}
+                          triggerAriaLabel={t("users.totalReturnFormulaAria")}
+                        />
+                      </span>
                     </th>
                   </tr>
                 </thead>
@@ -179,7 +212,15 @@ export function UsersLeaderboardPage() {
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-xs text-zinc-500 light:text-zinc-600">{t("users.colTotalReturn")}</dt>
+                      <dt className="text-xs text-zinc-500 light:text-zinc-600">
+                        <span className="inline-flex items-center">
+                          {t("users.colTotalReturn")}
+                          <TotalReturnHelp
+                            text={t("users.totalReturnFormula")}
+                            triggerAriaLabel={t("users.totalReturnFormulaAria")}
+                          />
+                        </span>
+                      </dt>
                       <dd className="tabular-nums font-medium">{formatReturn(row.totalReturn)}</dd>
                     </div>
                   </dl>

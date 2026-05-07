@@ -80,16 +80,21 @@ export function PickList({ picks }) {
                 <div>
                   <Link
                     to={`/pick/${p.id}`}
-                    className="font-semibold text-white hover:text-emerald-400 light:text-zinc-900 light:hover:text-emerald-700"
+                    className="text-base font-semibold text-white hover:text-emerald-400 light:text-zinc-900 light:hover:text-emerald-700"
                   >
-                    {p.ticker}
+                    {p.instrument_name || p.ticker}
                   </Link>
                   <p className="text-xs text-zinc-500 light:text-zinc-600">
+                    {p.instrument_name ? `${p.ticker} · ` : ""}
                     <Link className="hover:underline" to={`/user/${p.author}`}>
                       @{p.author}
                     </Link>
-                    {p.instrument_name ? ` · ${p.instrument_name}` : ""}
                   </p>
+                  {p.status?.current === "achieved" && p.achievement?.achieved_date ? (
+                    <p className="text-xs text-emerald-400 light:text-emerald-700">
+                      {t("pickList.achievedOn", { date: p.achievement.achieved_date })}
+                    </p>
+                  ) : null}
                 </div>
                 <div className="text-sm">
                   <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colMarket")}</span>

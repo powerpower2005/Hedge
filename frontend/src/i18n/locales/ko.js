@@ -120,6 +120,9 @@ export default {
     winRateHint: "승률은 달성 ÷ (달성 + 만료)입니다. 둘 다 없으면 — 입니다.",
     totalReturnHint:
       "총 수익률은 픽마다의 수익률을 더한 값입니다(진행 중은 현재, 달성은 기록된 최종, 만료는 마지막으로 집계된 수익률). 자본 비중을 반영한 포트폴리오 수익률은 아닙니다.",
+    totalReturnFormula:
+      "총 수익률 = 각 픽 수익률의 단순 합. 진행 중은 현재 수익률, 달성은 기록된 최종 수익률(final_return_rate), 만료는 마지막으로 집계된 수익률을 사용합니다. 자본 비중 가중치는 반영하지 않습니다.",
+    totalReturnFormulaAria: "총 수익률 계산식 보기",
     colRank: "순위",
     colUser: "사용자",
     colAttempts: "시도",
@@ -141,6 +144,7 @@ export default {
     deadline: "기한",
     entry: "진입",
     progress: "진행",
+    achievedOn: "달성일 {date}",
     votes: "투표",
     voteOnGithub: "GitHub에서 투표",
     voteHint: "이슈에 +1 / -1 리액션 · 집계는 저장소 작업 후 반영",
@@ -151,6 +155,7 @@ export default {
     viewLabel: "보기",
     viewCards: "카드",
     viewList: "리스트",
+    achievedOn: "달성일 {date}",
     colTicker: "티커",
     colMarket: "시장",
     colTarget: "목표",

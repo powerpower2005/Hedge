@@ -55,9 +55,9 @@ export function PickDetailPage() {
       </Link>
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <div>
-          <h1 className="text-3xl font-bold text-white light:text-zinc-900">{pick.ticker}</h1>
+          <h1 className="text-3xl font-bold text-white light:text-zinc-900">{pick.instrument_name || pick.ticker}</h1>
           {pick.instrument_name ? (
-            <p className="mt-1 text-base text-zinc-400 light:text-zinc-600">{pick.instrument_name}</p>
+            <p className="mt-1 text-sm font-medium tracking-wide text-zinc-400 light:text-zinc-600">{pick.ticker}</p>
           ) : financeUrl ? (
             <p className="mt-1 text-base">
               <a
