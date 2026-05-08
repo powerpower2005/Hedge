@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "f991807"
+    "commit": "09b387a"
   },
-  "generated_at": "2026-05-08T10:55:37.264689Z",
+  "generated_at": "2026-05-08T13:03:51.181875Z",
   "data": {
-    "count": 24,
+    "count": 25,
     "picks": [
       {
         "id": 4,
@@ -1468,6 +1468,67 @@
         "extensions": {},
         "instrument_name": "Pum Tech Korea Co Ltd",
         "author_note": "펌텍 붐은 온다"
+      },
+      {
+        "id": 32,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "09b387a"
+        },
+        "created_at": "2026-05-08T13:03:51.181789Z",
+        "author": "cieske",
+        "issue_number": 53,
+        "ticker": "LINT",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 179.07,
+          "date": "2026-05-08",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 214.884
+        },
+        "duration": {
+          "days": 14,
+          "deadline": "2026-05-22"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-08T13:03:51.181804Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-08",
+          "current": {
+            "close": 179.07,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 179.07,
+            "close_date": "2026-05-08",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-08T13:03:51.181843Z"
+        },
+        "extensions": {},
+        "instrument_name": "Direxion Daily INTC Bull 2X ETF",
+        "author_note": "인텔 X2"
       }
     ]
   }
