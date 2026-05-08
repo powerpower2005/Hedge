@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "806ebec"
+    "commit": "f991807"
   },
-  "generated_at": "2026-05-08T10:42:46.846800Z",
+  "generated_at": "2026-05-08T10:55:37.264689Z",
   "data": {
-    "count": 23,
+    "count": 24,
     "picks": [
       {
         "id": 4,
@@ -1407,6 +1407,67 @@
         "extensions": {},
         "instrument_name": "Gamsung Corporation Co Ltd",
         "author_note": "스노우피크 붐은 온다"
+      },
+      {
+        "id": 31,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "f991807"
+        },
+        "created_at": "2026-05-08T10:55:37.264606Z",
+        "author": "bsgreentea",
+        "issue_number": 52,
+        "ticker": "251970",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "price": 40400.0,
+          "date": "2026-05-08",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.7,
+          "price": 68680.0
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-08-06"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-08T10:55:37.264621Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-08",
+          "current": {
+            "close": 40400.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 40400.0,
+            "close_date": "2026-05-08",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.7,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-08T10:55:37.264658Z"
+        },
+        "extensions": {},
+        "instrument_name": "Pum Tech Korea Co Ltd",
+        "author_note": "펌텍 붐은 온다"
       }
     ]
   }
