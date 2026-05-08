@@ -118,9 +118,15 @@ export default {
     sortWinRate: "승률 높은 순",
     sortAttempts: "시도 많은 순",
     sortWins: "달성 많은 순",
-    winRateHint: "승률은 달성 ÷ (달성 + 만료)입니다. 둘 다 없으면 — 입니다.",
+    winRateHint: "승률은 달성 ÷ 전체 시도입니다.",
+    rankRuleLabel: "등수 결정:",
+    rankRuleWinRate: "승률 내림차순 → 동률이면 달성 수 내림차순 → 동률이면 시도 수 내림차순",
+    rankRuleAttempts: "시도 수 내림차순 → 동률이면 달성 수 내림차순 → 동률이면 사용자명 오름차순",
+    rankRuleWins: "달성 수 내림차순 → 동률이면 시도 수 내림차순 → 동률이면 사용자명 오름차순",
     totalReturnHint:
       "총 수익률은 픽마다의 수익률을 더한 값입니다(진행 중은 현재, 달성은 기록된 최종, 만료는 마지막으로 집계된 수익률). 자본 비중을 반영한 포트폴리오 수익률은 아닙니다.",
+    totalReturnRankingNote:
+      "총 수익률은 픽 수가 많을수록 커지기 쉬운 단순 합계라 단독 랭킹 기준으로는 공정성이 떨어질 수 있어, 보조 지표로만 제공합니다.",
     totalReturnFormula:
       "총 수익률 = 각 픽 수익률의 단순 합. 진행 중은 현재 수익률, 달성은 기록된 최종 수익률(final_return_rate), 만료는 마지막으로 집계된 수익률을 사용합니다. 자본 비중 가중치는 반영하지 않습니다.",
     totalReturnFormulaAria: "총 수익률 계산식 보기",

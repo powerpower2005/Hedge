@@ -1,4 +1,4 @@
-/** @typedef {{ author: string, total: number, wins: number, expired: number, resolved: number, winRate: number | null, totalReturn: number }} UserStatRow */
+/** @typedef {{ author: string, total: number, wins: number, expired: number, winRate: number | null, totalReturn: number }} UserStatRow */
 
 /**
  * @param {object} p
@@ -37,9 +37,8 @@ export function aggregateUserStats(allPicks) {
       totalReturn += pickReturnForLeaderboard(p);
     }
     const total = ps.length;
-    const resolved = wins + expired;
-    const winRate = resolved > 0 ? wins / resolved : null;
-    rows.push({ author, total, wins, expired, resolved, winRate, totalReturn });
+    const winRate = total > 0 ? wins / total : null;
+    rows.push({ author, total, wins, expired, winRate, totalReturn });
   }
   return rows;
 }

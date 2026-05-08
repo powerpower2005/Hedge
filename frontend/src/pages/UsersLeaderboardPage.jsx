@@ -17,6 +17,12 @@ function rankStickerText(t, rank) {
   return "";
 }
 
+function rankRuleText(t, sortKey) {
+  if (sortKey === "attempts") return t("users.rankRuleAttempts");
+  if (sortKey === "wins") return t("users.rankRuleWins");
+  return t("users.rankRuleWinRate");
+}
+
 function TotalReturnHelp({ text, triggerAriaLabel }) {
   const [open, setOpen] = useState(false);
 
@@ -107,6 +113,12 @@ export function UsersLeaderboardPage() {
         </label>
         <p className="max-w-xl text-xs text-zinc-500 light:text-zinc-600">
           {t("users.winRateHint")} {t("users.totalReturnHint")}
+        </p>
+        <p className="max-w-xl text-xs text-zinc-500 light:text-zinc-600">
+          {t("users.totalReturnRankingNote")}
+        </p>
+        <p className="max-w-xl text-xs text-zinc-500 light:text-zinc-600">
+          {t("users.rankRuleLabel")} {rankRuleText(t, sortKey)}
         </p>
       </div>
 
