@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "7078763"
+    "commit": "169a640"
   },
-  "generated_at": "2026-05-10T09:00:18.194479Z",
+  "generated_at": "2026-05-10T22:05:59.241816Z",
   "data": {
     "count": 26,
     "picks": [
@@ -48,7 +48,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 65.35,
             "return_rate": -0.183227
@@ -108,7 +108,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 9.63,
             "return_rate": -0.136323
@@ -168,7 +168,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 6.99,
             "return_rate": -0.072944
@@ -228,7 +228,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 65.35,
             "return_rate": -0.228089
@@ -288,7 +288,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 22.36,
             "return_rate": 0.074483
@@ -349,7 +349,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 892.79,
             "return_rate": 0.054198
@@ -471,7 +471,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 258.64,
             "return_rate": 0.08869
@@ -593,7 +593,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 20.6,
             "return_rate": -0.335698
@@ -776,7 +776,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 72.9,
             "return_rate": -0.356064
@@ -837,7 +837,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 274.17,
             "return_rate": -0.062057
@@ -898,7 +898,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 76.28,
             "return_rate": 0.035569
@@ -1081,7 +1081,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 408.46,
             "return_rate": 0.149749
@@ -1142,7 +1142,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 24.11,
             "return_rate": -0.027823
@@ -1264,7 +1264,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 153.72,
             "return_rate": 0.084751
@@ -1508,7 +1508,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 179.07,
             "return_rate": 0.0
@@ -1569,7 +1569,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-09",
+          "updated_at": "2026-05-10",
           "current": {
             "close": 146.16,
             "return_rate": 0.0
