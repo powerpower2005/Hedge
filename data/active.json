@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "84a6981"
+    "commit": "f4e4207"
   },
-  "generated_at": "2026-05-11T10:41:41.082983Z",
+  "generated_at": "2026-05-11T22:18:52.530688Z",
   "data": {
-    "count": 26,
+    "count": 24,
     "picks": [
       {
         "id": 4,
@@ -48,10 +48,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 65.35,
-            "return_rate": -0.183227
+            "close": 75.05,
+            "return_rate": -0.061992
           },
           "highest": {
             "close": 84.66,
@@ -108,10 +108,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 9.63,
-            "return_rate": -0.136323
+            "close": 9.29,
+            "return_rate": -0.166816
           },
           "highest": {
             "close": 11.15,
@@ -168,10 +168,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 6.99,
-            "return_rate": -0.072944
+            "close": 6.91,
+            "return_rate": -0.083554
           },
           "highest": {
             "close": 7.54,
@@ -228,10 +228,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 65.35,
-            "return_rate": -0.228089
+            "close": 75.05,
+            "return_rate": -0.113513
           },
           "highest": {
             "close": 84.66,
@@ -288,10 +288,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 22.36,
-            "return_rate": 0.074483
+            "close": 22.92,
+            "return_rate": 0.101394
           },
           "highest": {
             "close": 24.63,
@@ -349,10 +349,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 892.79,
-            "return_rate": 0.054198
+            "close": 903.8,
+            "return_rate": 0.067199
           },
           "highest": {
             "close": 994.56,
@@ -471,10 +471,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 258.64,
-            "return_rate": 0.08869
+            "close": 261.03,
+            "return_rate": 0.09875
           },
           "highest": {
             "close": 295.28,
@@ -593,10 +593,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 20.6,
-            "return_rate": -0.335698
+            "close": 26.39,
+            "return_rate": -0.148984
           },
           "highest": {
             "close": 31.01,
@@ -776,10 +776,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 72.9,
-            "return_rate": -0.356064
+            "close": 67.79,
+            "return_rate": -0.401201
           },
           "highest": {
             "close": 113.21,
@@ -837,10 +837,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 274.17,
-            "return_rate": -0.062057
+            "close": 284.67,
+            "return_rate": -0.026137
           },
           "highest": {
             "close": 307.86,
@@ -898,10 +898,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 76.28,
-            "return_rate": 0.035569
+            "close": 77.03,
+            "return_rate": 0.045751
           },
           "highest": {
             "close": 79.05,
@@ -1081,17 +1081,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 408.46,
-            "return_rate": 0.149749
+            "close": 455.19,
+            "return_rate": 0.281287
           },
           "highest": {
-            "close": 421.39,
-            "close_date": "2026-05-07",
-            "return_rate": 0.186145
+            "close": 455.19,
+            "close_date": "2026-05-11",
+            "return_rate": 0.281287
           },
-          "distance_to_target": 0.313855,
+          "distance_to_target": 0.218713,
           "error_count": 0
         },
         "votes": {
@@ -1142,17 +1142,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 24.11,
-            "return_rate": -0.027823
+            "close": 28.97,
+            "return_rate": 0.168145
           },
           "highest": {
-            "close": 26.33,
-            "close_date": "2026-05-07",
-            "return_rate": 0.061694
+            "close": 28.97,
+            "close_date": "2026-05-11",
+            "return_rate": 0.168145
           },
-          "distance_to_target": 2.438306,
+          "distance_to_target": 2.331855,
           "error_count": 0
         },
         "votes": {
@@ -1264,10 +1264,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-10",
+          "updated_at": "2026-05-11",
           "current": {
-            "close": 153.72,
-            "return_rate": 0.084751
+            "close": 152.45,
+            "return_rate": 0.075789
           },
           "highest": {
             "close": 153.72,
@@ -1468,128 +1468,6 @@
         "extensions": {},
         "instrument_name": "Pum Tech Korea Co Ltd",
         "author_note": "펌텍 붐은 온다"
-      },
-      {
-        "id": 32,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "09b387a"
-        },
-        "created_at": "2026-05-08T13:03:51.181789Z",
-        "author": "cieske",
-        "issue_number": 53,
-        "ticker": "LINT",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "price": 179.07,
-          "date": "2026-05-08",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.2,
-          "price": 214.884
-        },
-        "duration": {
-          "days": 14,
-          "deadline": "2026-05-22"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-05-08T13:03:51.181804Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-05-10",
-          "current": {
-            "close": 179.07,
-            "return_rate": 0.0
-          },
-          "highest": {
-            "close": 179.07,
-            "close_date": "2026-05-08",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.2,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-08T13:03:51.181843Z"
-        },
-        "extensions": {},
-        "instrument_name": "Direxion Daily INTC Bull 2X ETF",
-        "author_note": "인텔 X2"
-      },
-      {
-        "id": 33,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "54e40ff"
-        },
-        "created_at": "2026-05-08T13:10:45.667602Z",
-        "author": "cieske",
-        "issue_number": 55,
-        "ticker": "SNXX",
-        "country": "US",
-        "market": "NYSEAMERICAN",
-        "entry": {
-          "price": 146.16,
-          "date": "2026-05-08",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.2,
-          "price": 175.392
-        },
-        "duration": {
-          "days": 14,
-          "deadline": "2026-05-22"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-05-08T13:10:45.667618Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-05-10",
-          "current": {
-            "close": 146.16,
-            "return_rate": 0.0
-          },
-          "highest": {
-            "close": 146.16,
-            "close_date": "2026-05-08",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.2,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-08T13:10:45.667672Z"
-        },
-        "extensions": {},
-        "instrument_name": "Tradr 2X Long SNDK Daily ETF",
-        "author_note": "샌디스크 X2"
       }
     ]
   }
