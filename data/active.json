@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "6762f49"
+    "commit": "f9ef819"
   },
-  "generated_at": "2026-05-13T22:39:14.505076Z",
+  "generated_at": "2026-05-14T01:08:51.835487Z",
   "data": {
-    "count": 25,
+    "count": 26,
     "picks": [
       {
         "id": 4,
@@ -1528,6 +1528,67 @@
         },
         "extensions": {},
         "instrument_name": "Circle Internet Group Inc",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 35,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "f9ef819"
+        },
+        "created_at": "2026-05-14T01:08:51.835346Z",
+        "author": "zerohoon0102",
+        "issue_number": 57,
+        "ticker": "060370",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "price": 39050.0,
+          "date": "2026-05-14",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.15,
+          "price": 44907.5
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-13"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-14T01:08:51.835362Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-14",
+          "current": {
+            "close": 39050.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 39050.0,
+            "close_date": "2026-05-14",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.15,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-14T01:08:51.835444Z"
+        },
+        "extensions": {},
+        "instrument_name": "LS Marine Solution Co Ltd",
         "author_note": "_No response_"
       }
     ]
