@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "f9ef819"
+    "commit": "177f914"
   },
-  "generated_at": "2026-05-14T01:08:51.835487Z",
+  "generated_at": "2026-05-14T01:09:44.396920Z",
   "data": {
-    "count": 26,
+    "count": 27,
     "picks": [
       {
         "id": 4,
@@ -1589,6 +1589,67 @@
         },
         "extensions": {},
         "instrument_name": "LS Marine Solution Co Ltd",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 36,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "177f914"
+        },
+        "created_at": "2026-05-14T01:09:44.396828Z",
+        "author": "zerohoon0102",
+        "issue_number": 58,
+        "ticker": "365340",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "price": 67600.0,
+          "date": "2026-05-14",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 81120.0
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-08-12"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-14T01:09:44.396846Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-14",
+          "current": {
+            "close": 67600.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 67600.0,
+            "close_date": "2026-05-14",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-14T01:09:44.396887Z"
+        },
+        "extensions": {},
+        "instrument_name": "SungEel HiTech Co Ltd",
         "author_note": "_No response_"
       }
     ]
