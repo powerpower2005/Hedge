@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "177f914"
+    "commit": "575eaaa"
   },
-  "generated_at": "2026-05-14T01:09:44.396920Z",
+  "generated_at": "2026-05-14T05:00:28.632736Z",
   "data": {
-    "count": 27,
+    "count": 28,
     "picks": [
       {
         "id": 4,
@@ -1650,6 +1650,67 @@
         },
         "extensions": {},
         "instrument_name": "SungEel HiTech Co Ltd",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 37,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "575eaaa"
+        },
+        "created_at": "2026-05-14T05:00:28.632559Z",
+        "author": "powerpower2005",
+        "issue_number": 59,
+        "ticker": "CRWV",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 107.75,
+          "date": "2026-05-14",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.5,
+          "price": 161.625
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-08-12"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-14T05:00:28.632575Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-14",
+          "current": {
+            "close": 107.75,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 107.75,
+            "close_date": "2026-05-14",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.5,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-14T05:00:28.632629Z"
+        },
+        "extensions": {},
+        "instrument_name": "CoreWeave Inc",
         "author_note": "_No response_"
       }
     ]
