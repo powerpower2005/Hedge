@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { formatPrice, formatReturn } from "../../lib/formatters.js";
+import { isEntryPending } from "../../lib/pickEntry.js";
 import { PickDeadline } from "./PickDeadline.jsx";
+import { PickEntryPrice } from "./PickEntryPrice.jsx";
 import { PickProgress } from "./PickProgress.jsx";
 import { ReturnRate } from "./ReturnRate.jsx";
 import { googleFinanceQuoteUrl } from "../../lib/googleFinanceUrl.js";
@@ -65,17 +67,22 @@ export function PickCard({ pick }) {
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.target")}</dt>
           <dd>
             <ReturnRate rate={pick.target?.return_rate} />
+            {isEntryPending(pick) ? (
+              <span className="mt-0.5 block text-xs text-zinc-500 light:text-zinc-600">{t("pick.pendingTargetPrice")}</span>
+            ) : null}
           </dd>
         </div>
         <div>
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.deadline")}</dt>
           <dd>
-            <PickDeadline deadline={pick.duration?.deadline} />
+            <PickDeadline pick={pick} />
           </dd>
         </div>
         <div>
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.entry")}</dt>
-          <dd>{formatPrice(pick.country, pick.entry?.price)}</dd>
+          <dd>
+            <PickEntryPrice pick={pick} />
+          </dd>
         </div>
         <div>
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.progress")}</dt>
@@ -105,3 +112,4 @@ export function PickCard({ pick }) {
     </article>
   );
 }
+

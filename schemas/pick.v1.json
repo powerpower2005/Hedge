@@ -51,9 +51,13 @@
     },
     "entry": {
       "type": "object",
-      "required": ["price", "date", "source"],
+      "required": ["date", "source"],
       "properties": {
         "price": { "type": "number", "exclusiveMinimum": 0 },
+        "pending": {
+          "type": "boolean",
+          "description": "True until first daily judgment locks entry.price (rules >= 1.0.7)."
+        },
         "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
         "source": { "type": "string" },
         "close_session_date": {
@@ -65,7 +69,7 @@
     },
     "target": {
       "type": "object",
-      "required": ["return_rate", "price"],
+      "required": ["return_rate"],
       "properties": {
         "return_rate": {
           "type": "number",
@@ -78,10 +82,14 @@
     },
     "duration": {
       "type": "object",
-      "required": ["days", "deadline"],
+      "required": ["days"],
       "properties": {
         "days": { "type": "integer", "enum": [7, 14, 30, 90, 180] },
-        "deadline": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+        "deadline": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Set when entry locks (pending_entry picks omit until first judgment)."
+        }
       }
     },
     "status": {
@@ -89,7 +97,7 @@
       "required": ["current", "history"],
       "properties": {
         "current": {
-          "enum": ["active", "achieved", "expired", "suspended", "delisted"]
+          "enum": ["pending_entry", "active", "achieved", "expired", "suspended", "delisted"]
         },
         "history": { "type": "array" }
       }

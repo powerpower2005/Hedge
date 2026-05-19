@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useI18n } from "../../i18n/I18nContext.jsx";
-import { formatPrice } from "../../lib/formatters.js";
 import { PickDeadline } from "./PickDeadline.jsx";
+import { PickEntryPrice } from "./PickEntryPrice.jsx";
 import { PickProgress } from "./PickProgress.jsx";
 import { ReturnRate } from "./ReturnRate.jsx";
 import { StatusBadge } from "./StatusBadge.jsx";
@@ -119,11 +119,11 @@ export function PickList({ picks }) {
                 </div>
                 <div className="text-sm tabular-nums">
                   <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colEntry")}</span>
-                  {formatPrice(p.country, p.entry?.price)}
+                  <PickEntryPrice pick={p} />
                 </div>
                 <div className="text-sm">
                   <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colDeadline")}</span>
-                  <PickDeadline deadline={p.duration?.deadline} />
+                  <PickDeadline pick={p} />
                 </div>
                 <div className="text-sm">
                   <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colProgress")}</span>

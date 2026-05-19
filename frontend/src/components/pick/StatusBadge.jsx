@@ -1,6 +1,7 @@
 import { useI18n } from "../../i18n/I18nContext.jsx";
 
 const styles = {
+  pending_entry: "bg-sky-900/40 text-sky-200 ring-1 ring-sky-700",
   active: "bg-emerald-900/50 text-emerald-300 ring-1 ring-emerald-700",
   achieved: "bg-amber-900/50 text-amber-200 ring-1 ring-amber-700",
   expired: "bg-zinc-800 text-zinc-400 ring-1 ring-zinc-600",

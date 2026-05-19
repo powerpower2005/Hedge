@@ -145,7 +145,7 @@ def test_ticker_cell_for_price_lookup_kr_escapes_quotes():
 
 
 def test_quota():
-    picks = [{"author": "u1", "status": {"current": "active"}}] * 10
+    picks = [{"author": "u1", "status": {"current": "active"}}] * 20
     with pytest.raises(ValidationError) as e:
         validate_user_quota("u1", picks)
     assert e.value.code == "USER_QUOTA_EXCEEDED"
@@ -159,5 +159,12 @@ def test_duplicate_ticker():
 
 
 def test_quota_other_user_ok():
-    picks = [{"author": "u2", "status": {"current": "active"}}] * 10
+    picks = [{"author": "u2", "status": {"current": "active"}}] * 20
     validate_user_quota("u1", picks)
+
+
+def test_quota_counts_pending_entry():
+    picks = [{"author": "u1", "status": {"current": "pending_entry"}}] * 20
+    with pytest.raises(ValidationError) as e:
+        validate_user_quota("u1", picks)
+    assert e.value.code == "USER_QUOTA_EXCEEDED"

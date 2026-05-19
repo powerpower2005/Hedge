@@ -59,10 +59,10 @@ export default {
       "While signed in, click New pick in the header to open the registration form. Enter ticker, country & market, target return (%), and duration (days). Target return is **positive for an up call, negative for a down call** (magnitude 10%–1000%). Optional **Additional note** appears on the pick detail only when provided (collapsed by default); it is not used for prices or judgment. US: NASDAQ, NYSE, NYSEARCA, BATS, or NYSEAMERICAN; KR: KRX, KOSPI, or KOSDAQ (registration may try several exchange prefixes automatically, your chosen market first). Tickers are alphanumeric only. If registration fails, check the exchange prefix and ticker on Google Finance (https://www.google.com/finance/). After submission, checks run automatically; if accepted, the pick appears under Active.",
     s3Title: "Limits and rules",
     s3Body:
-      "There are caps on how many active picks you may have at once and on duplicate tickers per user. Target return must be ±10%–±1000% (zero not allowed); duration must be from the form list. If something is wrong, a message may appear on the same submission thread.",
+      "You may have at most **20** active picks per user; only **one** active pick per ticker. Target return must be ±10%–±1000% (zero not allowed); duration must be from the form list. If something is wrong, a message may appear on the same submission thread.",
     s4Title: "Progress and outcomes",
     s4Body:
-      "Progress uses the **prior session’s official close**. Daily judgment is split by country: **Daily Judgment KR (07:07 UTC / 16:07 KST)** and **Daily Judgment US (21:17 UTC, after US market close ET)**. After each run updates `main`, this site reflects it on the next fetch. If the target is reached in time, the pick moves to Hall of Fame; otherwise it moves to Expired after the deadline. The detail page shows entry, targets, and current return.",
+      "New picks (rules ≥ 1.0.7) **lock entry, target price, and deadline on the first daily judgment** after registration—not at submit time. Progress then uses each **prior session’s official close**. Judgment batches: **KR (07:07 UTC / 16:07 KST)** and **US (21:17 UTC, after US close ET)**. Older picks may already have entry set at registration.",
     s5Title: "Votes (reactions)",
     s5Body:
       "Each pick is tied to its GitHub registration issue. Add a +1 (approve) or −1 (disapprove) reaction on that issue’s first post to vote. Counts on cards and detail pages refresh after the repository syncs reactions from GitHub (about hourly at :23 UTC, or when a maintainer runs the job manually).",
@@ -149,6 +149,12 @@ export default {
     pagePrevAria: "Go to previous page, currently {page} of {total}",
     pageNextAria: "Go to next page, currently {page} of {total}",
   },
+  pick: {
+    pendingEntry: "Locks on first judgment",
+    pendingProgress: "Shown after entry locks",
+    pendingDeadline: "Set when entry locks",
+    pendingTargetPrice: "Set when entry locks",
+  },
   pickCard: {
     target: "Target",
     deadline: "Deadline",
@@ -188,6 +194,7 @@ export default {
     sortNearTarget: "Nearest to target",
   },
   status: {
+    pending_entry: "Entry pending",
     active: "Active",
     achieved: "Achieved",
     expired: "Expired",

@@ -16,7 +16,7 @@ def main() -> None:
     picks = get_picks(data)
     changed = False
     for pick in picks:
-        if pick.get("status", {}).get("current") != "active":
+        if pick.get("status", {}).get("current") not in ("active", "pending_entry"):
             continue
         try:
             counts = get_issue_reactions(int(pick["issue_number"]))

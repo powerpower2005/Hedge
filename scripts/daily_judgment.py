@@ -8,8 +8,9 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from common.entry_lock import is_pending_entry, lock_entry_from_close
+from common.goog_finance_parse import parse_close_session_date_cell, parse_instrument_name_cell
 from common.judgment import distance_to_target, target_is_reached, target_return_is_bearish
-from common.goog_finance_parse import parse_instrument_name_cell
 from common.meta import touch_last_daily_judgment_at
 from common.sheets import fetch_all_prices_rows
 from common.storage import get_picks, load_list_file, save_list_file
@@ -154,6 +155,7 @@ def main() -> None:
 
     price_map: dict[int, object] = {}
     name_map: dict[int, object] = {}
+    session_map: dict[int, object] = {}
     for row in rows:
         raw_id = row.get("pick_id")
         if raw_id is None:
@@ -165,10 +167,13 @@ def main() -> None:
         price_map[pid] = row.get("close")
         if "name" in row:
             name_map[pid] = row.get("name")
+        if "close_session_date" in row:
+            session_map[pid] = row.get("close_session_date")
 
     remaining_active: list[dict] = []
     newly_achieved: list[dict] = []
     newly_expired: list[dict] = []
+    entries_locked = 0
     processed = 0
 
     for pick in active_picks:
@@ -206,6 +211,17 @@ def main() -> None:
             handle_error(pick)
             remaining_active.append(pick)
             continue
+
+        if is_pending_entry(pick):
+            session_raw = session_map.get(pick_id)
+            session_date = parse_close_session_date_cell(session_raw)
+            lock_entry_from_close(
+                pick,
+                close,
+                judgment_day,
+                close_session_date=session_date,
+            )
+            entries_locked += 1
 
         update_progress(pick, close, judgment_day)
 
@@ -248,7 +264,8 @@ def main() -> None:
 
     country_label = selected_country or "ALL"
     print(
-        f"Country: {country_label}, processed: {processed}, active: {len(remaining_active)}, achieved: {len(newly_achieved)}, expired: {len(newly_expired)}"
+        f"Country: {country_label}, processed: {processed}, entries_locked: {entries_locked}, "
+        f"active: {len(remaining_active)}, achieved: {len(newly_achieved)}, expired: {len(newly_expired)}"
     )
     touch_last_daily_judgment_at()
 

@@ -1,5 +1,6 @@
 import re
 
+from .entry_lock import ACTIVE_LIKE_STATUSES
 from .models import (
     ALLOWED_DURATIONS,
     COUNTRY_MARKETS,
@@ -55,7 +56,11 @@ def validate_pick_input(
 
 
 def validate_user_quota(author: str, active_picks: list[dict]) -> None:
-    mine = [p for p in active_picks if p.get("author") == author and p.get("status", {}).get("current") == "active"]
+    mine = [
+        p
+        for p in active_picks
+        if p.get("author") == author and p.get("status", {}).get("current") in ACTIVE_LIKE_STATUSES
+    ]
     if len(mine) >= MAX_ACTIVE_PICKS_PER_USER:
         raise ValidationError(
             "USER_QUOTA_EXCEEDED",
@@ -67,7 +72,7 @@ def validate_no_duplicate_ticker(author: str, ticker: str, active_picks: list[di
     for p in active_picks:
         if p.get("author") != author:
             continue
-        if p.get("status", {}).get("current") != "active":
+        if p.get("status", {}).get("current") not in ACTIVE_LIKE_STATUSES:
             continue
         if p.get("ticker") == ticker:
             raise ValidationError(

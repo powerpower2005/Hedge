@@ -23,6 +23,7 @@ from common.register_public_messages import (
     format_price_fetch_ops_log,
     format_price_fetch_public,
 )
+from common.entry_lock import build_pick_deferred
 from common.goog_finance_parse import parse_close_session_date_cell, parse_instrument_name_cell
 from common.models import (
     kr_googlefinance_prefix_candidates,
@@ -305,7 +306,7 @@ def main() -> None:
         fail("PRICE_FETCH_ERROR", msg, issue_number)
 
     submitter_note = fields.get("author_note")
-    pick = build_pick(
+    pick = build_pick_deferred(
         pick_id,
         author,
         issue_number,
@@ -314,41 +315,35 @@ def main() -> None:
         market,
         target_return,
         duration_days,
-        cast(float, entry_price),
         instrument_name=instrument_name,
         author_note=submitter_note if isinstance(submitter_note, str) else None,
-        entry_close_session_date=entry_close_session_date,
     )
     active_picks.append(pick)
     save_list_file(ACTIVE_PATH, active_picks)
     bump_next_pick_id(pick_id)
 
-    start_s = _format_money(country, cast(float, entry_price))
-    target_s = _format_money(country, pick["target"]["price"])
-    session_line = ""
-    csd = pick.get("entry", {}).get("close_session_date")
-    if csd:
-        session_line = f"| Entry close (session) date | `{csd}` |\n"
-
-    comment = f"""**Registered**
+    comment = f"""**Registered** (entry pending)
 
 | Field | Value |
 | --- | --- |
 | Pick ID | #{pick_id} |
 | Ticker | `{ticker}` ({market}) |
 | Name | {pick.get("instrument_name") or "—"} |
-| Entry | {start_s} |
-{session_line}| Target | {target_s} ({target_return_pct:+.1f}%) |
-| Deadline | {pick['duration']['deadline']} ({duration_days} days) |
+| Entry | *Pending* — official close locks on the **first daily judgment** for {country} (not the price at submit time). |
+| Target return | {target_return_pct:+.1f}% (target **price** set when entry locks) |
+| Duration | {duration_days} days after entry locks (deadline then) |
 
-Daily close check runs around **07:00 KST**. Vote with reactions on issues.
+**EN:** Entry baseline = first post-registration session close when the {country} judgment batch runs.  
+**한:** 진입가는 등록 후 **첫 {country} 일일 판정** 때 확정되는 공식 종가입니다(제출 시점 종가 아님).
+
+Vote with reactions on this issue.
 """
     if country in ("KR", "US") and resolved_sheet_prefix is not None:
         chain = " → ".join(f"`{p}`" for p in tried_chain)
         comment += (
             "\n\n**Exchange prefix (price lookup) / 거래소 접두 (가격 조회)**\n"
-            f"- **EN:** **`{resolved_sheet_prefix}`** is the exchange prefix used for the **previous close** (first in the try list that succeeded).\n"
-            f"- **한:** **전일 종가** 조회에 **`{resolved_sheet_prefix}`** 거래소 접두를 썼습니다(아래 순서 중 먼저 성공한 접두).\n"
+            f"- **EN:** **`{resolved_sheet_prefix}`** is the exchange prefix used for price lookup (first in the try list that succeeded).\n"
+            f"- **한:** 가격 조회에 **`{resolved_sheet_prefix}`** 거래소 접두를 썼습니다(아래 순서 중 먼저 성공한 접두).\n"
             f"- **Try order:** {chain}\n"
             f"- 양식에서 고른 시장(**{market}**)은 픽에 그대로 저장되며, 위 접두는 가격 조회에만 쓰입니다.\n"
         )
