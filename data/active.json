@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "adcaf87"
+    "commit": "27a3139"
   },
-  "generated_at": "2026-05-18T22:15:02.420181Z",
+  "generated_at": "2026-05-19T10:40:42.151798Z",
   "data": {
     "count": 28,
     "picks": [
@@ -410,10 +410,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 147700.0,
-            "return_rate": -0.195095
+            "close": 138700.0,
+            "return_rate": -0.244142
           },
           "highest": {
             "close": 196800.0,
@@ -532,10 +532,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 8400.0,
-            "return_rate": -0.067703
+            "close": 8110.0,
+            "return_rate": -0.099889
           },
           "highest": {
             "close": 9320.0,
@@ -654,10 +654,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 14820.0,
-            "return_rate": -0.125664
+            "close": 14930.0,
+            "return_rate": -0.119174
           },
           "highest": {
             "close": 17470.0,
@@ -715,10 +715,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 68800.0,
-            "return_rate": -0.158924
+            "close": 62100.0,
+            "return_rate": -0.240831
           },
           "highest": {
             "close": 81800.0,
@@ -959,10 +959,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 11240.0,
-            "return_rate": -0.083945
+            "close": 10860.0,
+            "return_rate": -0.114914
           },
           "highest": {
             "close": 12270.0,
@@ -1020,10 +1020,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 1819000.0,
-            "return_rate": 0.136165
+            "close": 1840000.0,
+            "return_rate": 0.149282
           },
           "highest": {
             "close": 1976000.0,
@@ -1203,10 +1203,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 19430.0,
-            "return_rate": -0.306071
+            "close": 19030.0,
+            "return_rate": -0.320357
           },
           "highest": {
             "close": 28000.0,
@@ -1325,10 +1325,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 44450.0,
-            "return_rate": -0.187386
+            "close": 45800.0,
+            "return_rate": -0.162706
           },
           "highest": {
             "close": 54700.0,
@@ -1386,10 +1386,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 5400.0,
-            "return_rate": -0.126214
+            "close": 5320.0,
+            "return_rate": -0.139159
           },
           "highest": {
             "close": 6180.0,
@@ -1447,10 +1447,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 38850.0,
-            "return_rate": -0.038366
+            "close": 38800.0,
+            "return_rate": -0.039604
           },
           "highest": {
             "close": 41800.0,
@@ -1569,10 +1569,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 35950.0,
-            "return_rate": -0.079385
+            "close": 35850.0,
+            "return_rate": -0.081946
           },
           "highest": {
             "close": 39050.0,
@@ -1630,10 +1630,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-18",
+          "updated_at": "2026-05-19",
           "current": {
-            "close": 67000.0,
-            "return_rate": -0.008876
+            "close": 66500.0,
+            "return_rate": -0.016272
           },
           "highest": {
             "close": 67700.0,
