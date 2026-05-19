@@ -40,10 +40,12 @@ def validate_pick_input(
             "COUNTRY_MARKET_MISMATCH",
             f"Market {market} is not valid for country {country}.",
         )
-    if not (TARGET_RETURN_MIN <= target_return <= TARGET_RETURN_MAX):
+    magnitude = abs(target_return)
+    if not (TARGET_RETURN_MIN <= magnitude <= TARGET_RETURN_MAX):
         raise ValidationError(
             "INVALID_TARGET_RETURN",
-            f"Target return must be between {TARGET_RETURN_MIN:.0%} and {TARGET_RETURN_MAX:.0%} as a fraction (e.g. 0.12 for +12%).",
+            f"Target return magnitude must be between {TARGET_RETURN_MIN:.0%} and {TARGET_RETURN_MAX:.0%} "
+            f"(e.g. +12% as 0.12 or -12% as -0.12; not between -10% and +10%).",
         )
     if duration_days not in ALLOWED_DURATIONS:
         raise ValidationError(

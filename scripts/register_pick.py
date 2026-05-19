@@ -148,7 +148,12 @@ def build_pick(
                 "close_date": entry_date.isoformat(),
                 "return_rate": 0.0,
             },
-            "distance_to_target": target_return,
+            "lowest": {
+                "close": entry_price,
+                "close_date": entry_date.isoformat(),
+                "return_rate": 0.0,
+            },
+            "distance_to_target": abs(target_return),
             "error_count": 0,
         },
         "votes": {"likes": 0, "dislikes": 0, "last_synced": now_iso()},
@@ -333,7 +338,7 @@ def main() -> None:
 | Ticker | `{ticker}` ({market}) |
 | Name | {pick.get("instrument_name") or "—"} |
 | Entry | {start_s} |
-{session_line}| Target | {target_s} (+{target_return_pct:.1f}%) |
+{session_line}| Target | {target_s} ({target_return_pct:+.1f}%) |
 | Deadline | {pick['duration']['deadline']} ({duration_days} days) |
 
 Daily close check runs around **07:00 KST**. Vote with reactions on issues.

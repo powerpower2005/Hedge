@@ -1,13 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "rules_version": "1.0.4",
-  "effective_from": "2026-04-25",
+  "rules_version": "1.0.5",
+  "effective_from": "2026-05-19",
   "rules": {
     "supported_markets": {
       "US": ["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN"],
       "KR": ["KRX", "KOSPI", "KOSDAQ"]
     },
-    "target_return_range": [0.10, 10.0],
+    "target_return_range": [-10.0, 10.0],
+    "target_return_min_abs": 0.10,
     "duration_options": [7, 14, 30, 90, 180],
     "max_active_picks_per_user": 10,
     "same_ticker_per_user": 1,

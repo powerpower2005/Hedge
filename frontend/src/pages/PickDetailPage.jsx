@@ -4,6 +4,7 @@ import { StatusBadge } from "../components/pick/StatusBadge.jsx";
 import { useDataCacheRevision } from "../context/DataCacheContext.jsx";
 import { IS_REPOSITORY_CONFIGURED, pickIssueUrl } from "../lib/constants.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
+import { ReturnRate } from "../components/pick/ReturnRate.jsx";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
 import { googleFinanceQuoteUrl } from "../lib/googleFinanceUrl.js";
 import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
@@ -110,7 +111,9 @@ export function PickDetailPage() {
         ) : null}
         <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.targetReturn")}</dt>
-          <dd>{formatReturn(pick.target?.return_rate)}</dd>
+          <dd>
+            <ReturnRate rate={pick.target?.return_rate} />
+          </dd>
         </div>
         <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.targetPrice")}</dt>
@@ -122,7 +125,9 @@ export function PickDetailPage() {
         </div>
         <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.currentReturn")}</dt>
-          <dd>{formatReturn(pick.progress?.current?.return_rate)}</dd>
+          <dd>
+            <ReturnRate rate={pick.progress?.current?.return_rate} />
+          </dd>
         </div>
         <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.votes")}</dt>

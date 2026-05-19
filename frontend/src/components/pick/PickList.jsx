@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useI18n } from "../../i18n/I18nContext.jsx";
 import { formatPrice, formatReturn } from "../../lib/formatters.js";
+import { ReturnRate } from "./ReturnRate.jsx";
 import { StatusBadge } from "./StatusBadge.jsx";
 import { PickCard } from "./PickCard.jsx";
 
@@ -111,7 +112,7 @@ export function PickList({ picks }) {
                 </div>
                 <div className="text-sm">
                   <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colTarget")}</span>
-                  {formatReturn(p.target?.return_rate)}
+                  <ReturnRate rate={p.target?.return_rate} />
                 </div>
                 <div className="text-sm">
                   <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colDeadline")}</span>
@@ -119,7 +120,7 @@ export function PickList({ picks }) {
                 </div>
                 <div className="text-sm">
                   <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colProgress")}</span>
-                  {formatReturn(p.progress?.current?.return_rate)} · {formatPrice(p.country, p.entry?.price)}
+                  <ReturnRate rate={p.progress?.current?.return_rate} /> · {formatPrice(p.country, p.entry?.price)}
                 </div>
                 <div className="justify-self-start sm:justify-self-end">
                   <StatusBadge status={p.status?.current} />

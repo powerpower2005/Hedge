@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { formatPrice, formatReturn } from "../../lib/formatters.js";
+import { ReturnRate } from "./ReturnRate.jsx";
 import { googleFinanceQuoteUrl } from "../../lib/googleFinanceUrl.js";
 import { pickIssueUrl } from "../../lib/constants.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
@@ -60,7 +61,9 @@ export function PickCard({ pick }) {
       <dl className="mt-3 grid grid-cols-2 gap-2 text-sm">
         <div>
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.target")}</dt>
-          <dd>{formatReturn(pick.target?.return_rate)}</dd>
+          <dd>
+            <ReturnRate rate={pick.target?.return_rate} />
+          </dd>
         </div>
         <div>
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.deadline")}</dt>
@@ -72,7 +75,9 @@ export function PickCard({ pick }) {
         </div>
         <div>
           <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.progress")}</dt>
-          <dd>{formatReturn(pick.progress?.current?.return_rate)}</dd>
+          <dd>
+            <ReturnRate rate={pick.progress?.current?.return_rate} />
+          </dd>
         </div>
       </dl>
       <div className="mt-2 space-y-1 text-xs text-zinc-500 light:text-zinc-600">

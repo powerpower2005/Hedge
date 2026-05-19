@@ -67,7 +67,12 @@
       "type": "object",
       "required": ["return_rate", "price"],
       "properties": {
-        "return_rate": { "type": "number", "minimum": 0.10, "maximum": 10.0 },
+        "return_rate": {
+          "type": "number",
+          "minimum": -10.0,
+          "maximum": 10.0,
+          "description": "Fractional return vs entry; |return_rate| >= 0.10 enforced at registration. Negative = bearish (target price below entry)."
+        },
         "price": { "type": "number", "exclusiveMinimum": 0 }
       }
     },

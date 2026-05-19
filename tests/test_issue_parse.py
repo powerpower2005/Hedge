@@ -97,3 +97,11 @@ def test_author_note_multiline():
 def test_author_note_absent_omits_key():
     fields = normalized_fields(parse_issue_form(SAMPLE))
     assert "author_note" not in fields
+
+
+def test_negative_target_return_pct():
+    raw = parse_issue_form(
+        SAMPLE.replace("### Target return (%)\n\n10", "### Target return (%)\n\n-20")
+    )
+    fields = normalized_fields(raw)
+    assert fields["target_return"] == pytest.approx(-0.2)

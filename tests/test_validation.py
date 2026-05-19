@@ -42,6 +42,22 @@ def test_validate_target_below_ten_percent():
     assert e.value.code == "INVALID_TARGET_RETURN"
 
 
+def test_validate_target_bearish_ok():
+    validate_pick_input("AAPL", "US", "NASDAQ", -0.15, 30)
+
+
+def test_validate_target_bearish_too_small_magnitude():
+    with pytest.raises(ValidationError) as e:
+        validate_pick_input("AAPL", "US", "NASDAQ", -0.05, 30)
+    assert e.value.code == "INVALID_TARGET_RETURN"
+
+
+def test_validate_target_bearish_too_large_magnitude():
+    with pytest.raises(ValidationError) as e:
+        validate_pick_input("AAPL", "US", "NASDAQ", -10.5, 30)
+    assert e.value.code == "INVALID_TARGET_RETURN"
+
+
 def test_validate_target_high_but_allowed():
     validate_pick_input("AAPL", "US", "NASDAQ", 10.0, 30)
 

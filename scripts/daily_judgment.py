@@ -8,6 +8,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from common.judgment import distance_to_target, target_is_reached, target_return_is_bearish
 from common.goog_finance_parse import parse_instrument_name_cell
 from common.meta import touch_last_daily_judgment_at
 from common.sheets import fetch_all_prices_rows
@@ -55,25 +56,37 @@ def transition(pick: dict, new_status: str, reason: str) -> None:
 def update_progress(pick: dict, close: float, judgment_day: date) -> None:
     entry_price = pick["entry"]["price"]
     target_price = pick["target"]["price"]
+    target_return = pick["target"]["return_rate"]
     return_rate = (close - entry_price) / entry_price
+    rounded_return = round(return_rate, 6)
 
     pick["progress"]["updated_at"] = judgment_day.isoformat()
     pick["progress"]["current"] = {
         "close": close,
-        "return_rate": round(return_rate, 6),
+        "return_rate": rounded_return,
     }
 
-    highest = pick["progress"]["highest"]
-    if close > highest["close"]:
-        pick["progress"]["highest"] = {
-            "close": close,
-            "close_date": judgment_day.isoformat(),
-            "return_rate": round(return_rate, 6),
-        }
+    if target_return_is_bearish(target_return):
+        lowest = pick["progress"].get("lowest") or pick["progress"]["highest"]
+        if close < lowest["close"]:
+            pick["progress"]["lowest"] = {
+                "close": close,
+                "close_date": judgment_day.isoformat(),
+                "return_rate": rounded_return,
+            }
+        extreme_close = pick["progress"].get("lowest", lowest)["close"]
+    else:
+        highest = pick["progress"]["highest"]
+        if close > highest["close"]:
+            pick["progress"]["highest"] = {
+                "close": close,
+                "close_date": judgment_day.isoformat(),
+                "return_rate": rounded_return,
+            }
+        extreme_close = pick["progress"]["highest"]["close"]
 
-    pick["progress"]["distance_to_target"] = round(
-        (target_price - pick["progress"]["highest"]["close"]) / entry_price,
-        6,
+    pick["progress"]["distance_to_target"] = distance_to_target(
+        entry_price, target_price, target_return, extreme_close
     )
     pick["progress"]["error_count"] = 0
 
@@ -196,10 +209,11 @@ def main() -> None:
 
         update_progress(pick, close, judgment_day)
 
-        target = pick["target"]["price"]
+        target_price = pick["target"]["price"]
+        target_return = pick["target"]["return_rate"]
         deadline = date.fromisoformat(pick["duration"]["deadline"])
 
-        if close >= target:
+        if target_is_reached(close, target_price, target_return):
             entry_date = date.fromisoformat(pick["entry"]["date"])
             pick["achievement"] = {
                 "achieved_date": judgment_day.isoformat(),

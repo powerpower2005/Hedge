@@ -60,7 +60,7 @@ body:
     id: target_return
     attributes:
       label: "Target return (%) / 목표 수익률 (%)"
-      description: "10~1000 사이 숫자 (10이면 +10%, 150이면 +150%) · Number from 10 to 1000 (e.g. 10 means +10%)"
+      description: "절댓값 10~1000 (양수=상승 예측, 음수=하락 예측, 예: 10 → +10%, -20 → -20%) · Magnitude 10–1000; positive = up, negative = down (e.g. 10 or -20)"
       placeholder: "10"
     validations:
       required: true
