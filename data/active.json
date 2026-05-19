@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "27a3139"
+    "commit": "9376f9f"
   },
-  "generated_at": "2026-05-19T10:40:42.151798Z",
+  "generated_at": "2026-05-19T13:10:02.618304Z",
   "data": {
-    "count": 28,
+    "count": 29,
     "picks": [
       {
         "id": 4,
@@ -1711,6 +1711,72 @@
         },
         "extensions": {},
         "instrument_name": "CoreWeave Inc",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 38,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "9376f9f"
+        },
+        "created_at": "2026-05-19T13:10:02.618195Z",
+        "author": "Eonyong",
+        "issue_number": 61,
+        "ticker": "COHR",
+        "country": "US",
+        "market": "NYSE",
+        "entry": {
+          "price": 362.83,
+          "date": "2026-05-19",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.1,
+          "price": 399.113
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-18"
+        },
+        "status": {
+          "current": "active",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-19T13:10:02.618210Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-19",
+          "current": {
+            "close": 362.83,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 362.83,
+            "close_date": "2026-05-19",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 362.83,
+            "close_date": "2026-05-19",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.1,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-19T13:10:02.618260Z"
+        },
+        "extensions": {},
+        "instrument_name": "Coherent Corp",
         "author_note": "_No response_"
       }
     ]
