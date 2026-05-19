@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useI18n } from "../../i18n/I18nContext.jsx";
-import { formatPrice, formatReturn } from "../../lib/formatters.js";
+import { formatPrice } from "../../lib/formatters.js";
+import { PickDeadline } from "./PickDeadline.jsx";
+import { PickProgress } from "./PickProgress.jsx";
 import { ReturnRate } from "./ReturnRate.jsx";
 import { StatusBadge } from "./StatusBadge.jsx";
 import { PickCard } from "./PickCard.jsx";
@@ -64,10 +66,11 @@ export function PickList({ picks }) {
         </div>
       ) : (
         <div className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/30 light:border-zinc-200 light:bg-white">
-          <div className="hidden grid-cols-[1.2fr_0.9fr_0.9fr_0.9fr_0.9fr_auto] gap-3 border-b border-zinc-800 px-3 py-2 text-xs text-zinc-500 sm:grid light:border-zinc-200 light:text-zinc-600">
+          <div className="hidden grid-cols-[1.2fr_0.7fr_0.7fr_0.85fr_0.85fr_1fr_auto] gap-3 border-b border-zinc-800 px-3 py-2 text-xs text-zinc-500 sm:grid light:border-zinc-200 light:text-zinc-600">
             <span>{t("pickList.colTicker")}</span>
             <span>{t("pickList.colMarket")}</span>
             <span>{t("pickList.colTarget")}</span>
+            <span>{t("pickList.colEntry")}</span>
             <span>{t("pickList.colDeadline")}</span>
             <span>{t("pickList.colProgress")}</span>
             <span>{t("pickList.colStatus")}</span>
@@ -76,7 +79,7 @@ export function PickList({ picks }) {
             {picks.map((p) => (
               <li
                 key={p.id}
-                className="grid gap-2 px-3 py-3 sm:grid-cols-[1.2fr_0.9fr_0.9fr_0.9fr_0.9fr_auto] sm:items-center sm:gap-3"
+                className="grid gap-2 px-3 py-3 sm:grid-cols-[1.2fr_0.7fr_0.7fr_0.85fr_0.85fr_1fr_auto] sm:items-center sm:gap-3"
               >
                 <div>
                   <Link
@@ -114,13 +117,17 @@ export function PickList({ picks }) {
                   <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colTarget")}</span>
                   <ReturnRate rate={p.target?.return_rate} />
                 </div>
+                <div className="text-sm tabular-nums">
+                  <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colEntry")}</span>
+                  {formatPrice(p.country, p.entry?.price)}
+                </div>
                 <div className="text-sm">
                   <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colDeadline")}</span>
-                  {p.duration?.deadline || "-"}
+                  <PickDeadline deadline={p.duration?.deadline} />
                 </div>
                 <div className="text-sm">
                   <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colProgress")}</span>
-                  <ReturnRate rate={p.progress?.current?.return_rate} /> · {formatPrice(p.country, p.entry?.price)}
+                  <PickProgress pick={p} />
                 </div>
                 <div className="justify-self-start sm:justify-self-end">
                   <StatusBadge status={p.status?.current} />
