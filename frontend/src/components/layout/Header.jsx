@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useInvalidateDataCaches } from "../../context/DataCacheContext.jsx";
 import { useRepoMeta } from "../../hooks/useRepoMeta.js";
 import { IS_REPOSITORY_CONFIGURED, NEW_PICK_URL } from "../../lib/constants";
 import { formatJudgmentUtc } from "../../lib/formatters.js";
+import { hasSeenQuickGuide, markQuickGuideSeen } from "../../lib/onboarding.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
 import { LangToggle } from "./LangToggle.jsx";
 import { ThemeToggle } from "./ThemeToggle.jsx";
@@ -15,7 +16,7 @@ const linkClass = ({ isActive }) =>
       : "text-zinc-400 hover:text-white light:text-zinc-600 light:hover:text-zinc-900"
   }`;
 
-function QuickGuideCard({ onClose }) {
+function QuickGuideCard({ onClose, firstVisit }) {
   const { t } = useI18n();
   const ref = useRef(null);
   const navigate = useNavigate();
@@ -36,25 +37,32 @@ function QuickGuideCard({ onClose }) {
   }, [onClose]);
 
   const steps = [
-    { icon: "1", title: t("guide.s1Title"), body: t("guide.s1Body") },
-    { icon: "2", title: t("guide.s2Title"), body: t("guide.s2Body") },
-    { icon: "3", title: t("guide.s3Title"), body: t("guide.s3Body") },
-    { icon: "4", title: t("guide.s4Title"), body: t("guide.s4Body") },
+    { icon: "1", title: t("guide.s1Title"), body: t("guide.quickS1") },
+    { icon: "2", title: t("guide.s2Title"), body: t("guide.quickS2") },
+    { icon: "3", title: t("guide.s3Title"), body: t("guide.quickS3") },
+    { icon: "4", title: t("guide.s4Title"), body: t("guide.quickS4") },
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/50 pt-20">
+    <div
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/50 pt-20"
+      role="presentation"
+    >
       <div
         ref={ref}
-        className="mx-4 w-full max-w-lg rounded-xl border border-zinc-700 bg-zinc-900 p-6 shadow-2xl light:border-zinc-200 light:bg-white"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="quick-guide-title"
+        className="mx-4 w-full max-w-md rounded-xl border border-zinc-700 bg-zinc-900 p-5 shadow-2xl light:border-zinc-200 light:bg-white"
       >
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-lg font-bold text-white light:text-zinc-900">
+        <div className="mb-4 flex items-center justify-between gap-2">
+          <h3 id="quick-guide-title" className="text-lg font-bold text-white light:text-zinc-900">
             {t("guide.title")}
           </h3>
           <button
             type="button"
             onClick={onClose}
+            aria-label={t("guide.dismiss")}
             className="rounded-md p-1 text-zinc-400 hover:bg-zinc-800 hover:text-white light:hover:bg-zinc-100 light:hover:text-zinc-900"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
@@ -62,35 +70,33 @@ function QuickGuideCard({ onClose }) {
             </svg>
           </button>
         </div>
-        <p className="mb-4 text-sm text-zinc-400 light:text-zinc-600">
-          {t("guide.lead")}
-        </p>
-        <div className="space-y-3">
+        <p className="mb-3 text-sm leading-snug text-zinc-300 light:text-zinc-700">{t("guide.quickTagline")}</p>
+        {firstVisit ? (
+          <p className="mb-3 text-xs text-zinc-500 light:text-zinc-500">{t("guide.firstVisitWelcome")}</p>
+        ) : null}
+        <ol className="space-y-2 text-sm">
           {steps.map((s) => (
-            <div
-              key={s.icon}
-              className="rounded-lg border border-zinc-700 bg-zinc-800/60 p-4 light:border-zinc-200 light:bg-zinc-50"
-            >
-              <div className="mb-1 flex items-center gap-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
-                  {s.icon}
-                </span>
-                <span className="text-sm font-semibold text-white light:text-zinc-900">
-                  {s.title}
-                </span>
-              </div>
-              <p className="text-xs leading-relaxed text-zinc-400 light:text-zinc-600">
-                {s.body.length > 120 ? s.body.slice(0, 120) + "..." : s.body}
-              </p>
-            </div>
+            <li key={s.icon} className="flex gap-2 leading-snug text-zinc-400 light:text-zinc-600">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[10px] font-bold text-white">
+                {s.icon}
+              </span>
+              <span>
+                <span className="font-medium text-zinc-200 light:text-zinc-800">{s.title}</span>
+                {" — "}
+                {s.body}
+              </span>
+            </li>
           ))}
-        </div>
+        </ol>
         <button
           type="button"
-          onClick={() => { onClose(); navigate("/guide"); }}
+          onClick={() => {
+            onClose();
+            navigate("/guide");
+          }}
           className="mt-4 w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-500"
         >
-          {t("guide.title")} →
+          {t("guide.fullGuideCta")} →
         </button>
       </div>
     </div>
@@ -102,6 +108,21 @@ export function Header() {
   const invalidateDataCaches = useInvalidateDataCaches();
   const { lastDailyJudgmentAt } = useRepoMeta();
   const [showGuide, setShowGuide] = useState(false);
+  const [guideFirstVisit, setGuideFirstVisit] = useState(false);
+
+  const dismissGuide = useCallback(() => {
+    markQuickGuideSeen();
+    setShowGuide(false);
+    setGuideFirstVisit(false);
+  }, []);
+
+  useEffect(() => {
+    if (!hasSeenQuickGuide()) {
+      setGuideFirstVisit(true);
+      setShowGuide(true);
+    }
+  }, []);
+
   const judgmentLabel = lastDailyJudgmentAt
     ? formatJudgmentUtc(lastDailyJudgmentAt, locale)
     : "";
@@ -193,7 +214,7 @@ export function Header() {
           </p>
         ) : null}
       </header>
-      {showGuide && <QuickGuideCard onClose={() => setShowGuide(false)} />}
+      {showGuide ? <QuickGuideCard onClose={dismissGuide} firstVisit={guideFirstVisit} /> : null}
     </>
   );
 }

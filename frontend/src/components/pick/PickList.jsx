@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useI18n } from "../../i18n/I18nContext.jsx";
+import { isEntryPending } from "../../lib/pickEntry.js";
 import { PickDeadline } from "./PickDeadline.jsx";
 import { PickEntryPrice } from "./PickEntryPrice.jsx";
 import { PickProgress } from "./PickProgress.jsx";
@@ -130,7 +131,10 @@ export function PickList({ picks }) {
                   <PickProgress pick={p} />
                 </div>
                 <div className="justify-self-start sm:justify-self-end">
-                  <StatusBadge status={p.status?.current} />
+                  <StatusBadge
+                    status={p.status?.current}
+                    title={isEntryPending(p) ? t("pick.pendingEntryHint") : undefined}
+                  />
                 </div>
               </li>
             ))}

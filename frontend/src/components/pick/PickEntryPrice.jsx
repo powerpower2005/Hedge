@@ -5,7 +5,11 @@ import { hasEntryPrice, isEntryPending } from "../../lib/pickEntry.js";
 export function PickEntryPrice({ pick }) {
   const { t } = useI18n();
   if (isEntryPending(pick)) {
-    return <span className="text-zinc-500 light:text-zinc-600">{t("pick.pendingEntry")}</span>;
+    return (
+      <span className="text-zinc-500 light:text-zinc-600" title={t("pick.pendingEntryHint")}>
+        {t("pick.pendingEntry")}
+      </span>
+    );
   }
   if (!hasEntryPrice(pick)) return "—";
   return <span className="tabular-nums">{formatPrice(pick.country, pick.entry.price)}</span>;

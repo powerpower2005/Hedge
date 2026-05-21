@@ -60,7 +60,10 @@ export function PickCard({ pick }) {
             </p>
           ) : null}
         </div>
-        <StatusBadge status={st} />
+        <StatusBadge
+          status={st}
+          title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined}
+        />
       </div>
       <dl className="mt-3 grid grid-cols-2 gap-2 text-sm">
         <div>

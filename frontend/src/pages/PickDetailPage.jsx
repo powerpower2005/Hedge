@@ -80,8 +80,14 @@ export function PickDetailPage() {
             </p>
           ) : null}
         </div>
-        <StatusBadge status={pick.status?.current} />
+        <StatusBadge
+          status={pick.status?.current}
+          title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined}
+        />
       </div>
+      {isEntryPending(pick) ? (
+        <p className="mt-2 text-xs text-sky-400/90 light:text-sky-800">{t("pick.pendingEntryHint")}</p>
+      ) : null}
       <p className="text-zinc-400 light:text-zinc-600">
         @{pick.author} · {pick.market} · {t("pickDetail.refLine", { n: pick.issue_number })}
       </p>

@@ -13,7 +13,13 @@ export default {
     lastJudgment: "Last daily return update: {time}",
   },
   lang: { label: "Language", ko: "한국어", en: "English" },
-  theme: { light: "Light", dark: "Dark" },
+  theme: {
+    system: "System theme (follow OS)",
+    lightActive: "Light mode (click: dark, then system)",
+    darkActive: "Dark mode (click: light, then system)",
+    light: "Light",
+    dark: "Dark",
+  },
   common: {
     loading: "Loading…",
     home: "Home",
@@ -28,8 +34,7 @@ export default {
   },
   active: {
     title: "Active picks",
-    subtitle:
-      "{count} open picks. The UI may show cached values; this tab reuses the same fetched data for up to ~1 minute. Use “Refresh data” in the header to fetch immediately. Daily judgment (prior session close) runs separately by country: **KR batch (07:07 UTC / 16:07 KST)** and **US batch (21:17 UTC, after US market close ET)**.",
+    subtitle: "{count} picks in progress. Click a card for details.",
   },
   hallOfFame: {
     title: "Hall of Fame",
@@ -51,6 +56,14 @@ export default {
     documentTitle: "Guide | Called It",
     title: "Guide",
     lead: "Follow these steps if you are new or unsure how things work.",
+    quickTagline: "A public challenge: pick a ticker, target return, and duration—judged on daily closes.",
+    firstVisitWelcome: "Shown once automatically. Reopen anytime from the ? button in the header.",
+    dismiss: "Close",
+    quickS1: "Use tabs for active, achieved, and expired picks; open a card for details.",
+    quickS2: "New pick → GitHub form (sign-in required).",
+    quickS3: "Up to 20 active picks, one per ticker, target return ±10%–1000%.",
+    quickS4: "New picks lock entry and deadline on the first judgment → achieved or expired.",
+    fullGuideCta: "Full guide",
     s1Title: "Browse lists and details",
     s1Body:
       "Use the top tabs: Active, Hall of Fame, and Expired. Click a card to open its detail page. Click an @username on a card to see that participant’s picks only. Use filters and sort to narrow the list.",
@@ -68,7 +81,7 @@ export default {
       "Each pick is tied to its GitHub registration issue. Add a +1 (approve) or −1 (disapprove) reaction on that issue’s first post to vote. Counts on cards and detail pages refresh after the repository syncs reactions from GitHub (about hourly at :23 UTC, or when a maintainer runs the job manually).",
     s6Title: "Display settings",
     s6Body:
-      "Use the language control for Korean or English, and the theme toggle for light or dark. Choices are saved in this browser.",
+      "Use the language control for Korean or English. Theme defaults to **your OS setting**; the header button cycles light → dark → system. Choices are saved in this browser.",
   },
   about: {
     documentTitle: "About | Called It",
@@ -151,6 +164,7 @@ export default {
   },
   pick: {
     pendingEntry: "Locks on first judgment",
+    pendingEntryHint: "Entry price, target price, and deadline are set on the first daily judgment for that market after registration.",
     pendingProgress: "Shown after entry locks",
     pendingDeadline: "Set when entry locks",
     pendingTargetPrice: "Set when entry locks",
