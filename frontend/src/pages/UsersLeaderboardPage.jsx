@@ -4,6 +4,7 @@ import { useAllMergedPicks } from "../hooks/useAllMergedPicks.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { formatReturn, formatWinRate, returnRateColorClass } from "../lib/formatters.js";
 import { type } from "../lib/typographyClasses.js";
+import { ui } from "../lib/themeClasses.js";
 import { aggregateUserStats, sortUserStats } from "../lib/userLeaderboard.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 

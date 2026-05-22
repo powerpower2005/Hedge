@@ -81,23 +81,42 @@ export default {
     quickS4: "New picks lock entry and deadline on the first judgment → achieved or expired.",
     fullGuideCta: "Open full guide page",
     s1Title: "Browse lists and details",
-    s1Body:
-      "Use the top tabs: Active, Hall of Fame, and Expired. Click a card to open its detail page. Click an @username on a card to see that participant’s picks only. Use filters and sort to narrow the list.",
+    s1Paragraphs: [
+      "Use the top menu: **Dashboard**, **All picks**, **Hall of Fame**, **Ranking**, **Expired**, and more.",
+      "Click a card for pick details. Click an @username on a card to see that participant’s picks only.",
+      "Use filters and sort to narrow the list.",
+    ],
     s2Title: "Submit a new pick",
-    s2Body:
-      "While signed in, click New pick in the header to open the registration form. Enter ticker, country & market, target return (%), and duration (days). Target return is **positive for an up call, negative for a down call** (magnitude 10%–1000%). Optional **Additional note** appears on the pick detail only when provided (collapsed by default); it is not used for prices or judgment. US: NASDAQ, NYSE, NYSEARCA, BATS, or NYSEAMERICAN; KR: KRX, KOSPI, or KOSDAQ (registration may try several exchange prefixes automatically, your chosen market first). Tickers are alphanumeric only. If registration fails, check the exchange prefix and ticker on Google Finance (https://www.google.com/finance/). After submission, checks run automatically; if accepted, the pick appears under Active.",
+    s2Paragraphs: [
+      "While signed in, click **New pick** in the header to open the GitHub registration form.",
+      "Enter ticker, country & market, target return (%), and duration (days). Target return is **positive for an up call, negative for a down call** (magnitude 10%–1000%).",
+      "An optional **Additional note** appears on the pick detail page when provided; it is not used for prices or judgment.",
+      "US markets: NASDAQ, NYSE, NYSEARCA, BATS, NYSEAMERICAN. KR: KRX, KOSPI, KOSDAQ. Country and market must match; **exchange prefixes** are tried automatically (your chosen market first).",
+      "Tickers are alphanumeric only. If registration fails, check the prefix and ticker on Google Finance (https://www.google.com/finance/).",
+      "After submission, automated checks run; if accepted, the pick appears under Active.",
+    ],
     s3Title: "Limits and rules",
-    s3Body:
-      "You may have at most **20** active picks per user; only **one** active pick per ticker. Target return must be ±10%–±1000% (zero not allowed); duration must be from the form list. If something is wrong, a message may appear on the same submission thread.",
+    s3Paragraphs: [
+      "At most **20** active picks per user; only **one** active pick per ticker.",
+      "Target return must be ±10%–±1000% (zero not allowed). Duration must be from the form list. Violations may get a reply on the same submission thread.",
+    ],
     s4Title: "Progress and outcomes",
-    s4Body:
-      "New picks (rules ≥ 1.0.7) **lock entry, target price, and deadline on the first daily judgment** after registration—not at submit time. Progress then uses each **prior session’s official close**. Judgment batches: **KR (07:07 UTC / 16:07 KST)** and **US (21:17 UTC, after US close ET)**. Older picks may already have entry set at registration.",
+    s4Paragraphs: [
+      "New picks (rules ≥ 1.0.7) **lock entry, target price, and deadline on the first daily judgment**—not at submit time.",
+      "Progress then uses each **prior session’s official close**.",
+      "Judgment batches: **KR** 07:07 UTC (16:07 KST) / **US** 21:17 UTC (after US close ET).",
+      "Reach the target within the window → Hall of Fame; otherwise → Expired. Older picks may already have entry set at registration.",
+    ],
     s5Title: "Votes (reactions)",
-    s5Body:
-      "Each pick is tied to its GitHub registration issue. Add a +1 (approve) or −1 (disapprove) reaction on that issue’s first post to vote. Counts on cards and detail pages refresh after the repository syncs reactions from GitHub (about hourly at :23 UTC, or when a maintainer runs the job manually).",
+    s5Paragraphs: [
+      "Each pick is tied to its GitHub registration issue. Add +1 (approve) or −1 (disapprove) on the issue’s first post to vote.",
+      "Counts refresh after the repository syncs reactions from GitHub (about hourly at :23 UTC, or when run manually), then when you reload this site.",
+    ],
     s6Title: "Display settings",
-    s6Body:
-      "Use the language control for Korean or English. Theme defaults to **light**; the header button cycles light → dark → system (OS). Choices are saved in this browser.",
+    s6Paragraphs: [
+      "Use the language control for Korean or English.",
+      "Theme defaults to **light**; the header button cycles light → dark → system (OS). Choices are saved in this browser.",
+    ],
   },
   about: {
     documentTitle: "About | Called It",

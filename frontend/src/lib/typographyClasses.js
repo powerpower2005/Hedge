@@ -18,4 +18,9 @@ export const type = {
   dialogLead: "text-sm font-normal leading-relaxed text-zinc-400 light:text-zinc-600",
   stepTitle: "text-xs font-bold text-zinc-200 light:text-zinc-800",
   stepBody: "text-xs font-normal leading-snug text-zinc-500 light:text-zinc-600",
+  tutorialTitle: "text-lg font-bold leading-snug text-zinc-100 sm:text-xl light:text-zinc-900",
+  tutorialSubtitle: "text-sm font-medium text-zinc-400 light:text-zinc-600",
+  tutorialStepTitle: "text-sm font-bold text-zinc-100 light:text-zinc-900",
+  tutorialBody: "text-sm font-normal leading-relaxed text-zinc-300 light:text-zinc-700",
+  tutorialNote: "text-sm leading-relaxed text-zinc-400 light:text-zinc-600",
 };

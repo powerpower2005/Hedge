@@ -48,43 +48,43 @@ function QuickGuideCard({ onClose, firstVisit }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="quick-guide-title"
-        className={`mx-auto w-full max-w-md ${ui.card} ${ui.cardPad}`}
+        className={`mx-auto w-full max-w-lg p-6 sm:p-7 ${ui.card}`}
       >
-        <div className="mb-3 flex items-start justify-between gap-2">
-          <h3 id="quick-guide-title" className="text-base font-semibold leading-snug text-zinc-100 light:text-zinc-900">
+        <div className="mb-4 flex items-start justify-between gap-3">
+          <h3 id="quick-guide-title" className={type.tutorialTitle}>
             {t("guide.quickTagline")}
           </h3>
           <button
             type="button"
             onClick={onClose}
             aria-label={t("guide.dismiss")}
-            className="shrink-0 rounded-md p-1 text-zinc-400 hover:bg-zinc-800 light:hover:bg-zinc-100"
+            className="shrink-0 rounded-md p-1.5 text-zinc-400 hover:bg-zinc-800 light:hover:bg-zinc-100"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-6 w-6">
               <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
             </svg>
           </button>
         </div>
-        <p className={`mb-1 ${type.metaSm}`}>{t("guide.title")}</p>
-        <div className={`mb-4 rounded-xl border border-primary-800/30 bg-primary-950/30 p-3 light:border-primary-200 light:bg-primary-50`}>
-          <p className={type.stepTitle}>{t("guide.s1Title")}</p>
-          <p className={`mt-1.5 ${type.body}`}>{t("guide.quickS1")}</p>
+        <p className={`mb-3 ${type.tutorialSubtitle}`}>{t("guide.title")}</p>
+        <div className={`mb-5 rounded-xl border border-primary-800/30 bg-primary-950/30 p-4 light:border-primary-200 light:bg-primary-50`}>
+          <p className={type.tutorialStepTitle}>{t("guide.s1Title")}</p>
+          <p className={`mt-2 ${type.tutorialBody}`}>{t("guide.quickS1")}</p>
         </div>
-        <ol className="space-y-2.5">
+        <ol className="space-y-4">
           {moreSteps.map((s) => (
-            <li key={s.icon} className="flex gap-2.5">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-zinc-600 text-[10px] font-bold text-zinc-500 light:border-zinc-300">
+            <li key={s.icon} className="flex gap-3">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-zinc-600 text-xs font-bold text-zinc-400 light:border-zinc-300 light:text-zinc-600">
                 {s.icon}
               </span>
               <span className="min-w-0">
-                <span className={type.stepTitle}>{s.title}</span>
-                <span className={`mt-0.5 block ${type.metaSm}`}>{s.body}</span>
+                <span className={`block ${type.tutorialStepTitle}`}>{s.title}</span>
+                <span className={`mt-1 block ${type.tutorialBody}`}>{s.body}</span>
               </span>
             </li>
           ))}
         </ol>
-        {firstVisit ? <p className={`mt-4 ${type.metaSm}`}>{t("guide.firstVisitWelcome")}</p> : null}
-        <button type="button" onClick={onClose} className={`mt-4 w-full ${ui.btnPrimary}`}>
+        {firstVisit ? <p className={`mt-5 ${type.tutorialNote}`}>{t("guide.firstVisitWelcome")}</p> : null}
+        <button type="button" onClick={onClose} className={`mt-5 w-full ${ui.btnPrimaryLg}`}>
           {t("guide.dismiss")}
         </button>
         <button
@@ -93,7 +93,7 @@ function QuickGuideCard({ onClose, firstVisit }) {
             onClose();
             navigate("/guide");
           }}
-          className={`mt-2 w-full ${ui.btnSecondary}`}
+          className={`mt-3 w-full ${ui.btnSecondaryLg}`}
         >
           {t("guide.fullGuideCta")}
         </button>
@@ -102,14 +102,11 @@ function QuickGuideCard({ onClose, firstVisit }) {
   );
 }
 
-const mainNav = [
+const navItems = [
   { to: "/", end: true, labelKey: "nav.dashboard" },
   { to: "/#pick-list", hash: true, labelKey: "nav.allPicks" },
   { to: "/hall-of-fame", labelKey: "nav.hallOfFame" },
   { to: "/users", labelKey: "nav.ranking" },
-];
-
-const moreNav = [
   { to: "/expired", labelKey: "nav.expired" },
   { to: "/about", labelKey: "nav.about" },
   { to: "/guide", labelKey: "nav.guide" },
@@ -140,33 +137,43 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur light:border-zinc-200 light:bg-white/95">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-3 py-3 sm:px-4 lg:flex-row lg:items-center lg:justify-between lg:gap-4">
-          <AppLogo />
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-3 py-3 sm:gap-3 sm:px-4 lg:flex-row lg:items-center lg:gap-4">
+          <div className="flex shrink-0 items-center justify-between gap-2 lg:justify-start">
+            <AppLogo />
+            {IS_REPOSITORY_CONFIGURED ? (
+              <a href={NEW_PICK_URL} className={`${ui.btnPrimary} text-sm lg:hidden`}>
+                <span aria-hidden>+</span> {t("nav.newPick")}
+              </a>
+            ) : null}
+          </div>
 
           <nav
-            className="flex flex-1 flex-wrap items-center justify-start gap-1 lg:justify-center"
+            className="-mx-3 flex min-w-0 flex-1 items-center gap-1 overflow-x-auto px-3 pb-0.5 scrollbar-thin lg:mx-0 lg:justify-center lg:overflow-visible lg:px-0"
             aria-label={t("nav.primary")}
           >
-            {mainNav.map((item) =>
+            {navItems.map((item) =>
               item.hash ? (
-                <a key={item.to} href={item.to} className={ui.navPill(false)}>
+                <a key={item.to} href={item.to} className={`shrink-0 ${ui.navPill(false)}`}>
                   {t(item.labelKey)}
                 </a>
               ) : (
-                <NavLink key={item.to} to={item.to} end={item.end} className={({ isActive }) => ui.navPill(isActive)}>
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  end={item.end}
+                  className={({ isActive }) => `shrink-0 ${ui.navPill(isActive)}`}
+                >
                   {t(item.labelKey)}
                 </NavLink>
               ),
             )}
-            <span className="hidden h-6 w-px bg-zinc-700 sm:inline light:bg-zinc-200" aria-hidden />
-            {moreNav.map((item) => (
-              <NavLink key={item.to} to={item.to} className={({ isActive }) => ui.navPill(isActive)}>
-                {t(item.labelKey)}
-              </NavLink>
-            ))}
           </nav>
 
-          <div className="flex flex-wrap items-center gap-2 lg:justify-end" role="toolbar" aria-label={t("nav.utilities")}>
+          <div
+            className="flex shrink-0 flex-wrap items-center gap-2 lg:justify-end"
+            role="toolbar"
+            aria-label={t("nav.utilities")}
+          >
             <LangToggle />
             <ThemeToggle />
             {IS_REPOSITORY_CONFIGURED && (
@@ -201,7 +208,7 @@ export function Header() {
                     />
                   </svg>
                 </button>
-                <a href={NEW_PICK_URL} className={ui.btnPrimary}>
+                <a href={NEW_PICK_URL} className={`${ui.btnPrimary} hidden lg:inline-flex`}>
                   <span aria-hidden>+</span> {t("nav.newPick")}
                 </a>
               </>
