@@ -8,6 +8,7 @@ import { ReturnRate } from "./ReturnRate.jsx";
 import { googleFinanceQuoteUrl } from "../../lib/googleFinanceUrl.js";
 import { pickIssueUrl } from "../../lib/constants.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
+import { type } from "../../lib/typographyClasses.js";
 import { StatusBadge } from "./StatusBadge.jsx";
 
 export function PickCard({ pick }) {
@@ -20,81 +21,67 @@ export function PickCard({ pick }) {
       ? pick.created_at.slice(0, 10)
       : pick.entry?.date || null;
   return (
-    <article className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 shadow-sm light:border-zinc-200 light:bg-white">
-      <div className="flex flex-wrap items-start justify-between gap-2">
-        <div>
-          <Link
-            to={`/pick/${pick.id}`}
-            className="text-xl font-semibold text-white hover:text-emerald-400 light:text-zinc-900 light:hover:text-emerald-700"
-          >
+    <article className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5 shadow-sm light:border-zinc-200 light:bg-white">
+      <header className="flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0 space-y-2">
+          <Link to={`/pick/${pick.id}`} className={`hover:underline ${type.cardTitle}`}>
             {pick.instrument_name || pick.ticker}
           </Link>
           {pick.instrument_name ? (
-            <p className="mt-0.5 text-xs font-medium tracking-wide text-zinc-400 light:text-zinc-600">{pick.ticker}</p>
+            <p className={type.meta}>{pick.ticker}</p>
           ) : financeUrl ? (
-            <p className="text-sm">
-              <a
-                href={financeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-emerald-500 hover:underline light:text-emerald-700"
-              >
+            <p className={type.meta}>
+              <a href={financeUrl} target="_blank" rel="noopener noreferrer" className="font-medium hover:underline">
                 {t("pickCard.nameOnGoogleFinance")}
               </a>
             </p>
           ) : null}
-          <p className="text-sm text-zinc-400 light:text-zinc-600">
+          <p className={type.meta}>
             {pick.market} ·{" "}
-            <Link className="hover:underline" to={`/user/${pick.author}`}>
+            <Link className="font-medium hover:underline" to={`/user/${pick.author}`}>
               @{pick.author}
             </Link>
+            {registeredOn ? <span> · {registeredOn}</span> : null}
+            {st === "achieved" && pick.achievement?.achieved_date ? (
+              <span className="font-semibold"> · {pick.achievement.achieved_date}</span>
+            ) : null}
           </p>
-          {registeredOn ? (
-            <p className="text-xs text-zinc-500 light:text-zinc-600">
-              {t("pickCard.registeredOn", { date: registeredOn })}
-            </p>
-          ) : null}
-          {st === "achieved" && pick.achievement?.achieved_date ? (
-            <p className="text-xs text-emerald-400 light:text-emerald-700">
-              {t("pickCard.achievedOn", { date: pick.achievement.achieved_date })}
-            </p>
-          ) : null}
         </div>
         <StatusBadge
           status={st}
           title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined}
         />
-      </div>
-      <dl className="mt-3 grid grid-cols-2 gap-2 text-sm">
+      </header>
+      <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4 border-t border-zinc-800/80 pt-4 light:border-zinc-200">
         <div>
-          <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.target")}</dt>
-          <dd>
+          <dt className={type.fieldLabel}>{t("pickCard.target")}</dt>
+          <dd className={`mt-1 ${type.fieldValue}`}>
             <ReturnRate rate={pick.target?.return_rate} />
             {isEntryPending(pick) ? (
-              <span className="mt-0.5 block text-xs text-zinc-500 light:text-zinc-600">{t("pick.pendingTargetPrice")}</span>
+              <span className={`mt-1 block ${type.meta}`}>{t("pick.pendingTargetPrice")}</span>
             ) : null}
           </dd>
         </div>
         <div>
-          <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.deadline")}</dt>
-          <dd>
+          <dt className={type.fieldLabel}>{t("pickCard.deadline")}</dt>
+          <dd className={`mt-1 ${type.fieldValue}`}>
             <PickDeadline pick={pick} />
           </dd>
         </div>
         <div>
-          <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.entry")}</dt>
-          <dd>
+          <dt className={type.fieldLabel}>{t("pickCard.entry")}</dt>
+          <dd className={`mt-1 ${type.fieldValue}`}>
             <PickEntryPrice pick={pick} />
           </dd>
         </div>
         <div>
-          <dt className="text-zinc-500 light:text-zinc-600">{t("pickCard.progress")}</dt>
-          <dd>
+          <dt className={type.fieldLabel}>{t("pickCard.progress")}</dt>
+          <dd className={`mt-1 ${type.fieldValue}`}>
             <PickProgress pick={pick} />
           </dd>
         </div>
       </dl>
-      <div className="mt-2 space-y-1 text-xs text-zinc-500 light:text-zinc-600">
+      <footer className={`mt-4 space-y-1 border-t border-zinc-800/80 pt-3 ${type.meta} light:border-zinc-200`}>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <span>
             {t("pickCard.votes")}: +{pick.votes?.likes ?? 0} / -{pick.votes?.dislikes ?? 0}
@@ -104,14 +91,14 @@ export function PickCard({ pick }) {
               href={issueUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-emerald-500 hover:underline light:text-emerald-700"
+              className="font-semibold hover:underline"
             >
               {t("pickCard.voteOnGithub")}
             </a>
           ) : null}
         </div>
-        {issueUrl ? <p className="text-[11px] leading-snug">{t("pickCard.voteHint")}</p> : null}
-      </div>
+        {issueUrl ? <p className={type.metaSm}>{t("pickCard.voteHint")}</p> : null}
+      </footer>
     </article>
   );
 }

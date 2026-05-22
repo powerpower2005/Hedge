@@ -4,6 +4,7 @@ import { PickList } from "../components/pick/PickList.jsx";
 import { applyFilters, SORTERS } from "../lib/filters.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { usePicks } from "../hooks/usePicks.js";
+import { type } from "../lib/typographyClasses.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 export function ActivePage() {
@@ -25,15 +26,28 @@ export function ActivePage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="mb-2 text-2xl font-bold text-white light:text-zinc-900">{t("active.title")}</h1>
-      <p className="mb-6 text-sm text-zinc-400 light:text-zinc-600">{t("active.subtitle", { count })}</p>
-      <FilterBar
-        filters={filters}
-        setFilters={setFilters}
-        sortKey={sortKey}
-        setSortKey={setSortKey}
-      />
+      <section className="mb-6 max-w-2xl border-b border-zinc-800 pb-6 light:border-zinc-200">
+        <p className="text-base font-semibold leading-snug text-zinc-100 light:text-zinc-900">
+          {t("guide.quickTagline")}
+        </p>
+        <p className={`mt-3 ${type.pageLead}`}>{t("active.nextStep")}</p>
+      </section>
+
+      <div className="mb-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <h1 className={type.pageTitle}>{t("active.title")}</h1>
+        <p className={type.meta}>{t("active.subtitle", { count })}</p>
+      </div>
+
       <PickList picks={visible} />
+
+      <div className="mt-8">
+        <FilterBar
+          filters={filters}
+          setFilters={setFilters}
+          sortKey={sortKey}
+          setSortKey={setSortKey}
+        />
+      </div>
     </div>
   );
 }

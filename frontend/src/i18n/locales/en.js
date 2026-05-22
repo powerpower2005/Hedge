@@ -33,8 +33,9 @@ export default {
     generic: "Something went wrong.",
   },
   active: {
-    title: "Active picks",
-    subtitle: "{count} picks in progress. Click a card for details.",
+    title: "Active",
+    subtitle: "{count} now",
+    nextStep: "Click a card below for details. Use the top tabs for achieved and expired lists.",
   },
   hallOfFame: {
     title: "Hall of Fame",
@@ -57,13 +58,13 @@ export default {
     title: "Guide",
     lead: "Follow these steps if you are new or unsure how things work.",
     quickTagline: "A public challenge: pick a ticker, target return, and duration—judged on daily closes.",
-    firstVisitWelcome: "Shown once automatically. Reopen anytime from the ? button in the header.",
-    dismiss: "Close",
+    firstVisitWelcome: "Shown once automatically. Reopen from the ? button in the header.",
+    dismiss: "Close and browse active picks",
     quickS1: "Use tabs for active, achieved, and expired picks; open a card for details.",
     quickS2: "New pick → GitHub form (sign-in required).",
     quickS3: "Up to 20 active picks, one per ticker, target return ±10%–1000%.",
     quickS4: "New picks lock entry and deadline on the first judgment → achieved or expired.",
-    fullGuideCta: "Full guide",
+    fullGuideCta: "Open full guide page",
     s1Title: "Browse lists and details",
     s1Body:
       "Use the top tabs: Active, Hall of Fame, and Expired. Click a card to open its detail page. Click an @username on a card to see that participant’s picks only. Use filters and sort to narrow the list.",

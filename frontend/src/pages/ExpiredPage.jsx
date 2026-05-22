@@ -4,6 +4,7 @@ import { PickList } from "../components/pick/PickList.jsx";
 import { applyFilters, SORTERS } from "../lib/filters.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { usePicks } from "../hooks/usePicks.js";
+import { type } from "../lib/typographyClasses.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 export function ExpiredPage() {
@@ -23,8 +24,8 @@ export function ExpiredPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="mb-2 text-2xl font-bold text-white light:text-zinc-900">{t("expired.title")}</h1>
-      <p className="mb-6 text-sm text-zinc-400 light:text-zinc-600">{t("expired.subtitle")}</p>
+      <h1 className={type.pageTitle}>{t("expired.title")}</h1>
+      <p className={`mt-2 mb-8 ${type.pageLead}`}>{t("expired.subtitle")}</p>
       <FilterBar
         filters={filters}
         setFilters={setFilters}

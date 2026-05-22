@@ -12,10 +12,10 @@ export function PickDeadline({ pick, deadline, className = "" }) {
   const dday = deadlineDdayLabel(dl);
   const ddayClass =
     dday === "D-DAY"
-      ? "font-medium text-amber-400 light:text-amber-700"
+      ? "font-bold text-zinc-300 light:text-zinc-700"
       : dday?.startsWith("D+")
-        ? "text-red-400/90 light:text-red-600"
-        : "text-zinc-500 light:text-zinc-600";
+        ? "font-semibold text-zinc-500 light:text-zinc-500"
+        : "font-normal text-zinc-500 light:text-zinc-600";
   return (
     <span className={className}>
       <span className="tabular-nums">{dl}</span>

@@ -6,8 +6,12 @@ import { PickDeadline } from "./PickDeadline.jsx";
 import { PickEntryPrice } from "./PickEntryPrice.jsx";
 import { PickProgress } from "./PickProgress.jsx";
 import { ReturnRate } from "./ReturnRate.jsx";
+import { type } from "../../lib/typographyClasses.js";
 import { StatusBadge } from "./StatusBadge.jsx";
 import { PickCard } from "./PickCard.jsx";
+
+const listHeader = `${type.sectionLabel} px-2 py-2`;
+const listCell = type.bodySm;
 
 const VIEW_STORAGE_KEY = "hedge-pick-list-view";
 
@@ -67,7 +71,9 @@ export function PickList({ picks }) {
         </div>
       ) : (
         <div className="overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-900/30 light:border-zinc-200 light:bg-white">
-          <div className="hidden min-w-[52rem] grid-cols-[minmax(10rem,1.4fr)_3.5rem_4.5rem_5rem_6.5rem_7.5rem_4.5rem] gap-x-2 border-b border-zinc-800 px-2 py-1.5 text-[11px] font-medium uppercase tracking-wide text-zinc-500 sm:grid light:border-zinc-200 light:text-zinc-600">
+          <div
+            className={`hidden min-w-[52rem] grid-cols-[minmax(10rem,1.4fr)_3.5rem_4.5rem_5rem_6.5rem_7.5rem_4.5rem] gap-x-2 border-b border-zinc-800 sm:grid light:border-zinc-200 ${listHeader}`}
+          >
             <span>{t("pickList.colTicker")}</span>
             <span>{t("pickList.colMarket")}</span>
             <span>{t("pickList.colTarget")}</span>
@@ -91,41 +97,39 @@ export function PickList({ picks }) {
                   <div className="min-w-0 sm:py-0">
                     <Link
                       to={`/pick/${p.id}`}
-                      className="block truncate text-sm font-semibold leading-tight text-white hover:text-emerald-400 light:text-zinc-900 light:hover:text-emerald-700"
+                      className={`block truncate hover:underline ${type.rowTitle}`}
                     >
                       {p.instrument_name || p.ticker}
                     </Link>
-                    <p className="truncate text-[11px] leading-tight text-zinc-500 light:text-zinc-600">
-                      {p.instrument_name ? (
-                        <span className="text-zinc-600 light:text-zinc-500">{p.ticker} · </span>
-                      ) : null}
-                      <Link className="hover:underline" to={`/user/${p.author}`}>
+                    <p className={`mt-1 truncate ${type.meta}`}>
+                      {p.instrument_name ? <span>{p.ticker} · </span> : null}
+                      <Link className="font-medium hover:underline" to={`/user/${p.author}`}>
                         @{p.author}
                       </Link>
                       {registered ? <span> · {registered}</span> : null}
                       {achieved ? (
-                        <span className="text-emerald-500 light:text-emerald-700"> · ✓ {achieved}</span>
+                        <span className="font-semibold"> · {t("pickCard.achievedOn", { date: achieved })}</span>
                       ) : null}
                     </p>
                   </div>
-                  <div className="tabular-nums text-zinc-300 light:text-zinc-700">
-                    <span className="mr-1.5 text-[10px] text-zinc-500 sm:hidden">{t("pickList.colMarket")}</span>
+                  <div className={listCell}>
+                    <span className={`mr-1.5 sm:hidden ${type.metaSm}`}>{t("pickList.colMarket")}</span>
                     {p.market}
                   </div>
-                  <div>
-                    <span className="mr-1.5 text-[10px] text-zinc-500 sm:hidden">{t("pickList.colTarget")}</span>
+                  <div className={listCell}>
+                    <span className={`mr-1.5 sm:hidden ${type.metaSm}`}>{t("pickList.colTarget")}</span>
                     <ReturnRate rate={p.target?.return_rate} />
                   </div>
-                  <div className="tabular-nums">
-                    <span className="mr-1.5 text-[10px] text-zinc-500 sm:hidden">{t("pickList.colEntry")}</span>
+                  <div className={listCell}>
+                    <span className={`mr-1.5 sm:hidden ${type.metaSm}`}>{t("pickList.colEntry")}</span>
                     <PickEntryPrice pick={p} />
                   </div>
-                  <div className="tabular-nums leading-tight">
-                    <span className="mr-1.5 text-[10px] text-zinc-500 sm:hidden">{t("pickList.colDeadline")}</span>
+                  <div className={listCell}>
+                    <span className={`mr-1.5 sm:hidden ${type.metaSm}`}>{t("pickList.colDeadline")}</span>
                     <PickDeadline pick={p} />
                   </div>
-                  <div className="min-w-0 leading-tight">
-                    <span className="mr-1.5 text-[10px] text-zinc-500 sm:hidden">{t("pickList.colProgress")}</span>
+                  <div className={`min-w-0 ${listCell}`}>
+                    <span className={`mr-1.5 sm:hidden ${type.metaSm}`}>{t("pickList.colProgress")}</span>
                     <PickProgress pick={p} />
                   </div>
                   <div className="justify-self-start sm:justify-self-end">

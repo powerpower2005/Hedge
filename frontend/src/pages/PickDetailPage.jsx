@@ -12,6 +12,7 @@ import { ReturnRate } from "../components/pick/ReturnRate.jsx";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
 import { googleFinanceQuoteUrl } from "../lib/googleFinanceUrl.js";
 import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
+import { type } from "../lib/typographyClasses.js";
 import { pickDetailErrorMessage } from "../lib/userMessages.js";
 
 export function PickDetailPage() {
@@ -59,119 +60,122 @@ export function PickDetailPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
-      <Link to="/" className="text-sm text-emerald-500 hover:underline">
+      <Link to="/" className={`mt-2 inline-block hover:underline ${type.meta}`}>
         {t("common.backToList")}
       </Link>
-      <div className="mt-4 flex flex-wrap items-center gap-3">
-        <div>
-          <h1 className="text-3xl font-bold text-white light:text-zinc-900">{pick.instrument_name || pick.ticker}</h1>
+      <header className="mt-6 flex flex-wrap items-start justify-between gap-4">
+        <div className="min-w-0 space-y-2">
+          <h1 className={type.detailTitle}>{pick.instrument_name || pick.ticker}</h1>
           {pick.instrument_name ? (
-            <p className="mt-1 text-sm font-medium tracking-wide text-zinc-400 light:text-zinc-600">{pick.ticker}</p>
+            <p className={type.meta}>{pick.ticker}</p>
           ) : financeUrl ? (
-            <p className="mt-1 text-base">
-              <a
-                href={financeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-emerald-500 hover:underline light:text-emerald-700"
-              >
+            <p className={type.meta}>
+              <a href={financeUrl} target="_blank" rel="noopener noreferrer" className="font-medium hover:underline">
                 {t("pickCard.nameOnGoogleFinance")}
               </a>
             </p>
           ) : null}
+          <p className={`pt-1 ${type.meta}`}>
+            <Link className="font-medium hover:underline" to={`/user/${pick.author}`}>
+              @{pick.author}
+            </Link>
+            {" · "}
+            {pick.market}
+            {" · "}
+            {t("pickDetail.refLine", { n: pick.issue_number })}
+          </p>
         </div>
         <StatusBadge
           status={pick.status?.current}
           title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined}
         />
-      </div>
+      </header>
       {isEntryPending(pick) ? (
-        <p className="mt-2 text-xs text-sky-400/90 light:text-sky-800">{t("pick.pendingEntryHint")}</p>
+        <p className={`mt-3 ${type.metaSm} font-medium`}>{t("pick.pendingEntryHint")}</p>
       ) : null}
-      <p className="text-zinc-400 light:text-zinc-600">
-        @{pick.author} · {pick.market} · {t("pickDetail.refLine", { n: pick.issue_number })}
-      </p>
       {pick.author_note ? (
-        <details className="mt-4 rounded-lg border border-zinc-800 bg-zinc-900/20 text-sm light:border-zinc-200 light:bg-zinc-50">
-          <summary className="cursor-pointer select-none px-3 py-2 font-medium text-zinc-200 light:text-zinc-800">
+        <details className="mt-6 rounded-lg border border-zinc-800 bg-zinc-900/20 light:border-zinc-200 light:bg-zinc-50">
+          <summary className={`cursor-pointer select-none px-4 py-3 ${type.stepTitle}`}>
             {t("pickDetail.authorNoteSummary")}
           </summary>
-          <div className="border-t border-zinc-800 px-3 py-2 text-zinc-300 light:border-zinc-200 light:text-zinc-700">
-            <p className="whitespace-pre-wrap break-words">{pick.author_note}</p>
-            <p className="mt-2 text-xs text-zinc-500 light:text-zinc-500">{t("pickDetail.authorNoteDisclaimer")}</p>
+          <div className="border-t border-zinc-800 px-4 py-3 light:border-zinc-200">
+            <p className={`whitespace-pre-wrap break-words ${type.body}`}>{pick.author_note}</p>
+            <p className={`mt-3 ${type.metaSm}`}>{t("pickDetail.authorNoteDisclaimer")}</p>
           </div>
         </details>
       ) : null}
-      <dl className="mt-6 space-y-3 text-sm">
+      <dl className="mt-8 divide-y divide-zinc-800 light:divide-zinc-200">
         {registeredOn ? (
-          <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
-            <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.registeredOn")}</dt>
-            <dd>{registeredOn}</dd>
+          <div className="flex items-baseline justify-between gap-4 py-3">
+            <dt className={type.fieldLabel}>{t("pickDetail.registeredOn")}</dt>
+            <dd className={type.fieldValue}>{registeredOn}</dd>
           </div>
         ) : null}
-        <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
-          <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.entry")}</dt>
-          <dd>
+        <div className="flex items-baseline justify-between gap-4 py-3">
+          <dt className={type.fieldLabel}>{t("pickDetail.entry")}</dt>
+          <dd className={type.fieldValue}>
             <PickEntryPrice pick={pick} />
           </dd>
         </div>
         {pick.entry?.close_session_date ? (
-          <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
-            <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.entryCloseSessionDate")}</dt>
-            <dd>{pick.entry.close_session_date}</dd>
+          <div className="flex items-baseline justify-between gap-4 py-3">
+            <dt className={type.fieldLabel}>{t("pickDetail.entryCloseSessionDate")}</dt>
+            <dd className={type.fieldValue}>{pick.entry.close_session_date}</dd>
           </div>
         ) : null}
-        <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
-          <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.targetReturn")}</dt>
-          <dd>
+        <div className="flex items-baseline justify-between gap-4 py-3">
+          <dt className={type.fieldLabel}>{t("pickDetail.targetReturn")}</dt>
+          <dd className={type.fieldValue}>
             <ReturnRate rate={pick.target?.return_rate} />
           </dd>
         </div>
-        <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
-          <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.targetPrice")}</dt>
-          <dd>
+        <div className="flex items-baseline justify-between gap-4 py-3">
+          <dt className={type.fieldLabel}>{t("pickDetail.targetPrice")}</dt>
+          <dd className={type.fieldValue}>
             {isEntryPending(pick) ? (
-              <span className="text-zinc-500 light:text-zinc-600">{t("pick.pendingTargetPrice")}</span>
+              <span className="font-normal text-zinc-500 light:text-zinc-600">{t("pick.pendingTargetPrice")}</span>
             ) : (
               formatPrice(pick.country, pick.target?.price)
             )}
           </dd>
         </div>
-        <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
-          <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.deadline")}</dt>
-          <dd>
+        <div className="flex items-baseline justify-between gap-4 py-3">
+          <dt className={type.fieldLabel}>{t("pickDetail.deadline")}</dt>
+          <dd className={type.fieldValue}>
             <PickDeadline pick={pick} />
           </dd>
         </div>
-        <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
-          <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.currentReturn")}</dt>
-          <dd>
+        <div className="flex items-baseline justify-between gap-4 py-3">
+          <dt className={type.fieldLabel}>{t("pickDetail.currentReturn")}</dt>
+          <dd className={type.fieldValue}>
             <PickProgress pick={pick} />
           </dd>
         </div>
-        <div className="flex justify-between border-b border-zinc-800 py-2 light:border-zinc-200">
-          <dt className="text-zinc-500 light:text-zinc-600">{t("pickDetail.votes")}</dt>
-          <dd>{t("pickDetail.votesTally", { likes: pick.votes?.likes ?? 0, dislikes: pick.votes?.dislikes ?? 0 })}</dd>
+        <div className="flex items-baseline justify-between gap-4 py-3">
+          <dt className={type.fieldLabel}>{t("pickDetail.votes")}</dt>
+          <dd className={type.fieldValue}>
+            {t("pickDetail.votesTally", { likes: pick.votes?.likes ?? 0, dislikes: pick.votes?.dislikes ?? 0 })}
+          </dd>
         </div>
       </dl>
       {issueUrl ? (
-        <div className="mt-6 rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 text-sm light:border-zinc-200 light:bg-zinc-50">
-          <p className="font-medium text-white light:text-zinc-900">{t("pickDetail.voteCtaTitle")}</p>
-          <p className="mt-2 text-zinc-400 light:text-zinc-600">{t("pickDetail.voteCtaBody")}</p>
+        <div className="mt-8 rounded-lg border border-zinc-800 bg-zinc-900/30 p-5 light:border-zinc-200 light:bg-zinc-50">
+          <p className={type.stepTitle}>{t("pickDetail.voteCtaTitle")}</p>
+          <p className={`mt-2 ${type.stepBody}`}>{t("pickDetail.voteCtaBody")}</p>
           <a
             href={issueUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-block font-medium text-emerald-500 hover:underline light:text-emerald-700"
+            className={`mt-4 inline-block font-semibold hover:underline ${type.body}`}
           >
             {t("pickDetail.openIssue", { n: pick.issue_number })}
           </a>
         </div>
       ) : null}
       {pick.achievement && (
-        <div className="mt-6 rounded-lg bg-amber-950/40 p-4 text-sm light:bg-amber-50">
-          <p className="font-medium text-amber-200 light:text-amber-900">{t("pickDetail.achieved")}</p>
-          <p className="text-zinc-300 light:text-zinc-700">
+        <div className="mt-8 rounded-lg border border-zinc-700 bg-zinc-900/40 p-5 light:border-zinc-300 light:bg-zinc-50">
+          <p className={type.sectionLabel}>{t("pickDetail.achieved")}</p>
+          <p className={`mt-3 ${type.body}`}>
             {t("pickDetail.achievedMeta", {
               date: pick.achievement.achieved_date,
               days: pick.achievement.days_taken,

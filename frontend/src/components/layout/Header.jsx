@@ -6,6 +6,7 @@ import { IS_REPOSITORY_CONFIGURED, NEW_PICK_URL } from "../../lib/constants";
 import { formatJudgmentUtc } from "../../lib/formatters.js";
 import { hasSeenQuickGuide, markQuickGuideSeen } from "../../lib/onboarding.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
+import { type } from "../../lib/typographyClasses.js";
 import { LangToggle } from "./LangToggle.jsx";
 import { ThemeToggle } from "./ThemeToggle.jsx";
 
@@ -36,8 +37,7 @@ function QuickGuideCard({ onClose, firstVisit }) {
     };
   }, [onClose]);
 
-  const steps = [
-    { icon: "1", title: t("guide.s1Title"), body: t("guide.quickS1") },
+  const moreSteps = [
     { icon: "2", title: t("guide.s2Title"), body: t("guide.quickS2") },
     { icon: "3", title: t("guide.s3Title"), body: t("guide.quickS3") },
     { icon: "4", title: t("guide.s4Title"), body: t("guide.quickS4") },
@@ -55,48 +55,65 @@ function QuickGuideCard({ onClose, firstVisit }) {
         aria-labelledby="quick-guide-title"
         className="mx-4 w-full max-w-md rounded-xl border border-zinc-700 bg-zinc-900 p-5 shadow-2xl light:border-zinc-200 light:bg-white"
       >
-        <div className="mb-4 flex items-center justify-between gap-2">
-          <h3 id="quick-guide-title" className="text-lg font-bold text-white light:text-zinc-900">
-            {t("guide.title")}
+        <div className="mb-3 flex items-start justify-between gap-2">
+          <h3
+            id="quick-guide-title"
+            className="text-base font-semibold leading-snug text-zinc-100 light:text-zinc-900"
+          >
+            {t("guide.quickTagline")}
           </h3>
           <button
             type="button"
             onClick={onClose}
             aria-label={t("guide.dismiss")}
-            className="rounded-md p-1 text-zinc-400 hover:bg-zinc-800 hover:text-white light:hover:bg-zinc-100 light:hover:text-zinc-900"
+            className="shrink-0 rounded-md p-1 text-zinc-400 hover:bg-zinc-800 hover:text-white light:hover:bg-zinc-100 light:hover:text-zinc-900"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
               <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
             </svg>
           </button>
         </div>
-        <p className="mb-3 text-sm leading-snug text-zinc-300 light:text-zinc-700">{t("guide.quickTagline")}</p>
-        {firstVisit ? (
-          <p className="mb-3 text-xs text-zinc-500 light:text-zinc-500">{t("guide.firstVisitWelcome")}</p>
-        ) : null}
-        <ol className="space-y-2 text-sm">
-          {steps.map((s) => (
-            <li key={s.icon} className="flex gap-2 leading-snug text-zinc-400 light:text-zinc-600">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[10px] font-bold text-white">
+        <p className={`mb-1 ${type.metaSm}`}>{t("guide.title")}</p>
+
+        <div className="mb-4 rounded-lg border border-zinc-600 bg-zinc-800/60 p-3 light:border-zinc-300 light:bg-zinc-100">
+          <p className={type.stepTitle}>{t("guide.s1Title")}</p>
+          <p className={`mt-1.5 ${type.body}`}>{t("guide.quickS1")}</p>
+        </div>
+
+        <ol className="space-y-2.5">
+          {moreSteps.map((s) => (
+            <li key={s.icon} className="flex gap-2.5">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-zinc-700 text-[10px] font-semibold text-zinc-500 light:border-zinc-300 light:text-zinc-500">
                 {s.icon}
               </span>
-              <span>
-                <span className="font-medium text-zinc-200 light:text-zinc-800">{s.title}</span>
-                {" — "}
-                {s.body}
+              <span className="min-w-0">
+                <span className={`${type.stepTitle} font-semibold text-zinc-400 light:text-zinc-500`}>{s.title}</span>
+                <span className={`mt-0.5 block ${type.metaSm}`}>{s.body}</span>
               </span>
             </li>
           ))}
         </ol>
+
+        {firstVisit ? (
+          <p className={`mt-4 ${type.metaSm}`}>{t("guide.firstVisitWelcome")}</p>
+        ) : null}
+
+        <button
+          type="button"
+          onClick={onClose}
+          className="mt-4 w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-500"
+        >
+          {t("guide.dismiss")}
+        </button>
         <button
           type="button"
           onClick={() => {
             onClose();
             navigate("/guide");
           }}
-          className="mt-4 w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-500"
+          className="mt-2 w-full rounded-lg border border-zinc-600 px-4 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-800 light:border-zinc-300 light:text-zinc-700 light:hover:bg-zinc-100"
         >
-          {t("guide.fullGuideCta")} →
+          {t("guide.fullGuideCta")}
         </button>
       </div>
     </div>

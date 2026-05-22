@@ -12,6 +12,7 @@ import {
 } from "../lib/hallPeriod.js";
 import { useHallArchivePicks } from "../hooks/useHallArchivePicks.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
+import { type } from "../lib/typographyClasses.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 const periodBtn = (active) =>
@@ -61,10 +62,8 @@ export function HallOfFamePage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="mb-2 text-2xl font-bold text-white light:text-zinc-900">{t("hallOfFame.title")}</h1>
-      <p className="mb-4 text-sm text-zinc-400 light:text-zinc-600">
-        {t("hallOfFame.subtitle")}
-      </p>
+      <h1 className={type.pageTitle}>{t("hallOfFame.title")}</h1>
+      <p className={`mt-2 mb-6 ${type.pageLead}`}>{t("hallOfFame.subtitle")}</p>
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <span className="mr-1 text-xs text-zinc-500 light:text-zinc-600">{t("hallOfFame.periodLabel")}</span>
         <button type="button" className={periodBtn(periodScope === "all")} onClick={() => setPeriodScope("all")}>
