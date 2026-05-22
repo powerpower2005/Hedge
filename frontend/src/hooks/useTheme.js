@@ -8,10 +8,9 @@ function readStoredPref() {
   try {
     const s = localStorage.getItem(KEY);
     if (s === "light" || s === "dark" || s === "system") return s;
-    if (s === null) return "system";
-    return "system";
+    return "light";
   } catch {
-    return "system";
+    return "light";
   }
 }
 

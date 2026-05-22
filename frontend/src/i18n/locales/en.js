@@ -81,7 +81,7 @@ export default {
       "Each pick is tied to its GitHub registration issue. Add a +1 (approve) or −1 (disapprove) reaction on that issue’s first post to vote. Counts on cards and detail pages refresh after the repository syncs reactions from GitHub (about hourly at :23 UTC, or when a maintainer runs the job manually).",
     s6Title: "Display settings",
     s6Body:
-      "Use the language control for Korean or English. Theme defaults to **your OS setting**; the header button cycles light → dark → system. Choices are saved in this browser.",
+      "Use the language control for Korean or English. Theme defaults to **light**; the header button cycles light → dark → system (OS). Choices are saved in this browser.",
   },
   about: {
     documentTitle: "About | Called It",

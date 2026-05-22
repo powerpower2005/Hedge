@@ -15,8 +15,8 @@
         }
         var light =
           p === "light" ||
-          ((p === "system" || p === null) &&
-            window.matchMedia("(prefers-color-scheme: light)").matches);
+          p === null ||
+          (p === "system" && window.matchMedia("(prefers-color-scheme: light)").matches);
         if (light) document.documentElement.classList.add("light");
       })();
     </script>

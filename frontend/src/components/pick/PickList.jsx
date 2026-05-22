@@ -66,78 +66,77 @@ export function PickList({ picks }) {
           ))}
         </div>
       ) : (
-        <div className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/30 light:border-zinc-200 light:bg-white">
-          <div className="hidden grid-cols-[1.2fr_0.7fr_0.7fr_0.85fr_0.85fr_1fr_auto] gap-3 border-b border-zinc-800 px-3 py-2 text-xs text-zinc-500 sm:grid light:border-zinc-200 light:text-zinc-600">
+        <div className="overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-900/30 light:border-zinc-200 light:bg-white">
+          <div className="hidden min-w-[52rem] grid-cols-[minmax(10rem,1.4fr)_3.5rem_4.5rem_5rem_6.5rem_7.5rem_4.5rem] gap-x-2 border-b border-zinc-800 px-2 py-1.5 text-[11px] font-medium uppercase tracking-wide text-zinc-500 sm:grid light:border-zinc-200 light:text-zinc-600">
             <span>{t("pickList.colTicker")}</span>
             <span>{t("pickList.colMarket")}</span>
             <span>{t("pickList.colTarget")}</span>
             <span>{t("pickList.colEntry")}</span>
             <span>{t("pickList.colDeadline")}</span>
             <span>{t("pickList.colProgress")}</span>
-            <span>{t("pickList.colStatus")}</span>
+            <span className="text-right">{t("pickList.colStatus")}</span>
           </div>
-          <ul className="divide-y divide-zinc-800 light:divide-zinc-200">
-            {picks.map((p) => (
-              <li
-                key={p.id}
-                className="grid gap-2 px-3 py-3 sm:grid-cols-[1.2fr_0.7fr_0.7fr_0.85fr_0.85fr_1fr_auto] sm:items-center sm:gap-3"
-              >
-                <div>
-                  <Link
-                    to={`/pick/${p.id}`}
-                    className="text-base font-semibold text-white hover:text-emerald-400 light:text-zinc-900 light:hover:text-emerald-700"
-                  >
-                    {p.instrument_name || p.ticker}
-                  </Link>
-                  <p className="text-xs text-zinc-500 light:text-zinc-600">
-                    {p.instrument_name ? `${p.ticker} · ` : ""}
-                    <Link className="hover:underline" to={`/user/${p.author}`}>
-                      @{p.author}
+          <ul className="min-w-[52rem] divide-y divide-zinc-800/80 light:divide-zinc-200">
+            {picks.map((p) => {
+              const registered =
+                typeof p.created_at === "string" && p.created_at.length >= 10
+                  ? p.created_at.slice(0, 10)
+                  : p.entry?.date || null;
+              const achieved = p.status?.current === "achieved" ? p.achievement?.achieved_date : null;
+              return (
+                <li
+                  key={p.id}
+                  className="grid gap-x-2 gap-y-1 px-2 py-1.5 text-xs sm:grid-cols-[minmax(10rem,1.4fr)_3.5rem_4.5rem_5rem_6.5rem_7.5rem_4.5rem] sm:items-center sm:gap-y-0 sm:py-2"
+                >
+                  <div className="min-w-0 sm:py-0">
+                    <Link
+                      to={`/pick/${p.id}`}
+                      className="block truncate text-sm font-semibold leading-tight text-white hover:text-emerald-400 light:text-zinc-900 light:hover:text-emerald-700"
+                    >
+                      {p.instrument_name || p.ticker}
                     </Link>
-                  </p>
-                  {typeof p.created_at === "string" && p.created_at.length >= 10 ? (
-                    <p className="text-xs text-zinc-500 light:text-zinc-600">
-                      {t("pickList.registeredOn", { date: p.created_at.slice(0, 10) })}
+                    <p className="truncate text-[11px] leading-tight text-zinc-500 light:text-zinc-600">
+                      {p.instrument_name ? (
+                        <span className="text-zinc-600 light:text-zinc-500">{p.ticker} · </span>
+                      ) : null}
+                      <Link className="hover:underline" to={`/user/${p.author}`}>
+                        @{p.author}
+                      </Link>
+                      {registered ? <span> · {registered}</span> : null}
+                      {achieved ? (
+                        <span className="text-emerald-500 light:text-emerald-700"> · ✓ {achieved}</span>
+                      ) : null}
                     </p>
-                  ) : p.entry?.date ? (
-                    <p className="text-xs text-zinc-500 light:text-zinc-600">
-                      {t("pickList.registeredOn", { date: p.entry.date })}
-                    </p>
-                  ) : null}
-                  {p.status?.current === "achieved" && p.achievement?.achieved_date ? (
-                    <p className="text-xs text-emerald-400 light:text-emerald-700">
-                      {t("pickList.achievedOn", { date: p.achievement.achieved_date })}
-                    </p>
-                  ) : null}
-                </div>
-                <div className="text-sm">
-                  <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colMarket")}</span>
-                  {p.market}
-                </div>
-                <div className="text-sm">
-                  <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colTarget")}</span>
-                  <ReturnRate rate={p.target?.return_rate} />
-                </div>
-                <div className="text-sm tabular-nums">
-                  <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colEntry")}</span>
-                  <PickEntryPrice pick={p} />
-                </div>
-                <div className="text-sm">
-                  <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colDeadline")}</span>
-                  <PickDeadline pick={p} />
-                </div>
-                <div className="text-sm">
-                  <span className="mr-2 text-xs text-zinc-500 sm:hidden light:text-zinc-600">{t("pickList.colProgress")}</span>
-                  <PickProgress pick={p} />
-                </div>
-                <div className="justify-self-start sm:justify-self-end">
-                  <StatusBadge
-                    status={p.status?.current}
-                    title={isEntryPending(p) ? t("pick.pendingEntryHint") : undefined}
-                  />
-                </div>
-              </li>
-            ))}
+                  </div>
+                  <div className="tabular-nums text-zinc-300 light:text-zinc-700">
+                    <span className="mr-1.5 text-[10px] text-zinc-500 sm:hidden">{t("pickList.colMarket")}</span>
+                    {p.market}
+                  </div>
+                  <div>
+                    <span className="mr-1.5 text-[10px] text-zinc-500 sm:hidden">{t("pickList.colTarget")}</span>
+                    <ReturnRate rate={p.target?.return_rate} />
+                  </div>
+                  <div className="tabular-nums">
+                    <span className="mr-1.5 text-[10px] text-zinc-500 sm:hidden">{t("pickList.colEntry")}</span>
+                    <PickEntryPrice pick={p} />
+                  </div>
+                  <div className="tabular-nums leading-tight">
+                    <span className="mr-1.5 text-[10px] text-zinc-500 sm:hidden">{t("pickList.colDeadline")}</span>
+                    <PickDeadline pick={p} />
+                  </div>
+                  <div className="min-w-0 leading-tight">
+                    <span className="mr-1.5 text-[10px] text-zinc-500 sm:hidden">{t("pickList.colProgress")}</span>
+                    <PickProgress pick={p} />
+                  </div>
+                  <div className="justify-self-start sm:justify-self-end">
+                    <StatusBadge
+                      status={p.status?.current}
+                      title={isEntryPending(p) ? t("pick.pendingEntryHint") : undefined}
+                    />
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
