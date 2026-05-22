@@ -7,6 +7,7 @@ import { PickEntryPrice } from "./PickEntryPrice.jsx";
 import { PickProgress } from "./PickProgress.jsx";
 import { ReturnRate } from "./ReturnRate.jsx";
 import { type } from "../../lib/typographyClasses.js";
+import { ui } from "../../lib/themeClasses.js";
 import { StatusBadge } from "./StatusBadge.jsx";
 import { PickCard } from "./PickCard.jsx";
 
@@ -149,7 +150,7 @@ export function PickList({ picks }) {
           ))}
         </div>
       ) : (
-        <div className="rounded-lg border border-zinc-800 bg-zinc-900/30 light:border-zinc-200 light:bg-white">
+        <div className={ui.card}>
           <div className="hidden overflow-x-auto md:block">
             <table className="w-full min-w-[44rem] border-collapse text-left xl:min-w-0">
               <caption className="sr-only">{t("pickList.sectionLabel")}</caption>

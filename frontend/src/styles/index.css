@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 body {
-  @apply min-h-screen bg-zinc-950 text-zinc-100;
+  @apply min-h-screen bg-zinc-950 text-zinc-100 antialiased;
 }
 
 html.light body {
-  @apply bg-zinc-50 text-zinc-900;
+  @apply bg-[#f4f6f5] text-zinc-900;
 }
 
 @layer base {

@@ -13,6 +13,7 @@ import {
 import { useHallArchivePicks } from "../hooks/useHallArchivePicks.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { type } from "../lib/typographyClasses.js";
+import { ui } from "../lib/themeClasses.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 const periodBtn = (active) =>
@@ -61,7 +62,7 @@ export function HallOfFamePage() {
   if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
+    <article className={ui.page}>
       <h1 className={type.pageTitle}>{t("hallOfFame.title")}</h1>
       <p className={`mt-2 mb-6 ${type.pageLead}`}>{t("hallOfFame.subtitle")}</p>
       <div className="mb-4 flex flex-wrap items-center gap-2">
@@ -133,6 +134,6 @@ export function HallOfFamePage() {
         setSortKey={setSortKey}
       />
       <PickList picks={visible} />
-    </div>
+    </article>
   );
 }

@@ -89,9 +89,9 @@ export function UsersLeaderboardPage() {
   if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-6 sm:px-4 sm:py-8">
+    <article className={ui.page}>
       <nav aria-label={t("common.home")} className="text-sm">
-        <Link to="/" className="text-emerald-300 underline-offset-2 hover:underline light:text-emerald-800">
+        <Link to="/" className={ui.link}>
           {t("common.home")}
         </Link>
       </nav>

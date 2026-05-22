@@ -1,10 +1,11 @@
 import { MARKETS } from "../../lib/constants";
 import { useI18n } from "../../i18n/I18nContext.jsx";
+import { ui } from "../../lib/themeClasses.js";
 
 export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
   const { t } = useI18n();
   return (
-    <div className="mb-6 flex flex-wrap items-end gap-4 rounded-lg border border-zinc-800 bg-zinc-900/30 p-4 light:border-zinc-200 light:bg-zinc-50">
+    <div className={`mb-6 flex flex-wrap items-end gap-4 ${ui.card} ${ui.cardPad}`}>
       <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600">
         {t("filters.country")}
         <select

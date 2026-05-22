@@ -1,19 +1,30 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ProgressBar } from "../components/ui/ProgressBar.jsx";
 import { StatusBadge } from "../components/pick/StatusBadge.jsx";
 import { useDataCacheRevision } from "../context/DataCacheContext.jsx";
 import { IS_REPOSITORY_CONFIGURED, pickIssueUrl } from "../lib/constants.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { PickDeadline } from "../components/pick/PickDeadline.jsx";
 import { PickEntryPrice } from "../components/pick/PickEntryPrice.jsx";
-import { PickProgress } from "../components/pick/PickProgress.jsx";
 import { isEntryPending } from "../lib/pickEntry.js";
+import { targetAchievementPercent } from "../lib/pickProgressPct.js";
 import { ReturnRate } from "../components/pick/ReturnRate.jsx";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
 import { googleFinanceQuoteUrl } from "../lib/googleFinanceUrl.js";
 import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
+import { ui } from "../lib/themeClasses.js";
 import { type } from "../lib/typographyClasses.js";
 import { pickDetailErrorMessage } from "../lib/userMessages.js";
+
+function MetricBox({ label, children }) {
+  return (
+    <div className="rounded-xl bg-zinc-800/40 p-3 light:bg-zinc-50">
+      <p className={ui.label}>{label}</p>
+      <div className="mt-1.5">{children}</div>
+    </div>
+  );
+}
 
 export function PickDetailPage() {
   const { id } = useParams();
@@ -48,8 +59,10 @@ export function PickDetailPage() {
     };
   }, [id, dataRevision]);
 
-  if (err && !pick) return <p className="px-4 py-8 text-red-400 light:text-red-600">{pickDetailErrorMessage(err, t)}</p>;
-  if (!pick) return <p className="px-4 py-8 text-zinc-500 light:text-zinc-600">{t("common.loading")}</p>;
+  if (err && !pick) {
+    return <p className={`${ui.page} text-red-400 light:text-red-600`}>{pickDetailErrorMessage(err, t)}</p>;
+  }
+  if (!pick) return <p className={`${ui.page} text-zinc-400`}>{t("common.loading")}</p>;
 
   const issueUrl = pickIssueUrl(pick.issue_number);
   const financeUrl = googleFinanceQuoteUrl(pick);
@@ -57,123 +70,166 @@ export function PickDetailPage() {
     typeof pick.created_at === "string" && pick.created_at.length >= 10
       ? pick.created_at.slice(0, 10)
       : pick.entry?.date || null;
+  const progressPct = targetAchievementPercent(pick);
+  const close = pick.progress?.current?.close;
+  const countryLabel = pick.country === "KR" ? t("pickDetail.countryKr") : t("pickDetail.countryUs");
+  const currencyLabel = pick.country === "KR" ? "KRW" : "USD";
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8">
-      <Link to="/" className={`mt-2 inline-block hover:underline ${type.meta}`}>
-        {t("common.backToList")}
-      </Link>
-      <header className="mt-6 flex flex-wrap items-start justify-between gap-4">
-        <div className="min-w-0 space-y-2">
-          <h1 className={type.detailTitle}>{pick.instrument_name || pick.ticker}</h1>
-          {pick.instrument_name ? (
-            <p className={type.meta}>{pick.ticker}</p>
-          ) : financeUrl ? (
-            <p className={type.meta}>
-              <a href={financeUrl} target="_blank" rel="noopener noreferrer" className="font-medium hover:underline">
-                {t("pickCard.nameOnGoogleFinance")}
-              </a>
-            </p>
-          ) : null}
-          <p className={`pt-1 ${type.meta}`}>
-            <Link className="font-medium hover:underline" to={`/user/${pick.author}`}>
+    <article className={ui.page}>
+      <nav className="mb-4">
+        <Link to="/" className={`inline-flex items-center gap-1 text-sm ${ui.link}`}>
+          <span aria-hidden>←</span> {t("common.backShort")}
+        </Link>
+      </nav>
+
+      <section className={`${ui.card} ${ui.cardPad}`}>
+        <header>
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <h1 className={ui.ticker}>{pick.ticker}</h1>
+              <span className={ui.badgeMarket}>{pick.market}</span>
+              <StatusBadge
+                status={pick.status?.current}
+                title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined}
+              />
+            </div>
+          </div>
+          <p className="mt-2 text-lg font-bold text-zinc-100 light:text-zinc-900">
+            {pick.instrument_name || pick.ticker}
+          </p>
+          <p className={`mt-1 ${type.meta}`}>
+            <Link className={ui.link} to={`/user/${pick.author}`}>
               @{pick.author}
             </Link>
-            {" · "}
-            {pick.market}
-            {" · "}
-            {t("pickDetail.refLine", { n: pick.issue_number })}
+            {registeredOn ? <span> · {registeredOn}</span> : null}
+            <span className="text-zinc-500"> · {t("pickDetail.refLine", { n: pick.issue_number })}</span>
           </p>
-        </div>
-        <StatusBadge
-          status={pick.status?.current}
-          title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined}
-        />
-      </header>
-      {isEntryPending(pick) ? (
-        <p className={`mt-3 ${type.metaSm} font-medium`}>{t("pick.pendingEntryHint")}</p>
-      ) : null}
-      {pick.author_note ? (
-        <details className="mt-6 rounded-lg border border-zinc-800 bg-zinc-900/20 light:border-zinc-200 light:bg-zinc-50">
-          <summary className={`cursor-pointer select-none px-4 py-3 ${type.stepTitle}`}>
-            {t("pickDetail.authorNoteSummary")}
-          </summary>
-          <div className="border-t border-zinc-800 px-4 py-3 light:border-zinc-200">
-            <p className={`whitespace-pre-wrap break-words ${type.body}`}>{pick.author_note}</p>
-            <p className={`mt-3 ${type.metaSm}`}>{t("pickDetail.authorNoteDisclaimer")}</p>
-          </div>
-        </details>
-      ) : null}
-      <dl className="mt-8 divide-y divide-zinc-800 light:divide-zinc-200">
-        {registeredOn ? (
-          <div className="flex items-baseline justify-between gap-4 py-3">
-            <dt className={type.fieldLabel}>{t("pickDetail.registeredOn")}</dt>
-            <dd className={type.fieldValue}>{registeredOn}</dd>
-          </div>
+        </header>
+
+        {isEntryPending(pick) ? (
+          <p className={`mt-4 rounded-xl border border-sky-800/50 bg-sky-950/30 px-3 py-2 text-sm text-sky-200 light:border-sky-200 light:bg-sky-50 light:text-sky-900`}>
+            {t("pick.pendingEntryHint")}
+          </p>
         ) : null}
-        <div className="flex items-baseline justify-between gap-4 py-3">
-          <dt className={type.fieldLabel}>{t("pickDetail.entry")}</dt>
-          <dd className={type.fieldValue}>
-            <PickEntryPrice pick={pick} />
-          </dd>
-        </div>
-        {pick.entry?.close_session_date ? (
-          <div className="flex items-baseline justify-between gap-4 py-3">
-            <dt className={type.fieldLabel}>{t("pickDetail.entryCloseSessionDate")}</dt>
-            <dd className={type.fieldValue}>{pick.entry.close_session_date}</dd>
-          </div>
-        ) : null}
-        <div className="flex items-baseline justify-between gap-4 py-3">
-          <dt className={type.fieldLabel}>{t("pickDetail.targetReturn")}</dt>
-          <dd className={type.fieldValue}>
-            <ReturnRate rate={pick.target?.return_rate} />
-          </dd>
-        </div>
-        <div className="flex items-baseline justify-between gap-4 py-3">
-          <dt className={type.fieldLabel}>{t("pickDetail.targetPrice")}</dt>
-          <dd className={type.fieldValue}>
+
+        <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+          <MetricBox label={t("pickDetail.targetReturn")}>
+            <ReturnRate rate={pick.target?.return_rate} className={ui.valueLg} />
+          </MetricBox>
+          <MetricBox label={t("pickDetail.currentReturn")}>
             {isEntryPending(pick) ? (
-              <span className="font-normal text-zinc-500 light:text-zinc-600">{t("pick.pendingTargetPrice")}</span>
+              <span className={type.meta}>{t("pick.pendingProgress")}</span>
             ) : (
-              formatPrice(pick.country, pick.target?.price)
+              <ReturnRate rate={pick.progress?.current?.return_rate} className={ui.valueLg} />
             )}
-          </dd>
+          </MetricBox>
+          <MetricBox label={t("pickDetail.entry")}>
+            <span className={ui.valueLg}>
+              <PickEntryPrice pick={pick} />
+            </span>
+          </MetricBox>
+          <MetricBox label={t("pickDetail.currentPrice")}>
+            <span className={ui.valueLg}>
+              {isEntryPending(pick) || close == null || Number.isNaN(close)
+                ? "—"
+                : formatPrice(pick.country, close)}
+            </span>
+          </MetricBox>
         </div>
-        <div className="flex items-baseline justify-between gap-4 py-3">
-          <dt className={type.fieldLabel}>{t("pickDetail.deadline")}</dt>
-          <dd className={type.fieldValue}>
+
+        <ProgressBar percent={progressPct} />
+      </section>
+
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <section className={`${ui.card} ${ui.cardPad}`}>
+          <h2 className={`${ui.label} mb-2`}>{t("pickDetail.deadline")}</h2>
+          <p className={ui.valueLg}>
             <PickDeadline pick={pick} />
-          </dd>
-        </div>
-        <div className="flex items-baseline justify-between gap-4 py-3">
-          <dt className={type.fieldLabel}>{t("pickDetail.currentReturn")}</dt>
-          <dd className={type.fieldValue}>
-            <PickProgress pick={pick} />
-          </dd>
-        </div>
-        <div className="flex items-baseline justify-between gap-4 py-3">
-          <dt className={type.fieldLabel}>{t("pickDetail.votes")}</dt>
-          <dd className={type.fieldValue}>
-            {t("pickDetail.votesTally", { likes: pick.votes?.likes ?? 0, dislikes: pick.votes?.dislikes ?? 0 })}
-          </dd>
-        </div>
-      </dl>
+          </p>
+        </section>
+        <section className={`${ui.card} ${ui.cardPad}`}>
+          <h2 className={`${ui.label} mb-2`}>{t("pickDetail.exchangeInfo")}</h2>
+          <p className={ui.valueLg}>{pick.market}</p>
+          <p className={`mt-1 ${type.meta}`}>
+            {countryLabel} · {currencyLabel}
+          </p>
+          {financeUrl ? (
+            <a
+              href={financeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`mt-2 inline-block text-sm ${ui.link}`}
+            >
+              {t("pickCard.nameOnGoogleFinance")}
+            </a>
+          ) : null}
+        </section>
+      </div>
+
+      {pick.author_note ? (
+        <section className={`mt-4 ${ui.card} ${ui.cardPad}`}>
+          <h2 className={ui.sectionTitle}>{t("pickDetail.pickReason")}</h2>
+          <p className={`mt-3 whitespace-pre-wrap break-words ${type.body}`}>{pick.author_note}</p>
+          <p className={`mt-3 ${type.metaSm}`}>{t("pickDetail.authorNoteDisclaimer")}</p>
+        </section>
+      ) : null}
+
+      {registeredOn ? (
+        <p className={`mt-4 ${type.meta}`}>
+          {t("pickDetail.registeredOn")}: {registeredOn}
+        </p>
+      ) : null}
+
+      {!isEntryPending(pick) && pick.target?.price != null ? (
+        <p className={`mt-2 ${type.meta}`}>
+          {t("pickDetail.targetPrice")}: {formatPrice(pick.country, pick.target?.price)}
+        </p>
+      ) : null}
+
+      {pick.entry?.close_session_date ? (
+        <p className={`mt-1 ${type.meta}`}>
+          {t("pickDetail.entryCloseSessionDate")}: {pick.entry.close_session_date}
+        </p>
+      ) : null}
+
       {issueUrl ? (
-        <div className="mt-8 rounded-lg border border-zinc-800 bg-zinc-900/30 p-5 light:border-zinc-200 light:bg-zinc-50">
-          <p className={type.stepTitle}>{t("pickDetail.voteCtaTitle")}</p>
-          <p className={`mt-2 ${type.stepBody}`}>{t("pickDetail.voteCtaBody")}</p>
+        <section className={`mt-4 ${ui.card} ${ui.cardPad}`} aria-labelledby="vote-section-title">
+          <h2 id="vote-section-title" className={ui.sectionTitle}>
+            {t("pickDetail.votes")}
+          </h2>
+          <p className={`mt-2 ${type.meta}`}>{t("pickDetail.voteCtaBody")}</p>
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <a
+              href={issueUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${ui.btnSecondary} justify-center py-3`}
+            >
+              👍 {t("pickDetail.voteAgree", { n: pick.votes?.likes ?? 0 })}
+            </a>
+            <a
+              href={issueUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${ui.btnSecondary} justify-center py-3`}
+            >
+              👎 {t("pickDetail.voteDisagree", { n: pick.votes?.dislikes ?? 0 })}
+            </a>
+          </div>
           <a
             href={issueUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`mt-4 inline-block font-semibold hover:underline ${type.body}`}
+            className={`mt-4 inline-block text-sm ${ui.link}`}
           >
             {t("pickDetail.openIssue", { n: pick.issue_number })}
           </a>
-        </div>
+        </section>
       ) : null}
-      {pick.achievement && (
-        <div className="mt-8 rounded-lg border border-zinc-700 bg-zinc-900/40 p-5 light:border-zinc-300 light:bg-zinc-50">
+
+      {pick.achievement ? (
+        <section className={`mt-4 ${ui.card} ${ui.cardPad}`}>
           <p className={type.sectionLabel}>{t("pickDetail.achieved")}</p>
           <p className={`mt-3 ${type.body}`}>
             {t("pickDetail.achievedMeta", {
@@ -182,8 +238,8 @@ export function PickDetailPage() {
               final: formatReturn(pick.achievement.final_return_rate),
             })}
           </p>
-        </div>
-      )}
-    </div>
+        </section>
+      ) : null}
+    </article>
   );
 }

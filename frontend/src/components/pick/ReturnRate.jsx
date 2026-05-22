@@ -5,3 +5,4 @@ export function ReturnRate({ rate, className = "" }) {
   const extra = className ? ` ${className}` : "";
   return <span className={`tabular-nums${color ? ` ${color}` : ""}${extra}`}>{formatReturn(rate)}</span>;
 }
+

@@ -15,7 +15,7 @@ export function formatWinRate(rate) {
 export function returnRateColorClass(rate) {
   if (rate == null || Number.isNaN(rate)) return "";
   if (rate < 0) return "text-red-300 light:text-red-700";
-  if (rate > 0) return "text-emerald-300 light:text-emerald-800";
+  if (rate > 0) return "text-primary-300 light:text-primary-700";
   return "text-zinc-300 light:text-zinc-700";
 }
 
