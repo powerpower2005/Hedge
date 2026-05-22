@@ -1,6 +1,8 @@
 export default {
   app: { title: "Called It", documentTitle: "Called It" },
   nav: {
+    primary: "Main menu",
+    utilities: "Tools",
     active: "Active",
     hallOfFame: "Hall of Fame",
     expired: "Expired",
@@ -183,6 +185,7 @@ export default {
     nameOnGoogleFinance: "View instrument on Google Finance",
   },
   pickList: {
+    sectionLabel: "Pick list",
     empty: "No picks yet.",
     viewLabel: "View",
     viewCards: "Cards",

@@ -10,8 +10,10 @@ import { type } from "../../lib/typographyClasses.js";
 import { StatusBadge } from "./StatusBadge.jsx";
 import { PickCard } from "./PickCard.jsx";
 
-const listHeader = `${type.sectionLabel} px-2 py-2`;
-const listCell = type.bodySm;
+const listHeader = `${type.sectionLabel} px-3 py-2`;
+const thClass = `${listHeader} text-left whitespace-nowrap`;
+const tdClass = "px-3 py-2 align-top text-xs sm:text-sm";
+const tdNum = `${tdClass} whitespace-nowrap tabular-nums`;
 
 const VIEW_STORAGE_KEY = "hedge-pick-list-view";
 
@@ -27,8 +29,82 @@ const viewBtnClass = (active) =>
   `rounded-md px-3 py-1.5 text-xs font-medium ${
     active
       ? "bg-zinc-800 text-white light:bg-zinc-200 light:text-zinc-900"
-      : "text-zinc-400 hover:text-white light:text-zinc-600 light:hover:text-zinc-900"
+      : "text-zinc-300 hover:text-white light:text-zinc-700 light:hover:text-zinc-900"
   }`;
+
+function pickMetaLine(p, t) {
+  const registered =
+    typeof p.created_at === "string" && p.created_at.length >= 10
+      ? p.created_at.slice(0, 10)
+      : p.entry?.date || null;
+  const achieved = p.status?.current === "achieved" ? p.achievement?.achieved_date : null;
+  return { registered, achieved };
+}
+
+function PickListTickerCell({ p, t }) {
+  const { registered, achieved } = pickMetaLine(p, t);
+  return (
+    <div className="min-w-0 max-w-[14rem] xl:max-w-none">
+      <Link to={`/pick/${p.id}`} className={`block truncate hover:underline ${type.rowTitle}`}>
+        {p.instrument_name || p.ticker}
+      </Link>
+      <p className={`mt-1 truncate ${type.meta}`}>
+        {p.instrument_name ? <span>{p.ticker} · </span> : null}
+        <Link className="font-medium hover:underline" to={`/user/${p.author}`}>
+          @{p.author}
+        </Link>
+        {registered ? <span> · {registered}</span> : null}
+        {achieved ? (
+          <span className="font-semibold"> · {t("pickCard.achievedOn", { date: achieved })}</span>
+        ) : null}
+      </p>
+    </div>
+  );
+}
+
+function PickListMobileRow({ p, t }) {
+  const pendingHint = isEntryPending(p) ? t("pick.pendingEntryHint") : undefined;
+  return (
+    <li>
+      <article className="px-3 py-3">
+        <header className="flex items-start justify-between gap-2">
+          <PickListTickerCell p={p} t={t} />
+          <StatusBadge status={p.status?.current} title={pendingHint} />
+        </header>
+        <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2.5 text-xs sm:grid-cols-3">
+          <div>
+            <dt className={type.fieldLabel}>{t("pickList.colMarket")}</dt>
+            <dd className={`mt-0.5 ${type.bodySm}`}>{p.market}</dd>
+          </div>
+          <div>
+            <dt className={type.fieldLabel}>{t("pickList.colTarget")}</dt>
+            <dd className="mt-0.5">
+              <ReturnRate rate={p.target?.return_rate} />
+            </dd>
+          </div>
+          <div>
+            <dt className={type.fieldLabel}>{t("pickList.colEntry")}</dt>
+            <dd className={`mt-0.5 ${type.bodySm}`}>
+              <PickEntryPrice pick={p} />
+            </dd>
+          </div>
+          <div>
+            <dt className={type.fieldLabel}>{t("pickList.colDeadline")}</dt>
+            <dd className={`mt-0.5 ${type.bodySm}`}>
+              <PickDeadline pick={p} />
+            </dd>
+          </div>
+          <div className="col-span-2 sm:col-span-1">
+            <dt className={type.fieldLabel}>{t("pickList.colProgress")}</dt>
+            <dd className={`mt-0.5 min-w-0 ${type.bodySm}`}>
+              <PickProgress pick={p} />
+            </dd>
+          </div>
+        </dl>
+      </article>
+    </li>
+  );
+}
 
 export function PickList({ picks }) {
   const { t } = useI18n();
@@ -45,105 +121,100 @@ export function PickList({ picks }) {
 
   if (!picks?.length) {
     return (
-      <p className="rounded-lg border border-dashed border-zinc-700 p-8 text-center text-zinc-500 light:border-zinc-300 light:text-zinc-600">
+      <p className="rounded-lg border border-dashed border-zinc-700 p-8 text-center text-zinc-400 light:border-zinc-300 light:text-zinc-700">
         {t("pickList.empty")}
       </p>
     );
   }
 
   return (
-    <div>
-      <div className="mb-3 flex items-center justify-end gap-2">
-        <span className="text-xs text-zinc-500 light:text-zinc-600">{t("pickList.viewLabel")}</span>
+    <section aria-label={t("pickList.sectionLabel")}>
+      <fieldset className="mb-3 flex items-center justify-end gap-2 border-0 p-0">
+        <legend className="sr-only">{t("pickList.viewLabel")}</legend>
+        <span className="text-xs text-zinc-400 light:text-zinc-700" aria-hidden>
+          {t("pickList.viewLabel")}
+        </span>
         <button type="button" className={viewBtnClass(view === "card")} onClick={() => setViewMode("card")}>
           {t("pickList.viewCards")}
         </button>
         <button type="button" className={viewBtnClass(view === "list")} onClick={() => setViewMode("list")}>
           {t("pickList.viewList")}
         </button>
-      </div>
+      </fieldset>
 
       {view === "card" ? (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {picks.map((p) => (
             <PickCard key={p.id} pick={p} />
           ))}
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-900/30 light:border-zinc-200 light:bg-white">
-          <div
-            className={`hidden min-w-[52rem] grid-cols-[minmax(10rem,1.4fr)_3.5rem_4.5rem_5rem_6.5rem_7.5rem_4.5rem] gap-x-2 border-b border-zinc-800 sm:grid light:border-zinc-200 ${listHeader}`}
-          >
-            <span>{t("pickList.colTicker")}</span>
-            <span>{t("pickList.colMarket")}</span>
-            <span>{t("pickList.colTarget")}</span>
-            <span>{t("pickList.colEntry")}</span>
-            <span>{t("pickList.colDeadline")}</span>
-            <span>{t("pickList.colProgress")}</span>
-            <span className="text-right">{t("pickList.colStatus")}</span>
+        <div className="rounded-lg border border-zinc-800 bg-zinc-900/30 light:border-zinc-200 light:bg-white">
+          <div className="hidden overflow-x-auto md:block">
+            <table className="w-full min-w-[44rem] border-collapse text-left xl:min-w-0">
+              <caption className="sr-only">{t("pickList.sectionLabel")}</caption>
+              <thead>
+                <tr className="border-b border-zinc-800 light:border-zinc-200">
+                  <th scope="col" className={`${thClass} min-w-[9rem] xl:min-w-[10rem]`}>
+                    {t("pickList.colTicker")}
+                  </th>
+                  <th scope="col" className={thClass}>
+                    {t("pickList.colMarket")}
+                  </th>
+                  <th scope="col" className={thClass}>
+                    {t("pickList.colTarget")}
+                  </th>
+                  <th scope="col" className={`${thClass} min-w-[4.5rem]`}>
+                    {t("pickList.colEntry")}
+                  </th>
+                  <th scope="col" className={`${thClass} min-w-[5.5rem]`}>
+                    {t("pickList.colDeadline")}
+                  </th>
+                  <th scope="col" className={`${thClass} min-w-[7rem]`}>
+                    {t("pickList.colProgress")}
+                  </th>
+                  <th scope="col" className={`${thClass} text-right`}>
+                    {t("pickList.colStatus")}
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-800/80 light:divide-zinc-200">
+                {picks.map((p) => {
+                  const pendingHint = isEntryPending(p) ? t("pick.pendingEntryHint") : undefined;
+                  return (
+                    <tr key={p.id} className="hover:bg-zinc-900/50 light:hover:bg-zinc-50/80">
+                      <td className={tdClass}>
+                        <PickListTickerCell p={p} t={t} />
+                      </td>
+                      <td className={tdNum}>{p.market}</td>
+                      <td className={tdNum}>
+                        <ReturnRate rate={p.target?.return_rate} />
+                      </td>
+                      <td className={tdNum}>
+                        <PickEntryPrice pick={p} />
+                      </td>
+                      <td className={tdNum}>
+                        <PickDeadline pick={p} />
+                      </td>
+                      <td className={`${tdClass} min-w-[7rem] max-w-[11rem] xl:max-w-none`}>
+                        <PickProgress pick={p} />
+                      </td>
+                      <td className={`${tdClass} text-right`}>
+                        <StatusBadge status={p.status?.current} title={pendingHint} />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
-          <ul className="min-w-[52rem] divide-y divide-zinc-800/80 light:divide-zinc-200">
-            {picks.map((p) => {
-              const registered =
-                typeof p.created_at === "string" && p.created_at.length >= 10
-                  ? p.created_at.slice(0, 10)
-                  : p.entry?.date || null;
-              const achieved = p.status?.current === "achieved" ? p.achievement?.achieved_date : null;
-              return (
-                <li
-                  key={p.id}
-                  className="grid gap-x-2 gap-y-1 px-2 py-1.5 text-xs sm:grid-cols-[minmax(10rem,1.4fr)_3.5rem_4.5rem_5rem_6.5rem_7.5rem_4.5rem] sm:items-center sm:gap-y-0 sm:py-2"
-                >
-                  <div className="min-w-0 sm:py-0">
-                    <Link
-                      to={`/pick/${p.id}`}
-                      className={`block truncate hover:underline ${type.rowTitle}`}
-                    >
-                      {p.instrument_name || p.ticker}
-                    </Link>
-                    <p className={`mt-1 truncate ${type.meta}`}>
-                      {p.instrument_name ? <span>{p.ticker} · </span> : null}
-                      <Link className="font-medium hover:underline" to={`/user/${p.author}`}>
-                        @{p.author}
-                      </Link>
-                      {registered ? <span> · {registered}</span> : null}
-                      {achieved ? (
-                        <span className="font-semibold"> · {t("pickCard.achievedOn", { date: achieved })}</span>
-                      ) : null}
-                    </p>
-                  </div>
-                  <div className={listCell}>
-                    <span className={`mr-1.5 sm:hidden ${type.metaSm}`}>{t("pickList.colMarket")}</span>
-                    {p.market}
-                  </div>
-                  <div className={listCell}>
-                    <span className={`mr-1.5 sm:hidden ${type.metaSm}`}>{t("pickList.colTarget")}</span>
-                    <ReturnRate rate={p.target?.return_rate} />
-                  </div>
-                  <div className={listCell}>
-                    <span className={`mr-1.5 sm:hidden ${type.metaSm}`}>{t("pickList.colEntry")}</span>
-                    <PickEntryPrice pick={p} />
-                  </div>
-                  <div className={listCell}>
-                    <span className={`mr-1.5 sm:hidden ${type.metaSm}`}>{t("pickList.colDeadline")}</span>
-                    <PickDeadline pick={p} />
-                  </div>
-                  <div className={`min-w-0 ${listCell}`}>
-                    <span className={`mr-1.5 sm:hidden ${type.metaSm}`}>{t("pickList.colProgress")}</span>
-                    <PickProgress pick={p} />
-                  </div>
-                  <div className="justify-self-start sm:justify-self-end">
-                    <StatusBadge
-                      status={p.status?.current}
-                      title={isEntryPending(p) ? t("pick.pendingEntryHint") : undefined}
-                    />
-                  </div>
-                </li>
-              );
-            })}
+          <ul className="divide-y divide-zinc-800/80 md:hidden light:divide-zinc-200">
+            {picks.map((p) => (
+              <PickListMobileRow key={p.id} p={p} t={t} />
+            ))}
           </ul>
         </div>
       )}
-    </div>
+    </section>
   );
 }

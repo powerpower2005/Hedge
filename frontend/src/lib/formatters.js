@@ -5,12 +5,18 @@ export function formatReturn(rate) {
   return `${sign}${pct.toFixed(1)}%`;
 }
 
+/** Win rate 0–100% — no +/- prefix. */
+export function formatWinRate(rate) {
+  if (rate == null || Number.isNaN(rate)) return "—";
+  return `${(rate * 100).toFixed(1)}%`;
+}
+
 /** Tailwind classes for signed return (target prediction or live progress). */
 export function returnRateColorClass(rate) {
   if (rate == null || Number.isNaN(rate)) return "";
-  if (rate < 0) return "text-red-400 light:text-red-600";
-  if (rate > 0) return "text-emerald-400 light:text-emerald-700";
-  return "text-zinc-400 light:text-zinc-600";
+  if (rate < 0) return "text-red-300 light:text-red-700";
+  if (rate > 0) return "text-emerald-300 light:text-emerald-800";
+  return "text-zinc-300 light:text-zinc-700";
 }
 
 /**

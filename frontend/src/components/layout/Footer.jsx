@@ -35,21 +35,24 @@ export function Footer() {
   }, [dataRevision]);
 
   return (
-    <footer className="mt-16 border-t border-zinc-800 py-6 text-xs text-zinc-500 light:border-zinc-200 light:text-zinc-600">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4">
-        <div>
+    <footer className="mt-16 border-t border-zinc-800 py-6 text-xs text-zinc-400 light:border-zinc-200 light:text-zinc-700">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-3 sm:px-4">
+        <p>
           {t("app.title")}
           {version && <span className="ml-2">v{version}</span>}
           {rules && <span className="ml-2">{t("footer.rulesLine", { version: rules.rules_version })}</span>}
-        </div>
-        <div className="flex gap-4">
-          <Link to="/guide" className="hover:text-zinc-300 light:hover:text-zinc-900">
+        </p>
+        <nav
+          className="flex gap-4"
+          aria-label={`${t("footer.guide")}, ${t("footer.about")}`}
+        >
+          <Link to="/guide" className="hover:text-zinc-200 light:hover:text-zinc-900">
             {t("footer.guide")}
           </Link>
-          <Link to="/about" className="hover:text-zinc-300 light:hover:text-zinc-900">
+          <Link to="/about" className="hover:text-zinc-200 light:hover:text-zinc-900">
             {t("footer.about")}
           </Link>
-        </div>
+        </nav>
       </div>
     </footer>
   );

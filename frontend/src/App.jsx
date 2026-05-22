@@ -16,7 +16,7 @@ export default function App() {
     <div className="flex min-h-screen flex-col">
       <DocumentTitle />
       <Header />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <Routes>
           <Route path="/" element={<ActivePage />} />
           <Route path="/hall-of-fame" element={<HallOfFamePage />} />

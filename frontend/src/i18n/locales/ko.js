@@ -1,6 +1,8 @@
 export default {
   app: { title: "햇제", documentTitle: "햇제" },
   nav: {
+    primary: "주 메뉴",
+    utilities: "도구",
     active: "진행 중",
     hallOfFame: "명예의 전당",
     expired: "만료",
@@ -183,6 +185,7 @@ export default {
     nameOnGoogleFinance: "Google Finance에서 종목 보기",
   },
   pickList: {
+    sectionLabel: "픽 목록",
     empty: "아직 픽이 없습니다.",
     viewLabel: "보기",
     viewCards: "카드",

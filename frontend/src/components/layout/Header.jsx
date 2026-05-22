@@ -14,7 +14,7 @@ const linkClass = ({ isActive }) =>
   `px-3 py-2 rounded-md text-base font-semibold whitespace-nowrap ${
     isActive
       ? "bg-zinc-800 text-white light:bg-zinc-200 light:text-zinc-900"
-      : "text-zinc-400 hover:text-white light:text-zinc-600 light:hover:text-zinc-900"
+      : "text-zinc-300 hover:text-white light:text-zinc-700 light:hover:text-zinc-900"
   }`;
 
 function QuickGuideCard({ onClose, firstVisit }) {
@@ -161,7 +161,7 @@ export function Header() {
             )}
           </div>
 
-          <div className="mt-2 flex flex-wrap items-center gap-1">
+          <nav className="mt-2 flex flex-wrap items-center gap-1" aria-label={t("nav.primary")}>
             <NavLink to="/" end className={linkClass}>
               {t("nav.active")}
             </NavLink>
@@ -180,9 +180,9 @@ export function Header() {
             <NavLink to="/guide" className={linkClass}>
               {t("nav.guide")}
             </NavLink>
-          </div>
+          </nav>
 
-          <div className="mt-2 flex flex-wrap items-center gap-1">
+          <nav className="mt-2 flex flex-wrap items-center gap-1" aria-label={t("nav.utilities")}>
             <LangToggle />
             <ThemeToggle />
 
@@ -220,7 +220,7 @@ export function Header() {
                 </a>
               </>
             )}
-          </div>
+          </nav>
         </div>
 
         {IS_REPOSITORY_CONFIGURED && judgmentLabel ? (

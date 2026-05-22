@@ -9,3 +9,23 @@ body {
 html.light body {
   @apply bg-zinc-50 text-zinc-900;
 }
+
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  select:focus-visible,
+  input:focus-visible,
+  summary:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-zinc-950;
+  }
+
+  html.light a:focus-visible,
+  html.light button:focus-visible,
+  html.light select:focus-visible,
+  html.light input:focus-visible,
+  html.light summary:focus-visible,
+  html.light [tabindex]:not([tabindex="-1"]):focus-visible {
+    @apply ring-emerald-700 ring-offset-zinc-50;
+  }
+}

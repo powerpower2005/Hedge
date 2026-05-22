@@ -25,29 +25,34 @@ export function ActivePage() {
   if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
-      <section className="mb-6 max-w-2xl border-b border-zinc-800 pb-6 light:border-zinc-200">
+    <article className="mx-auto w-full max-w-6xl px-3 py-6 sm:px-4 sm:py-8 xl:px-6">
+      <header className="mb-6 max-w-2xl border-b border-zinc-800 pb-6 light:border-zinc-200">
         <p className="text-base font-semibold leading-snug text-zinc-100 light:text-zinc-900">
           {t("guide.quickTagline")}
         </p>
         <p className={`mt-3 ${type.pageLead}`}>{t("active.nextStep")}</p>
-      </section>
+      </header>
 
       <div className="mb-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h1 className={type.pageTitle}>{t("active.title")}</h1>
+        <h1 id="active-page-title" className={type.pageTitle}>
+          {t("active.title")}
+        </h1>
         <p className={type.meta}>{t("active.subtitle", { count })}</p>
       </div>
 
       <PickList picks={visible} />
 
-      <div className="mt-8">
+      <section className="mt-8" aria-labelledby="active-filters-heading">
+        <h2 id="active-filters-heading" className="sr-only">
+          {t("filters.sort")}
+        </h2>
         <FilterBar
           filters={filters}
           setFilters={setFilters}
           sortKey={sortKey}
           setSortKey={setSortKey}
         />
-      </div>
-    </div>
+      </section>
+    </article>
   );
 }

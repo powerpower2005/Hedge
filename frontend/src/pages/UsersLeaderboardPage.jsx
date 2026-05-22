@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useAllMergedPicks } from "../hooks/useAllMergedPicks.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
-import { formatReturn } from "../lib/formatters.js";
+import { formatReturn, formatWinRate, returnRateColorClass } from "../lib/formatters.js";
+import { type } from "../lib/typographyClasses.js";
 import { aggregateUserStats, sortUserStats } from "../lib/userLeaderboard.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
@@ -88,14 +89,18 @@ export function UsersLeaderboardPage() {
   if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
-      <Link to="/" className="text-sm text-emerald-500 hover:underline">
-        {t("common.home")}
-      </Link>
-      <h1 id="users-page-title" className="mt-4 text-2xl font-bold text-white light:text-zinc-900">
-        {t("users.title")}
-      </h1>
-      <p className="mt-2 text-sm text-zinc-400 light:text-zinc-600">{t("users.subtitle")}</p>
+    <article className="mx-auto max-w-6xl px-4 py-6 sm:px-4 sm:py-8">
+      <nav aria-label={t("common.home")} className="text-sm">
+        <Link to="/" className="text-emerald-300 underline-offset-2 hover:underline light:text-emerald-800">
+          {t("common.home")}
+        </Link>
+      </nav>
+      <header className="mt-4">
+        <h1 id="users-page-title" className={type.pageTitle}>
+          {t("users.title")}
+        </h1>
+        <p className={`mt-2 ${type.pageLead}`}>{t("users.subtitle")}</p>
+      </header>
 
       <div className="mt-6 flex flex-wrap items-end gap-4">
         <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600" htmlFor="users-sort">
@@ -189,10 +194,12 @@ export function UsersLeaderboardPage() {
                         </td>
                         <td className="px-3 py-2 tabular-nums">{row.total}</td>
                         <td className="px-3 py-2 tabular-nums">{row.wins}</td>
-                        <td className="px-3 py-2 tabular-nums">
-                          {row.winRate == null ? "—" : formatReturn(row.winRate)}
+                        <td className="px-3 py-2 tabular-nums text-zinc-200 light:text-zinc-800">
+                          {row.winRate == null ? "—" : formatWinRate(row.winRate)}
                         </td>
-                        <td className="px-3 py-2 tabular-nums">{formatReturn(row.totalReturn)}</td>
+                        <td className={`px-3 py-2 tabular-nums ${returnRateColorClass(row.totalReturn)}`}>
+                          {formatReturn(row.totalReturn)}
+                        </td>
                       </tr>
                     );
                   })}
@@ -242,12 +249,12 @@ export function UsersLeaderboardPage() {
                     </div>
                     <div>
                       <dt className="text-xs text-zinc-500 light:text-zinc-600">{t("users.colWinRate")}</dt>
-                      <dd className="tabular-nums font-medium">
-                        {row.winRate == null ? "—" : formatReturn(row.winRate)}
+                      <dd className="tabular-nums font-medium text-zinc-200 light:text-zinc-800">
+                        {row.winRate == null ? "—" : formatWinRate(row.winRate)}
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-xs text-zinc-500 light:text-zinc-600">
+                      <dt className="text-xs text-zinc-400 light:text-zinc-700">
                         <span className="inline-flex items-center">
                           {t("users.colTotalReturn")}
                           <TotalReturnHelp
@@ -256,7 +263,9 @@ export function UsersLeaderboardPage() {
                           />
                         </span>
                       </dt>
-                      <dd className="tabular-nums font-medium">{formatReturn(row.totalReturn)}</dd>
+                      <dd className={`tabular-nums font-medium ${returnRateColorClass(row.totalReturn)}`}>
+                        {formatReturn(row.totalReturn)}
+                      </dd>
                     </div>
                   </dl>
                 </li>
@@ -296,6 +305,6 @@ export function UsersLeaderboardPage() {
           </div>
         </>
       )}
-    </div>
+    </article>
   );
 }
