@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "0983011"
+    "commit": "9082455"
   },
-  "generated_at": "2026-05-21T22:42:27.123378Z",
+  "generated_at": "2026-05-22T06:03:10.445855Z",
   "data": {
-    "count": 29,
+    "count": 30,
     "picks": [
       {
         "id": 4,
@@ -1777,6 +1777,55 @@
         },
         "extensions": {},
         "instrument_name": "Coherent Corp",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 39,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-22T06:03:10.445751Z",
+        "author": "kimgwanghoon",
+        "issue_number": 62,
+        "ticker": "056360",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "date": "2026-05-22",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 1.0
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-22T06:03:10.445751Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-22T06:03:10.445751Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Coweaver Co Ltd",
         "author_note": "_No response_"
       }
     ]
