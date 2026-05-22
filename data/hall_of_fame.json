@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "f4e4207"
+    "commit": "4e2ea04"
   },
-  "generated_at": "2026-05-11T22:18:52.533128Z",
+  "generated_at": "2026-05-22T22:16:23.515473Z",
   "data": {
-    "count": 5,
+    "count": 6,
     "picks": [
       {
         "id": 5,
@@ -370,6 +370,78 @@
           "achieved_close": 195.89,
           "days_taken": 3,
           "final_return_rate": 0.340244
+        }
+      },
+      {
+        "id": 4,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "55d7ac5"
+        },
+        "created_at": "2026-04-23T01:17:14.076043Z",
+        "author": "powerpower2005",
+        "issue_number": 10,
+        "ticker": "ASTS",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 80.01,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 96.012
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-23"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T01:17:14.076056Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-05-22T22:16:23.512396Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-22",
+          "current": {
+            "close": 96.23,
+            "return_rate": 0.202725
+          },
+          "highest": {
+            "close": 96.23,
+            "close_date": "2026-05-22",
+            "return_rate": 0.202725
+          },
+          "distance_to_target": -0.002725,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T01:17:14.076111Z"
+        },
+        "extensions": {},
+        "instrument_name": "AST SpaceMobile Inc",
+        "achievement": {
+          "achieved_date": "2026-05-22",
+          "achieved_close": 96.23,
+          "days_taken": 29,
+          "final_return_rate": 0.202725
         }
       }
     ]
