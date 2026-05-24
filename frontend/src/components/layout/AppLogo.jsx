@@ -9,12 +9,29 @@ export function AppLogo() {
         className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-600 text-white shadow-sm light:bg-primary-600"
         aria-hidden
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="none"
+          className="h-5 w-5"
+          aria-hidden
+        >
+          {/* baseline */}
           <path
-            fillRule="evenodd"
-            d="M14 3.5a1 1 0 0 1 1 1v9.5a1 1 0 1 1-2 0V6.914l-5.293 5.293a1 1 0 0 1-1.414-1.414l6.5-6.5a1 1 0 0 1 1.414 0l6.5 6.5a1 1 0 0 1-1.414 1.414L14 6.914V15.5a1 1 0 1 1-2 0V4.5a1 1 0 0 1 1-1h4Z"
-            clipRule="evenodd"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            d="M3 15.5h14"
           />
+          {/* rising close line (stock chart) */}
+          <path
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 12.5 7.5 10 11 11.5 16 6"
+          />
+          <circle cx="16" cy="6" r="1.25" fill="currentColor" />
         </svg>
       </span>
       <span className="text-lg font-bold tracking-tight text-zinc-100 light:text-zinc-900">{t("app.title")}</span>
