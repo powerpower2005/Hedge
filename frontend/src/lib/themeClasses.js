@@ -2,7 +2,9 @@
 
 export const ui = {
   page: "mx-auto w-full max-w-6xl px-3 py-6 sm:px-4 sm:py-8 xl:px-6",
-  card: "rounded-2xl border border-zinc-700/70 bg-zinc-900/40 shadow-sm light:border-zinc-200 light:bg-white light:shadow-md",
+  card: "rounded-2xl border border-zinc-700 bg-zinc-900 shadow-sm light:border-zinc-200 light:bg-white light:shadow-md",
+  dialog:
+    "rounded-2xl border border-zinc-700 bg-zinc-900 shadow-xl light:border-zinc-200 light:bg-white",
   cardPad: "p-5 sm:p-6",
   hero:
     "rounded-2xl border border-primary-800/40 bg-gradient-to-br from-primary-950/50 via-zinc-900 to-zinc-900 p-6 sm:p-8 light:border-primary-200 light:from-primary-50 light:via-emerald-50/80 light:to-white",
@@ -15,7 +17,7 @@ export const ui = {
   btnSecondaryLg:
     "inline-flex items-center justify-center gap-1.5 rounded-xl border border-zinc-600 bg-zinc-800/60 px-5 py-3 text-base font-medium text-zinc-100 transition hover:bg-zinc-800 light:border-zinc-300 light:bg-white light:text-zinc-800 light:hover:bg-zinc-50",
   statCard:
-    "rounded-2xl border border-zinc-700/70 bg-zinc-900/30 p-4 shadow-sm light:border-zinc-200 light:bg-white",
+    "rounded-2xl border border-zinc-700 bg-zinc-900 p-4 shadow-sm light:border-zinc-200 light:bg-white",
   navPill: (active) =>
     `rounded-xl px-3 py-2 text-sm font-semibold whitespace-nowrap transition ${
       active

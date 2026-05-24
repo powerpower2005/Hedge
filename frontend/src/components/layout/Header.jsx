@@ -40,7 +40,7 @@ function QuickGuideCard({ onClose, firstVisit }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/50 px-4 pt-16 sm:pt-20"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 pt-16 sm:pt-20"
       role="presentation"
     >
       <div
@@ -48,7 +48,7 @@ function QuickGuideCard({ onClose, firstVisit }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="quick-guide-title"
-        className={`mx-auto w-full max-w-lg p-6 sm:p-7 ${ui.card}`}
+        className={`mx-auto w-full max-w-lg p-6 sm:p-7 ${ui.dialog}`}
       >
         <div className="mb-4 flex items-start justify-between gap-3">
           <h3 id="quick-guide-title" className={type.tutorialTitle}>
@@ -66,7 +66,7 @@ function QuickGuideCard({ onClose, firstVisit }) {
           </button>
         </div>
         <p className={`mb-3 ${type.tutorialSubtitle}`}>{t("guide.title")}</p>
-        <div className={`mb-5 rounded-xl border border-primary-800/30 bg-primary-950/30 p-4 light:border-primary-200 light:bg-primary-50`}>
+        <div className="mb-5 rounded-xl border border-primary-800 bg-zinc-800 p-4 light:border-primary-200 light:bg-primary-50">
           <p className={type.tutorialStepTitle}>{t("guide.s1Title")}</p>
           <p className={`mt-2 ${type.tutorialBody}`}>{t("guide.quickS1")}</p>
         </div>
