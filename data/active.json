@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "1eefe9d"
+    "commit": "53ece96"
   },
-  "generated_at": "2026-05-23T22:09:15.206600Z",
+  "generated_at": "2026-05-24T04:44:18.865572Z",
   "data": {
-    "count": 31,
+    "count": 32,
     "picks": [
       {
         "id": 7,
@@ -1937,6 +1937,55 @@
         },
         "instrument_name": "Fermi Inc",
         "author_note": "결코 페르미"
+      },
+      {
+        "id": 42,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-24T04:44:18.865488Z",
+        "author": "gre150",
+        "issue_number": 66,
+        "ticker": "KORU",
+        "country": "US",
+        "market": "NYSEARCA",
+        "entry": {
+          "date": "2026-05-24",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.3
+        },
+        "duration": {
+          "days": 14
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-24T04:44:18.865488Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-24T04:44:18.865488Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Direxion Daily MSCI South Korea Bull 3X ETF",
+        "author_note": "_No response_"
       }
     ]
   }
