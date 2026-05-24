@@ -3,72 +3,12 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "cedb4a4"
+    "commit": "56f4bd6"
   },
-  "generated_at": "2026-05-24T09:24:55.492082Z",
+  "generated_at": "2026-05-24T22:11:47.434732Z",
   "data": {
-    "count": 32,
+    "count": 31,
     "picks": [
-      {
-        "id": 7,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "6368034"
-        },
-        "created_at": "2026-04-23T09:44:34.181506Z",
-        "author": "gre150",
-        "issue_number": 17,
-        "ticker": "PONY",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "price": 11.15,
-          "date": "2026-04-23",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.25,
-          "price": 13.9375
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-05-23"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-04-23T09:44:34.181522Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-05-23",
-          "current": {
-            "close": 8.93,
-            "return_rate": -0.199103
-          },
-          "highest": {
-            "close": 11.15,
-            "close_date": "2026-04-23",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.25,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-04-23T09:44:34.181568Z"
-        },
-        "extensions": {},
-        "instrument_name": "Pony AI Inc - ADR ADR"
-      },
       {
         "id": 8,
         "schema_version": "1.0.0",
@@ -108,7 +48,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 6.24,
             "return_rate": -0.172414
@@ -168,7 +108,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 96.23,
             "return_rate": 0.136664
@@ -228,7 +168,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 24.82,
             "return_rate": 0.192696
@@ -289,7 +229,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 964.5,
             "return_rate": 0.138873
@@ -411,7 +351,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 307.88,
             "return_rate": 0.295955
@@ -533,7 +473,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 41.45,
             "return_rate": 0.336666
@@ -716,7 +656,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 68.85,
             "return_rate": -0.391838
@@ -777,7 +717,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 261.45,
             "return_rate": -0.105573
@@ -838,7 +778,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 75.92,
             "return_rate": 0.030682
@@ -1021,7 +961,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 449.59,
             "return_rate": 0.265524
@@ -1082,7 +1022,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 34.24,
             "return_rate": 0.380645
@@ -1204,7 +1144,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 165.54,
             "return_rate": 0.16816
@@ -1448,7 +1388,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 114.88,
             "return_rate": 0.010645
@@ -1631,7 +1571,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 107.58,
             "return_rate": -0.001578
@@ -1692,7 +1632,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 378.0,
             "return_rate": 0.04181
@@ -1836,7 +1776,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 21.65,
             "return_rate": 0.0
@@ -1909,7 +1849,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-23",
+          "updated_at": "2026-05-24",
           "current": {
             "close": 6.06,
             "return_rate": 0.0
@@ -1954,26 +1894,50 @@
         "entry": {
           "date": "2026-05-24",
           "source": "google_sheets",
-          "pending": true
+          "price": 839.0
         },
         "target": {
-          "return_rate": 0.3
+          "return_rate": 0.3,
+          "price": 1090.7
         },
         "duration": {
-          "days": 14
+          "days": 14,
+          "deadline": "2026-06-07"
         },
         "status": {
-          "current": "pending_entry",
+          "current": "active",
           "history": [
             {
               "status": "pending_entry",
               "at": "2026-05-24T04:44:18.865488Z",
               "engine_version": "1.0.0",
               "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-05-24T22:11:47.434687Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
             }
           ]
         },
         "progress": {
+          "updated_at": "2026-05-24",
+          "current": {
+            "close": 839.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 839.0,
+            "close_date": "2026-05-24",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 839.0,
+            "close_date": "2026-05-24",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.3,
           "error_count": 0
         },
         "votes": {
