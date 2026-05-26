@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "2c7b680"
+    "commit": "599f017"
   },
-  "generated_at": "2026-05-26T05:25:56.857304Z",
+  "generated_at": "2026-05-26T08:44:48.377178Z",
   "data": {
     "count": 33,
     "picks": [
@@ -1402,9 +1402,9 @@
           "error_count": 0
         },
         "votes": {
-          "likes": 0,
+          "likes": 2,
           "dislikes": 0,
-          "last_synced": "2026-05-12T02:02:26.252372Z"
+          "last_synced": "2026-05-26T08:44:44.755634Z"
         },
         "extensions": {},
         "instrument_name": "Circle Internet Group Inc",
