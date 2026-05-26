@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "7fb287c"
+    "commit": "2c7b680"
   },
-  "generated_at": "2026-05-26T05:24:35.848767Z",
+  "generated_at": "2026-05-26T05:25:56.857304Z",
   "data": {
-    "count": 32,
+    "count": 33,
     "picks": [
       {
         "id": 8,
@@ -1998,6 +1998,55 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "GraniteShares 2x Long VRT Daily ETF",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 44,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-26T05:25:56.857217Z",
+        "author": "hoky1227",
+        "issue_number": 68,
+        "ticker": "MUU",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-05-26",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 2.0
+        },
+        "duration": {
+          "days": 180
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-26T05:25:56.857217Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-26T05:25:56.857217Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Direxion Daily MU Bull 2X ETF",
         "author_note": "_No response_"
       }
     ]
