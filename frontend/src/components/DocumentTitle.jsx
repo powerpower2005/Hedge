@@ -11,6 +11,8 @@ export function DocumentTitle() {
     if (pathname === "/about") key = "about.documentTitle";
     else if (pathname === "/guide") key = "guide.documentTitle";
     else if (pathname === "/users") key = "users.documentTitle";
+    else if (pathname === "/pending-entry") key = "pendingEntryPage.documentTitle";
+    else if (pathname === "/expired") key = "expired.documentTitle";
     document.title = t(key);
     document.documentElement.lang = locale === "en" ? "en" : "ko";
   }, [t, locale, pathname]);

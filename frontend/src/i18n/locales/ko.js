@@ -9,6 +9,7 @@ export default {
     active: "진행 중",
     hallOfFame: "명예의 전당",
     expired: "만료",
+    pendingEntry: "진입 대기",
     users: "참가자",
     about: "소개",
     guide: "이용 안내",
@@ -31,6 +32,7 @@ export default {
     backToList: "목록으로",
     backShort: "뒤로",
     all: "전체",
+    scrollToTop: "맨 위로",
   },
   errors: {
     dataLoad: "데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.",
@@ -50,7 +52,7 @@ export default {
     statAvgReturn: "평균 수익률",
     title: "진행 중",
     subtitle: "지금 {count}건",
-    nextStep: "아래 카드를 눌러 상세를 보세요. 상단 탭에서 달성·만료 목록으로 이동할 수 있습니다.",
+    nextStep: "아래 카드를 눌러 상세를 보세요. 상단 메뉴에서 진입 대기·달성·만료 목록으로 이동할 수 있습니다.",
   },
   hallOfFame: {
     title: "명예의 전당",
@@ -64,8 +66,15 @@ export default {
     periodMonthHint: "달성일이 선택한 달(UTC 기준)에 들어가는 픽만 보여 줍니다.",
     periodYearHint: "달성일이 선택한 연도(UTC 기준)에 들어가는 픽만 보여 줍니다.",
   },
+  pendingEntryPage: {
+    documentTitle: "진입 대기 | 햇제",
+    title: "진입 대기 중인 픽",
+    subtitle:
+      "등록 직후 첫 일일 판정 전입니다. 해당 시장의 첫 판정 때 진입가·목표가·기한이 확정되면 진행 중 목록으로 이동합니다.",
+  },
   expired: {
     title: "만료된 픽",
+    documentTitle: "만료 | 햇제",
     subtitle: "기한 내 목표에 도달하지 못한 픽입니다.",
   },
   guide: {

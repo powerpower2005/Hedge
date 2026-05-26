@@ -9,6 +9,7 @@ export default {
     active: "Active",
     hallOfFame: "Hall of Fame",
     expired: "Expired",
+    pendingEntry: "Entry pending",
     users: "Participants",
     about: "About",
     guide: "Guide",
@@ -31,6 +32,7 @@ export default {
     backToList: "Back to list",
     backShort: "Back",
     all: "All",
+    scrollToTop: "Back to top",
   },
   errors: {
     dataLoad: "Unable to load data. Please try again later.",
@@ -50,7 +52,7 @@ export default {
     statAvgReturn: "Avg return",
     title: "Active",
     subtitle: "{count} now",
-    nextStep: "Click a card below for details. Use the top tabs for achieved and expired lists.",
+    nextStep: "Click a card below for details. Use the top menu for entry pending, achieved, and expired lists.",
   },
   hallOfFame: {
     title: "Hall of Fame",
@@ -64,8 +66,15 @@ export default {
     periodMonthHint: "Only picks whose achievement date falls in the selected month (UTC).",
     periodYearHint: "Only picks whose achievement date falls in the selected year (UTC).",
   },
+  pendingEntryPage: {
+    documentTitle: "Entry pending | Called It",
+    title: "Entry pending",
+    subtitle:
+      "Registered picks waiting for the first daily judgment in that market. Entry, target, and deadline lock on that run, then the pick moves to the active list.",
+  },
   expired: {
     title: "Expired picks",
+    documentTitle: "Expired | Called It",
     subtitle: "Picks that did not reach the target before the deadline.",
   },
   guide: {

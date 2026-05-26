@@ -8,6 +8,7 @@ import { formatReturn } from "../lib/formatters.js";
 import { IS_REPOSITORY_CONFIGURED, NEW_PICK_URL } from "../lib/constants.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { useAllMergedPicks } from "../hooks/useAllMergedPicks.js";
+import { isEntryPending } from "../lib/pickEntry.js";
 import { usePicks } from "../hooks/usePicks.js";
 import { ui } from "../lib/themeClasses.js";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
@@ -23,16 +24,18 @@ function StatCard({ label, value, valueClass = "" }) {
 
 export function ActivePage() {
   const { t } = useI18n();
-  const { picks, loading, error, meta } = usePicks("active");
+  const { picks, loading, error } = usePicks("active");
   const { picks: allPicks, loading: allLoading } = useAllMergedPicks();
   const [filters, setFilters] = useState({});
   const [sortKey, setSortKey] = useState("latest");
 
+  const activePicks = useMemo(() => picks.filter((p) => !isEntryPending(p)), [picks]);
+
   const visible = useMemo(() => {
-    const f = applyFilters(picks, filters);
+    const f = applyFilters(activePicks, filters);
     const sorter = SORTERS[sortKey] || SORTERS.latest;
     return [...f].sort(sorter);
-  }, [picks, filters, sortKey]);
+  }, [activePicks, filters, sortKey]);
 
   const hotPicks = useMemo(() => {
     const sorter = SORTERS.currentReturn || SORTERS.latest;
@@ -41,9 +44,7 @@ export function ActivePage() {
 
   const stats = useMemo(() => {
     const total = allPicks.length;
-    const activeCount = allPicks.filter(
-      (p) => p.status?.current === "active" || p.status?.current === "pending_entry",
-    ).length;
+    const activeCount = allPicks.filter((p) => p.status?.current === "active").length;
     const achievedCount = allPicks.filter((p) => p.status?.current === "achieved").length;
     const returns = allPicks
       .filter((p) => p.status?.current === "active")
@@ -53,7 +54,7 @@ export function ActivePage() {
     return { total, activeCount, achievedCount, avg };
   }, [allPicks]);
 
-  const count = meta?.count ?? picks.length;
+  const count = visible.length;
 
   if (loading && !picks.length) {
     return <p className={`${ui.page} text-zinc-400`}>{t("common.loading")}</p>;

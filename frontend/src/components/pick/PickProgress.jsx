@@ -2,6 +2,7 @@ import { useI18n } from "../../i18n/I18nContext.jsx";
 import { formatPrice } from "../../lib/formatters.js";
 import { isEntryPending } from "../../lib/pickEntry.js";
 import { formatSessionDateDisplay, getExpirySnapshot, isExpiredPick } from "../../lib/pickPrices.js";
+import { getPickDisplayReturnRate } from "../../lib/pickSignMismatch.js";
 import { ReturnRate } from "./ReturnRate.jsx";
 
 /** Latest judgment return % and close used for progress. */
@@ -12,8 +13,7 @@ export function PickProgress({ pick }) {
   }
   const expired = isExpiredPick(pick);
   const expiry = expired ? getExpirySnapshot(pick) : null;
-  const rate =
-    expired && expiry?.return_rate != null ? expiry.return_rate : pick?.progress?.current?.return_rate;
+  const rate = getPickDisplayReturnRate(pick);
   const close = expired && expiry ? expiry.close : pick?.progress?.current?.close;
   const dateLabel =
     expired && expiry?.session_date ? formatSessionDateDisplay(expiry.session_date) : null;

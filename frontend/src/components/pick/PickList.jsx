@@ -10,6 +10,8 @@ import { type } from "../../lib/typographyClasses.js";
 import { ui } from "../../lib/themeClasses.js";
 import { StatusBadge } from "./StatusBadge.jsx";
 import { PickCard } from "./PickCard.jsx";
+import { PickInstrumentHeading } from "./PickInstrumentHeading.jsx";
+import { getPickDisplayReturnRate } from "../../lib/pickSignMismatch.js";
 
 const listHeader = `${type.sectionLabel} px-3 py-2`;
 const thClass = `${listHeader} text-left whitespace-nowrap`;
@@ -46,11 +48,12 @@ function PickListTickerCell({ p, t }) {
   const { registered, achieved } = pickMetaLine(p, t);
   return (
     <div className="min-w-0 max-w-[14rem] xl:max-w-none">
-      <Link to={`/pick/${p.id}`} className={`block truncate hover:underline ${type.rowTitle}`}>
-        {p.instrument_name || p.ticker}
-      </Link>
+      <PickInstrumentHeading
+        pick={p}
+        variant="list"
+        currentReturnRate={getPickDisplayReturnRate(p)}
+      />
       <p className={`mt-1 truncate ${type.meta}`}>
-        {p.instrument_name ? <span>{p.ticker} · </span> : null}
         <Link className="font-medium hover:underline" to={`/user/${p.author}`}>
           @{p.author}
         </Link>

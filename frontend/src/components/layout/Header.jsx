@@ -104,6 +104,7 @@ function QuickGuideCard({ onClose, firstVisit }) {
 
 const navItems = [
   { to: "/", end: true, labelKey: "nav.dashboard" },
+  { to: "/pending-entry", labelKey: "nav.pendingEntry" },
   { to: "/#pick-list", hash: true, labelKey: "nav.allPicks" },
   { to: "/hall-of-fame", labelKey: "nav.hallOfFame" },
   { to: "/users", labelKey: "nav.ranking" },

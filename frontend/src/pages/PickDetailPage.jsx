@@ -12,7 +12,8 @@ import { targetAchievementPercent } from "../lib/pickProgressPct.js";
 import { ReturnRate } from "../components/pick/ReturnRate.jsx";
 import { PickPriceDisplay } from "../components/pick/PickPriceDisplay.jsx";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
-import { getExpirySnapshot, isExpiredPick } from "../lib/pickPrices.js";
+import { PickInstrumentHeading } from "../components/pick/PickInstrumentHeading.jsx";
+import { getPickDisplayReturnRate } from "../lib/pickSignMismatch.js";
 import { googleFinanceQuoteUrl } from "../lib/googleFinanceUrl.js";
 import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
 import { ui } from "../lib/themeClasses.js";
@@ -73,12 +74,7 @@ export function PickDetailPage() {
       ? pick.created_at.slice(0, 10)
       : pick.entry?.date || null;
   const progressPct = targetAchievementPercent(pick);
-  const expired = isExpiredPick(pick);
-  const expirySnap = expired ? getExpirySnapshot(pick) : null;
-  const displayReturn =
-    expired && expirySnap?.return_rate != null
-      ? expirySnap.return_rate
-      : pick.progress?.current?.return_rate;
+  const displayReturn = getPickDisplayReturnRate(pick);
   const countryLabel = pick.country === "KR" ? t("pickDetail.countryKr") : t("pickDetail.countryUs");
   const currencyLabel = pick.country === "KR" ? "KRW" : "USD";
 
@@ -93,18 +89,17 @@ export function PickDetailPage() {
       <section className={`${ui.card} ${ui.cardPad}`}>
         <header>
           <div className="flex flex-wrap items-start justify-between gap-3">
-            <div className="flex flex-wrap items-center gap-2">
-              <h1 className={ui.ticker}>{pick.ticker}</h1>
-              <span className={ui.badgeMarket}>{pick.market}</span>
-              <StatusBadge
-                status={pick.status?.current}
-                title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined}
-              />
-            </div>
+            <PickInstrumentHeading
+              pick={pick}
+              variant="detail"
+              currentReturnRate={displayReturn}
+              className="min-w-0 flex-1"
+            />
+            <StatusBadge
+              status={pick.status?.current}
+              title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined}
+            />
           </div>
-          <p className="mt-2 text-lg font-bold text-zinc-100 light:text-zinc-900">
-            {pick.instrument_name || pick.ticker}
-          </p>
           <p className={`mt-1 ${type.meta}`}>
             <Link className={ui.link} to={`/user/${pick.author}`}>
               @{pick.author}

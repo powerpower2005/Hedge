@@ -2,9 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import { DocumentTitle } from "./components/DocumentTitle.jsx";
 import { Header } from "./components/layout/Header.jsx";
 import { Footer } from "./components/layout/Footer.jsx";
+import { ScrollToTop } from "./components/layout/ScrollToTop.jsx";
 import { ActivePage } from "./pages/ActivePage.jsx";
 import { HallOfFamePage } from "./pages/HallOfFamePage.jsx";
 import { ExpiredPage } from "./pages/ExpiredPage.jsx";
+import { PendingEntryPage } from "./pages/PendingEntryPage.jsx";
 import { PickDetailPage } from "./pages/PickDetailPage.jsx";
 import { UserPage } from "./pages/UserPage.jsx";
 import { UsersLeaderboardPage } from "./pages/UsersLeaderboardPage.jsx";
@@ -20,6 +22,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<ActivePage />} />
           <Route path="/hall-of-fame" element={<HallOfFamePage />} />
+          <Route path="/pending-entry" element={<PendingEntryPage />} />
           <Route path="/expired" element={<ExpiredPage />} />
           <Route path="/pick/:id" element={<PickDetailPage />} />
           <Route path="/users" element={<UsersLeaderboardPage />} />
@@ -29,6 +32,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

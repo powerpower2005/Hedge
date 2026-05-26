@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { isEntryPending } from "../../lib/pickEntry.js";
-import { getExpirySnapshot, isExpiredPick } from "../../lib/pickPrices.js";
+import { getPickDisplayReturnRate } from "../../lib/pickSignMismatch.js";
+import { PickInstrumentHeading } from "./PickInstrumentHeading.jsx";
 import { PickPriceDisplay } from "./PickPriceDisplay.jsx";
 import { targetAchievementPercent } from "../../lib/pickProgressPct.js";
 import { PickDeadline } from "./PickDeadline.jsx";
@@ -21,29 +22,13 @@ export function PickCard({ pick }) {
   const issueUrl = pickIssueUrl(pick.issue_number);
   const financeUrl = googleFinanceQuoteUrl(pick);
   const progressPct = targetAchievementPercent(pick);
-  const expired = isExpiredPick(pick);
-  const expirySnap = expired ? getExpirySnapshot(pick) : null;
-  const displayReturn =
-    expired && expirySnap?.return_rate != null
-      ? expirySnap.return_rate
-      : pick.progress?.current?.return_rate;
-  const displayName = pick.instrument_name || pick.ticker;
+  const displayReturn = getPickDisplayReturnRate(pick);
 
   return (
     <article className={`flex h-full flex-col ${ui.card} overflow-hidden`}>
       <div className={`flex flex-1 flex-col ${ui.cardPad}`}>
         <header className="flex items-start justify-between gap-2">
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2">
-              <Link to={`/pick/${pick.id}`} className={`hover:underline ${ui.ticker}`}>
-                {pick.ticker}
-              </Link>
-              <span className={ui.badgeMarket}>{pick.market}</span>
-            </div>
-            <Link to={`/pick/${pick.id}`} className={`mt-1 block truncate text-sm font-bold text-zinc-100 hover:underline light:text-zinc-900`}>
-              {displayName}
-            </Link>
-          </div>
+          <PickInstrumentHeading pick={pick} variant="card" currentReturnRate={displayReturn} />
           <StatusBadge status={st} title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined} />
         </header>
 
