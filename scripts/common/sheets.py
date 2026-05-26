@@ -158,6 +158,22 @@ def read_instrument_name_at_row(row_index: int, *, country: str | None = None) -
     return str(v).strip() if v is not None else None
 
 
+def write_instrument_name_at_row(
+    row_index: int, name: str, *, country: str | None = None
+) -> None:
+    ws = get_worksheet(country=country)
+    ws.update_cell(row_index, 5, name)
+
+
+def apply_jp_quote_to_row(row_index: int, quote) -> None:
+    """Post-registration refresh: write D/E/F (same outcome as refreshJpRow)."""
+    ws = get_worksheet(worksheet=WORKSHEET_JP_NAME)
+    ws.update_cell(row_index, 4, quote.previous_close)
+    if quote.name:
+        ws.update_cell(row_index, 5, quote.name)
+    ws.update_cell(row_index, 6, quote.session_date)
+
+
 def read_close_session_date_at_row(row_index: int, *, country: str | None = None) -> object | None:
     ws = get_worksheet(country=country)
     cell = ws.cell(row_index, 6)

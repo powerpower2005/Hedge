@@ -36,6 +36,7 @@ from common.models import (
 from common.sheets import (
     append_ticker_row,
     append_ticker_row_jp,
+    apply_jp_quote_to_row,
     delete_row_for_pick_id,
     read_close_at_row,
     read_close_session_date_at_row,
@@ -43,6 +44,7 @@ from common.sheets import (
     set_price_lookup_finance_prefix,
     worksheet_name_for_country,
 )
+from common.yahoo_jp import fetch_jp_quote
 from common.storage import get_picks, load_list_file, save_list_file
 from common.validation import (
     ValidationError,
@@ -250,25 +252,21 @@ def main() -> None:
                 f"tab={sheet_tab} yahoo_ticker={yahoo_symbol}",
                 file=sys.stderr,
             )
-            time.sleep(5)
-            probe_ok = False
-            for _ in range(15):
-                raw_close = read_close_at_row(row_index, country=country)
-                try:
-                    entry_price = _parse_close_value(raw_close)
-                    probe_ok = True
-                    print(
-                        f"[register_pick] JP_CLOSE_PROBE_OK pick_id={pick_id} close={entry_price}",
-                        file=sys.stderr,
-                    )
-                    break
-                except ValueError:
-                    time.sleep(3)
-            if not probe_ok:
+            quote = fetch_jp_quote(yahoo_symbol)
+            if quote is None:
                 print(
-                    f"[register_pick] JP_CLOSE_PROBE_WARN pick_id={pick_id} last={raw_close!r} "
-                    "— deferred entry: registering without numeric close in D (run refreshAllJpPrices; "
-                    "entry locks at first JP judgment).",
+                    f"[register_pick] JP_REFRESH_WARN pick_id={pick_id} yahoo={yahoo_symbol} "
+                    "— could not fetch quote; D stays PENDING (run refreshAllJpPrices or retry).",
+                    file=sys.stderr,
+                )
+            else:
+                apply_jp_quote_to_row(row_index, quote)
+                instrument_name = quote.name
+                entry_price = quote.previous_close
+                entry_close_session_date = date.fromisoformat(quote.session_date)
+                print(
+                    f"[register_pick] JP_REFRESH_OK pick_id={pick_id} close={quote.previous_close} "
+                    f"name={quote.name!r} session={quote.session_date}",
                     file=sys.stderr,
                 )
         else:
@@ -307,18 +305,19 @@ def main() -> None:
                     f"prefix={resolved_sheet_prefix} tried={'->'.join(tried_chain)}",
                     file=sys.stderr,
                 )
-        for _ in range(5):
-            raw_name = read_instrument_name_at_row(row_index, country=country)
-            instrument_name = parse_instrument_name_cell(raw_name)
-            if instrument_name:
-                break
-            time.sleep(1)
-        for _ in range(8):
-            raw_sess = read_close_session_date_at_row(row_index, country=country)
-            entry_close_session_date = parse_close_session_date_cell(raw_sess)
-            if entry_close_session_date is not None:
-                break
-            time.sleep(2)
+        if not is_jp:
+            for _ in range(5):
+                raw_name = read_instrument_name_at_row(row_index, country=country)
+                instrument_name = parse_instrument_name_cell(raw_name)
+                if instrument_name:
+                    break
+                time.sleep(1)
+            for _ in range(8):
+                raw_sess = read_close_session_date_at_row(row_index, country=country)
+                entry_close_session_date = parse_close_session_date_cell(raw_sess)
+                if entry_close_session_date is not None:
+                    break
+                time.sleep(2)
     except Exception as e:
         if row_index is not None:
             print(
@@ -389,14 +388,6 @@ Vote with reactions on this issue.
             f"but country **{country}** is stored with **`{market}`** "
             "(the GitHub dropdown is not filtered by country).\n"
             f"**한:** 양식 시장 **`{market_submitted}`** → 국가 **{country}** 에 맞게 **`{market}`** 로 저장했습니다.\n"
-        )
-    if country == "JP" and not pick.get("instrument_name"):
-        comment += (
-            "\n\n**Name / 종목명:** Run **JP prices → Refresh all** in the sheet so column **E** "
-            "gets the Yahoo name; the first **JP daily judgment** (or `backfill_instrument_names.py`) "
-            "will copy it into this pick.\n"
-            "**한:** 시트에서 **JP prices → Refresh all** 실행 후 E열 종목명이 채워지면, "
-            "첫 JP 일일 판정 또는 `backfill_instrument_names.py` 로 픽에 반영됩니다.\n"
         )
     if country in FINANCE_PREFIX_COUNTRIES and resolved_sheet_prefix is not None:
         chain = " → ".join(f"`{p}`" for p in tried_chain)

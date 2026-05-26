@@ -4,7 +4,8 @@
  * Columns: D = previousClose, E = longName (fallback shortName), F = session date.
  * Do NOT use =yahooF() in cells — UrlFetchApp is not allowed in custom functions (#ERROR!).
  *
- * Setup: paste into Apps Script → run refreshAllJpPrices once → authorize URLs.
+ * Setup: paste into Apps Script → authorize URLs. GitHub register_pick also refreshes
+ * each new row once (D/E/F). Use refreshAllJpPrices / hourly trigger to update all JP rows daily.
  */
 
 var JP_TAB = 'PriceLookup-jp-v1';
