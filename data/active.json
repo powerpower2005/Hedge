@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "587c833"
+    "commit": "e351f81"
   },
-  "generated_at": "2026-05-26T15:24:20.548376Z",
+  "generated_at": "2026-05-26T16:49:38.840757Z",
   "data": {
     "count": 35,
     "picks": [
@@ -2099,15 +2099,15 @@
         "author_note": "SK 하이닉스 홍콩장 x2"
       },
       {
-        "id": 46,
+        "id": 48,
         "schema_version": "1.0.0",
         "created_with": {
           "engine_version": "1.0.0",
           "rules_version": "1.0.7"
         },
-        "created_at": "2026-05-26T15:24:20.548297Z",
+        "created_at": "2026-05-26T16:49:38.840678Z",
         "author": "powerpower2005",
-        "issue_number": 73,
+        "issue_number": 75,
         "ticker": "7012",
         "country": "JP",
         "market": "TYO",
@@ -2127,7 +2127,7 @@
           "history": [
             {
               "status": "pending_entry",
-              "at": "2026-05-26T15:24:20.548297Z",
+              "at": "2026-05-26T16:49:38.840678Z",
               "engine_version": "1.0.0",
               "reason": "initial_registration"
             }
@@ -2139,7 +2139,7 @@
         "votes": {
           "likes": 0,
           "dislikes": 0,
-          "last_synced": "2026-05-26T15:24:20.548297Z"
+          "last_synced": "2026-05-26T16:49:38.840678Z"
         },
         "extensions": {
           "entry_lock": "first_judgment_close"
