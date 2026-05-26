@@ -105,7 +105,6 @@ function QuickGuideCard({ onClose, firstVisit }) {
 const navItems = [
   { to: "/", end: true, labelKey: "nav.dashboard" },
   { to: "/pending-entry", labelKey: "nav.pendingEntry" },
-  { to: "/#pick-list", hash: true, labelKey: "nav.allPicks" },
   { to: "/hall-of-fame", labelKey: "nav.hallOfFame" },
   { to: "/users", labelKey: "nav.ranking" },
   { to: "/expired", labelKey: "nav.expired" },
@@ -152,22 +151,16 @@ export function Header() {
             className="-mx-3 flex min-w-0 flex-1 items-center gap-1 overflow-x-auto px-3 pb-0.5 scrollbar-thin lg:mx-0 lg:justify-center lg:overflow-visible lg:px-0"
             aria-label={t("nav.primary")}
           >
-            {navItems.map((item) =>
-              item.hash ? (
-                <a key={item.to} href={item.to} className={`shrink-0 ${ui.navPill(false)}`}>
-                  {t(item.labelKey)}
-                </a>
-              ) : (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.end}
-                  className={({ isActive }) => `shrink-0 ${ui.navPill(isActive)}`}
-                >
-                  {t(item.labelKey)}
-                </NavLink>
-              ),
-            )}
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                className={({ isActive }) => `shrink-0 ${ui.navPill(isActive)}`}
+              >
+                {t(item.labelKey)}
+              </NavLink>
+            ))}
           </nav>
 
           <div

@@ -20,7 +20,36 @@ export function isExpiredPick(pick) {
 }
 
 /**
- * Last in-window close at expiry (preferred). Legacy picks: infer from progress extremes.
+ * @param {object | null | undefined} pick
+ * @returns {boolean}
+ */
+export function isAchievedPick(pick) {
+  return pick?.status?.current === "achieved";
+}
+
+/**
+ * Close on the judgment day the target was reached.
+ * @param {object | null | undefined} pick
+ * @returns {PriceSnapshot | null}
+ */
+export function getAchievementSnapshot(pick) {
+  const ach = pick?.achievement;
+  const close = ach?.achieved_close;
+  if (close == null || Number.isNaN(close)) return null;
+  const session_date = ach?.achieved_date;
+  if (!session_date || typeof session_date !== "string") return null;
+  const return_rate = ach?.final_return_rate;
+  return {
+    close,
+    session_date,
+    return_rate:
+      return_rate != null && !Number.isNaN(return_rate) ? return_rate : undefined,
+  };
+}
+
+/**
+ * Last daily close while the pick was still in-window (judgment_day <= deadline).
+ * Backend sets pick.expiry on expire; legacy rows may only have progress overwritten later.
  * @param {object | null | undefined} pick
  * @returns {PriceSnapshot | null}
  */
@@ -37,21 +66,6 @@ export function getExpirySnapshot(pick) {
   const deadline = pick?.duration?.deadline;
   if (!deadline) return null;
 
-  const bearish = (pick?.target?.return_rate ?? 0) < 0;
-  const extreme = bearish ? pick?.progress?.lowest : pick?.progress?.highest;
-  if (
-    extreme?.close != null &&
-    extreme.close_date &&
-    extreme.close_date <= deadline &&
-    !Number.isNaN(extreme.close)
-  ) {
-    return {
-      close: extreme.close,
-      session_date: extreme.close_date,
-      return_rate: extreme.return_rate,
-    };
-  }
-
   const updated = pick?.progress?.updated_at;
   const current = pick?.progress?.current;
   if (
@@ -67,13 +81,6 @@ export function getExpirySnapshot(pick) {
     };
   }
 
-  if (current?.close != null && !Number.isNaN(current.close)) {
-    return {
-      close: current.close,
-      session_date: deadline,
-      return_rate: current.return_rate,
-    };
-  }
   return null;
 }
 

@@ -23,9 +23,9 @@ export function PickInstrumentHeading({
 
   const primaryBase =
     variant === "detail"
-      ? ui.instrumentPrimary
+      ? `${ui.instrumentPrimary} sm:text-xl`
       : variant === "list"
-        ? `${ui.instrumentPrimary} text-base sm:text-lg`
+        ? "text-sm font-bold leading-snug tracking-tight text-zinc-100 sm:text-base light:text-zinc-900"
         : ui.instrumentPrimary;
   const primaryClass = `${primaryBase} hover:underline ${mismatch ? mismatchNameClass : ""}`;
 

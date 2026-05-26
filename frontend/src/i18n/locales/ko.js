@@ -33,6 +33,7 @@ export default {
     backShort: "뒤로",
     all: "전체",
     scrollToTop: "맨 위로",
+    notAvailable: "없음",
   },
   errors: {
     dataLoad: "데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.",
@@ -91,7 +92,7 @@ export default {
     fullGuideCta: "자세한 안내 페이지",
     s1Title: "목록과 상세 보기",
     s1Paragraphs: [
-      "상단 메뉴에서 **대시보드**, **전체 픽**, **명예의 전당**, **랭킹**, **만료** 등 원하는 화면으로 이동할 수 있습니다.",
+      "상단 메뉴에서 **대시보드**(진행 중 픽 목록), **진입 대기**, **명예의 전당**, **랭킹**, **만료** 등 원하는 화면으로 이동할 수 있습니다.",
       "카드를 누르면 해당 픽의 상세 정보가 열립니다. 카드 안의 @닉네임을 누르면 그 참가자의 픽만 모아 볼 수 있습니다.",
       "필터와 정렬로 목록을 좁힐 수 있습니다.",
     ],
@@ -142,7 +143,10 @@ export default {
     refLine: "참조 #{n}",
     currentPrice: "현재가",
     currentPriceOnDate: "현재가({date})",
-    expiryClosePriceOnDate: "만료일 종가({date})",
+    expiryClosePrice: "기한 마지막 종가",
+    expiryClosePriceOnDate: "기한 마지막 종가({date})",
+    achievedClosePrice: "달성일 종가",
+    achievedClosePriceOnDate: "달성일 종가({date})",
     showCurrentPrice: "현재가 보기",
     hideCurrentPrice: "현재가 접기",
     targetAchievement: "목표 달성률",

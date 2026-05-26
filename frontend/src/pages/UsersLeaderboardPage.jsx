@@ -6,6 +6,7 @@ import { formatReturn, formatWinRate, returnRateColorClass } from "../lib/format
 import { type } from "../lib/typographyClasses.js";
 import { ui } from "../lib/themeClasses.js";
 import { aggregateUserStats, sortUserStats } from "../lib/userLeaderboard.js";
+import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 const PAGE_SIZE = 20;
@@ -86,7 +87,7 @@ export function UsersLeaderboardPage() {
   const sliceStart = (safePage - 1) * PAGE_SIZE;
   const pageRows = sorted.slice(sliceStart, sliceStart + PAGE_SIZE);
 
-  if (loading) return <p className="px-4 py-8 text-zinc-500 light:text-zinc-600">{t("common.loading")}</p>;
+  if (loading) return <PageLoading />;
   if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
 
   return (

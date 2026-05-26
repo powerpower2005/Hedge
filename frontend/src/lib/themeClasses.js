@@ -28,7 +28,7 @@ export const ui = {
     "inline-flex rounded-lg border border-zinc-600 px-2 py-0.5 text-xs font-semibold text-zinc-300 light:border-zinc-300 light:text-zinc-700",
   ticker: "text-xl font-bold tracking-tight text-primary-400 sm:text-2xl light:text-primary-700",
   instrumentPrimary:
-    "text-xl font-bold leading-tight tracking-tight text-zinc-100 sm:text-2xl light:text-zinc-900",
+    "text-base font-bold leading-snug tracking-tight text-zinc-100 sm:text-lg light:text-zinc-900",
   tickerSecondary:
     "text-xs font-bold tracking-wide text-primary-400 tabular-nums light:text-primary-700",
   label: "text-xs font-medium text-zinc-400 light:text-zinc-600",

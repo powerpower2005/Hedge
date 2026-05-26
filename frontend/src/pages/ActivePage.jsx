@@ -1,7 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import { FilterBar } from "../components/filters/FilterBar.jsx";
-import { PickCard } from "../components/pick/PickCard.jsx";
 import { PickList } from "../components/pick/PickList.jsx";
 import { applyFilters, SORTERS } from "../lib/filters.js";
 import { formatReturn } from "../lib/formatters.js";
@@ -11,6 +9,7 @@ import { useAllMergedPicks } from "../hooks/useAllMergedPicks.js";
 import { isEntryPending } from "../lib/pickEntry.js";
 import { usePicks } from "../hooks/usePicks.js";
 import { ui } from "../lib/themeClasses.js";
+import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 function StatCard({ label, value, valueClass = "" }) {
@@ -37,11 +36,6 @@ export function ActivePage() {
     return [...f].sort(sorter);
   }, [activePicks, filters, sortKey]);
 
-  const hotPicks = useMemo(() => {
-    const sorter = SORTERS.currentReturn || SORTERS.latest;
-    return [...visible].sort(sorter).slice(0, 6);
-  }, [visible]);
-
   const stats = useMemo(() => {
     const total = allPicks.length;
     const activeCount = allPicks.filter((p) => p.status?.current === "active").length;
@@ -57,7 +51,11 @@ export function ActivePage() {
   const count = visible.length;
 
   if (loading && !picks.length) {
-    return <p className={`${ui.page} text-zinc-400`}>{t("common.loading")}</p>;
+    return (
+      <div className={ui.page}>
+        <PageLoading />
+      </div>
+    );
   }
   if (error) {
     return <p className={`${ui.page} text-red-400 light:text-red-600`}>{dataLoadErrorMessage(error, t)}</p>;
@@ -73,16 +71,13 @@ export function ActivePage() {
           {t("guide.quickTagline")}
         </p>
         <p className="mt-2 max-w-2xl text-sm text-zinc-400 light:text-zinc-600">{t("active.nextStep")}</p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          {IS_REPOSITORY_CONFIGURED ? (
+        {IS_REPOSITORY_CONFIGURED ? (
+          <div className="mt-6">
             <a href={NEW_PICK_URL} className={ui.btnPrimary}>
               {t("active.heroCta")}
             </a>
-          ) : null}
-          <a href="#pick-list" className={ui.btnSecondary}>
-            {t("active.viewAll")} →
-          </a>
-        </div>
+          </div>
+        ) : null}
       </section>
 
       {!allLoading ? (
@@ -98,27 +93,9 @@ export function ActivePage() {
         </section>
       ) : null}
 
-      {hotPicks.length > 0 ? (
-        <section className="mt-8" aria-labelledby="hot-picks-title">
-          <div className="mb-4 flex items-center justify-between gap-2">
-            <h2 id="hot-picks-title" className={ui.sectionTitle}>
-              {t("active.hotPicks")}
-            </h2>
-            <a href="#pick-list" className={`text-sm ${ui.link}`}>
-              {t("active.viewAll")} →
-            </a>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {hotPicks.map((p) => (
-              <PickCard key={p.id} pick={p} />
-            ))}
-          </div>
-        </section>
-      ) : null}
-
-      <section id="pick-list" className="mt-10 scroll-mt-24">
+      <section id="pick-list" className="mt-8 scroll-mt-24" aria-labelledby="active-picks-title">
         <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className={ui.sectionTitle}>
+          <h2 id="active-picks-title" className={ui.sectionTitle}>
             {t("active.title")}{" "}
             <span className="text-base font-medium text-zinc-400 light:text-zinc-600">
               {t("active.subtitle", { count })}

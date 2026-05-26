@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { ProgressBar } from "../components/ui/ProgressBar.jsx";
 import { StatusBadge } from "../components/pick/StatusBadge.jsx";
 import { useDataCacheRevision } from "../context/DataCacheContext.jsx";
@@ -65,7 +66,13 @@ export function PickDetailPage() {
   if (err && !pick) {
     return <p className={`${ui.page} text-red-400 light:text-red-600`}>{pickDetailErrorMessage(err, t)}</p>;
   }
-  if (!pick) return <p className={`${ui.page} text-zinc-400`}>{t("common.loading")}</p>;
+  if (!pick) {
+    return (
+      <div className={ui.page}>
+        <PageLoading />
+      </div>
+    );
+  }
 
   const issueUrl = pickIssueUrl(pick.issue_number);
   const financeUrl = googleFinanceQuoteUrl(pick);
@@ -131,11 +138,7 @@ export function PickDetailPage() {
               <PickEntryPrice pick={pick} />
             </span>
           </MetricBox>
-          <div
-            className={`rounded-xl bg-zinc-800/40 p-3 light:bg-zinc-50 ${
-              expired && expirySnap ? "col-span-2 lg:col-span-1" : ""
-            }`}
-          >
+          <div className="rounded-xl bg-zinc-800/40 p-3 light:bg-zinc-50">
             <PickPriceDisplay pick={pick} size="lg" />
           </div>
         </div>

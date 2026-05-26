@@ -1,7 +1,13 @@
 import { useI18n } from "../../i18n/I18nContext.jsx";
 import { formatPrice } from "../../lib/formatters.js";
 import { isEntryPending } from "../../lib/pickEntry.js";
-import { formatSessionDateDisplay, getExpirySnapshot, isExpiredPick } from "../../lib/pickPrices.js";
+import {
+  formatSessionDateDisplay,
+  getAchievementSnapshot,
+  getExpirySnapshot,
+  isAchievedPick,
+  isExpiredPick,
+} from "../../lib/pickPrices.js";
 import { getPickDisplayReturnRate } from "../../lib/pickSignMismatch.js";
 import { ReturnRate } from "./ReturnRate.jsx";
 
@@ -11,13 +17,23 @@ export function PickProgress({ pick }) {
   if (isEntryPending(pick)) {
     return <span className="text-zinc-500 light:text-zinc-600">{t("pick.pendingProgress")}</span>;
   }
+  const achieved = isAchievedPick(pick);
+  const achievement = achieved ? getAchievementSnapshot(pick) : null;
   const expired = isExpiredPick(pick);
   const expiry = expired ? getExpirySnapshot(pick) : null;
+
+  if (achieved && !achievement) {
+    return <span className="text-zinc-500 light:text-zinc-600">{t("common.notAvailable")}</span>;
+  }
+  if (expired && !expiry) {
+    return <span className="text-zinc-500 light:text-zinc-600">{t("common.notAvailable")}</span>;
+  }
+
   const rate = getPickDisplayReturnRate(pick);
-  const close = expired && expiry ? expiry.close : pick?.progress?.current?.close;
-  const dateLabel =
-    expired && expiry?.session_date ? formatSessionDateDisplay(expiry.session_date) : null;
-  if (rate == null && close == null) return "—";
+  const close = achievement?.close ?? expiry?.close ?? pick?.progress?.current?.close;
+  const sessionDate = achievement?.session_date ?? expiry?.session_date;
+  const dateLabel = sessionDate ? formatSessionDateDisplay(sessionDate) : null;
+  if (rate == null && (close == null || Number.isNaN(close))) return "—";
   return (
     <span className="inline-flex flex-wrap items-baseline gap-x-1.5">
       <ReturnRate rate={rate} />

@@ -6,6 +6,7 @@ import { useI18n } from "../i18n/I18nContext.jsx";
 import { usePicks } from "../hooks/usePicks.js";
 import { type } from "../lib/typographyClasses.js";
 import { ui } from "../lib/themeClasses.js";
+import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 export function ExpiredPage() {
@@ -20,7 +21,7 @@ export function ExpiredPage() {
     return [...f].sort(sorter);
   }, [picks, filters, sortKey]);
 
-  if (loading) return <p className="px-4 py-8 text-zinc-500 light:text-zinc-600">{t("common.loading")}</p>;
+  if (loading) return <PageLoading />;
   if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
 
   return (

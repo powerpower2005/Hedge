@@ -33,6 +33,7 @@ export default {
     backShort: "Back",
     all: "All",
     scrollToTop: "Back to top",
+    notAvailable: "N/A",
   },
   errors: {
     dataLoad: "Unable to load data. Please try again later.",
@@ -91,7 +92,7 @@ export default {
     fullGuideCta: "Open full guide page",
     s1Title: "Browse lists and details",
     s1Paragraphs: [
-      "Use the top menu: **Dashboard**, **All picks**, **Hall of Fame**, **Ranking**, **Expired**, and more.",
+      "Use the top menu: **Dashboard** (active picks), **Entry pending**, **Hall of Fame**, **Ranking**, **Expired**, and more.",
       "Click a card for pick details. Click an @username on a card to see that participant’s picks only.",
       "Use filters and sort to narrow the list.",
     ],
@@ -142,7 +143,10 @@ export default {
     refLine: "Ref #{n}",
     currentPrice: "Current price",
     currentPriceOnDate: "Current price ({date})",
-    expiryClosePriceOnDate: "Close at expiry ({date})",
+    expiryClosePrice: "Last in-window close",
+    expiryClosePriceOnDate: "Last in-window close ({date})",
+    achievedClosePrice: "Close on achievement",
+    achievedClosePriceOnDate: "Close on achievement ({date})",
     showCurrentPrice: "Show current price",
     hideCurrentPrice: "Hide current price",
     targetAchievement: "Target progress",
