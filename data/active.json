@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "803866a"
+    "commit": "7fb287c"
   },
-  "generated_at": "2026-05-25T22:18:22.458707Z",
+  "generated_at": "2026-05-26T05:24:35.848767Z",
   "data": {
-    "count": 31,
+    "count": 32,
     "picks": [
       {
         "id": 8,
@@ -1949,6 +1949,55 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "Direxion Daily MSCI South Korea Bull 3X ETF",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 43,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-26T05:24:35.848693Z",
+        "author": "hoky1227",
+        "issue_number": 67,
+        "ticker": "VRTL",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-05-26",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 2.0
+        },
+        "duration": {
+          "days": 180
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-26T05:24:35.848693Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-26T05:24:35.848693Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "GraniteShares 2x Long VRT Daily ETF",
         "author_note": "_No response_"
       }
     ]
