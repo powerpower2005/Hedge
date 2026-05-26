@@ -267,7 +267,7 @@ def main() -> None:
             if not probe_ok:
                 print(
                     f"[register_pick] JP_CLOSE_PROBE_WARN pick_id={pick_id} last={raw_close!r} "
-                    "— deferred entry: registering without numeric close in D (fix yahooF / GF fallback; "
+                    "— deferred entry: registering without numeric close in D (run refreshAllJpPrices; "
                     "entry locks at first JP judgment).",
                     file=sys.stderr,
                 )

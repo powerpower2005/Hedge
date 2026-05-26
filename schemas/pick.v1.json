@@ -37,7 +37,7 @@
     "country": { "enum": ["US", "KR", "HK", "JP"] },
     "market": {
       "enum": ["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN", "KRX", "KOSPI", "KOSDAQ", "HKG", "TYO"],
-      "description": "US: GOOGLEFINANCE exchange prefix. KR: board label (KRX/KOSPI/KOSDAQ). HK: HKG. JP: TYO (Google Finance); prices via PriceLookup-jp-v1 yahooF."
+      "description": "US: GOOGLEFINANCE exchange prefix. KR: board label (KRX/KOSPI/KOSDAQ). HK: HKG. JP: TYO; close on PriceLookup-jp-v1 column D via Apps Script refreshAllJpPrices (Yahoo)."
     },
     "instrument_name": {
       "type": "string",

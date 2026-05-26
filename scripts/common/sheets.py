@@ -61,20 +61,14 @@ def _session_date_formula(next_row: int) -> str:
     return f"={nested}"
 
 
-def _jp_close_formula(next_row: int) -> str:
-    """yahooF first; if non-numeric, GOOGLEFINANCE TYO:code (GF-style) as fallback."""
-    s = _formula_sep()
-    b = f"B{next_row}"
-    yahoo = f'yahooF({b}{s}"previousClose")'
-    gf_sym = f'"TYO:"&REGEXREPLACE({b}{s}"\\.T$"{s}"")'
-    return (
-        f"=LET(c{yahoo}{s}IF(ISNUMBER(c){s}c{s}"
-        f'IFERROR(GOOGLEFINANCE({gf_sym}{s}"closeyest"){s}"N/A")))'
-    )
+# Column D: Apps Script refreshAllJpPrices (scripts/sheets_jp_yahoo.gs) writes Yahoo previousClose.
+# Do NOT use =yahooF() or GOOGLEFINANCE in D — custom functions cannot call UrlFetchApp (#ERROR!).
+JP_CLOSE_PENDING = "PENDING"
 
 
 def _jp_session_date_formula(next_row: int) -> str:
-    return f'=IF(ISNUMBER(D{next_row}), TEXT(TODAY()-1,"yyyy-mm-dd"), "")'
+    s = _formula_sep()
+    return f'=IF(ISNUMBER(D{next_row}){s}TEXT(TODAY()-1{s}"yyyy-mm-dd"){s}"")'
 
 
 def get_worksheet(*, worksheet: str | None = None, country: str | None = None) -> gspread.Worksheet:
@@ -126,18 +120,17 @@ def append_ticker_row_jp(
     yahoo_ticker: str,
     market_label: str,
 ) -> int:
-    """Append to PriceLookup-jp-v1 (Apps Script yahooF for close)."""
+    """Append to PriceLookup-jp-v1; column D filled by Apps Script refreshAllJpPrices."""
     ws = get_worksheet(worksheet=WORKSHEET_JP_NAME)
     values = ws.get_all_values()
     next_row = len(values) + 1
-    close_formula = _jp_close_formula(next_row)
     session_date_formula = _jp_session_date_formula(next_row)
     ws.append_row(
         [
             pick_id,
             yahoo_ticker,
             market_label,
-            close_formula,
+            JP_CLOSE_PENDING,
             "",
             session_date_formula,
         ],

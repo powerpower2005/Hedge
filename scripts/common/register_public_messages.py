@@ -67,11 +67,13 @@ def format_price_fetch_public(
             [
                 "### Registration failed (price) / 등록 실패 (가격 확인)",
                 "",
-                f"- **EN:** **`{safe_ticker}`** (TYO) — column **D** on tab **`PriceLookup-jp-v1`** stayed non-numeric "
-                f"(last probe: yahoo symbol **`{yahoo_sym}`**). Check `=yahooF(\"{yahoo_sym}\",\"previousClose\")` "
-                "in the sheet; Apps Script must be bound and allowed to call external URLs.",
-                f"- **한:** **`PriceLookup-jp-v1`** 의 **D** 열이 숫자가 되지 않았습니다 (Yahoo 심볼 **`{yahoo_sym}`**). "
-                "시트에서 `yahooF` 수식·Apps Script 권한을 확인하세요. 새 행은 **yahooF 실패 시 GOOGLEFINANCE(TYO:코드)** 로 대체됩니다.",
+                f"- **EN:** **`{safe_ticker}`** (TYO) — column **D** on **`PriceLookup-jp-v1`** is not numeric yet "
+                f"(Yahoo symbol **`{yahoo_sym}`**). Run menu **JP prices → Refresh all** or Apps Script "
+                "`refreshAllJpPrices` (see `scripts/sheets_jp_yahoo.gs`). Do **not** use `=yahooF()` in cells — "
+                "UrlFetchApp is not allowed in custom functions (#ERROR!).",
+                f"- **한:** **`PriceLookup-jp-v1`** **D** 열에 종가 숫자가 없습니다 (**`{yahoo_sym}`**). "
+                "셀 수식 `=yahooF()` 대신 메뉴 **JP prices → Refresh all** 또는 `refreshAllJpPrices`를 실행하세요 "
+                "(`scripts/sheets_jp_yahoo.gs` 참고).",
                 "- **EN:** Confirm [Google Finance](https://www.google.com/finance/quote/"
                 f"{safe_ticker}:TYO) shows the same code.",
                 "",
@@ -143,7 +145,9 @@ def format_price_fetch_ops_log(
 
         yahoo_sym = jp_yahoo_ticker(ticker, market)
         lines.append(f"JP: tab PriceLookup-jp-v1; column B Yahoo symbol `{yahoo_sym}` (from GF ticker `{ticker}` + TYO).")
-        lines.append("JP: column D uses Sheets Apps Script yahooF(..., \"previousClose\").")
+        lines.append(
+            "JP: column D is set by Apps Script refreshAllJpPrices (not =yahooF() formula; UrlFetchApp)."
+        )
     elif country == "US":
         lines.append("US: column B is raw ticker combined with column C in GOOGLEFINANCE(C:B, ...).")
     if row_index is not None:
