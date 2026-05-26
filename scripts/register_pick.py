@@ -195,6 +195,7 @@ def main() -> None:
     ticker = fields["ticker"]
     country = fields["country"]
     market = fields["market"]
+    market_submitted = fields.get("market_submitted")
     target_return = fields["target_return"]
     duration_days = fields["duration_days"]
     target_return_pct = fields["target_return"] * 100
@@ -249,16 +250,27 @@ def main() -> None:
                 f"tab={sheet_tab} yahoo_ticker={yahoo_symbol}",
                 file=sys.stderr,
             )
-            time.sleep(3)
-            for _ in range(8):
+            time.sleep(5)
+            probe_ok = False
+            for _ in range(15):
                 raw_close = read_close_at_row(row_index, country=country)
                 try:
                     entry_price = _parse_close_value(raw_close)
+                    probe_ok = True
+                    print(
+                        f"[register_pick] JP_CLOSE_PROBE_OK pick_id={pick_id} close={entry_price}",
+                        file=sys.stderr,
+                    )
                     break
                 except ValueError:
-                    time.sleep(2)
-            else:
-                raise ValueError(f"close not_ready last={raw_close!r}")
+                    time.sleep(3)
+            if not probe_ok:
+                print(
+                    f"[register_pick] JP_CLOSE_PROBE_WARN pick_id={pick_id} last={raw_close!r} "
+                    "— deferred entry: registering without numeric close in D (fix yahooF / GF fallback; "
+                    "entry locks at first JP judgment).",
+                    file=sys.stderr,
+                )
         else:
             row_index = append_ticker_row(
                 pick_id,
@@ -334,6 +346,7 @@ def main() -> None:
             ticker=ticker,
             market=market,
             tried_prefixes=tried_chain if country in FINANCE_PREFIX_COUNTRIES and tried_chain else None,
+            country=country,
         )
         fail("PRICE_FETCH_ERROR", msg, issue_number)
 
@@ -370,6 +383,13 @@ def main() -> None:
 
 Vote with reactions on this issue.
 """
+    if market_submitted:
+        comment += (
+            f"\n\n**Market note / 시장 안내:** The form listed market **`{market_submitted}`**, "
+            f"but country **{country}** is stored with **`{market}`** "
+            "(the GitHub dropdown is not filtered by country).\n"
+            f"**한:** 양식 시장 **`{market_submitted}`** → 국가 **{country}** 에 맞게 **`{market}`** 로 저장했습니다.\n"
+        )
     if country in FINANCE_PREFIX_COUNTRIES and resolved_sheet_prefix is not None:
         chain = " → ".join(f"`{p}`" for p in tried_chain)
         comment += (

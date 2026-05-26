@@ -37,10 +37,19 @@ def validate_pick_input(
     except ValueError as e:
         raise ValidationError("INVALID_ENUM", str(e)) from e
     if m not in COUNTRY_MARKETS[c]:
-        raise ValidationError(
-            "COUNTRY_MARKET_MISMATCH",
-            f"Market {market} is not valid for country {country}.",
-        )
+        if c == Country.JP:
+            hint = (
+                f"Market {market} is not valid for country JP. "
+                "Use country **JP** with market **TYO** and a 4-digit ticker (e.g. 7203 on Google Finance)."
+            )
+        elif c == Country.HK:
+            hint = (
+                f"Market {market} is not valid for country HK. "
+                "Use country **HK** with market **HKG**."
+            )
+        else:
+            hint = f"Market {market} is not valid for country {country}."
+        raise ValidationError("COUNTRY_MARKET_MISMATCH", hint)
     magnitude = abs(target_return)
     if not (TARGET_RETURN_MIN <= magnitude <= TARGET_RETURN_MAX):
         raise ValidationError(

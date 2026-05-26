@@ -11,6 +11,9 @@ def test_jp_close_formula_uses_yahoof() -> None:
     assert "yahooF(B3" in f
     assert "previousClose" in f
     assert "ISNUMBER" in f
+    assert "GOOGLEFINANCE" in f
+    assert "TYO:" in f
+    assert "REGEXREPLACE" in f
 
 
 def test_jp_session_date_formula() -> None:

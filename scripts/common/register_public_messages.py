@@ -34,6 +34,7 @@ def format_price_fetch_public(
     ticker: str,
     market: str,
     tried_prefixes: Optional[list[str]] = None,
+    country: Optional[str] = None,
 ) -> str:
     """Short text for the GitHub issue comment (user-facing only)."""
     safe_ticker = str(ticker).replace("`", "'")
@@ -54,6 +55,25 @@ def format_price_fetch_public(
                 "",
                 "- **EN:** Please double-check **ticker and market** on [Google Finance](https://www.google.com/finance/).",
                 "- **한:** [Google Finance](https://www.google.com/finance/)에서 **티커·시장**을 다시 확인해 주세요.",
+                "",
+                tip_actions,
+            ]
+        )
+    if country == "JP":
+        from .models import jp_yahoo_ticker
+
+        yahoo_sym = jp_yahoo_ticker(ticker, market)
+        return "\n".join(
+            [
+                "### Registration failed (price) / 등록 실패 (가격 확인)",
+                "",
+                f"- **EN:** **`{safe_ticker}`** (TYO) — column **D** on tab **`PriceLookup-jp-v1`** stayed non-numeric "
+                f"(last probe: yahoo symbol **`{yahoo_sym}`**). Check `=yahooF(\"{yahoo_sym}\",\"previousClose\")` "
+                "in the sheet; Apps Script must be bound and allowed to call external URLs.",
+                f"- **한:** **`PriceLookup-jp-v1`** 의 **D** 열이 숫자가 되지 않았습니다 (Yahoo 심볼 **`{yahoo_sym}`**). "
+                "시트에서 `yahooF` 수식·Apps Script 권한을 확인하세요. 새 행은 **yahooF 실패 시 GOOGLEFINANCE(TYO:코드)** 로 대체됩니다.",
+                "- **EN:** Confirm [Google Finance](https://www.google.com/finance/quote/"
+                f"{safe_ticker}:TYO) shows the same code.",
                 "",
                 tip_actions,
             ]

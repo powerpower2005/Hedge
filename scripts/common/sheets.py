@@ -25,6 +25,12 @@ WORKSHEET_NAME = "PriceLookup-v1"
 WORKSHEET_JP_NAME = "PriceLookup-jp-v1"
 
 
+def _formula_sep() -> str:
+    """Argument separator for Sheets formulas (use ';' if the spreadsheet locale is Korean)."""
+    sep = (os.environ.get("SHEETS_FORMULA_SEP") or ",").strip()
+    return ";" if sep == ";" else ","
+
+
 def _creds() -> Credentials:
     path = Path("config/service_account.json")
     if not path.exists():
@@ -56,9 +62,14 @@ def _session_date_formula(next_row: int) -> str:
 
 
 def _jp_close_formula(next_row: int) -> str:
+    """yahooF first; if non-numeric, GOOGLEFINANCE TYO:code (GF-style) as fallback."""
+    s = _formula_sep()
+    b = f"B{next_row}"
+    yahoo = f'yahooF({b}{s}"previousClose")'
+    gf_sym = f'"TYO:"&REGEXREPLACE({b}{s}"\\.T$"{s}"")'
     return (
-        f'=LET(c, yahooF(B{next_row}, "previousClose"), '
-        f'IF(ISNUMBER(c), c, "N/A"))'
+        f"=LET(c{yahoo}{s}IF(ISNUMBER(c){s}c{s}"
+        f'IFERROR(GOOGLEFINANCE({gf_sym}{s}"closeyest"){s}"N/A")))'
     )
 
 

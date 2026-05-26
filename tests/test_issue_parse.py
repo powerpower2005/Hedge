@@ -99,6 +99,32 @@ def test_author_note_absent_omits_key():
     assert "author_note" not in fields
 
 
+def test_jp_country_coerces_market_to_tyo():
+    raw = {
+        "ticker": "7203",
+        "country": "JP",
+        "market": "NASDAQ",
+        "target_return_pct": "10",
+        "duration_days": "30",
+    }
+    fields = normalized_fields(raw)
+    assert fields["market"] == "TYO"
+    assert fields["market_submitted"] == "NASDAQ"
+
+
+def test_hk_country_coerces_market_to_hkg():
+    raw = {
+        "ticker": "0700",
+        "country": "HK",
+        "market": "NYSE",
+        "target_return_pct": "10",
+        "duration_days": "30",
+    }
+    fields = normalized_fields(raw)
+    assert fields["market"] == "HKG"
+    assert fields["market_submitted"] == "NYSE"
+
+
 def test_negative_target_return_pct():
     raw = parse_issue_form(
         SAMPLE.replace("### Target return (%)\n\n10", "### Target return (%)\n\n-20")

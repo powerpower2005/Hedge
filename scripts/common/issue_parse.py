@@ -46,6 +46,15 @@ def _header_to_key(header: str) -> str | None:
     return None
 
 
+def _canonical_market_for_country(country: str, market: str) -> tuple[str, str | None]:
+    """GitHub issue templates use one market dropdown for all countries."""
+    if country == "JP" and market != "TYO":
+        return "TYO", market
+    if country == "HK" and market != "HKG":
+        return "HKG", market
+    return market, None
+
+
 def normalized_fields(raw: dict[str, Any]) -> dict[str, Any]:
     if "ticker" not in raw:
         raise KeyError("ticker")
@@ -55,6 +64,7 @@ def normalized_fields(raw: dict[str, Any]) -> dict[str, Any]:
     ticker = _strip(str(raw["ticker"])).upper().replace(" ", "")
     country = _strip(str(raw.get("country", ""))).upper()
     market = _strip(str(raw.get("market", ""))).upper()
+    market, market_submitted = _canonical_market_for_country(country, market)
     pct = float(_strip(str(raw.get("target_return_pct", ""))).replace("%", ""))
     duration_days = int(_strip(str(raw.get("duration_days", ""))))
     note_raw = raw.get("author_note")
@@ -74,4 +84,6 @@ def normalized_fields(raw: dict[str, Any]) -> dict[str, Any]:
     }
     if author_note is not None:
         out["author_note"] = author_note
+    if market_submitted is not None:
+        out["market_submitted"] = market_submitted
     return out
