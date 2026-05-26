@@ -9,6 +9,7 @@ import { ReturnRate } from "./ReturnRate.jsx";
 import { type } from "../../lib/typographyClasses.js";
 import { ui } from "../../lib/themeClasses.js";
 import { StatusBadge } from "./StatusBadge.jsx";
+import { MarketBadge } from "./MarketBadge.jsx";
 import { PickCard } from "./PickCard.jsx";
 import { PickInstrumentHeading } from "./PickInstrumentHeading.jsx";
 import { getPickDisplayReturnRate } from "../../lib/pickSignMismatch.js";
@@ -78,7 +79,9 @@ function PickListMobileRow({ p, t }) {
         <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2.5 text-xs sm:grid-cols-3">
           <div>
             <dt className={type.fieldLabel}>{t("pickList.colMarket")}</dt>
-            <dd className={`mt-0.5 ${type.bodySm}`}>{p.market}</dd>
+            <dd className="mt-0.5">
+              <MarketBadge pick={p} />
+            </dd>
           </div>
           <div>
             <dt className={type.fieldLabel}>{t("pickList.colTarget")}</dt>
@@ -190,7 +193,9 @@ export function PickList({ picks }) {
                       <td className={tdClass}>
                         <PickListTickerCell p={p} t={t} />
                       </td>
-                      <td className={tdNum}>{p.market}</td>
+                      <td className={tdClass}>
+                        <MarketBadge pick={p} />
+                      </td>
                       <td className={tdNum}>
                         <ReturnRate rate={p.target?.return_rate} />
                       </td>

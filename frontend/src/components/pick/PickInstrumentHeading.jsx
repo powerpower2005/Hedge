@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { isTargetCurrentSignMismatch } from "../../lib/pickSignMismatch.js";
+import { MarketBadge } from "./MarketBadge.jsx";
 import { ui } from "../../lib/themeClasses.js";
 import { type } from "../../lib/typographyClasses.js";
 
@@ -55,11 +56,11 @@ export function PickInstrumentHeading({
         {showTickerSubline ? (
           <p className="mt-1.5 flex flex-wrap items-center gap-2">
             {tickerEl}
-            <span className={ui.badgeMarket}>{pick.market}</span>
+            <MarketBadge pick={pick} />
           </p>
         ) : (
           <p className="mt-1.5">
-            <span className={ui.badgeMarket}>{pick.market}</span>
+            <MarketBadge pick={pick} />
           </p>
         )}
       </div>
@@ -80,7 +81,7 @@ export function PickInstrumentHeading({
       {primaryEl}
       <div className="mt-1 flex flex-wrap items-center gap-2">
         {tickerEl}
-        <span className={ui.badgeMarket}>{pick.market}</span>
+        <MarketBadge pick={pick} />
       </div>
     </div>
   );

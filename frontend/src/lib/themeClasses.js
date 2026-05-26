@@ -24,8 +24,6 @@ export const ui = {
         ? "bg-primary-600/20 text-primary-300 light:bg-primary-100 light:text-primary-800"
         : "text-zinc-400 hover:bg-zinc-800/80 hover:text-zinc-100 light:text-zinc-600 light:hover:bg-zinc-100 light:hover:text-zinc-900"
     }`,
-  badgeMarket:
-    "inline-flex rounded-lg border border-zinc-600 px-2 py-0.5 text-xs font-semibold text-zinc-300 light:border-zinc-300 light:text-zinc-700",
   ticker: "text-xl font-bold tracking-tight text-primary-400 sm:text-2xl light:text-primary-700",
   instrumentPrimary:
     "text-base font-bold leading-snug tracking-tight text-zinc-100 sm:text-lg light:text-zinc-900",

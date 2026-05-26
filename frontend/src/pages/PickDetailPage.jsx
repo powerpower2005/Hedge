@@ -13,6 +13,7 @@ import { targetAchievementPercent } from "../lib/pickProgressPct.js";
 import { ReturnRate } from "../components/pick/ReturnRate.jsx";
 import { PickPriceDisplay } from "../components/pick/PickPriceDisplay.jsx";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
+import { MarketBadge } from "../components/pick/MarketBadge.jsx";
 import { PickInstrumentHeading } from "../components/pick/PickInstrumentHeading.jsx";
 import { getPickDisplayReturnRate } from "../lib/pickSignMismatch.js";
 import { googleFinanceQuoteUrl } from "../lib/googleFinanceUrl.js";
@@ -155,7 +156,9 @@ export function PickDetailPage() {
         </section>
         <section className={`${ui.card} ${ui.cardPad}`}>
           <h2 className={`${ui.label} mb-2`}>{t("pickDetail.exchangeInfo")}</h2>
-          <p className={ui.valueLg}>{pick.market}</p>
+          <p className="mt-1">
+            <MarketBadge pick={pick} className="text-sm" />
+          </p>
           <p className={`mt-1 ${type.meta}`}>
             {countryLabel} · {currencyLabel}
           </p>
@@ -209,17 +212,23 @@ export function PickDetailPage() {
               href={issueUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${ui.btnSecondary} justify-center py-3`}
+              className={`${ui.btnSecondaryLg} justify-center gap-2 py-3.5 sm:py-4`}
             >
-              👍 {t("pickDetail.voteAgree", { n: pick.votes?.likes ?? 0 })}
+              <span className="text-lg leading-none" aria-hidden>
+                👍
+              </span>
+              {t("pickDetail.voteAgree", { n: pick.votes?.likes ?? 0 })}
             </a>
             <a
               href={issueUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${ui.btnSecondary} justify-center py-3`}
+              className={`${ui.btnSecondaryLg} justify-center gap-2 py-3.5 sm:py-4`}
             >
-              👎 {t("pickDetail.voteDisagree", { n: pick.votes?.dislikes ?? 0 })}
+              <span className="text-lg leading-none" aria-hidden>
+                👎
+              </span>
+              {t("pickDetail.voteDisagree", { n: pick.votes?.dislikes ?? 0 })}
             </a>
           </div>
           <a
