@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "9a91f6b"
+    "commit": "587c833"
   },
-  "generated_at": "2026-05-26T14:28:01.093915Z",
+  "generated_at": "2026-05-26T15:24:20.548376Z",
   "data": {
-    "count": 34,
+    "count": 35,
     "picks": [
       {
         "id": 8,
@@ -2097,6 +2097,54 @@
         },
         "instrument_name": "CSOP SK Hynix Daily (2x) Lvrgd Prod",
         "author_note": "SK 하이닉스 홍콩장 x2"
+      },
+      {
+        "id": 46,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-26T15:24:20.548297Z",
+        "author": "powerpower2005",
+        "issue_number": 73,
+        "ticker": "7012",
+        "country": "JP",
+        "market": "TYO",
+        "entry": {
+          "date": "2026-05-26",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.2
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-26T15:24:20.548297Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-26T15:24:20.548297Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "author_note": "_No response_"
       }
     ]
   }
