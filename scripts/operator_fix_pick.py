@@ -80,7 +80,16 @@ def delist_pick_active(root: Path, pick_id: int, reason: str) -> bool:
     return False
 
 
-def maybe_delete_sheet_row(pick_id: int) -> None:
+def _country_for_pick_id(root: Path, pick_id: int) -> str | None:
+    for path in list_all_pick_list_files(root):
+        for p in get_picks(load_list_file(path)):
+            if p.get("id") == pick_id:
+                c = p.get("country")
+                return str(c).strip().upper() if c else None
+    return None
+
+
+def maybe_delete_sheet_row(pick_id: int, *, country: str | None = None) -> None:
     from common.sheets import delete_row_for_pick_id
 
     cred = Path("config/service_account.json")
@@ -91,8 +100,8 @@ def maybe_delete_sheet_row(pick_id: int) -> None:
         print("INFO: GOOGLE_SHEET_ID unset; skip Sheets row delete.", file=sys.stderr)
         return
     try:
-        delete_row_for_pick_id(pick_id)
-        print(f"Sheets: deleted row for pick_id={pick_id}")
+        delete_row_for_pick_id(pick_id, country=country)
+        print(f"Sheets: deleted row for pick_id={pick_id} (country={country or 'auto'})")
     except Exception as e:
         print(f"WARN: Sheets row delete failed: {e}", file=sys.stderr)
 
@@ -156,7 +165,7 @@ def main(argv: list[str] | None = None) -> None:
             rel = c.relative_to(root) if c.is_relative_to(root) else c
             print(f"Updated: {rel}")
         if not args.no_delete_sheet_row:
-            maybe_delete_sheet_row(args.pick_id)
+            maybe_delete_sheet_row(args.pick_id, country=_country_for_pick_id(root, args.pick_id))
     else:
         ok = delist_pick_active(root, args.pick_id, args.reason)
         if not ok:

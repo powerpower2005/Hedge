@@ -12,5 +12,8 @@ export function marketBadgeClass(country) {
   if (country === "HK") {
     return `${badgeBase} border-amber-700/80 bg-amber-950/70 text-amber-200 light:border-amber-300 light:bg-amber-50 light:text-amber-950`;
   }
+  if (country === "JP") {
+    return `${badgeBase} border-violet-700/80 bg-violet-950/70 text-violet-200 light:border-violet-300 light:bg-violet-50 light:text-violet-950`;
+  }
   return `${badgeBase} border-zinc-600 bg-zinc-800/90 text-zinc-200 light:border-zinc-300 light:bg-zinc-100 light:text-zinc-800`;
 }

@@ -9,14 +9,14 @@ body:
         ### 한국어
         제출 전 확인: 사용자당 **진행 중 픽 20개 이하**, **같은 티커는 사용자당 1개**만 가능합니다. 규칙 위반 시 이 이슈에 안내 댓글이 달릴 수 있습니다.
 
-        한국(KR)은 **KRX / KOSPI / KOSDAQ**, 홍콩(HK)은 **HKG**를 고르세요. 등록 시 **거래소 접두**는 자동으로 시도하며, **양식에서 고른 시장을 먼저** 씁니다. 미국(US) ETF·Arca 종목은 **NYSEARCA** 또는 **BATS**, 아멕스 계열은 **NYSEAMERICAN**을 고려하세요. 홍콩은 티커 **앞자리 0**을 포함해 입력하세요(예: 0700). 등록이 실패하면 [Google Finance](https://www.google.com/finance/)에서 **거래소 접두**와 **티커**가 맞는지 확인해 보세요.
+        한국(KR)은 **KRX / KOSPI / KOSDAQ**, 홍콩(HK)은 **HKG**, 일본(JP)은 **TYO**를 고르세요. 등록 시 **거래소 접두**는 자동으로 시도하며(일본 제외), **양식에서 고른 시장을 먼저** 씁니다. 미국(US) ETF·Arca 종목은 **NYSEARCA** 또는 **BATS**, 아멕스 계열은 **NYSEAMERICAN**을 고려하세요. 홍콩은 티커 **앞자리 0**을 포함해 입력하세요(예: 0700). **일본**은 [Google Finance](https://www.google.com/finance/)에 나온 **4자리 종목코드만** 입력하세요(예: `7203` — `7203.T`는 넣지 않음). 등록이 실패하면 Google Finance에서 **TYO**와 티커를 확인해 보세요.
 
         맨 아래 **추가 메모**는 선택 사항이며, 입력하면 공개 사이트 픽 상세에서 접어 두었다가 볼 수 있습니다. 시스템 판정·목표가에는 사용되지 않습니다.
 
         ### English
         Before submitting: at most **20** active picks per user; only **one** active pick per ticker per user. Invalid submissions may receive a comment on this issue.
 
-        **KR:** **KRX**, **KOSPI**, or **KOSDAQ**. **HK:** **HKG** (include leading zeros in the ticker, e.g. 0700). **US:** many ETFs use **NYSEARCA** or **BATS**. If registration fails, verify **exchange prefix + ticker** on [Google Finance](https://www.google.com/finance/).
+        **KR:** **KRX**, **KOSPI**, or **KOSDAQ**. **HK:** **HKG** (leading zeros, e.g. 0700). **JP:** **TYO** — ticker digits only as on Google Finance (e.g. 7203, not 7203.T). **US:** many ETFs use **NYSEARCA** or **BATS**. If registration fails, verify on [Google Finance](https://www.google.com/finance/).
 
         **Optional note:** the last field below is optional; if filled, it appears on the public pick detail (collapsed by default). Not used for pricing or rules — e.g. personal context or a hypothetical stop level in prose only.
 
@@ -37,6 +37,7 @@ body:
         - US
         - KR
         - HK
+        - JP
     validations:
       required: true
 
@@ -44,7 +45,7 @@ body:
     id: market
     attributes:
       label: "Market / 시장"
-      description: "국가와 짝 맞추기 · US: NASDAQ/… · KR: KRX/KOSPI/KOSDAQ · HK: HKG"
+      description: "국가와 짝 맞추기 · US: NASDAQ/… · KR: KRX/KOSPI/KOSDAQ · HK: HKG · JP: TYO"
       options:
         - NASDAQ
         - NYSE
@@ -55,6 +56,7 @@ body:
         - KOSPI
         - KOSDAQ
         - HKG
+        - TYO
     validations:
       required: true
 

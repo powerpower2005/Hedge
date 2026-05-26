@@ -45,6 +45,7 @@ export function formatPrice(country, price) {
   if (price == null || Number.isNaN(price)) return "—";
   if (country === "KR") return `₩${price.toLocaleString("ko-KR", { maximumFractionDigits: 0 })}`;
   if (country === "HK") return `HK$${price.toLocaleString("en-HK", { minimumFractionDigits: 2, maximumFractionDigits: 3 })}`;
+  if (country === "JP") return `¥${price.toLocaleString("ja-JP", { maximumFractionDigits: 0 })}`;
   return `$${price.toFixed(2)}`;
 }
 

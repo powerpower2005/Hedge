@@ -21,8 +21,8 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive",
 ]
 
-# Worksheet tab name in the Google Sheet (must match exactly).
 WORKSHEET_NAME = "PriceLookup-v1"
+WORKSHEET_JP_NAME = "PriceLookup-jp-v1"
 
 
 def _creds() -> Credentials:
@@ -36,12 +36,14 @@ def get_client() -> gspread.Client:
     return gspread.authorize(_creds())
 
 
-def _session_date_formula(next_row: int) -> str:
-    """Most recent calendar day in lookback with a numeric GOOGLEFINANCE(..., \"close\", date).
+def worksheet_name_for_country(country: str | None) -> str:
+    if country == "JP":
+        return WORKSHEET_JP_NAME
+    return WORKSHEET_NAME
 
-    Nested IFERROR so Sheets can stop after the first hit (yesterday first, then older days).
-    Aligns with closeyest in practice: that close is the prior session's official close.
-    """
+
+def _session_date_formula(next_row: int) -> str:
+    """Most recent calendar day in lookback with a numeric GOOGLEFINANCE(..., \"close\", date)."""
     sym = f'C{next_row}&":"&B{next_row}'
     nested = '"N/A"'
     for k in range(_SESSION_DATE_LOOKBACK_DAYS, 0, -1):
@@ -53,13 +55,25 @@ def _session_date_formula(next_row: int) -> str:
     return f"={nested}"
 
 
-def get_worksheet() -> gspread.Worksheet:
+def _jp_close_formula(next_row: int) -> str:
+    return (
+        f'=LET(c, yahooF(B{next_row}, "previousClose"), '
+        f'IF(ISNUMBER(c), c, "N/A"))'
+    )
+
+
+def _jp_session_date_formula(next_row: int) -> str:
+    return f'=IF(ISNUMBER(D{next_row}), TEXT(TODAY()-1,"yyyy-mm-dd"), "")'
+
+
+def get_worksheet(*, worksheet: str | None = None, country: str | None = None) -> gspread.Worksheet:
+    tab = worksheet or worksheet_name_for_country(country)
     sheet_id = os.environ.get("GOOGLE_SHEET_ID")
     if not sheet_id:
         raise RuntimeError("GOOGLE_SHEET_ID is required")
     client = get_client()
     sh = client.open_by_key(sheet_id)
-    return sh.worksheet(WORKSHEET_NAME)
+    return sh.worksheet(tab)
 
 
 def append_ticker_row(
@@ -70,7 +84,7 @@ def append_ticker_row(
     *,
     finance_exchange: str | None = None,
 ) -> int:
-    ws = get_worksheet()
+    ws = get_worksheet(country=country)
     values = ws.get_all_values()
     next_row = len(values) + 1
     fin_market = (
@@ -79,11 +93,7 @@ def append_ticker_row(
         else market_for_google_finance(market)
     )
     ticker_cell = ticker_cell_for_price_lookup(ticker, country)
-    # "closeyest" = previous regular session close (GOOGLEFINANCE real-time attribute,
-    # single cell). Used as entry baseline, not last trade. Avoid bare "close" without
-    # dates (historical; often #N/A via Sheets API per Google docs).
     close_formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"closeyest"),"N/A")'
-    # "name" = full security name (same symbol as D); stored in pick JSON for the UI.
     name_formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"name"),"")'
     session_date_formula = _session_date_formula(next_row)
     ws.append_row(
@@ -100,36 +110,58 @@ def append_ticker_row(
     return next_row
 
 
+def append_ticker_row_jp(
+    pick_id: int,
+    yahoo_ticker: str,
+    market_label: str,
+) -> int:
+    """Append to PriceLookup-jp-v1 (Apps Script yahooF for close)."""
+    ws = get_worksheet(worksheet=WORKSHEET_JP_NAME)
+    values = ws.get_all_values()
+    next_row = len(values) + 1
+    close_formula = _jp_close_formula(next_row)
+    session_date_formula = _jp_session_date_formula(next_row)
+    ws.append_row(
+        [
+            pick_id,
+            yahoo_ticker,
+            market_label,
+            close_formula,
+            "",
+            session_date_formula,
+        ],
+        value_input_option="USER_ENTERED",
+    )
+    return next_row
+
+
 def set_price_lookup_finance_prefix(row_index: int, exchange_prefix: str) -> None:
-    """Column C on PriceLookup-v1: GOOGLEFINANCE exchange prefix (row 1-based)."""
-    ws = get_worksheet()
+    ws = get_worksheet(country=None)
     ws.update_cell(row_index, 3, exchange_prefix)
 
 
-def read_close_at_row(row_index: int) -> str | None:
-    ws = get_worksheet()
+def read_close_at_row(row_index: int, *, country: str | None = None) -> str | None:
+    ws = get_worksheet(country=country)
     cell = ws.cell(row_index, 4)
     v = cell.value
     return str(v).strip() if v is not None else None
 
 
-def read_instrument_name_at_row(row_index: int) -> str | None:
-    """Column E: GOOGLEFINANCE(..., \"name\") (optional; may lag behind close)."""
-    ws = get_worksheet()
+def read_instrument_name_at_row(row_index: int, *, country: str | None = None) -> str | None:
+    ws = get_worksheet(country=country)
     cell = ws.cell(row_index, 5)
     v = cell.value
     return str(v).strip() if v is not None else None
 
 
-def read_close_session_date_at_row(row_index: int) -> object | None:
-    """Column F: calendar date (yyyy-mm-dd) of the last row in GOOGLEFINANCE(..., \"all\", …)."""
-    ws = get_worksheet()
+def read_close_session_date_at_row(row_index: int, *, country: str | None = None) -> object | None:
+    ws = get_worksheet(country=country)
     cell = ws.cell(row_index, 6)
     return cell.value
 
 
-def read_close_for_pick_id(pick_id: int) -> str | None:
-    ws = get_worksheet()
+def read_close_for_pick_id(pick_id: int, *, country: str | None = None) -> str | None:
+    ws = get_worksheet(country=country)
     rows = ws.get_all_values()
     for row in rows[1:]:
         if not row:
@@ -141,22 +173,46 @@ def read_close_for_pick_id(pick_id: int) -> str | None:
     return None
 
 
-def delete_row_for_pick_id(pick_id: int) -> None:
-    ws = get_worksheet()
-    rows = ws.get_all_values()
-    for i, row in enumerate(rows[1:], start=2):
-        if row and str(row[0]).strip() == str(pick_id):
-            ws.delete_rows(i)
-            return
+def delete_row_for_pick_id(pick_id: int, *, country: str | None = None) -> None:
+    tabs: list[str]
+    if country == "JP":
+        tabs = [WORKSHEET_JP_NAME]
+    elif country in ("US", "KR", "HK"):
+        tabs = [WORKSHEET_NAME]
+    else:
+        tabs = [WORKSHEET_NAME, WORKSHEET_JP_NAME]
+    for tab in tabs:
+        try:
+            ws = get_worksheet(worksheet=tab)
+        except gspread.WorksheetNotFound:
+            continue
+        rows = ws.get_all_values()
+        for i, row in enumerate(rows[1:], start=2):
+            if row and str(row[0]).strip() == str(pick_id):
+                ws.delete_rows(i)
+                return
 
 
 def fetch_all_prices_rows() -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    for tab in (WORKSHEET_NAME, WORKSHEET_JP_NAME):
+        try:
+            chunk = _fetch_sheet_rows(tab)
+        except gspread.WorksheetNotFound:
+            if tab == WORKSHEET_JP_NAME:
+                continue
+            raise
+        out.extend(chunk)
+    return out
+
+
+def _fetch_sheet_rows(worksheet_name: str) -> list[dict[str, Any]]:
     sheet_id = os.environ.get("GOOGLE_SHEET_ID")
     if not sheet_id:
         raise RuntimeError("GOOGLE_SHEET_ID is required")
     url = (
         f"https://docs.google.com/spreadsheets/d/{sheet_id}"
-        f"/gviz/tq?tqx=out:csv&sheet={WORKSHEET_NAME}"
+        f"/gviz/tq?tqx=out:csv&sheet={worksheet_name}"
     )
     try:
         with urlopen(url, timeout=60) as resp:
@@ -164,7 +220,7 @@ def fetch_all_prices_rows() -> list[dict[str, Any]]:
         reader = csv.DictReader(StringIO(raw))
         out: list[dict[str, Any]] = []
         if not reader.fieldnames:
-            return _fetch_via_gspread_list()
+            return _fetch_via_gspread_list(worksheet_name)
         names = reader.fieldnames
         lower = [h.strip().lower() for h in names]
         try:
@@ -196,14 +252,40 @@ def fetch_all_prices_rows() -> list[dict[str, Any]]:
                 item["name"] = row.get(name_key)
             out.append(item)
         if out:
-            return out
+            return _attach_session_dates_gspread(worksheet_name, out)
     except (URLError, OSError, ValueError, IndexError):
         pass
-    return _fetch_via_gspread_list()
+    return _fetch_via_gspread_list(worksheet_name)
 
 
-def _fetch_via_gspread_list() -> list[dict[str, Any]]:
-    ws = get_worksheet()
+def _attach_session_dates_gspread(
+    worksheet_name: str, rows: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    try:
+        ws = get_worksheet(worksheet=worksheet_name)
+    except gspread.WorksheetNotFound:
+        return rows
+    all_rows = ws.get_all_values()
+    by_id: dict[int, str] = {}
+    for row in all_rows[1:]:
+        if len(row) < 6:
+            continue
+        try:
+            pid = int(float(str(row[0]).replace(",", "")))
+        except (TypeError, ValueError):
+            continue
+        sess = str(row[5]).strip()
+        if sess:
+            by_id[pid] = sess
+    for item in rows:
+        pid = item.get("pick_id")
+        if pid in by_id:
+            item["close_session_date"] = by_id[pid]
+    return rows
+
+
+def _fetch_via_gspread_list(worksheet_name: str) -> list[dict[str, Any]]:
+    ws = get_worksheet(worksheet=worksheet_name)
     rows = ws.get_all_values()
     out: list[dict[str, Any]] = []
     for row in rows[1:]:

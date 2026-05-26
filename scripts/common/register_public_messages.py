@@ -9,7 +9,8 @@ from .models import market_for_google_finance
 
 GOOGLE_FINANCE_VERIFY_TIP = (
     "If you believe the values are correct, confirm the **ticker** and **exchange** on [Google Finance](https://www.google.com/finance/). "
-    "For **KR** and **US**, registration may try several **exchange prefixes** automatically until a previous close is found."
+    "For **KR** and **US**, registration may try several **exchange prefixes** automatically until a previous close is found. "
+    "For **JP**, use the **4-digit code** with market **TYO** (e.g. `7203` on `…/quote/7203:TYO`)."
 )
 
 
@@ -117,6 +118,12 @@ def format_price_fetch_ops_log(
         lines.append(
             "HK: column B is a string formula for leading zeros; plain number in B breaks HKG:ticker."
         )
+    elif country == "JP":
+        from .models import jp_yahoo_ticker
+
+        yahoo_sym = jp_yahoo_ticker(ticker, market)
+        lines.append(f"JP: tab PriceLookup-jp-v1; column B Yahoo symbol `{yahoo_sym}` (from GF ticker `{ticker}` + TYO).")
+        lines.append("JP: column D uses Sheets Apps Script yahooF(..., \"previousClose\").")
     elif country == "US":
         lines.append("US: column B is raw ticker combined with column C in GOOGLEFINANCE(C:B, ...).")
     if row_index is not None:

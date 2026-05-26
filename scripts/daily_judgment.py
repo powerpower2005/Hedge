@@ -27,6 +27,7 @@ COUNTRY_TIMEZONES = {
     "KR": "Asia/Seoul",
     "US": "America/New_York",
     "HK": "Asia/Hong_Kong",
+    "JP": "Asia/Tokyo",
 }
 
 

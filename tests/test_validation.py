@@ -2,6 +2,7 @@ import pytest
 
 from common.models import (
     hk_googlefinance_prefix_candidates,
+    jp_yahoo_ticker,
     kr_googlefinance_prefix_candidates,
     market_for_google_finance,
     ticker_cell_for_price_lookup,
@@ -81,6 +82,21 @@ def test_validate_hk_wrong_market():
     with pytest.raises(ValidationError) as e:
         validate_pick_input("0700", "HK", "NASDAQ", 0.15, 30)
     assert e.value.code == "COUNTRY_MARKET_MISMATCH"
+
+
+def test_validate_jp_ticker():
+    validate_pick_input("7203", "JP", "TYO", 0.15, 30)
+
+
+def test_validate_jp_wrong_market():
+    with pytest.raises(ValidationError) as e:
+        validate_pick_input("7203", "JP", "HKG", 0.15, 30)
+    assert e.value.code == "COUNTRY_MARKET_MISMATCH"
+
+
+def test_jp_yahoo_ticker_from_google_finance_code():
+    assert jp_yahoo_ticker("7203", "TYO") == "7203.T"
+    assert jp_yahoo_ticker("7203.T", "TYO") == "7203.T"
 
 
 def test_hk_googlefinance_prefix_candidates():

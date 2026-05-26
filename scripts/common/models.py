@@ -15,6 +15,7 @@ class Country(str, Enum):
     US = "US"
     KR = "KR"
     HK = "HK"
+    JP = "JP"
 
 
 class Market(str, Enum):
@@ -29,12 +30,14 @@ class Market(str, Enum):
     KOSPI = "KOSPI"
     KOSDAQ = "KOSDAQ"
     HKG = "HKG"
+    TYO = "TYO"
 
 
 COUNTRY_MARKETS = {
     Country.US: {Market.NASDAQ, Market.NYSE, Market.NYSEARCA, Market.BATS, Market.NYSEAMERICAN},
     Country.KR: {Market.KRX, Market.KOSPI, Market.KOSDAQ},
     Country.HK: {Market.HKG},
+    Country.JP: {Market.TYO},
 }
 
 FINANCE_PREFIX_COUNTRIES = frozenset({Country.US.value, Country.KR.value, Country.HK.value})
@@ -94,6 +97,21 @@ def hk_googlefinance_prefix_candidates(form_market: str) -> list[str]:
     if m != "HKG":
         m = "HKG"
     return [m]
+
+
+def jp_yahoo_ticker(ticker: str, form_market: str) -> str:
+    """Google Finance-style code (e.g. 7203) -> Yahoo chart symbol (e.g. 7203.T)."""
+    t = (ticker or "").strip().upper()
+    if not t:
+        raise ValueError("empty ticker")
+    if "." in t:
+        return t
+    m = (form_market or "").strip().upper()
+    if m not in ("TYO", "TSE"):
+        m = "TYO"
+    if m == "TYO":
+        return f"{t}.T"
+    return f"{t}.T"
 
 
 def ticker_cell_for_price_lookup(ticker: str, country: str) -> str:

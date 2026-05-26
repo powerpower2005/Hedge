@@ -28,17 +28,20 @@ from common.goog_finance_parse import parse_close_session_date_cell, parse_instr
 from common.models import (
     FINANCE_PREFIX_COUNTRIES,
     hk_googlefinance_prefix_candidates,
+    jp_yahoo_ticker,
     kr_googlefinance_prefix_candidates,
     market_for_google_finance,
     us_googlefinance_prefix_candidates,
 )
 from common.sheets import (
     append_ticker_row,
+    append_ticker_row_jp,
     delete_row_for_pick_id,
     read_close_at_row,
     read_close_session_date_at_row,
     read_instrument_name_at_row,
     set_price_lookup_finance_prefix,
+    worksheet_name_for_country,
 )
 from common.storage import get_picks, load_list_file, save_list_file
 from common.validation import (
@@ -65,6 +68,8 @@ def _format_money(country: str, price: float) -> str:
         return f"₩{price:,.0f}"
     if country == "HK":
         return f"HK${price:,.2f}"
+    if country == "JP":
+        return f"¥{price:,.0f}"
     return f"${price:.2f}"
 
 
@@ -233,50 +238,71 @@ def main() -> None:
     raw_close: str | None = None
     instrument_name: str | None = None
     entry_close_session_date: date | None = None
+    sheet_tab = worksheet_name_for_country(country)
+    is_jp = country == "JP"
     try:
-        row_index = append_ticker_row(
-            pick_id,
-            ticker,
-            market,
-            country,
-            finance_exchange=finance_candidates[0],
-        )
-        print(
-            f"[register_pick] SHEETS_APPEND_OK pick_id={pick_id} worksheet_row={row_index} tab=PriceLookup-v1",
-            file=sys.stderr,
-        )
-        time.sleep(3)
-        for attempt_idx, prefix in enumerate(finance_candidates):
-            if attempt_idx > 0:
-                set_price_lookup_finance_prefix(row_index, prefix)
-                time.sleep(2)
-            tried_chain.append(prefix)
+        if is_jp:
+            yahoo_symbol = jp_yahoo_ticker(ticker, market)
+            row_index = append_ticker_row_jp(pick_id, yahoo_symbol, market)
+            print(
+                f"[register_pick] SHEETS_APPEND_OK pick_id={pick_id} worksheet_row={row_index} "
+                f"tab={sheet_tab} yahoo_ticker={yahoo_symbol}",
+                file=sys.stderr,
+            )
+            time.sleep(3)
             for _ in range(8):
-                raw_close = read_close_at_row(row_index)
+                raw_close = read_close_at_row(row_index, country=country)
                 try:
                     entry_price = _parse_close_value(raw_close)
-                    resolved_sheet_prefix = prefix
                     break
                 except ValueError:
                     time.sleep(2)
-            if entry_price is not None:
-                break
+            else:
+                raise ValueError(f"close not_ready last={raw_close!r}")
         else:
-            raise ValueError(f"close not_ready last={raw_close!r}")
-        if country in FINANCE_PREFIX_COUNTRIES and resolved_sheet_prefix:
+            row_index = append_ticker_row(
+                pick_id,
+                ticker,
+                market,
+                country,
+                finance_exchange=finance_candidates[0],
+            )
             print(
-                f"[register_pick] SHEETS_FINANCE_PREFIX pick_id={pick_id} country={country} "
-                f"prefix={resolved_sheet_prefix} tried={'->'.join(tried_chain)}",
+                f"[register_pick] SHEETS_APPEND_OK pick_id={pick_id} worksheet_row={row_index} tab={sheet_tab}",
                 file=sys.stderr,
             )
+            time.sleep(3)
+            for attempt_idx, prefix in enumerate(finance_candidates):
+                if attempt_idx > 0:
+                    set_price_lookup_finance_prefix(row_index, prefix)
+                    time.sleep(2)
+                tried_chain.append(prefix)
+                for _ in range(8):
+                    raw_close = read_close_at_row(row_index, country=country)
+                    try:
+                        entry_price = _parse_close_value(raw_close)
+                        resolved_sheet_prefix = prefix
+                        break
+                    except ValueError:
+                        time.sleep(2)
+                if entry_price is not None:
+                    break
+            else:
+                raise ValueError(f"close not_ready last={raw_close!r}")
+            if country in FINANCE_PREFIX_COUNTRIES and resolved_sheet_prefix:
+                print(
+                    f"[register_pick] SHEETS_FINANCE_PREFIX pick_id={pick_id} country={country} "
+                    f"prefix={resolved_sheet_prefix} tried={'->'.join(tried_chain)}",
+                    file=sys.stderr,
+                )
         for _ in range(5):
-            raw_name = read_instrument_name_at_row(row_index)
+            raw_name = read_instrument_name_at_row(row_index, country=country)
             instrument_name = parse_instrument_name_cell(raw_name)
             if instrument_name:
                 break
             time.sleep(1)
         for _ in range(8):
-            raw_sess = read_close_session_date_at_row(row_index)
+            raw_sess = read_close_session_date_at_row(row_index, country=country)
             entry_close_session_date = parse_close_session_date_cell(raw_sess)
             if entry_close_session_date is not None:
                 break
@@ -288,7 +314,7 @@ def main() -> None:
                 file=sys.stderr,
             )
             try:
-                delete_row_for_pick_id(pick_id)
+                delete_row_for_pick_id(pick_id, country=country)
                 print(f"[register_pick] SHEETS_ROLLBACK_OK pick_id={pick_id}", file=sys.stderr)
             except Exception as del_exc:
                 print(f"[register_pick] SHEETS_ROLLBACK_FAIL pick_id={pick_id}: {del_exc}", file=sys.stderr)
