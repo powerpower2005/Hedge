@@ -132,6 +132,10 @@ export default {
   pickDetail: {
     refLine: "참조 #{n}",
     currentPrice: "현재가",
+    currentPriceOnDate: "현재가({date})",
+    expiryClosePriceOnDate: "만료일 종가({date})",
+    showCurrentPrice: "현재가 보기",
+    hideCurrentPrice: "현재가 접기",
     targetAchievement: "목표 달성률",
     exchangeInfo: "거래소 정보",
     countryKr: "한국",

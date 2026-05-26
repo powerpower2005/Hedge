@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { formatPrice } from "../../lib/formatters.js";
 import { isEntryPending } from "../../lib/pickEntry.js";
+import { getExpirySnapshot, isExpiredPick } from "../../lib/pickPrices.js";
+import { PickPriceDisplay } from "./PickPriceDisplay.jsx";
 import { targetAchievementPercent } from "../../lib/pickProgressPct.js";
 import { PickDeadline } from "./PickDeadline.jsx";
 import { PickEntryPrice } from "./PickEntryPrice.jsx";
@@ -20,7 +21,12 @@ export function PickCard({ pick }) {
   const issueUrl = pickIssueUrl(pick.issue_number);
   const financeUrl = googleFinanceQuoteUrl(pick);
   const progressPct = targetAchievementPercent(pick);
-  const close = pick.progress?.current?.close;
+  const expired = isExpiredPick(pick);
+  const expirySnap = expired ? getExpirySnapshot(pick) : null;
+  const displayReturn =
+    expired && expirySnap?.return_rate != null
+      ? expirySnap.return_rate
+      : pick.progress?.current?.return_rate;
   const displayName = pick.instrument_name || pick.ticker;
 
   return (
@@ -54,7 +60,7 @@ export function PickCard({ pick }) {
               {isEntryPending(pick) ? (
                 <span className={`text-sm ${type.meta}`}>{t("pick.pendingProgress")}</span>
               ) : (
-                <ReturnRate rate={pick.progress?.current?.return_rate} className="text-base font-bold" />
+                <ReturnRate rate={displayReturn} className="text-base font-bold" />
               )}
             </p>
           </div>
@@ -64,15 +70,18 @@ export function PickCard({ pick }) {
           <Link className={ui.link} to={`/user/${pick.author}`}>
             @{pick.author}
           </Link>
-          {!isEntryPending(pick) && close != null && !Number.isNaN(close) ? (
-            <span> · {formatPrice(pick.country, close)}</span>
-          ) : (
+          {isEntryPending(pick) ? (
             <span>
               {" · "}
               <PickEntryPrice pick={pick} />
             </span>
-          )}
+          ) : null}
         </p>
+        {!isEntryPending(pick) ? (
+          <div className="mt-2">
+            <PickPriceDisplay pick={pick} size="sm" />
+          </div>
+        ) : null}
 
         <footer className={`mt-3 flex flex-wrap items-center gap-3 text-xs text-zinc-400 light:text-zinc-600`}>
           <span className="inline-flex items-center gap-1">

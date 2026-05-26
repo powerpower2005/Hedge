@@ -10,7 +10,9 @@ import { PickEntryPrice } from "../components/pick/PickEntryPrice.jsx";
 import { isEntryPending } from "../lib/pickEntry.js";
 import { targetAchievementPercent } from "../lib/pickProgressPct.js";
 import { ReturnRate } from "../components/pick/ReturnRate.jsx";
+import { PickPriceDisplay } from "../components/pick/PickPriceDisplay.jsx";
 import { formatPrice, formatReturn } from "../lib/formatters.js";
+import { getExpirySnapshot, isExpiredPick } from "../lib/pickPrices.js";
 import { googleFinanceQuoteUrl } from "../lib/googleFinanceUrl.js";
 import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
 import { ui } from "../lib/themeClasses.js";
@@ -71,7 +73,12 @@ export function PickDetailPage() {
       ? pick.created_at.slice(0, 10)
       : pick.entry?.date || null;
   const progressPct = targetAchievementPercent(pick);
-  const close = pick.progress?.current?.close;
+  const expired = isExpiredPick(pick);
+  const expirySnap = expired ? getExpirySnapshot(pick) : null;
+  const displayReturn =
+    expired && expirySnap?.return_rate != null
+      ? expirySnap.return_rate
+      : pick.progress?.current?.return_rate;
   const countryLabel = pick.country === "KR" ? t("pickDetail.countryKr") : t("pickDetail.countryUs");
   const currencyLabel = pick.country === "KR" ? "KRW" : "USD";
 
@@ -121,7 +128,7 @@ export function PickDetailPage() {
             {isEntryPending(pick) ? (
               <span className={type.meta}>{t("pick.pendingProgress")}</span>
             ) : (
-              <ReturnRate rate={pick.progress?.current?.return_rate} className={ui.valueLg} />
+              <ReturnRate rate={displayReturn} className={ui.valueLg} />
             )}
           </MetricBox>
           <MetricBox label={t("pickDetail.entry")}>
@@ -129,13 +136,13 @@ export function PickDetailPage() {
               <PickEntryPrice pick={pick} />
             </span>
           </MetricBox>
-          <MetricBox label={t("pickDetail.currentPrice")}>
-            <span className={ui.valueLg}>
-              {isEntryPending(pick) || close == null || Number.isNaN(close)
-                ? "—"
-                : formatPrice(pick.country, close)}
-            </span>
-          </MetricBox>
+          <div
+            className={`rounded-xl bg-zinc-800/40 p-3 light:bg-zinc-50 ${
+              expired && expirySnap ? "col-span-2 lg:col-span-1" : ""
+            }`}
+          >
+            <PickPriceDisplay pick={pick} size="lg" />
+          </div>
         </div>
 
         <ProgressBar percent={progressPct} />

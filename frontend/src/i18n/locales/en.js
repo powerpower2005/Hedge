@@ -132,6 +132,10 @@ export default {
   pickDetail: {
     refLine: "Ref #{n}",
     currentPrice: "Current price",
+    currentPriceOnDate: "Current price ({date})",
+    expiryClosePriceOnDate: "Close at expiry ({date})",
+    showCurrentPrice: "Show current price",
+    hideCurrentPrice: "Hide current price",
     targetAchievement: "Target progress",
     exchangeInfo: "Exchange",
     countryKr: "Korea",

@@ -54,6 +54,21 @@ def transition(pick: dict, new_status: str, reason: str) -> None:
     )
 
 
+def snapshot_expiry_close(pick: dict) -> None:
+    """Store last in-window close before post-deadline judgment overwrites progress."""
+    prog = pick.get("progress") or {}
+    current = prog.get("current") or {}
+    close = current.get("close")
+    if close is None:
+        return
+    session = prog.get("updated_at")
+    pick["expiry"] = {
+        "close": close,
+        "session_date": session if session else pick["duration"]["deadline"],
+        "return_rate": current.get("return_rate"),
+    }
+
+
 def update_progress(pick: dict, close: float, judgment_day: date) -> None:
     entry_price = pick["entry"]["price"]
     target_price = pick["target"]["price"]
@@ -223,11 +238,14 @@ def main() -> None:
             )
             entries_locked += 1
 
+        deadline = date.fromisoformat(pick["duration"]["deadline"])
+        if judgment_day > deadline and not pick.get("expiry"):
+            snapshot_expiry_close(pick)
+
         update_progress(pick, close, judgment_day)
 
         target_price = pick["target"]["price"]
         target_return = pick["target"]["return_rate"]
-        deadline = date.fromisoformat(pick["duration"]["deadline"])
 
         if target_is_reached(close, target_price, target_return):
             entry_date = date.fromisoformat(pick["entry"]["date"])
