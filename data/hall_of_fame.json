@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "4e2ea04"
+    "commit": "43fdefc"
   },
-  "generated_at": "2026-05-22T22:16:23.515473Z",
+  "generated_at": "2026-05-26T22:40:38.134417Z",
   "data": {
-    "count": 6,
+    "count": 7,
     "picks": [
       {
         "id": 5,
@@ -442,6 +442,79 @@
           "achieved_close": 96.23,
           "days_taken": 29,
           "final_return_rate": 0.202725
+        }
+      },
+      {
+        "id": 16,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "337e266"
+        },
+        "created_at": "2026-04-25T14:30:55.092943Z",
+        "author": "LimJunYeol",
+        "issue_number": 36,
+        "ticker": "ASTX",
+        "country": "US",
+        "market": "BATS",
+        "entry": {
+          "price": 31.01,
+          "date": "2026-04-25",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.4,
+          "price": 43.414
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-07-24"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-25T14:30:55.092955Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-05-26T22:40:38.131370Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-26",
+          "current": {
+            "close": 49.75,
+            "return_rate": 0.604321
+          },
+          "highest": {
+            "close": 49.75,
+            "close_date": "2026-05-26",
+            "return_rate": 0.604321
+          },
+          "distance_to_target": -0.204321,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-25T14:30:55.093027Z"
+        },
+        "extensions": {},
+        "instrument_name": "Tradr 2X Long Asts Daily ETF",
+        "author_note": "_No response_",
+        "achievement": {
+          "achieved_date": "2026-05-26",
+          "achieved_close": 49.75,
+          "days_taken": 31,
+          "final_return_rate": 0.604321
         }
       }
     ]

@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "56f4bd6"
+    "commit": "43fdefc"
   },
-  "generated_at": "2026-05-24T22:11:47.437590Z",
+  "generated_at": "2026-05-26T22:40:38.135193Z",
   "data": {
-    "count": 2,
+    "count": 4,
     "picks": [
       {
         "id": 3,
@@ -142,6 +142,152 @@
         "extensions": {},
         "instrument_name": "Pony AI Inc - ADR ADR",
         "expired_at": "2026-05-24T22:11:47.434512Z"
+      },
+      {
+        "id": 11,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "98b24ca"
+        },
+        "created_at": "2026-04-25T02:26:41.907980Z",
+        "author": "saechimdaeki",
+        "issue_number": 31,
+        "ticker": "CORZ",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 20.81,
+          "date": "2026-04-25",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.9,
+          "price": 39.539
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-25"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-25T02:26:41.907992Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-05-26T22:40:38.131159Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-26",
+          "current": {
+            "close": 25.26,
+            "return_rate": 0.21384
+          },
+          "highest": {
+            "close": 25.26,
+            "close_date": "2026-05-26",
+            "return_rate": 0.21384
+          },
+          "distance_to_target": 0.68616,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-25T02:26:41.908033Z"
+        },
+        "extensions": {},
+        "instrument_name": "Core Scientific Inc",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 24.82,
+          "session_date": "2026-05-25",
+          "return_rate": 0.192696
+        },
+        "expired_at": "2026-05-26T22:40:38.131271Z"
+      },
+      {
+        "id": 14,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "b2f1e49"
+        },
+        "created_at": "2026-04-25T02:48:51.023428Z",
+        "author": "Eonyong",
+        "issue_number": 34,
+        "ticker": "BE",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 237.57,
+          "date": "2026-04-25",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.4,
+          "price": 332.598
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-25"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-25T02:48:51.023451Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-05-26T22:40:38.131309Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-26",
+          "current": {
+            "close": 302.49,
+            "return_rate": 0.273267
+          },
+          "highest": {
+            "close": 307.88,
+            "close_date": "2026-05-23",
+            "return_rate": 0.295955
+          },
+          "distance_to_target": 0.104045,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-25T02:48:51.023502Z"
+        },
+        "extensions": {},
+        "instrument_name": "Bloom Energy Corp",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 307.88,
+          "session_date": "2026-05-25",
+          "return_rate": 0.295955
+        },
+        "expired_at": "2026-05-26T22:40:38.131350Z"
       }
     ]
   }
