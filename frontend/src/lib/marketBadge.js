@@ -9,5 +9,8 @@ export function marketBadgeClass(country) {
   if (country === "US") {
     return `${badgeBase} border-sky-700/80 bg-sky-950/70 text-sky-200 light:border-sky-300 light:bg-sky-50 light:text-sky-900`;
   }
+  if (country === "HK") {
+    return `${badgeBase} border-amber-700/80 bg-amber-950/70 text-amber-200 light:border-amber-300 light:bg-amber-50 light:text-amber-950`;
+  }
   return `${badgeBase} border-zinc-600 bg-zinc-800/90 text-zinc-200 light:border-zinc-300 light:bg-zinc-100 light:text-zinc-800`;
 }

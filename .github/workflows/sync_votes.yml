@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        id: checkout
         with:
           ref: main
           fetch-depth: 0
@@ -59,4 +60,9 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           echo "Sync: needs REPO + GITHUB_TOKEN; only active picks get reactions from GitHub API."
+          if [ "${{ steps.checkout.outcome }}" != "success" ]; then
+            echo "Checkout failed — repo files are not on the runner (see git fetch logs above)."
+            echo "Common cause: owner account suspended (403 from github.com)."
+            exit 0
+          fi
           bash scripts/ci_failure_context.sh

@@ -16,6 +16,7 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
           <option value="">{t("common.all")}</option>
           <option value="US">US</option>
           <option value="KR">KR</option>
+          <option value="HK">HK</option>
         </select>
       </label>
       <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600">
@@ -26,7 +27,7 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
           onChange={(e) => setFilters({ ...filters, market: e.target.value || null })}
         >
           <option value="">{t("common.all")}</option>
-          {[...MARKETS.US, ...MARKETS.KR].map((m) => (
+          {[...MARKETS.US, ...MARKETS.KR, ...MARKETS.HK].map((m) => (
             <option key={m} value={m}>
               {m}
             </option>

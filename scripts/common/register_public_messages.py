@@ -113,6 +113,10 @@ def format_price_fetch_ops_log(
         lines.append(
             "KR: column B is a string formula for leading zeros; plain number in B breaks KRX:ticker."
         )
+    elif country == "HK":
+        lines.append(
+            "HK: column B is a string formula for leading zeros; plain number in B breaks HKG:ticker."
+        )
     elif country == "US":
         lines.append("US: column B is raw ticker combined with column C in GOOGLEFINANCE(C:B, ...).")
     if row_index is not None:

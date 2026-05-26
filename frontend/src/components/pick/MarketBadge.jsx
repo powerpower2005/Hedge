@@ -13,9 +13,11 @@ export function MarketBadge({ pick, market, country, className = "" }) {
   const title =
     code === "KR"
       ? t("pickDetail.countryKr")
-      : code === "US"
-        ? t("pickDetail.countryUs")
-        : undefined;
+      : code === "HK"
+        ? t("pickDetail.countryHk")
+        : code === "US"
+          ? t("pickDetail.countryUs")
+          : undefined;
 
   return (
     <span className={`${marketBadgeClass(code)} ${className}`.trim()} title={title}>

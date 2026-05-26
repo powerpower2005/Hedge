@@ -11,6 +11,9 @@ export function googleFinanceQuoteUrl(pick) {
     const kex = km === "KOSDAQ" ? "KOSDAQ" : "KRX";
     return `https://www.google.com/finance/quote/${encodeURIComponent(ticker)}:${encodeURIComponent(kex)}`;
   }
+  if (pick.country === "HK") {
+    return `https://www.google.com/finance/quote/${encodeURIComponent(ticker)}:HKG`;
+  }
   const m = String(pick.market ?? "NASDAQ").toUpperCase();
   const usExchanges = new Set(["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN"]);
   const ex = usExchanges.has(m) ? m : "NASDAQ";

@@ -1,6 +1,7 @@
 import pytest
 
 from common.models import (
+    hk_googlefinance_prefix_candidates,
     kr_googlefinance_prefix_candidates,
     market_for_google_finance,
     ticker_cell_for_price_lookup,
@@ -70,6 +71,24 @@ def test_validate_duration():
 
 def test_validate_kr_ticker():
     validate_pick_input("005930", "KR", "KRX", 0.12, 90)
+
+
+def test_validate_hk_ticker():
+    validate_pick_input("0700", "HK", "HKG", 0.15, 30)
+
+
+def test_validate_hk_wrong_market():
+    with pytest.raises(ValidationError) as e:
+        validate_pick_input("0700", "HK", "NASDAQ", 0.15, 30)
+    assert e.value.code == "COUNTRY_MARKET_MISMATCH"
+
+
+def test_hk_googlefinance_prefix_candidates():
+    assert hk_googlefinance_prefix_candidates("HKG") == ["HKG"]
+
+
+def test_ticker_cell_for_price_lookup_hk_formula_preserves_zeros():
+    assert ticker_cell_for_price_lookup("0700", "HK") == '="0700"'
 
 
 def test_market_for_google_finance_korea_legacy():

@@ -26,6 +26,7 @@ SUSPENDED_THRESHOLD = 5
 COUNTRY_TIMEZONES = {
     "KR": "Asia/Seoul",
     "US": "America/New_York",
+    "HK": "Asia/Hong_Kong",
 }
 
 

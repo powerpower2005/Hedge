@@ -14,6 +14,7 @@ class PickStatus(str, Enum):
 class Country(str, Enum):
     US = "US"
     KR = "KR"
+    HK = "HK"
 
 
 class Market(str, Enum):
@@ -27,12 +28,16 @@ class Market(str, Enum):
     KRX = "KRX"
     KOSPI = "KOSPI"
     KOSDAQ = "KOSDAQ"
+    HKG = "HKG"
 
 
 COUNTRY_MARKETS = {
     Country.US: {Market.NASDAQ, Market.NYSE, Market.NYSEARCA, Market.BATS, Market.NYSEAMERICAN},
     Country.KR: {Market.KRX, Market.KOSPI, Market.KOSDAQ},
+    Country.HK: {Market.HKG},
 }
+
+FINANCE_PREFIX_COUNTRIES = frozenset({Country.US.value, Country.KR.value, Country.HK.value})
 
 
 US_GOOGLEFINANCE_EXCHANGE_ORDER = ("NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN")
@@ -83,9 +88,17 @@ def us_googlefinance_prefix_candidates(form_market: str) -> list[str]:
     return [m, *rest]
 
 
+def hk_googlefinance_prefix_candidates(form_market: str) -> list[str]:
+    """Exchange prefixes for Sheets column C when country is HK."""
+    m = (form_market or "").strip().upper()
+    if m != "HKG":
+        m = "HKG"
+    return [m]
+
+
 def ticker_cell_for_price_lookup(ticker: str, country: str) -> str:
-    """Cell value for column B so GOOGLEFINANCE(C:B) keeps leading zeros (KR tickers)."""
-    if country == "KR":
+    """Cell value for column B so GOOGLEFINANCE(C:B) keeps leading zeros (KR/HK tickers)."""
+    if country in ("KR", "HK"):
         escaped = ticker.replace('"', '""')
         return f'="{escaped}"'
     return ticker

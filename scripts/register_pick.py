@@ -26,6 +26,8 @@ from common.register_public_messages import (
 from common.entry_lock import build_pick_deferred
 from common.goog_finance_parse import parse_close_session_date_cell, parse_instrument_name_cell
 from common.models import (
+    FINANCE_PREFIX_COUNTRIES,
+    hk_googlefinance_prefix_candidates,
     kr_googlefinance_prefix_candidates,
     market_for_google_finance,
     us_googlefinance_prefix_candidates,
@@ -61,6 +63,8 @@ def _load_issue_body() -> str:
 def _format_money(country: str, price: float) -> str:
     if country == "KR":
         return f"₩{price:,.0f}"
+    if country == "HK":
+        return f"HK${price:,.2f}"
     return f"${price:.2f}"
 
 
@@ -216,6 +220,8 @@ def main() -> None:
         finance_candidates = kr_googlefinance_prefix_candidates(market)
     elif country == "US":
         finance_candidates = us_googlefinance_prefix_candidates(market)
+    elif country == "HK":
+        finance_candidates = hk_googlefinance_prefix_candidates(market)
     else:
         finance_candidates = [market_for_google_finance(market)]
     resolved_sheet_prefix: str | None = None
@@ -257,7 +263,7 @@ def main() -> None:
                 break
         else:
             raise ValueError(f"close not_ready last={raw_close!r}")
-        if country in ("KR", "US") and resolved_sheet_prefix:
+        if country in FINANCE_PREFIX_COUNTRIES and resolved_sheet_prefix:
             print(
                 f"[register_pick] SHEETS_FINANCE_PREFIX pick_id={pick_id} country={country} "
                 f"prefix={resolved_sheet_prefix} tried={'->'.join(tried_chain)}",
@@ -293,7 +299,7 @@ def main() -> None:
                 market=market,
                 row_index=row_index,
                 last_raw=raw_close,
-                tried_prefixes=tried_chain if country in ("KR", "US") and tried_chain else None,
+                tried_prefixes=tried_chain if country in FINANCE_PREFIX_COUNTRIES and tried_chain else None,
                 country=country,
             ),
             file=sys.stderr,
@@ -301,7 +307,7 @@ def main() -> None:
         msg = format_price_fetch_public(
             ticker=ticker,
             market=market,
-            tried_prefixes=tried_chain if country in ("KR", "US") and tried_chain else None,
+            tried_prefixes=tried_chain if country in FINANCE_PREFIX_COUNTRIES and tried_chain else None,
         )
         fail("PRICE_FETCH_ERROR", msg, issue_number)
 
@@ -338,7 +344,7 @@ def main() -> None:
 
 Vote with reactions on this issue.
 """
-    if country in ("KR", "US") and resolved_sheet_prefix is not None:
+    if country in FINANCE_PREFIX_COUNTRIES and resolved_sheet_prefix is not None:
         chain = " → ".join(f"`{p}`" for p in tried_chain)
         comment += (
             "\n\n**Exchange prefix (price lookup) / 거래소 접두 (가격 조회)**\n"

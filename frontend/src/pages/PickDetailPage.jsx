@@ -17,6 +17,7 @@ import { MarketBadge } from "../components/pick/MarketBadge.jsx";
 import { PickInstrumentHeading } from "../components/pick/PickInstrumentHeading.jsx";
 import { getPickDisplayReturnRate } from "../lib/pickSignMismatch.js";
 import { googleFinanceQuoteUrl } from "../lib/googleFinanceUrl.js";
+import { pickCountryLabel, pickCurrencyLabel } from "../lib/pickCountryMeta.js";
 import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
 import { ui } from "../lib/themeClasses.js";
 import { type } from "../lib/typographyClasses.js";
@@ -83,8 +84,8 @@ export function PickDetailPage() {
       : pick.entry?.date || null;
   const progressPct = targetAchievementPercent(pick);
   const displayReturn = getPickDisplayReturnRate(pick);
-  const countryLabel = pick.country === "KR" ? t("pickDetail.countryKr") : t("pickDetail.countryUs");
-  const currencyLabel = pick.country === "KR" ? "KRW" : "USD";
+  const countryLabel = pickCountryLabel(pick.country, t);
+  const currencyLabel = pickCurrencyLabel(pick.country);
 
   return (
     <article className={ui.page}>

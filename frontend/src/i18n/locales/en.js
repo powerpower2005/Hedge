@@ -101,7 +101,7 @@ export default {
       "While signed in, click **New pick** in the header to open the GitHub registration form.",
       "Enter ticker, country & market, target return (%), and duration (days). Target return is **positive for an up call, negative for a down call** (magnitude 10%–1000%).",
       "An optional **Additional note** appears on the pick detail page when provided; it is not used for prices or judgment.",
-      "US markets: NASDAQ, NYSE, NYSEARCA, BATS, NYSEAMERICAN. KR: KRX, KOSPI, KOSDAQ. Country and market must match; **exchange prefixes** are tried automatically (your chosen market first).",
+      "US: NASDAQ, NYSE, NYSEARCA, BATS, NYSEAMERICAN. KR: KRX, KOSPI, KOSDAQ. HK: HKG. Country and market must match; **exchange prefixes** are tried automatically.",
       "Tickers are alphanumeric only. If registration fails, check the prefix and ticker on Google Finance (https://www.google.com/finance/).",
       "After submission, automated checks run; if accepted, the pick appears under Active.",
     ],
@@ -114,7 +114,7 @@ export default {
     s4Paragraphs: [
       "New picks (rules ≥ 1.0.7) **lock entry, target price, and deadline on the first daily judgment**—not at submit time.",
       "Progress then uses each **prior session’s official close**.",
-      "Judgment batches: **KR** 07:07 UTC (16:07 KST) / **US** 21:17 UTC (after US close ET).",
+      "Judgment batches: **KR** 07:07 UTC / **HK** 08:30 UTC (after HKT close) / **US** 21:17 UTC.",
       "Reach the target within the window → Hall of Fame; otherwise → Expired. Older picks may already have entry set at registration.",
     ],
     s5Title: "Votes (reactions)",
@@ -134,7 +134,7 @@ export default {
     lead:
       "Called It is a community event: you choose a ticker, a target return, and a time window. Registered picks appear in public lists, and progress is updated daily using official closing prices.",
     bullet1:
-      "Judgment: if the daily close touches the target price within the window, the pick is marked achieved. Automated daily judgment is split by country (KR: 07:07 UTC / 16:07 KST, US: 21:17 UTC after market close ET).",
+      "Judgment: if the daily close touches the target price within the window, the pick is marked achieved. Automated daily judgment runs separately for KR, HK, and US.",
     bullet2: "Submissions use a fixed form; entries that break the rules may be rejected.",
     bullet3: "No unofficial price scraping; only published closing references are used.",
     rulesLoaded: "Rules version {version} (effective {from}).",
@@ -152,6 +152,7 @@ export default {
     targetAchievement: "Target progress",
     exchangeInfo: "Exchange",
     countryKr: "Korea",
+    countryHk: "Hong Kong",
     countryUs: "United States",
     pickReason: "Pick rationale",
     voteAgree: "Agree ({n})",

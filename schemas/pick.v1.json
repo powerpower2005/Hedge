@@ -34,10 +34,10 @@
     "author": { "type": "string", "minLength": 1 },
     "issue_number": { "type": "integer", "minimum": 1 },
     "ticker": { "type": "string", "pattern": "^[A-Z0-9]{1,10}$" },
-    "country": { "enum": ["US", "KR"] },
+    "country": { "enum": ["US", "KR", "HK"] },
     "market": {
-      "enum": ["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN", "KRX", "KOSPI", "KOSDAQ"],
-      "description": "US: GOOGLEFINANCE exchange prefix. KR: board label (KRX/KOSPI/KOSDAQ); Sheets use KRX: for all Korean rows via mapping."
+      "enum": ["NASDAQ", "NYSE", "NYSEARCA", "BATS", "NYSEAMERICAN", "KRX", "KOSPI", "KOSDAQ", "HKG"],
+      "description": "US: GOOGLEFINANCE exchange prefix. KR: board label (KRX/KOSPI/KOSDAQ). HK: HKG (Hong Kong)."
     },
     "instrument_name": {
       "type": "string",
