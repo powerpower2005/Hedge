@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "599f017"
+    "commit": "9a91f6b"
   },
-  "generated_at": "2026-05-26T08:44:48.377178Z",
+  "generated_at": "2026-05-26T14:28:01.093915Z",
   "data": {
-    "count": 33,
+    "count": 34,
     "picks": [
       {
         "id": 8,
@@ -2048,6 +2048,55 @@
         },
         "instrument_name": "Direxion Daily MU Bull 2X ETF",
         "author_note": "_No response_"
+      },
+      {
+        "id": 45,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-26T14:28:01.093832Z",
+        "author": "cieske",
+        "issue_number": 70,
+        "ticker": "7709",
+        "country": "HK",
+        "market": "HKG",
+        "entry": {
+          "date": "2026-05-26",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.1
+        },
+        "duration": {
+          "days": 7
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-26T14:28:01.093832Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-26T14:28:01.093832Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "CSOP SK Hynix Daily (2x) Lvrgd Prod",
+        "author_note": "SK 하이닉스 홍콩장 x2"
       }
     ]
   }
