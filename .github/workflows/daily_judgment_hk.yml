@@ -2,7 +2,7 @@ name: Daily Judgment HK
 
 on:
   schedule:
-    # After HK close (16:00 HKT = 08:00 UTC); stagger from KR/US jobs.
+    # HKEX regular close 16:00 HKT (08:00 UTC); run 30 min later for closeyest.
     - cron: "30 8 * * *"
   workflow_dispatch:
 
