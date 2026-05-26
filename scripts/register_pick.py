@@ -390,6 +390,14 @@ Vote with reactions on this issue.
             "(the GitHub dropdown is not filtered by country).\n"
             f"**한:** 양식 시장 **`{market_submitted}`** → 국가 **{country}** 에 맞게 **`{market}`** 로 저장했습니다.\n"
         )
+    if country == "JP" and not pick.get("instrument_name"):
+        comment += (
+            "\n\n**Name / 종목명:** Run **JP prices → Refresh all** in the sheet so column **E** "
+            "gets the Yahoo name; the first **JP daily judgment** (or `backfill_instrument_names.py`) "
+            "will copy it into this pick.\n"
+            "**한:** 시트에서 **JP prices → Refresh all** 실행 후 E열 종목명이 채워지면, "
+            "첫 JP 일일 판정 또는 `backfill_instrument_names.py` 로 픽에 반영됩니다.\n"
+        )
     if country in FINANCE_PREFIX_COUNTRIES and resolved_sheet_prefix is not None:
         chain = " → ".join(f"`{p}`" for p in tried_chain)
         comment += (

@@ -1,20 +1,19 @@
 /**
  * Japan prices for PriceLookup-jp-v1 (Yahoo chart API via UrlFetchApp).
  *
- * IMPORTANT: Do NOT use yahooF as a =CELL() custom function — Google Sheets custom
- * functions cannot call UrlFetchApp (you get #ERROR!). Use refreshJpRow / refreshAllJpPrices
- * (menu or time-driven trigger) to write numeric closes into column D.
+ * Columns: D = previousClose, E = longName (fallback shortName), F = session date.
+ * Do NOT use =yahooF() in cells — UrlFetchApp is not allowed in custom functions (#ERROR!).
  *
- * Setup:
- * 1. Extensions → Apps Script → paste this file (merge with existing project).
- * 2. Run refreshAllJpPrices once → authorize external URL access.
- * 3. Optional: run installJpPriceTrigger() once for hourly refresh, or add menu only.
+ * Setup: paste into Apps Script → run refreshAllJpPrices once → authorize URLs.
  */
 
 var JP_TAB = 'PriceLookup-jp-v1';
 
-function yahooFetchClose_(ticker, attribute) {
-  attribute = attribute || 'previousClose';
+/**
+ * One chart request per row: close + instrument name from meta.
+ * @return {{ok: boolean, price?: number, name?: string, error?: string}}
+ */
+function yahooFetchQuote_(ticker) {
   if (!ticker || typeof ticker !== 'string') {
     return { ok: false, error: '종목코드 입력 오류' };
   }
@@ -33,8 +32,8 @@ function yahooFetchClose_(ticker, attribute) {
     }
     var meta = data.chart.result[0].meta;
     var price;
-    if (meta.hasOwnProperty(attribute) && meta[attribute] !== undefined) {
-      price = meta[attribute];
+    if (meta.previousClose !== undefined && meta.previousClose !== null) {
+      price = meta.previousClose;
     } else if (meta.chartPreviousClose !== undefined) {
       price = meta.chartPreviousClose;
     } else {
@@ -43,21 +42,33 @@ function yahooFetchClose_(ticker, attribute) {
     if (typeof price !== 'number' || isNaN(price)) {
       return { ok: false, error: '전일 종가 없음' };
     }
-    return { ok: true, price: price };
+    var name = '';
+    if (meta.longName) {
+      name = String(meta.longName);
+    } else if (meta.shortName) {
+      name = String(meta.shortName);
+    }
+    if (name.length > 280) {
+      name = name.substring(0, 280);
+    }
+    return { ok: true, price: price, name: name };
   } catch (error) {
     return { ok: false, error: '오류: ' + error.toString() };
   }
 }
 
-/** Refresh column D (close) for one row; B = Yahoo symbol e.g. 7203.T */
+/** Refresh D (close), E (name), F (session date) for one row; B = Yahoo symbol e.g. 7012.T */
 function refreshJpRow(row) {
   var sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(JP_TAB);
   if (!sh) throw new Error('Missing tab: ' + JP_TAB);
   var ticker = String(sh.getRange(row, 2).getValue()).trim();
   if (!ticker) return;
-  var result = yahooFetchClose_(ticker, 'previousClose');
+  var result = yahooFetchQuote_(ticker);
   if (result.ok) {
     sh.getRange(row, 4).setValue(result.price);
+    if (result.name) {
+      sh.getRange(row, 5).setValue(result.name);
+    }
     var tz = Session.getScriptTimeZone() || 'Asia/Tokyo';
     var yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);

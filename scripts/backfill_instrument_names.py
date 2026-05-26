@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 
 from common.goog_finance_parse import parse_instrument_name_cell
-from common.sheets import get_worksheet
+from common.sheets import WORKSHEET_JP_NAME, WORKSHEET_NAME, get_worksheet
 from common.storage import get_picks, load_list_file, save_list_file
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,11 +23,13 @@ DATA_FILES = [
 ]
 
 
-def load_names_by_pick_id() -> dict[int, str]:
-    ws = get_worksheet()
-    rows = ws.get_all_values()
+def _names_from_worksheet(tab: str) -> dict[int, str]:
+    try:
+        ws = get_worksheet(worksheet=tab)
+    except Exception:
+        return {}
     out: dict[int, str] = {}
-    for row in rows[1:]:
+    for row in ws.get_all_values()[1:]:
         if len(row) < 5:
             continue
         try:
@@ -37,6 +39,13 @@ def load_names_by_pick_id() -> dict[int, str]:
         parsed = parse_instrument_name_cell(row[4])
         if parsed:
             out[pid] = parsed
+    return out
+
+
+def load_names_by_pick_id() -> dict[int, str]:
+    out = _names_from_worksheet(WORKSHEET_NAME)
+    for pid, name in _names_from_worksheet(WORKSHEET_JP_NAME).items():
+        out.setdefault(pid, name)
     return out
 
 
