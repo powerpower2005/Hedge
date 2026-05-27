@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "43fdefc"
+    "commit": "52a499f"
   },
-  "generated_at": "2026-05-26T22:40:38.131627Z",
+  "generated_at": "2026-05-27T04:43:50.033016Z",
   "data": {
-    "count": 32,
+    "count": 33,
     "picks": [
       {
         "id": 8,
@@ -2011,6 +2011,55 @@
         },
         "instrument_name": "Kawasaki Heavy Industries, Ltd.",
         "author_note": "_No response_"
+      },
+      {
+        "id": 50,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-27T04:43:50.032937Z",
+        "author": "saechimdaeki",
+        "issue_number": 77,
+        "ticker": "SPIR",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-05-27",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.45
+        },
+        "duration": {
+          "days": 90
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-27T04:43:50.032937Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-27T04:43:50.032937Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Spire Global Inc",
+        "author_note": "45%만 먹겠습니다 왜 등록 안된거지"
       }
     ]
   }
