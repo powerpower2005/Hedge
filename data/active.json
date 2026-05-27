@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "ded61ef"
+    "commit": "10208e0"
   },
-  "generated_at": "2026-05-27T04:51:35.517527Z",
+  "generated_at": "2026-05-27T10:38:29.259208Z",
   "data": {
     "count": 33,
     "picks": [
@@ -1979,26 +1979,51 @@
         "entry": {
           "date": "2026-05-26",
           "source": "google_sheets",
-          "pending": true
+          "price": 3194.0,
+          "close_session_date": "2026-05-26"
         },
         "target": {
-          "return_rate": 0.2
+          "return_rate": 0.2,
+          "price": 3832.8
         },
         "duration": {
-          "days": 30
+          "days": 30,
+          "deadline": "2026-06-26"
         },
         "status": {
-          "current": "pending_entry",
+          "current": "active",
           "history": [
             {
               "status": "pending_entry",
               "at": "2026-05-26T17:20:26.064617Z",
               "engine_version": "1.0.0",
               "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-05-27T10:38:29.259144Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
             }
           ]
         },
         "progress": {
+          "updated_at": "2026-05-27",
+          "current": {
+            "close": 3194.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 3194.0,
+            "close_date": "2026-05-27",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 3194.0,
+            "close_date": "2026-05-27",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
           "error_count": 0
         },
         "votes": {
