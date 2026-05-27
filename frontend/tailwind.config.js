@@ -1,5 +1,6 @@
 import tailwindPlugin from "tailwindcss/plugin";
 
+/** Brand greens: #EEEEEE · #6FCF97 · #2FA084 · #1F6F5F */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
@@ -8,17 +9,17 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: "#ecfdf5",
-          100: "#d1fae5",
-          200: "#a7f3d0",
-          300: "#6ee7b7",
-          400: "#34d399",
-          500: "#22c55e",
-          600: "#16a34a",
-          700: "#15803d",
-          800: "#166534",
-          900: "#14532d",
-          950: "#052e16",
+          50: "#EEEEEE",
+          100: "#EEEEEE",
+          200: "#c8ead9",
+          300: "#6FCF97",
+          400: "#6FCF97",
+          500: "#2FA084",
+          600: "#2FA084",
+          700: "#1F6F5F",
+          800: "#1F6F5F",
+          900: "#1a5c50",
+          950: "#153f38",
         },
       },
     },

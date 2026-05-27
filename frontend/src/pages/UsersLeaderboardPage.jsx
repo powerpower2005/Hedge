@@ -35,7 +35,7 @@ function TotalReturnHelp({ text, triggerAriaLabel }) {
         type="button"
         aria-label={triggerAriaLabel}
         aria-expanded={open}
-        className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-zinc-500 text-[10px] font-bold leading-none text-zinc-400 transition hover:border-emerald-500 hover:text-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/70 light:border-zinc-400 light:text-zinc-600 light:hover:border-emerald-700 light:hover:text-emerald-700"
+        className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-zinc-500 text-[10px] font-bold leading-none text-zinc-400 transition hover:border-primary-500 hover:text-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/70 light:border-zinc-400 light:text-zinc-600 light:hover:border-primary-600 light:hover:text-primary-700"
         onClick={() => setOpen((v) => !v)}
         title={text}
       >
@@ -182,7 +182,7 @@ export function UsersLeaderboardPage() {
                         <td className="px-3 py-2 font-medium">
                           <span className="inline-flex items-center gap-2">
                             <Link
-                              className="text-emerald-500 hover:underline"
+                              className="text-primary-500 hover:underline light:text-primary-600"
                               to={`/user/${encodeURIComponent(row.author)}`}
                             >
                               @{row.author}
@@ -228,7 +228,7 @@ export function UsersLeaderboardPage() {
                     </span>
                     <span className="inline-flex items-center gap-2">
                       <Link
-                        className="font-medium text-emerald-500 hover:underline"
+                        className="font-medium text-primary-500 hover:underline light:text-primary-600"
                         to={`/user/${encodeURIComponent(row.author)}`}
                       >
                         @{row.author}

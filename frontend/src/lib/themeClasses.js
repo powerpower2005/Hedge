@@ -1,4 +1,4 @@
-/** Mint-green SaaS theme (light-first; dark variants). */
+/** Green SaaS theme (#EEEEEE / #6FCF97 / #2FA084 / #1F6F5F; red unchanged). */
 
 export const ui = {
   page: "mx-auto w-full max-w-6xl px-3 py-6 sm:px-4 sm:py-8 xl:px-6",
@@ -7,7 +7,7 @@ export const ui = {
     "rounded-2xl border border-zinc-700 bg-zinc-900 shadow-xl light:border-zinc-200 light:bg-white",
   cardPad: "p-5 sm:p-6",
   hero:
-    "rounded-2xl border border-primary-800/40 bg-gradient-to-br from-primary-950/50 via-zinc-900 to-zinc-900 p-6 sm:p-8 light:border-primary-200 light:from-primary-50 light:via-emerald-50/80 light:to-white",
+    "rounded-2xl border border-primary-800/40 bg-gradient-to-br from-primary-950/50 via-zinc-900 to-zinc-900 p-6 sm:p-8 light:border-primary-300 light:from-primary-50 light:via-primary-100 light:to-white",
   btnPrimary:
     "inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-500 focus-visible:outline-none light:bg-primary-600 light:hover:bg-primary-500",
   btnPrimaryLg:

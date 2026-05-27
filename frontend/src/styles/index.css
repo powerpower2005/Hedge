@@ -7,7 +7,7 @@ body {
 }
 
 html.light body {
-  @apply bg-[#f4f6f5] text-zinc-900;
+  @apply bg-[#EEEEEE] text-zinc-900;
 }
 
 @layer base {
@@ -17,7 +17,7 @@ html.light body {
   input:focus-visible,
   summary:focus-visible,
   [tabindex]:not([tabindex="-1"]):focus-visible {
-    @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-zinc-950;
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-zinc-950;
   }
 
   html.light a:focus-visible,
@@ -26,6 +26,6 @@ html.light body {
   html.light input:focus-visible,
   html.light summary:focus-visible,
   html.light [tabindex]:not([tabindex="-1"]):focus-visible {
-    @apply ring-emerald-700 ring-offset-zinc-50;
+    @apply ring-primary-700 ring-offset-[#EEEEEE];
   }
 }

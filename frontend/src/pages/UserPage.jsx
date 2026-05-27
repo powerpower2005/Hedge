@@ -28,7 +28,7 @@ export function UserPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <Link to="/" className="text-sm text-emerald-500 hover:underline">
+      <Link to="/" className="text-sm text-primary-500 hover:underline light:text-primary-600">
         {t("common.home")}
       </Link>
       <h1 className="mt-4 text-2xl font-bold text-white light:text-zinc-900">
