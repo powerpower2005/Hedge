@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "52a499f"
+    "commit": "ded61ef"
   },
-  "generated_at": "2026-05-27T04:43:50.033016Z",
+  "generated_at": "2026-05-27T04:51:35.517527Z",
   "data": {
     "count": 33,
     "picks": [
@@ -2051,9 +2051,9 @@
           "error_count": 0
         },
         "votes": {
-          "likes": 0,
+          "likes": 1,
           "dislikes": 0,
-          "last_synced": "2026-05-27T04:43:50.032937Z"
+          "last_synced": "2026-05-27T04:51:35.517359Z"
         },
         "extensions": {
           "entry_lock": "first_judgment_close"
