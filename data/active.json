@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "db09ae5"
+    "commit": "2dbb523"
   },
-  "generated_at": "2026-05-27T11:00:23.642088Z",
+  "generated_at": "2026-05-27T11:55:32.490326Z",
   "data": {
     "count": 32,
     "picks": [
@@ -1867,28 +1867,52 @@
         "country": "HK",
         "market": "HKG",
         "entry": {
-          "date": "2026-05-26",
+          "date": "2026-05-27",
           "source": "google_sheets",
-          "pending": true
+          "price": 108.6
         },
         "target": {
-          "return_rate": 0.1
+          "return_rate": 0.1,
+          "price": 119.46
         },
         "duration": {
-          "days": 7
+          "days": 7,
+          "deadline": "2026-06-03"
         },
         "status": {
-          "current": "pending_entry",
+          "current": "active",
           "history": [
             {
               "status": "pending_entry",
               "at": "2026-05-26T14:28:01.093832Z",
               "engine_version": "1.0.0",
               "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-05-27T11:55:32.490264Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
             }
           ]
         },
         "progress": {
+          "updated_at": "2026-05-27",
+          "current": {
+            "close": 108.6,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 108.6,
+            "close_date": "2026-05-27",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 108.6,
+            "close_date": "2026-05-27",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.1,
           "error_count": 0
         },
         "votes": {
