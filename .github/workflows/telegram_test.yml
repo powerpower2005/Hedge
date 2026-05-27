@@ -1,0 +1,56 @@
+name: Telegram Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Message type
+        type: choice
+        options:
+          - test
+          - daily_near_target
+        default: test
+      country:
+        description: Country (for daily_near_target)
+        type: choice
+        options:
+          - KR
+          - US
+          - HK
+          - JP
+        default: KR
+      message:
+        description: Custom text (test mode only)
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Send Telegram
+        env:
+          TELEGRAM_BOT_TOKEN_HEALTHY_FIRE_BOT: ${{ secrets.TELEGRAM_BOT_TOKEN_HEALTHY_FIRE_BOT }}
+          TELEGRAM_CHAT_ID_HEALTHY_GAEMI: ${{ secrets.TELEGRAM_CHAT_ID_HEALTHY_GAEMI }}
+        run: |
+          if [ "${{ inputs.mode }}" = "test" ]; then
+            python scripts/telegram_notify.py --mode test --message "${{ inputs.message }}"
+          else
+            python scripts/telegram_notify.py --mode daily --country "${{ inputs.country }}"
+          fi

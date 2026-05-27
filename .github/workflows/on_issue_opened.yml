@@ -47,6 +47,8 @@ jobs:
           ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           REPO: ${{ github.repository }}
+          TELEGRAM_BOT_TOKEN_HEALTHY_FIRE_BOT: ${{ secrets.TELEGRAM_BOT_TOKEN_HEALTHY_FIRE_BOT }}
+          TELEGRAM_CHAT_ID_HEALTHY_GAEMI: ${{ secrets.TELEGRAM_CHAT_ID_HEALTHY_GAEMI }}
         run: python scripts/register_pick.py
 
       - name: Commit and push

@@ -14,6 +14,7 @@ from common.judgment import distance_to_target, target_is_reached, target_return
 from common.meta import touch_last_daily_judgment_at
 from common.sheets import fetch_all_prices_rows
 from common.storage import get_picks, load_list_file, save_list_file
+from common.telegram_highlights import ReturnMove
 from common.versioning import now_iso, read_engine_version
 
 ACTIVE_PATH = Path("data/active.json")
@@ -190,6 +191,7 @@ def main() -> None:
     remaining_active: list[dict] = []
     newly_achieved: list[dict] = []
     newly_expired: list[dict] = []
+    return_moves: list[ReturnMove] = []
     entries_locked = 0
     processed = 0
 
@@ -244,7 +246,30 @@ def main() -> None:
         if judgment_day > deadline and not pick.get("expiry"):
             snapshot_expiry_close(pick)
 
+        prior_return = (pick.get("progress") or {}).get("current") or {}
+        prior_rr = prior_return.get("return_rate")
+        was_pending = is_pending_entry(pick)
+
         update_progress(pick, close, judgment_day)
+
+        new_rr = (pick.get("progress") or {}).get("current") or {}
+        new_rr_val = new_rr.get("return_rate")
+        if (
+            not was_pending
+            and prior_rr is not None
+            and new_rr_val is not None
+            and st == "active"
+        ):
+            try:
+                return_moves.append(
+                    ReturnMove(
+                        pick=pick,
+                        prior_return=float(prior_rr),
+                        new_return=float(new_rr_val),
+                    )
+                )
+            except (TypeError, ValueError):
+                pass
 
         target_price = pick["target"]["price"]
         target_return = pick["target"]["return_rate"]
@@ -288,6 +313,19 @@ def main() -> None:
         f"active: {len(remaining_active)}, achieved: {len(newly_achieved)}, expired: {len(newly_expired)}"
     )
     touch_last_daily_judgment_at()
+
+    if selected_country:
+        try:
+            from common.telegram_delivery import deliver_judgment_highlights
+
+            deliver_judgment_highlights(
+                country=selected_country,
+                judgment_day=today_by_country(selected_country),
+                remaining_active=remaining_active,
+                move_deltas=return_moves,
+            )
+        except Exception as e:
+            print(f"[WARN] telegram: {e}", file=sys.stderr)
 
 
 if __name__ == "__main__":

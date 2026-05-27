@@ -410,6 +410,13 @@ Vote with reactions on this issue.
         pass
     add_issue_label(issue_number, "active")
 
+    try:
+        from common.telegram_delivery import deliver_new_pick
+
+        deliver_new_pick(pick)
+    except Exception as e:
+        print(f"[WARN] telegram: {e}", file=sys.stderr)
+
 
 if __name__ == "__main__":
     main()
