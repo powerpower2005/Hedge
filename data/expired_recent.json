@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "43fdefc"
+    "commit": "db09ae5"
   },
-  "generated_at": "2026-05-26T22:40:38.135193Z",
+  "generated_at": "2026-05-27T11:00:23.644508Z",
   "data": {
-    "count": 4,
+    "count": 5,
     "picks": [
       {
         "id": 3,
@@ -288,6 +288,79 @@
           "return_rate": 0.295955
         },
         "expired_at": "2026-05-26T22:40:38.131350Z"
+      },
+      {
+        "id": 15,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "a16188b"
+        },
+        "created_at": "2026-04-25T04:35:39.298505Z",
+        "author": "zerohoon0102",
+        "issue_number": 35,
+        "ticker": "015750",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "price": 9010.0,
+          "date": "2026-04-25",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 10812.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-05-25"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-25T04:35:39.298519Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-05-27T11:00:23.641872Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-27",
+          "current": {
+            "close": 8030.0,
+            "return_rate": -0.108768
+          },
+          "highest": {
+            "close": 9320.0,
+            "close_date": "2026-04-28",
+            "return_rate": 0.034406
+          },
+          "distance_to_target": 0.165594,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-25T04:35:39.298573Z"
+        },
+        "extensions": {},
+        "instrument_name": "Sungwoo Hitech Co Ltd",
+        "author_note": "현재가 혹은 8760 매수, 8350 추매.\n7905 이탈시 손절",
+        "expiry": {
+          "close": 7940.0,
+          "session_date": "2026-05-25",
+          "return_rate": -0.118757
+        },
+        "expired_at": "2026-05-27T11:00:23.641972Z"
       }
     ]
   }
