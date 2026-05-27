@@ -321,6 +321,7 @@ def main() -> None:
             deliver_judgment_highlights(
                 country=selected_country,
                 judgment_day=today_by_country(selected_country),
+                newly_achieved=newly_achieved,
                 remaining_active=remaining_active,
                 move_deltas=return_moves,
             )

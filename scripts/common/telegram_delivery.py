@@ -14,6 +14,7 @@ def deliver_judgment_highlights(
     *,
     country: str,
     judgment_day: date,
+    newly_achieved: list[dict[str, Any]],
     remaining_active: list[dict[str, Any]],
     move_deltas: list[ReturnMove],
     near_limit: int = 5,
@@ -24,6 +25,7 @@ def deliver_judgment_highlights(
     text = format_judgment_digest(
         country,
         judgment_day.isoformat(),
+        newly_achieved,
         near,
         moves,
         near_limit=near_limit,

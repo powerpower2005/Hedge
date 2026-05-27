@@ -49,6 +49,19 @@ def format_big_move_line(move: ReturnMove) -> str:
     )
 
 
+def format_achieved_line(pick: dict[str, Any]) -> str:
+    ach = pick.get("achievement") or {}
+    target_rr = pick.get("target", {}).get("return_rate")
+    final_rr = ach.get("final_return_rate")
+    days = ach.get("days_taken")
+    achieved_date = ach.get("achieved_date") or ""
+    days_s = f"{days}일" if days is not None else "—"
+    return (
+        f"• {_pick_label(pick)}\n"
+        f"  목표 {_pct(target_rr)} → 최종 {_pct(final_rr)} · {days_s} · 달성일 {achieved_date}"
+    )
+
+
 def format_new_pick_line(pick: dict[str, Any]) -> str:
     target_rr = pick.get("target", {}).get("return_rate")
     days = pick.get("duration", {}).get("days")
@@ -63,6 +76,7 @@ def format_new_pick_line(pick: dict[str, Any]) -> str:
 def format_judgment_digest(
     country: str,
     judgment_day: str,
+    achieved: list[dict[str, Any]],
     near: list[dict[str, Any]],
     moves: list[ReturnMove],
     *,
@@ -70,6 +84,12 @@ def format_judgment_digest(
     move_limit: int = 3,
 ) -> str:
     lines = [f"[{country} 일일 하이라이트] {judgment_day}", ""]
+    lines.append("🏆 오늘 달성")
+    if achieved:
+        lines.extend(format_achieved_line(p) for p in achieved)
+    else:
+        lines.append("• (없음)")
+    lines.append("")
     lines.append(f"🎯 목표 임박 (상위 {near_limit})")
     if near:
         lines.extend(format_near_target_line(p) for p in near)

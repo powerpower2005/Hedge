@@ -49,6 +49,7 @@ def main() -> None:
     deliver_judgment_highlights(
         country=args.country,
         judgment_day=date.today(),
+        newly_achieved=[],
         remaining_active=active,
         move_deltas=[],
         near_limit=5,
