@@ -32,7 +32,7 @@ export function PickCard({ pick }) {
           <StatusBadge status={st} title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined} />
         </header>
 
-        <div className="mt-4 grid grid-cols-2 gap-3 rounded-xl bg-zinc-800/40 p-3 light:bg-zinc-50">
+        <div className={`mt-4 grid grid-cols-2 gap-3 ${ui.innerPanel}`}>
           <div>
             <p className={ui.label}>{t("pickCard.target")}</p>
             <p className="mt-1">

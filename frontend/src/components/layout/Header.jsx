@@ -36,6 +36,7 @@ function QuickGuideCard({ onClose, firstVisit }) {
     { icon: "2", title: t("guide.s2Title"), body: t("guide.quickS2") },
     { icon: "3", title: t("guide.s3Title"), body: t("guide.quickS3") },
     { icon: "4", title: t("guide.s4Title"), body: t("guide.quickS4") },
+    { icon: "5", title: t("guide.s5Title"), body: t("guide.quickS5") },
   ];
 
   return (
@@ -66,7 +67,7 @@ function QuickGuideCard({ onClose, firstVisit }) {
           </button>
         </div>
         <p className={`mb-3 ${type.tutorialSubtitle}`}>{t("guide.title")}</p>
-        <div className="mb-5 rounded-xl border border-primary-800 bg-zinc-800 p-4 light:border-primary-200 light:bg-primary-50">
+        <div className="mb-5 rounded-xl border-2 border-primary-600/60 bg-zinc-800 p-4 light:border-primary-400 light:bg-primary-50">
           <p className={type.tutorialStepTitle}>{t("guide.s1Title")}</p>
           <p className={`mt-2 ${type.tutorialBody}`}>{t("guide.quickS1")}</p>
         </div>
@@ -148,19 +149,21 @@ export function Header() {
           </div>
 
           <nav
-            className="-mx-3 flex min-w-0 flex-1 items-center gap-1 overflow-x-auto px-3 pb-0.5 scrollbar-thin lg:mx-0 lg:justify-center lg:overflow-visible lg:px-0"
+            className="min-w-0 flex-1 overflow-x-auto pb-0.5 scrollbar-thin lg:overflow-visible"
             aria-label={t("nav.primary")}
           >
-            {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.end}
-                className={({ isActive }) => `shrink-0 ${ui.navPill(isActive)}`}
-              >
-                {t(item.labelKey)}
-              </NavLink>
-            ))}
+            <div className={ui.navGroup}>
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  end={item.end}
+                  className={({ isActive }) => ui.navTab(isActive)}
+                >
+                  {t(item.labelKey)}
+                </NavLink>
+              ))}
+            </div>
           </nav>
 
           <div

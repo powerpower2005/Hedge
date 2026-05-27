@@ -29,13 +29,6 @@ function readInitialView() {
   }
 }
 
-const viewBtnClass = (active) =>
-  `rounded-md px-3 py-1.5 text-xs font-medium ${
-    active
-      ? "bg-zinc-800 text-white light:bg-zinc-200 light:text-zinc-900"
-      : "text-zinc-300 hover:text-white light:text-zinc-700 light:hover:text-zinc-900"
-  }`;
-
 function pickMetaLine(p, t) {
   const registered =
     typeof p.created_at === "string" && p.created_at.length >= 10
@@ -128,7 +121,7 @@ export function PickList({ picks }) {
 
   if (!picks?.length) {
     return (
-      <p className="rounded-lg border border-dashed border-zinc-700 p-8 text-center text-zinc-400 light:border-zinc-300 light:text-zinc-700">
+      <p className="rounded-lg border-2 border-dashed border-zinc-600 p-8 text-center text-zinc-400 light:border-zinc-300 light:text-zinc-700">
         {t("pickList.empty")}
       </p>
     );
@@ -136,17 +129,17 @@ export function PickList({ picks }) {
 
   return (
     <section aria-label={t("pickList.sectionLabel")}>
-      <fieldset className="mb-3 flex items-center justify-end gap-2 border-0 p-0">
+      <fieldset className="mb-4 flex flex-wrap items-center gap-2.5 border-0 p-0 sm:gap-3">
         <legend className="sr-only">{t("pickList.viewLabel")}</legend>
-        <span className="text-xs text-zinc-400 light:text-zinc-700" aria-hidden>
-          {t("pickList.viewLabel")}
-        </span>
-        <button type="button" className={viewBtnClass(view === "card")} onClick={() => setViewMode("card")}>
-          {t("pickList.viewCards")}
-        </button>
-        <button type="button" className={viewBtnClass(view === "list")} onClick={() => setViewMode("list")}>
-          {t("pickList.viewList")}
-        </button>
+        <span className="text-xs font-medium text-zinc-400 light:text-zinc-600">{t("pickList.viewLabel")}</span>
+        <div className={ui.navGroup}>
+          <button type="button" className={ui.navTab(view === "card")} onClick={() => setViewMode("card")}>
+            {t("pickList.viewCards")}
+          </button>
+          <button type="button" className={ui.navTab(view === "list")} onClick={() => setViewMode("list")}>
+            {t("pickList.viewList")}
+          </button>
+        </div>
       </fieldset>
 
       {view === "card" ? (

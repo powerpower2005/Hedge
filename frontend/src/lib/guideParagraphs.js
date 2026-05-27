@@ -1,7 +1,7 @@
 import en from "../i18n/locales/en.js";
 import ko from "../i18n/locales/ko.js";
 
-const STEP_IDS = [1, 2, 3, 4, 5, 6];
+const STEP_IDS = [1, 2, 3, 4, 5, 6, 7];
 
 /**
  * @param {"ko" | "en"} locale

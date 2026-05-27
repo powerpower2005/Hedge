@@ -87,8 +87,9 @@ export default {
     dismiss: "Close and browse active picks",
     quickS1: "Use tabs for active, achieved, and expired picks; open a card for details.",
     quickS2: "New pick → GitHub form (sign-in required).",
-    quickS3: "Up to 20 active picks, one per ticker, target return ±10%–1000%.",
-    quickS4: "New picks lock entry and deadline on the first judgment → achieved or expired.",
+    quickS3: "Markets: Korea, US, Hong Kong, Japan. Tickers follow Google Finance (JP: 4 digits + TYO).",
+    quickS4: "Up to 20 active picks, one per ticker, target return ±10%–1000%.",
+    quickS5: "New picks lock entry and deadline on the first judgment → achieved or expired.",
     fullGuideCta: "Open full guide page",
     s1Title: "Browse lists and details",
     s1Paragraphs: [
@@ -99,31 +100,40 @@ export default {
     s2Title: "Submit a new pick",
     s2Paragraphs: [
       "While signed in, click **New pick** in the header to open the GitHub registration form.",
-      "Enter ticker, country & market, target return (%), and duration (days). Target return is **positive for an up call, negative for a down call** (magnitude 10%–1000%).",
+      "Enter ticker, **Country**, **Market**, target return (%), and duration (days). Target return is **positive for an up call, negative for a down call** (magnitude 10%–1000%).",
       "An optional **Additional note** appears on the pick detail page when provided; it is not used for prices or judgment.",
-      "US: NASDAQ, NYSE, NYSEARCA, BATS, NYSEAMERICAN. KR: KRX, KOSPI, KOSDAQ. HK: HKG. JP: TYO — 4-digit code as on Google Finance (e.g. 7203). Country and market must match; KR/US/HK try exchange prefixes at registration.",
-      "Tickers are alphanumeric only. If registration fails, check the prefix and ticker on Google Finance (https://www.google.com/finance/).",
-      "After submission, automated checks run; if accepted, the pick appears under Active.",
+      "We support **Korea, the United States, Hong Kong, and Japan**. See **Supported markets** below for ticker format, exchanges, and price sources per country.",
+      "After submission, automated checks run; if accepted, the pick appears under **Entry pending** or Active.",
     ],
-    s3Title: "Limits and rules",
+    s3Title: "Supported markets (KR · US · HK · JP)",
     s3Paragraphs: [
+      "**Country** and **Market** must be a valid pair. The GitHub dropdown is not filtered by country—when you pick **JP**, choose **TYO**; for **HK**, choose **HKG**. (If you pick another Market with JP/HK, registration **auto-corrects** to TYO/HKG.)",
+      "**Korea (KR)** — Market: **KRX**, **KOSPI**, or **KOSDAQ**. Ticker: numeric code as on Google Finance (e.g. Samsung **005930**), **including leading zeros**. Registration tries exchange prefixes in order. Prices: **GOOGLEFINANCE** close via Google Sheets.",
+      "**United States (US)** — Market: **NASDAQ**, **NYSE**, **NYSEARCA**, **BATS**, **NYSEAMERICAN**, etc. Ticker: **letters** (e.g. **AAPL**). Many ETFs use NYSEARCA or BATS—pick the exchange shown on Google Finance. Registration tries your chosen US prefix first, then others.",
+      "**Hong Kong (HK)** — Market: **HKG**. Ticker: **4 digits**, **keep leading zeros** (e.g. Tencent **0700**). Verify as **0700:HKG** on Google Finance.",
+      "**Japan (JP)** — Market: **TYO** (Tokyo). Ticker: **4-digit code only** as on Google Finance (e.g. Toyota **7203**)—do **not** enter **7203.T**. Example: https://www.google.com/finance/quote/7203:TYO . Prices: **Yahoo** via the sheet (refreshed automatically once after registration).",
+      "Tickers must be **alphanumeric only** (no spaces or symbols). If registration fails, confirm country, exchange, and ticker on https://www.google.com/finance/ , then submit a **new issue** if needed.",
+      "Display: **₩** (KR), **$** (US), **HK$** (HK), **¥** (JP). Country badges on cards and filters help tell markets apart.",
+    ],
+    s4Title: "Limits and rules",
+    s4Paragraphs: [
       "At most **20** active picks per user; only **one** active pick per ticker.",
       "Target return must be ±10%–±1000% (zero not allowed). Duration must be from the form list. Violations may get a reply on the same submission thread.",
     ],
-    s4Title: "Progress and outcomes",
-    s4Paragraphs: [
+    s5Title: "Progress and outcomes",
+    s5Paragraphs: [
       "New picks (rules ≥ 1.0.7) **lock entry, target price, and deadline on the first daily judgment**—not at submit time.",
       "Progress then uses each **prior session’s official close**.",
       "Judgment batches: **KR** 07:07 UTC / **JP** 06:30 UTC (after JST close) / **HK** 08:30 UTC / **US** 21:17 UTC.",
       "Reach the target within the window → Hall of Fame; otherwise → Expired. Older picks may already have entry set at registration.",
     ],
-    s5Title: "Votes (reactions)",
-    s5Paragraphs: [
+    s6Title: "Votes (reactions)",
+    s6Paragraphs: [
       "Each pick is tied to its GitHub registration issue. Add +1 (approve) or −1 (disapprove) on the issue’s first post to vote.",
       "Counts refresh after the repository syncs reactions from GitHub (about hourly at :23 UTC, or when run manually), then when you reload this site.",
     ],
-    s6Title: "Display settings",
-    s6Paragraphs: [
+    s7Title: "Display settings",
+    s7Paragraphs: [
       "Use the language control for Korean or English.",
       "Theme defaults to **light**; the header button cycles light → dark → system (OS). Choices are saved in this browser.",
     ],

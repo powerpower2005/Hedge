@@ -7,6 +7,7 @@ import { formatReturn } from "../lib/formatters.js";
 import { pickReturnForLeaderboard } from "../lib/userLeaderboard.js";
 import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
+import { ui } from "../lib/themeClasses.js";
 
 export function UserPage() {
   const { username } = useParams();
@@ -35,19 +36,19 @@ export function UserPage() {
         {t("user.title", { name: username })}
       </h1>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-lg border border-zinc-800 p-4 light:border-zinc-200">
+        <div className={`rounded-lg p-4 ${ui.innerPanel}`}>
           <p className="text-xs text-zinc-500">{t("user.totalPicks")}</p>
           <p className="text-2xl font-semibold">{stats.total}</p>
         </div>
-        <div className="rounded-lg border border-zinc-800 p-4 light:border-zinc-200">
+        <div className={`rounded-lg p-4 ${ui.innerPanel}`}>
           <p className="text-xs text-zinc-500">{t("user.achieved")}</p>
           <p className="text-2xl font-semibold">{stats.wins}</p>
         </div>
-        <div className="rounded-lg border border-zinc-800 p-4 light:border-zinc-200">
+        <div className={`rounded-lg p-4 ${ui.innerPanel}`}>
           <p className="text-xs text-zinc-500">{t("user.avgTarget")}</p>
           <p className="text-2xl font-semibold">{formatReturn(stats.avgTarget)}</p>
         </div>
-        <div className="rounded-lg border border-zinc-800 p-4 light:border-zinc-200">
+        <div className={`rounded-lg p-4 ${ui.innerPanel}`}>
           <p className="text-xs text-zinc-500">{t("user.totalReturn")}</p>
           <p className="text-2xl font-semibold">{formatReturn(stats.totalReturn)}</p>
           <p className="mt-1 text-[11px] leading-snug text-zinc-500 light:text-zinc-600">

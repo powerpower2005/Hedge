@@ -9,7 +9,7 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
       <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600">
         {t("filters.country")}
         <select
-          className="mt-1 rounded border border-zinc-700 bg-zinc-950 px-2 py-1 text-sm text-white light:border-zinc-300 light:bg-white light:text-zinc-900"
+          className={ui.field}
           value={filters.country || ""}
           onChange={(e) => setFilters({ ...filters, country: e.target.value || null })}
         >
@@ -23,7 +23,7 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
       <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600">
         {t("filters.market")}
         <select
-          className="mt-1 rounded border border-zinc-700 bg-zinc-950 px-2 py-1 text-sm text-white light:border-zinc-300 light:bg-white light:text-zinc-900"
+          className={ui.field}
           value={filters.market || ""}
           onChange={(e) => setFilters({ ...filters, market: e.target.value || null })}
         >
@@ -38,7 +38,7 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
       <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600">
         {t("filters.tickerContains")}
         <input
-          className="mt-1 rounded border border-zinc-700 bg-zinc-950 px-2 py-1 text-sm text-white light:border-zinc-300 light:bg-white light:text-zinc-900"
+          className={ui.field}
           value={filters.ticker || ""}
           onChange={(e) => setFilters({ ...filters, ticker: e.target.value || null })}
         />
@@ -46,7 +46,7 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
       <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600">
         {t("filters.sort")}
         <select
-          className="mt-1 rounded border border-zinc-700 bg-zinc-950 px-2 py-1 text-sm text-white light:border-zinc-300 light:bg-white light:text-zinc-900"
+          className={ui.field}
           value={sortKey}
           onChange={(e) => setSortKey(e.target.value)}
         >

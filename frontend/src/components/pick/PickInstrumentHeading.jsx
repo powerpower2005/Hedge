@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { isTargetCurrentSignMismatch } from "../../lib/pickSignMismatch.js";
+import { TruncatedWithTooltip } from "../ui/TruncatedWithTooltip.jsx";
 import { MarketBadge } from "./MarketBadge.jsx";
 import { ui } from "../../lib/themeClasses.js";
 import { type } from "../../lib/typographyClasses.js";
@@ -33,11 +34,18 @@ export function PickInstrumentHeading({
   const tickerClass = `${ui.tickerSecondary} hover:underline`;
 
   const primaryEl = pickId ? (
-    <Link to={`/pick/${pickId}`} className={`block truncate ${primaryClass}`}>
+    <TruncatedWithTooltip
+      as={Link}
+      to={`/pick/${pickId}`}
+      className={`block truncate ${primaryClass}`}
+      title={primaryLabel}
+    >
       {primaryLabel}
-    </Link>
+    </TruncatedWithTooltip>
   ) : (
-    <span className={`block truncate ${primaryClass}`}>{primaryLabel}</span>
+    <TruncatedWithTooltip className={`block truncate ${primaryClass}`} title={primaryLabel}>
+      {primaryLabel}
+    </TruncatedWithTooltip>
   );
 
   const tickerEl =
@@ -52,7 +60,13 @@ export function PickInstrumentHeading({
   if (variant === "detail") {
     return (
       <div className={className}>
-        <h1 className={`truncate ${primaryClass}`}>{primaryLabel}</h1>
+        <TruncatedWithTooltip
+          as="h1"
+          className={`truncate ${primaryClass}`}
+          title={primaryLabel}
+        >
+          {primaryLabel}
+        </TruncatedWithTooltip>
         {showTickerSubline ? (
           <p className="mt-1.5 flex flex-wrap items-center gap-2">
             {tickerEl}
