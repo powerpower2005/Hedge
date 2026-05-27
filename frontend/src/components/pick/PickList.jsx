@@ -133,10 +133,10 @@ export function PickList({ picks }) {
         <legend className="sr-only">{t("pickList.viewLabel")}</legend>
         <span className="text-xs font-medium text-zinc-400 light:text-zinc-600">{t("pickList.viewLabel")}</span>
         <div className={ui.navGroup}>
-          <button type="button" className={ui.navTab(view === "card")} onClick={() => setViewMode("card")}>
+          <button type="button" className={ui.navTab(view === "card", "compact")} onClick={() => setViewMode("card")}>
             {t("pickList.viewCards")}
           </button>
-          <button type="button" className={ui.navTab(view === "list")} onClick={() => setViewMode("list")}>
+          <button type="button" className={ui.navTab(view === "list", "compact")} onClick={() => setViewMode("list")}>
             {t("pickList.viewList")}
           </button>
         </div>

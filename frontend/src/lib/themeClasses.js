@@ -23,15 +23,19 @@ export const ui = {
     "inline-flex items-center justify-center gap-1.5 rounded-xl border-2 border-zinc-600 bg-zinc-800/60 px-5 py-3 text-base font-medium text-zinc-100 transition hover:bg-zinc-800 light:border-zinc-300 light:bg-white light:text-zinc-800 light:hover:bg-zinc-50",
   statCard:
     "rounded-2xl border-2 border-zinc-600 bg-zinc-900 p-4 shadow-sm light:border-zinc-300 light:bg-white",
-  /** Segmented tab bar: clear cell borders + dividers between items. */
+  /** Segmented tab bar: equal-width cells, centered labels. variant: "default" | "compact" */
   navGroup:
-    "inline-flex max-w-full items-stretch divide-x-2 divide-zinc-600 overflow-hidden rounded-xl border-2 border-zinc-600 bg-zinc-900/70 shadow-sm light:divide-zinc-300 light:border-zinc-300 light:bg-white",
-  navTab: (active) =>
-    `shrink-0 px-3.5 py-2.5 text-sm font-semibold whitespace-nowrap transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 ${
-      active
-        ? "bg-primary-600 text-white light:bg-primary-600 light:text-white"
-        : "bg-zinc-900/40 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100 light:bg-white light:text-zinc-600 light:hover:bg-zinc-100 light:hover:text-zinc-900"
-    }`,
+    "inline-grid max-w-full auto-cols-max grid-flow-col items-stretch divide-x-2 divide-zinc-600 overflow-hidden rounded-xl border-2 border-zinc-600 bg-zinc-900/70 shadow-sm light:divide-zinc-300 light:border-zinc-300 light:bg-white",
+  navTab: (active, variant = "default") => {
+    const width =
+      variant === "compact"
+        ? "w-[4.75rem] min-w-[4.75rem]"
+        : "w-[7.75rem] min-w-[7.75rem] sm:w-[8.25rem] sm:min-w-[8.25rem]";
+    const tone = active
+      ? "bg-primary-600 text-white light:bg-primary-600 light:text-white"
+      : "bg-zinc-900/40 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100 light:bg-white light:text-zinc-600 light:hover:bg-zinc-100 light:hover:text-zinc-900";
+    return `inline-flex shrink-0 items-center justify-center text-center ${width} px-2 py-2.5 text-sm font-semibold leading-tight whitespace-nowrap transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 ${tone}`;
+  },
   ticker: "text-xl font-bold tracking-tight text-primary-400 sm:text-2xl light:text-primary-700",
   instrumentPrimary:
     "text-base font-bold leading-snug tracking-tight text-zinc-100 sm:text-lg light:text-zinc-900",
