@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "1c31822"
+    "commit": "2254d95"
   },
-  "generated_at": "2026-05-28T11:59:52.061961Z",
+  "generated_at": "2026-05-28T22:46:15.457519Z",
   "data": {
-    "count": 9,
+    "count": 10,
     "picks": [
       {
         "id": 5,
@@ -673,6 +673,78 @@
           "achieved_close": 132.5,
           "days_taken": 1,
           "final_return_rate": 0.220074
+        }
+      },
+      {
+        "id": 8,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "61aceae"
+        },
+        "created_at": "2026-04-23T14:12:43.044315Z",
+        "author": "LimJunYeol",
+        "issue_number": 18,
+        "ticker": "SCO",
+        "country": "US",
+        "market": "NYSEARCA",
+        "entry": {
+          "price": 7.54,
+          "date": "2026-04-23",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 1.0,
+          "price": 15.08
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-07-22"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-04-23T14:12:43.044329Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-05-28T22:46:15.454316Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-28",
+          "current": {
+            "close": 27.48,
+            "return_rate": 2.644562
+          },
+          "highest": {
+            "close": 27.48,
+            "close_date": "2026-05-28",
+            "return_rate": 2.644562
+          },
+          "distance_to_target": -1.644562,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-04-23T14:12:43.044377Z"
+        },
+        "extensions": {},
+        "instrument_name": "ProShares UltraShort Bloomberg Crude Oil",
+        "achievement": {
+          "achieved_date": "2026-05-28",
+          "achieved_close": 27.48,
+          "days_taken": 35,
+          "final_return_rate": 2.644562
         }
       }
     ]
