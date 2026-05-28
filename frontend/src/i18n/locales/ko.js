@@ -3,6 +3,8 @@ export default {
   nav: {
     primary: "주 메뉴",
     utilities: "도구",
+    groupPicks: "픽",
+    groupInfo: "안내",
     dashboard: "대시보드",
     allPicks: "전체 픽",
     ranking: "랭킹",

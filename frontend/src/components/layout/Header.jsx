@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useInvalidateDataCaches } from "../../context/DataCacheContext.jsx";
 import { useRepoMeta } from "../../hooks/useRepoMeta.js";
 import { IS_REPOSITORY_CONFIGURED, NEW_PICK_URL } from "../../lib/constants";
@@ -9,6 +9,7 @@ import { useI18n } from "../../i18n/I18nContext.jsx";
 import { ui } from "../../lib/themeClasses.js";
 import { type } from "../../lib/typographyClasses.js";
 import { AppLogo } from "./AppLogo.jsx";
+import { PrimaryNav } from "./PrimaryNav.jsx";
 import { LangToggle } from "./LangToggle.jsx";
 import { ThemeToggle } from "./ThemeToggle.jsx";
 
@@ -103,16 +104,6 @@ function QuickGuideCard({ onClose, firstVisit }) {
   );
 }
 
-const navItems = [
-  { to: "/", end: true, labelKey: "nav.dashboard" },
-  { to: "/pending-entry", labelKey: "nav.pendingEntry" },
-  { to: "/hall-of-fame", labelKey: "nav.hallOfFame" },
-  { to: "/users", labelKey: "nav.ranking" },
-  { to: "/expired", labelKey: "nav.expired" },
-  { to: "/about", labelKey: "nav.about" },
-  { to: "/guide", labelKey: "nav.guide" },
-];
-
 export function Header() {
   const { t, locale } = useI18n();
   const invalidateDataCaches = useInvalidateDataCaches();
@@ -148,23 +139,7 @@ export function Header() {
             ) : null}
           </div>
 
-          <nav
-            className="min-w-0 flex-1 overflow-x-auto pb-0.5 scrollbar-thin lg:overflow-visible"
-            aria-label={t("nav.primary")}
-          >
-            <div className={ui.navGroup}>
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.end}
-                  className={({ isActive }) => ui.navTab(isActive)}
-                >
-                  {t(item.labelKey)}
-                </NavLink>
-              ))}
-            </div>
-          </nav>
+          <PrimaryNav />
 
           <div
             className="flex shrink-0 flex-wrap items-center gap-2 lg:justify-end"

@@ -3,6 +3,8 @@ export default {
   nav: {
     primary: "Main menu",
     utilities: "Tools",
+    groupPicks: "Picks",
+    groupInfo: "Info",
     dashboard: "Dashboard",
     allPicks: "All picks",
     ranking: "Ranking",

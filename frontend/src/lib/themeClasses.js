@@ -36,6 +36,12 @@ export const ui = {
       : "bg-zinc-900/40 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100 light:bg-white light:text-zinc-600 light:hover:bg-zinc-100 light:hover:text-zinc-900";
     return `inline-flex shrink-0 items-center justify-center text-center ${width} px-2 py-2.5 text-sm font-semibold leading-tight whitespace-nowrap transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 ${tone}`;
   },
+  navDropdownItem: (active) =>
+    `block px-4 py-2.5 text-sm font-medium transition ${
+      active
+        ? "bg-primary-600/15 text-primary-300 light:bg-primary-50 light:text-primary-800"
+        : "text-zinc-200 hover:bg-zinc-800 light:text-zinc-800 light:hover:bg-zinc-100"
+    }`,
   ticker: "text-xl font-bold tracking-tight text-primary-400 sm:text-2xl light:text-primary-700",
   instrumentPrimary:
     "text-base font-bold leading-snug tracking-tight text-zinc-100 sm:text-lg light:text-zinc-900",
