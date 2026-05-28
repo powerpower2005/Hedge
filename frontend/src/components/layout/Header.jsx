@@ -128,8 +128,8 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur light:border-zinc-200 light:bg-white/95">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-3 py-3 sm:gap-3 sm:px-4 lg:flex-row lg:items-center lg:gap-4">
+      <header className="sticky top-0 z-40 overflow-visible border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur light:border-zinc-200 light:bg-white/95">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 overflow-visible px-3 py-3 sm:gap-3 sm:px-4 lg:flex-row lg:items-center lg:gap-4">
           <div className="flex shrink-0 items-center justify-between gap-2 lg:justify-start">
             <AppLogo />
             {IS_REPOSITORY_CONFIGURED ? (

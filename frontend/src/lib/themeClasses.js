@@ -25,7 +25,7 @@ export const ui = {
     "rounded-2xl border-2 border-zinc-600 bg-zinc-900 p-4 shadow-sm light:border-zinc-300 light:bg-white",
   /** Segmented tab bar: equal-width cells, centered labels. variant: "default" | "compact" */
   navGroup:
-    "inline-grid max-w-full auto-cols-max grid-flow-col items-stretch divide-x-2 divide-zinc-600 overflow-hidden rounded-xl border-2 border-zinc-600 bg-zinc-900/70 shadow-sm light:divide-zinc-300 light:border-zinc-300 light:bg-white",
+    "inline-grid max-w-full auto-cols-max grid-flow-col items-stretch divide-x-2 divide-zinc-600 overflow-visible rounded-xl border-2 border-zinc-600 bg-zinc-900/70 shadow-sm light:divide-zinc-300 light:border-zinc-300 light:bg-white",
   navTab: (active, variant = "default") => {
     const width =
       variant === "compact"

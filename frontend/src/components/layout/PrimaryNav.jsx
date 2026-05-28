@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { NavLink, useLocation } from "react-router-dom";
 import { useI18n } from "../../i18n/I18nContext.jsx";
 import {
@@ -30,40 +31,109 @@ function Chevron({ open }) {
 function NavDropdown({ entry, pathname, openId, setOpenId }) {
   const { t } = useI18n();
   const menuId = useId();
-  const rootRef = useRef(null);
+  const triggerRef = useRef(null);
+  const menuRef = useRef(null);
   const children = entry.children ?? [];
   const isOpen = openId === entry.id;
   const isActive = isNavGroupActive(pathname, children);
+  const [menuPos, setMenuPos] = useState(null);
 
   const close = useCallback(() => setOpenId(null), [setOpenId]);
-  const toggle = useCallback(() => {
-    setOpenId((prev) => (prev === entry.id ? null : entry.id));
-  }, [entry.id, setOpenId]);
+
+  const updateMenuPos = useCallback(() => {
+    const el = triggerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    setMenuPos({
+      top: rect.bottom + 4,
+      left: rect.left,
+      minWidth: Math.max(rect.width, 192),
+    });
+  }, []);
+
+  const toggle = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setOpenId((prev) => (prev === entry.id ? null : entry.id));
+    },
+    [entry.id, setOpenId],
+  );
+
+  useEffect(() => {
+    if (!isOpen) {
+      setMenuPos(null);
+      return;
+    }
+    updateMenuPos();
+    window.addEventListener("resize", updateMenuPos);
+    window.addEventListener("scroll", updateMenuPos, true);
+    return () => {
+      window.removeEventListener("resize", updateMenuPos);
+      window.removeEventListener("scroll", updateMenuPos, true);
+    };
+  }, [isOpen, updateMenuPos]);
 
   useEffect(() => {
     if (!isOpen) return;
-    function onPointerDown(e) {
-      if (rootRef.current && !rootRef.current.contains(e.target)) close();
+    function onDocumentClick(e) {
+      const target = e.target;
+      if (!(target instanceof Node)) return;
+      if (triggerRef.current?.contains(target) || menuRef.current?.contains(target)) return;
+      close();
     }
     function onKey(e) {
       if (e.key === "Escape") close();
     }
-    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("click", onDocumentClick);
     document.addEventListener("keydown", onKey);
     return () => {
-      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("click", onDocumentClick);
       document.removeEventListener("keydown", onKey);
     };
   }, [isOpen, close]);
 
+  const menuPanel =
+    isOpen && menuPos
+      ? createPortal(
+          <div
+            ref={menuRef}
+            id={menuId}
+            role="menu"
+            aria-labelledby={`nav-trigger-${entry.id}`}
+            style={{
+              position: "fixed",
+              top: menuPos.top,
+              left: menuPos.left,
+              minWidth: menuPos.minWidth,
+            }}
+            className="z-[100] overflow-hidden rounded-xl border-2 border-zinc-600 bg-zinc-900 py-1 shadow-xl light:border-zinc-300 light:bg-white"
+          >
+            {children.map((leaf) => (
+              <NavLink
+                key={leaf.to}
+                to={leaf.to}
+                end={leaf.end}
+                role="menuitem"
+                className={({ isActive: leafActive }) => ui.navDropdownItem(leafActive)}
+                onClick={close}
+              >
+                {t(leaf.labelKey)}
+              </NavLink>
+            ))}
+          </div>,
+          document.body,
+        )
+      : null;
+
   return (
-    <div ref={rootRef} className="relative shrink-0">
+    <div className="relative shrink-0">
       <button
+        ref={triggerRef}
         type="button"
         id={`nav-trigger-${entry.id}`}
         aria-haspopup="menu"
         aria-expanded={isOpen}
-        aria-controls={menuId}
+        aria-controls={isOpen ? menuId : undefined}
         className={ui.navTab(isActive || isOpen)}
         onClick={toggle}
       >
@@ -72,27 +142,7 @@ function NavDropdown({ entry, pathname, openId, setOpenId }) {
           <Chevron open={isOpen} />
         </span>
       </button>
-      {isOpen ? (
-        <div
-          id={menuId}
-          role="menu"
-          aria-labelledby={`nav-trigger-${entry.id}`}
-          className="absolute left-0 top-full z-50 mt-1 min-w-[12rem] overflow-hidden rounded-xl border-2 border-zinc-600 bg-zinc-900 py-1 shadow-lg light:border-zinc-300 light:bg-white"
-        >
-          {children.map((leaf) => (
-            <NavLink
-              key={leaf.to}
-              to={leaf.to}
-              end={leaf.end}
-              role="menuitem"
-              className={({ isActive: leafActive }) => ui.navDropdownItem(leafActive)}
-              onClick={close}
-            >
-              {t(leaf.labelKey)}
-            </NavLink>
-          ))}
-        </div>
-      ) : null}
+      {menuPanel}
     </div>
   );
 }
@@ -107,7 +157,7 @@ export function PrimaryNav() {
   }, [pathname]);
 
   return (
-    <nav className="min-w-0 flex-1" aria-label={t("nav.primary")}>
+    <nav className="relative z-50 min-w-0 flex-1 overflow-visible" aria-label={t("nav.primary")}>
       <div className={`${ui.navGroup} w-fit max-w-full`}>
         {PRIMARY_NAV.map((entry) => {
           if (entry.children) {
