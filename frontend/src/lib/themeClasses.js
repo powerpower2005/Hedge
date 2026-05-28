@@ -24,8 +24,9 @@ export const ui = {
   statCard:
     "rounded-2xl border-2 border-zinc-600 bg-zinc-900 p-4 shadow-sm light:border-zinc-300 light:bg-white",
   /** Segmented tab bar: equal-width cells, centered labels. variant: "default" | "compact" */
+  /** overflow-hidden clips active tab fill to rounded border; dropdowns use a portal. */
   navGroup:
-    "inline-grid max-w-full auto-cols-max grid-flow-col items-stretch divide-x-2 divide-zinc-600 overflow-visible rounded-xl border-2 border-zinc-600 bg-zinc-900/70 shadow-sm light:divide-zinc-300 light:border-zinc-300 light:bg-white",
+    "inline-grid max-w-full auto-cols-max grid-flow-col items-stretch divide-x-2 divide-zinc-600 overflow-hidden rounded-xl border-2 border-zinc-600 bg-zinc-900/70 shadow-sm light:divide-zinc-300 light:border-zinc-300 light:bg-white",
   navTab: (active, variant = "default") => {
     const width =
       variant === "compact"
@@ -34,7 +35,7 @@ export const ui = {
     const tone = active
       ? "bg-primary-600 text-white light:bg-primary-600 light:text-white"
       : "bg-zinc-900/40 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100 light:bg-white light:text-zinc-600 light:hover:bg-zinc-100 light:hover:text-zinc-900";
-    return `inline-flex shrink-0 items-center justify-center text-center ${width} px-2 py-2.5 text-sm font-semibold leading-tight whitespace-nowrap transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 ${tone}`;
+    return `inline-flex h-full shrink-0 items-center justify-center text-center ${width} px-2 py-2.5 text-sm font-semibold leading-tight whitespace-nowrap transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-offset-0 focus-visible:ring-primary-500 ${tone}`;
   },
   navDropdownItem: (active) =>
     `block px-4 py-2.5 text-sm font-medium transition ${

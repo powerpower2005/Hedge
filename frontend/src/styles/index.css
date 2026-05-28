@@ -28,4 +28,10 @@ html.light body {
   html.light [tabindex]:not([tabindex="-1"]):focus-visible {
     @apply ring-primary-700 ring-offset-[#EEEEEE];
   }
+
+  /* Segmented nav: inset ring only — no offset box outside the bar border */
+  nav[aria-label] a:focus-visible,
+  nav[aria-label] button:focus-visible {
+    @apply ring-inset ring-offset-0;
+  }
 }
