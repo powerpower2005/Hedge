@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "43fdefc"
+    "commit": "93e4615"
   },
-  "generated_at": "2026-05-26T22:40:38.134417Z",
+  "generated_at": "2026-05-28T11:00:53.158612Z",
   "data": {
-    "count": 7,
+    "count": 8,
     "picks": [
       {
         "id": 5,
@@ -515,6 +515,79 @@
           "achieved_close": 49.75,
           "days_taken": 31,
           "final_return_rate": 0.604321
+        }
+      },
+      {
+        "id": 24,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "d5da95b"
+        },
+        "created_at": "2026-05-07T02:22:11.751708Z",
+        "author": "chance0523",
+        "issue_number": 44,
+        "ticker": "000660",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "price": 1601000.0,
+          "date": "2026-05-07",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.4,
+          "price": 2241400.0
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-08-05"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-07T02:22:11.751726Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-05-28T11:00:53.155450Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-05-28",
+          "current": {
+            "close": 2242625.0,
+            "return_rate": 0.400765
+          },
+          "highest": {
+            "close": 2242625.0,
+            "close_date": "2026-05-28",
+            "return_rate": 0.400765
+          },
+          "distance_to_target": -0.000765,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 1,
+          "dislikes": 0,
+          "last_synced": "2026-05-12T04:08:40.162104Z"
+        },
+        "extensions": {},
+        "instrument_name": "SK Hynix Inc",
+        "author_note": "_No response_",
+        "achievement": {
+          "achieved_date": "2026-05-28",
+          "achieved_close": 2242625.0,
+          "days_taken": 21,
+          "final_return_rate": 0.400765
         }
       }
     ]

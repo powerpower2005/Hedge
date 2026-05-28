@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "c9505fe"
+    "commit": "93e4615"
   },
-  "generated_at": "2026-05-28T10:38:34.643628Z",
+  "generated_at": "2026-05-28T11:00:53.155633Z",
   "data": {
-    "count": 33,
+    "count": 30,
     "picks": [
       {
         "id": 8,
@@ -229,10 +229,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-27",
+          "updated_at": "2026-05-28",
           "current": {
-            "close": 145900.0,
-            "return_rate": -0.204905
+            "close": 141700.0,
+            "return_rate": -0.227793
           },
           "highest": {
             "close": 196800.0,
@@ -249,128 +249,6 @@
         },
         "extensions": {},
         "instrument_name": "Rznomics Inc",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 17,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "8f3bbea"
-        },
-        "created_at": "2026-04-27T00:43:23.667333Z",
-        "author": "zerohoon0102",
-        "issue_number": 37,
-        "ticker": "018290",
-        "country": "KR",
-        "market": "KOSDAQ",
-        "entry": {
-          "price": 16950.0,
-          "date": "2026-04-27",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.2,
-          "price": 20340.0
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-05-27"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-04-27T00:43:23.667347Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-05-27",
-          "current": {
-            "close": 14590.0,
-            "return_rate": -0.139233
-          },
-          "highest": {
-            "close": 17470.0,
-            "close_date": "2026-05-01",
-            "return_rate": 0.030678
-          },
-          "distance_to_target": 0.169322,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-04-27T00:43:23.667386Z"
-        },
-        "extensions": {},
-        "instrument_name": "VT Co Ltd",
-        "author_note": "16210, 15340 추매"
-      },
-      {
-        "id": 18,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "757ea34"
-        },
-        "created_at": "2026-04-27T03:34:19.154606Z",
-        "author": "Eonyong",
-        "issue_number": 38,
-        "ticker": "347850",
-        "country": "KR",
-        "market": "KOSDAQ",
-        "entry": {
-          "price": 81800.0,
-          "date": "2026-04-27",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.3,
-          "price": 106340.0
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-05-27"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-04-27T03:34:19.154618Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-05-27",
-          "current": {
-            "close": 76000.0,
-            "return_rate": -0.070905
-          },
-          "highest": {
-            "close": 81800.0,
-            "close_date": "2026-04-27",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.3,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-04-27T03:34:19.154660Z"
-        },
-        "extensions": {},
-        "instrument_name": "DND Pharmatech Inc",
         "author_note": "_No response_"
       },
       {
@@ -595,10 +473,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-27",
+          "updated_at": "2026-05-28",
           "current": {
-            "close": 10670.0,
-            "return_rate": -0.130399
+            "close": 10360.0,
+            "return_rate": -0.155664
           },
           "highest": {
             "close": 12270.0,
@@ -615,67 +493,6 @@
         },
         "extensions": {},
         "instrument_name": "KSS Line Ltd",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 24,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "d5da95b"
-        },
-        "created_at": "2026-05-07T02:22:11.751708Z",
-        "author": "chance0523",
-        "issue_number": 44,
-        "ticker": "000660",
-        "country": "KR",
-        "market": "KOSPI",
-        "entry": {
-          "price": 1601000.0,
-          "date": "2026-05-07",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.4,
-          "price": 2241400.0
-        },
-        "duration": {
-          "days": 90,
-          "deadline": "2026-08-05"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-05-07T02:22:11.751726Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-05-27",
-          "current": {
-            "close": 2052000.0,
-            "return_rate": 0.281699
-          },
-          "highest": {
-            "close": 2052000.0,
-            "close_date": "2026-05-27",
-            "return_rate": 0.281699
-          },
-          "distance_to_target": 0.118301,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 1,
-          "dislikes": 0,
-          "last_synced": "2026-05-12T04:08:40.162104Z"
-        },
-        "extensions": {},
-        "instrument_name": "SK Hynix Inc",
         "author_note": "_No response_"
       },
       {
@@ -839,10 +656,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-27",
+          "updated_at": "2026-05-28",
           "current": {
-            "close": 20600.0,
-            "return_rate": -0.264286
+            "close": 18400.0,
+            "return_rate": -0.342857
           },
           "highest": {
             "close": 28000.0,
@@ -961,10 +778,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-27",
+          "updated_at": "2026-05-28",
           "current": {
-            "close": 43500.0,
-            "return_rate": -0.204753
+            "close": 41050.0,
+            "return_rate": -0.249543
           },
           "highest": {
             "close": 54700.0,
@@ -1022,10 +839,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-27",
+          "updated_at": "2026-05-28",
           "current": {
-            "close": 5100.0,
-            "return_rate": -0.174757
+            "close": 4950.0,
+            "return_rate": -0.199029
           },
           "highest": {
             "close": 6180.0,
@@ -1083,10 +900,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-27",
+          "updated_at": "2026-05-28",
           "current": {
-            "close": 38400.0,
-            "return_rate": -0.049505
+            "close": 37300.0,
+            "return_rate": -0.076733
           },
           "highest": {
             "close": 41800.0,
@@ -1205,10 +1022,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-27",
+          "updated_at": "2026-05-28",
           "current": {
-            "close": 36650.0,
-            "return_rate": -0.06146
+            "close": 34250.0,
+            "return_rate": -0.122919
           },
           "highest": {
             "close": 39050.0,
@@ -1266,10 +1083,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-27",
+          "updated_at": "2026-05-28",
           "current": {
-            "close": 66800.0,
-            "return_rate": -0.011834
+            "close": 62900.0,
+            "return_rate": -0.069527
           },
           "highest": {
             "close": 67700.0,
@@ -1459,10 +1276,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-27",
+          "updated_at": "2026-05-28",
           "current": {
-            "close": 11260.0,
-            "return_rate": 0.300231
+            "close": 9830.0,
+            "return_rate": 0.135104
           },
           "highest": {
             "close": 11260.0,
@@ -2089,26 +1906,50 @@
         "entry": {
           "date": "2026-05-28",
           "source": "google_sheets",
-          "pending": true
+          "price": 688000.0
         },
         "target": {
-          "return_rate": 0.69
+          "return_rate": 0.69,
+          "price": 1162720.0
         },
         "duration": {
-          "days": 30
+          "days": 30,
+          "deadline": "2026-06-27"
         },
         "status": {
-          "current": "pending_entry",
+          "current": "active",
           "history": [
             {
               "status": "pending_entry",
               "at": "2026-05-28T04:54:46.048963Z",
               "engine_version": "1.0.0",
               "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-05-28T11:00:53.155589Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
             }
           ]
         },
         "progress": {
+          "updated_at": "2026-05-28",
+          "current": {
+            "close": 688000.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 688000.0,
+            "close_date": "2026-05-28",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 688000.0,
+            "close_date": "2026-05-28",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.69,
           "error_count": 0
         },
         "votes": {
