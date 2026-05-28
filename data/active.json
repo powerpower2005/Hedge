@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "15e840f"
+    "commit": "e56dd75"
   },
-  "generated_at": "2026-05-27T22:51:20.233671Z",
+  "generated_at": "2026-05-28T04:54:46.049034Z",
   "data": {
-    "count": 32,
+    "count": 33,
     "picks": [
       {
         "id": 8,
@@ -2072,6 +2072,55 @@
         },
         "instrument_name": "Spire Global Inc",
         "author_note": "45%만 먹겠습니다 왜 등록 안된거지"
+      },
+      {
+        "id": 51,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-28T04:54:46.048963Z",
+        "author": "sex-student",
+        "issue_number": 78,
+        "ticker": "012330",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-05-28",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.69
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-28T04:54:46.048963Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-28T04:54:46.048963Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Hyundai Mobis Co Ltd",
+        "author_note": "_No response_"
       }
     ]
   }
