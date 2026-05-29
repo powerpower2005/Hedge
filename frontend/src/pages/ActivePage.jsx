@@ -11,6 +11,7 @@ import { usePicks } from "../hooks/usePicks.js";
 import { ui } from "../lib/themeClasses.js";
 import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
+import { ScheduleLink } from "../components/guide/ScheduleLink.jsx";
 
 function StatCard({ label, value, valueClass = "" }) {
   return (
@@ -71,6 +72,10 @@ export function ActivePage() {
           {t("guide.quickTagline")}
         </p>
         <p className="mt-2 max-w-2xl text-sm text-zinc-400 light:text-zinc-600">{t("active.nextStep")}</p>
+        <p className="mt-3 max-w-2xl text-sm text-zinc-400 light:text-zinc-600">
+          {t("schedule.dashboardTeaser")}{" "}
+          <ScheduleLink />
+        </p>
         {IS_REPOSITORY_CONFIGURED ? (
           <div className="mt-6">
             <a href={NEW_PICK_URL} className={ui.btnPrimary}>

@@ -19,6 +19,13 @@ export default {
     refreshData: "Refresh data",
     refreshDataTitle: "Clears this tab’s cache only. The next load fetches data again.",
     lastJudgment: "Last daily return update: {time}",
+    scheduleLink: "Update schedule & checks",
+  },
+  schedule: {
+    linkLabel: "Update schedule and how to verify",
+    dashboardTeaser: "When picks register, update, or achieve depends on the market.",
+    pendingNotice:
+      "Right after registration, picks stay under **Entry pending** only. Entry, target price, and deadline lock after that market’s **first daily judgment**, then the pick moves to **Active**. After a judgment run, refresh the site or use **Refresh data** in the header to load the latest JSON.",
   },
   lang: { label: "Language", ko: "한국어", en: "English" },
   theme: {
@@ -126,8 +133,8 @@ export default {
     s5Paragraphs: [
       "New picks (rules ≥ 1.0.7) **lock entry, target price, and deadline on the first daily judgment**—not at submit time.",
       "Progress then uses each **prior session’s official close**.",
-      "Judgment batches: **KR** 07:07 UTC / **JP** 06:30 UTC (after JST close) / **HK** 08:30 UTC / **US** 21:17 UTC.",
-      "Reach the target within the window → Hall of Fame; otherwise → Expired. Older picks may already have entry set at registration.",
+      "Reach the target within the window → **Hall of Fame**; otherwise → **Expired**. Older picks may already have entry set at registration.",
+      "For **per-market timing and how to verify updates**, see **Update schedule & verification** below.",
     ],
     s6Title: "Votes (reactions)",
     s6Paragraphs: [
@@ -138,6 +145,19 @@ export default {
     s7Paragraphs: [
       "Use the language control for Korean or English.",
       "Theme defaults to **light**; the header button cycles light → dark → system (OS). Choices are saved in this browser.",
+    ],
+    s8Title: "Update schedule & verification",
+    s8Paragraphs: [
+      "Updates run via **GitHub Actions**. Times below are **UTC**; local times may shift with daylight saving.",
+      "**After you register** — Once the pick is accepted (usually within **minutes**), it appears under **Entry pending**. **Japan (JP)** also fills close and name on the sheet **once** at registration. **Entry, target price, and deadline** lock on that market’s **first daily judgment**.",
+      "**Daily judgment per market** — Uses the **prior session’s official close** to refresh progress and judge achieve / expire.",
+      "• **JP** — **06:30** UTC (after Tokyo regular close 15:00 JST)",
+      "• **KR** — **07:07** UTC (after Korea close 15:30 KST)",
+      "• **HK** — **08:30** UTC (after HKEX regular close 16:00 HKT)",
+      "• **US** — **21:17** UTC (after US regular close; US local time varies with DST)",
+      "**When a pick achieves** — On the **same market’s judgment run** that day, it moves to **Hall of Fame**. **Expiry** is handled in the same run.",
+      "**Check the site reflected it** — ① Header **last daily return update** time (latest judgment finished) ② **Entry pending** → **Active** ③ **Hall of Fame** / **Expired** lists ④ Header **Refresh data**, then reload cards. The GitHub issue may also get bot comments.",
+      "**Vote counts** sync separately, about **:23 UTC each hour** (see **Votes** above).",
     ],
   },
   about: {

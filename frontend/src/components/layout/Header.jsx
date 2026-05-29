@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useInvalidateDataCaches } from "../../context/DataCacheContext.jsx";
 import { useRepoMeta } from "../../hooks/useRepoMeta.js";
 import { IS_REPOSITORY_CONFIGURED, NEW_PICK_URL } from "../../lib/constants";
@@ -188,9 +188,19 @@ export function Header() {
           </div>
         </div>
 
-        {IS_REPOSITORY_CONFIGURED && judgmentLabel ? (
-          <p className="border-t border-zinc-800 bg-zinc-900/80 px-4 py-2 text-center text-xs font-medium text-zinc-300 light:border-zinc-200 light:bg-primary-50 light:text-primary-900">
-            {t("nav.lastJudgment", { time: judgmentLabel })}
+        {IS_REPOSITORY_CONFIGURED ? (
+          <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border-t border-zinc-800 bg-zinc-900/80 px-4 py-2 text-center text-xs font-medium text-zinc-300 light:border-zinc-200 light:bg-primary-50 light:text-primary-900">
+            {judgmentLabel ? (
+              <>
+                <span>{t("nav.lastJudgment", { time: judgmentLabel })}</span>
+                <span className="text-zinc-500 light:text-zinc-500" aria-hidden>
+                  ·
+                </span>
+              </>
+            ) : null}
+            <Link to="/guide#schedule" className={`${ui.link} text-xs font-semibold`}>
+              {t("nav.scheduleLink")}
+            </Link>
           </p>
         ) : null}
       </header>

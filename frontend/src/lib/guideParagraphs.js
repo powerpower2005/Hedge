@@ -1,7 +1,10 @@
 import en from "../i18n/locales/en.js";
 import ko from "../i18n/locales/ko.js";
 
-const STEP_IDS = [1, 2, 3, 4, 5, 6, 7];
+const STEP_IDS = [1, 2, 3, 4, 5, 6, 7, 8];
+
+/** @type {Record<number, string>} */
+const STEP_ANCHORS = { 8: "schedule" };
 
 /**
  * @param {"ko" | "en"} locale
@@ -13,6 +16,7 @@ export function getGuideSteps(locale) {
     const fallback = guide[`s${n}Body`];
     return {
       n,
+      anchor: STEP_ANCHORS[n],
       title: guide[`s${n}Title`],
       paragraphs: Array.isArray(paragraphs) ? paragraphs : fallback ? [fallback] : [],
     };

@@ -20,7 +20,10 @@ export function GuidePage() {
       <ol className="mt-8 list-none space-y-6 p-0">
         {steps.map((step) => (
           <li key={step.n}>
-            <section className={`${ui.card} ${ui.cardPad}`}>
+            <section
+              id={step.anchor}
+              className={`scroll-mt-24 ${ui.card} ${ui.cardPad}`}
+            >
               <div className="flex items-start gap-3">
                 <span
                   className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary-600/20 text-sm font-bold text-primary-300 light:bg-primary-100 light:text-primary-800"

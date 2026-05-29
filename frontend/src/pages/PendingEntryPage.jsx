@@ -9,6 +9,7 @@ import { type } from "../lib/typographyClasses.js";
 import { ui } from "../lib/themeClasses.js";
 import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
+import { ScheduleNoticePanel } from "../components/guide/ScheduleNoticePanel.jsx";
 
 export function PendingEntryPage() {
   const { t } = useI18n();
@@ -33,7 +34,8 @@ export function PendingEntryPage() {
   return (
     <article className={ui.page}>
       <h1 className={type.pageTitle}>{t("pendingEntryPage.title")}</h1>
-      <p className={`mt-2 mb-8 ${type.pageLead}`}>{t("pendingEntryPage.subtitle")}</p>
+      <p className={`mt-2 ${type.pageLead}`}>{t("pendingEntryPage.subtitle")}</p>
+      <ScheduleNoticePanel paragraphs={[t("schedule.pendingNotice")]} className="mt-4 mb-8" />
       <FilterBar filters={filters} setFilters={setFilters} sortKey={sortKey} setSortKey={setSortKey} />
       <PickList picks={visible} />
     </article>
