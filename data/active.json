@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "2254d95"
+    "commit": "1bba11c"
   },
-  "generated_at": "2026-05-28T22:46:15.454605Z",
+  "generated_at": "2026-05-29T02:11:36.244027Z",
   "data": {
-    "count": 28,
+    "count": 29,
     "picks": [
       {
         "id": 9,
@@ -1828,6 +1828,55 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "Hyundai Mobis Co Ltd",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 52,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-29T02:11:36.243952Z",
+        "author": "sex-student",
+        "issue_number": 79,
+        "ticker": "035420",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-05-29",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.74
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-29T02:11:36.243952Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-29T02:11:36.243952Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Naver Corp",
         "author_note": "_No response_"
       }
     ]
