@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "846d73b"
+    "commit": "891cb5a"
   },
-  "generated_at": "2026-05-29T11:49:38.918867Z",
+  "generated_at": "2026-05-29T14:03:39.787543Z",
   "data": {
-    "count": 29,
+    "count": 30,
     "picks": [
       {
         "id": 9,
@@ -1902,6 +1902,55 @@
         },
         "instrument_name": "Naver Corp",
         "author_note": "_No response_"
+      },
+      {
+        "id": 53,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-29T14:03:39.787453Z",
+        "author": "cieske",
+        "issue_number": 80,
+        "ticker": "6981",
+        "country": "JP",
+        "market": "TYO",
+        "entry": {
+          "date": "2026-05-29",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.2
+        },
+        "duration": {
+          "days": 14
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-29T14:03:39.787453Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-29T14:03:39.787453Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Murata Manufacturing Co., Ltd.",
+        "author_note": "실 진입 8579엔"
       }
     ]
   }
