@@ -7,9 +7,10 @@ on:
         description: Message type
         type: choice
         options:
+          - verify
           - test
           - daily_near_target
-        default: test
+        default: verify
       country:
         description: Country (for daily_near_target)
         type: choice
@@ -30,6 +31,10 @@ permissions:
 jobs:
   send:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: scripts
+      TELEGRAM_BOT_TOKEN_HEALTHY_FIRE_BOT: ${{ secrets.TELEGRAM_BOT_TOKEN_HEALTHY_FIRE_BOT }}
+      TELEGRAM_CHAT_ID_HEALTHY_GAEMI: ${{ secrets.TELEGRAM_CHAT_ID_HEALTHY_GAEMI }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,12 +49,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
-      - name: Send Telegram
-        env:
-          TELEGRAM_BOT_TOKEN_HEALTHY_FIRE_BOT: ${{ secrets.TELEGRAM_BOT_TOKEN_HEALTHY_FIRE_BOT }}
-          TELEGRAM_CHAT_ID_HEALTHY_GAEMI: ${{ secrets.TELEGRAM_CHAT_ID_HEALTHY_GAEMI }}
+      - name: Telegram verify / send
         run: |
-          if [ "${{ inputs.mode }}" = "test" ]; then
+          if [ "${{ inputs.mode }}" = "verify" ]; then
+            python scripts/telegram_notify.py --mode verify
+          elif [ "${{ inputs.mode }}" = "test" ]; then
             python scripts/telegram_notify.py --mode test --message "${{ inputs.message }}"
           else
             python scripts/telegram_notify.py --mode daily --country "${{ inputs.country }}"
