@@ -111,7 +111,7 @@ def format_price_fetch_ops_log(
         attr = f"{fin_market}:{ticker}".replace("`", "'")
         prefix_note = (
             f"- Exchange prefixes tried (column C): {chain_md} "
-            "(column C was set in order until closeyest became numeric; last state in attr below)."
+            "(column C was set in order until column D became numeric; last state in attr below)."
         )
     else:
         fin_market = market_for_google_finance(market)
@@ -121,7 +121,7 @@ def format_price_fetch_ops_log(
     lines = [
         "=== register_pick: Google Sheet / API detail (stderr only) ===",
         "",
-        "Google Sheets previous close (column D, GOOGLEFINANCE closeyest) never became a numeric value after 8 reads "
+        "Google Sheets previous close (column D, sorted GOOGLEFINANCE daily history) never became a numeric value after 8 reads "
         "(~2s apart, plus a short wait after the row was appended).",
         "",
         f"- GOOGLEFINANCE attribute (columns C+B): `{attr}`",
@@ -162,9 +162,9 @@ def format_price_fetch_ops_log(
     lines.extend(
         [
             "",
-            "Test formula (sheet):",
-            f'=IFERROR(GOOGLEFINANCE("{attr}","closeyest"),"N/A")',
-            "Registration uses closeyest (previous session official close).",
+            "Test formula (sheet) — column D on PriceLookup-v1:",
+            f'=IFERROR(INDEX(SORT(GOOGLEFINANCE("{attr}","close",TODAY()-7,TODAY()),1,FALSE),2,2),"N/A")',
+            "Column D uses the 2nd-newest daily close in a 7-day GOOGLEFINANCE range (not closeyest).",
         ]
     )
     return "\n".join(lines)

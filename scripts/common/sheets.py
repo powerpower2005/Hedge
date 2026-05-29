@@ -15,6 +15,8 @@ from .models import market_for_google_finance, ticker_cell_for_price_lookup
 
 # Calendar days to walk backward from TODAY()-1 when resolving session date (column F).
 _SESSION_DATE_LOOKBACK_DAYS = 14
+# Column D close: GOOGLEFINANCE daily range length (TODAY()-N .. TODAY()).
+_CLOSE_PRICE_LOOKBACK_DAYS = 7
 
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -61,6 +63,16 @@ def _session_date_formula(next_row: int) -> str:
     return f"={nested}"
 
 
+def _close_price_formula(next_row: int) -> str:
+    """Column D: 2nd row after date-desc SORT on 7-day GOOGLEFINANCE close history (INDEX row 2)."""
+    s = _formula_sep()
+    sym = f'C{next_row}&":"&B{next_row}'
+    return (
+        f'=IFERROR(INDEX(SORT(GOOGLEFINANCE({sym}{s}"close"{s}TODAY()-{_CLOSE_PRICE_LOOKBACK_DAYS}'
+        f'{s}TODAY()){s}1{s}FALSE){s}2{s}2){s}"N/A")'
+    )
+
+
 # Column D: Apps Script refreshAllJpPrices (scripts/sheets_jp_yahoo.gs) writes Yahoo previousClose.
 # Do NOT use =yahooF() or GOOGLEFINANCE in D — custom functions cannot call UrlFetchApp (#ERROR!).
 JP_CLOSE_PENDING = "PENDING"
@@ -98,7 +110,7 @@ def append_ticker_row(
         else market_for_google_finance(market)
     )
     ticker_cell = ticker_cell_for_price_lookup(ticker, country)
-    close_formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"closeyest"),"N/A")'
+    close_formula = _close_price_formula(next_row)
     name_formula = f'=IFERROR(GOOGLEFINANCE(C{next_row}&":"&B{next_row},"name"),"")'
     session_date_formula = _session_date_formula(next_row)
     ws.append_row(

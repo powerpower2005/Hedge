@@ -2,7 +2,7 @@ name: Daily Judgment JP
 
 on:
   schedule:
-    # TSE close 15:00 JST; run after refreshAllJpPrices has filled column D.
+    # TSE close 15:00 JST; refresh_jp_prices.py fills column D before judgment.
     - cron: "30 6 * * *"
   workflow_dispatch:
 
@@ -38,6 +38,11 @@ jobs:
         run: |
           python -c "import os, pathlib; pathlib.Path('config').mkdir(exist_ok=True); pathlib.Path('config/service_account.json').write_text(os.environ['GOOGLE_SERVICE_ACCOUNT_JSON'], encoding='utf-8')"
 
+      - name: Refresh JP sheet prices (Yahoo)
+        env:
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+        run: python scripts/refresh_jp_prices.py
+
       - name: Run judgment (JP)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -68,7 +73,7 @@ jobs:
         env:
           REPO: ${{ github.repository }}
         run: |
-          echo "Judgment(JP): PriceLookup-jp-v1 column D (refreshAllJpPrices) + Secrets (GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_JSON)."
+          echo "Judgment(JP): refresh_jp_prices.py + PriceLookup-jp-v1 column D + Secrets (GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_JSON)."
           if [ -f scripts/ci_failure_context.sh ]; then
             bash scripts/ci_failure_context.sh
           fi
