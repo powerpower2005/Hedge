@@ -7,7 +7,6 @@ import os
 TOKEN_ENV = "TELEGRAM_BOT_TOKEN_HEALTHY_FIRE_BOT"
 CHAT_ID_ENV = "TELEGRAM_CHAT_ID_HEALTHY_GAEMI"
 
-
 def telegram_configured() -> bool:
     token = os.environ.get(TOKEN_ENV, "").strip()
     chat_id = os.environ.get(CHAT_ID_ENV, "").strip()
