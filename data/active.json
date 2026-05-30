@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "3edaa40"
+    "commit": "2e53ebe"
   },
-  "generated_at": "2026-05-30T09:00:20.292422Z",
+  "generated_at": "2026-05-30T09:24:19.012957Z",
   "data": {
     "count": 29,
     "picks": [
@@ -169,10 +169,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 131500.0,
-            "return_rate": -0.283379
+            "close": 126100.0,
+            "return_rate": -0.312807
           },
           "highest": {
             "close": 196800.0,
@@ -413,10 +413,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 10150.0,
-            "return_rate": -0.172779
+            "close": 9910.0,
+            "return_rate": -0.192339
           },
           "highest": {
             "close": 12270.0,
@@ -596,10 +596,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 17140.0,
-            "return_rate": -0.387857
+            "close": 16060.0,
+            "return_rate": -0.426429
           },
           "highest": {
             "close": 28000.0,
@@ -657,10 +657,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 40300.0,
-            "return_rate": -0.263254
+            "close": 40100.0,
+            "return_rate": -0.26691
           },
           "highest": {
             "close": 54700.0,
@@ -718,10 +718,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 4920.0,
-            "return_rate": -0.203883
+            "close": 4775.0,
+            "return_rate": -0.227346
           },
           "highest": {
             "close": 6180.0,
@@ -779,10 +779,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 37550.0,
-            "return_rate": -0.070545
+            "close": 36250.0,
+            "return_rate": -0.102723
           },
           "highest": {
             "close": 41800.0,
@@ -901,10 +901,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 33300.0,
-            "return_rate": -0.147247
+            "close": 32800.0,
+            "return_rate": -0.160051
           },
           "highest": {
             "close": 39050.0,
@@ -962,10 +962,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 63300.0,
-            "return_rate": -0.063609
+            "close": 61000.0,
+            "return_rate": -0.097633
           },
           "highest": {
             "close": 67700.0,
@@ -1155,10 +1155,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 9090.0,
-            "return_rate": 0.049654
+            "close": 8610.0,
+            "return_rate": -0.005774
           },
           "highest": {
             "close": 11260.0,
@@ -1740,22 +1740,22 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 686000.0,
-            "return_rate": -0.002907
+            "close": 768000.0,
+            "return_rate": 0.116279
           },
           "highest": {
-            "close": 688000.0,
-            "close_date": "2026-05-28",
-            "return_rate": 0.0
+            "close": 768000.0,
+            "close_date": "2026-05-30",
+            "return_rate": 0.116279
           },
           "lowest": {
             "close": 688000.0,
             "close_date": "2026-05-28",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.69,
+          "distance_to_target": 0.573721,
           "error_count": 0
         },
         "votes": {
@@ -1813,22 +1813,22 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 205000.0,
-            "return_rate": 0.0
+            "close": 234000.0,
+            "return_rate": 0.141463
           },
           "highest": {
-            "close": 205000.0,
-            "close_date": "2026-05-29",
-            "return_rate": 0.0
+            "close": 234000.0,
+            "close_date": "2026-05-30",
+            "return_rate": 0.141463
           },
           "lowest": {
             "close": 205000.0,
             "close_date": "2026-05-29",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.74,
+          "distance_to_target": 0.598537,
           "error_count": 0
         },
         "votes": {
