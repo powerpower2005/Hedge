@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "99f75d1"
+    "commit": "05b2e75"
   },
-  "generated_at": "2026-05-30T10:24:41.238945Z",
+  "generated_at": "2026-05-30T22:14:02.179232Z",
   "data": {
-    "count": 29,
+    "count": 28,
     "picks": [
       {
         "id": 9,
@@ -48,7 +48,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 113.41,
             "return_rate": 0.339594
@@ -108,7 +108,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 854.96,
             "return_rate": 0.009529
@@ -230,7 +230,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 67.2,
             "return_rate": -0.406413
@@ -291,7 +291,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 258.24,
             "return_rate": -0.116554
@@ -352,7 +352,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 94.3,
             "return_rate": 0.280206
@@ -474,7 +474,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 516.1,
             "return_rate": 0.452739
@@ -535,17 +535,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 43.8,
-            "return_rate": 0.766129
+            "close": 43.83,
+            "return_rate": 0.767339
           },
           "highest": {
-            "close": 43.8,
-            "close_date": "2026-05-29",
-            "return_rate": 0.766129
+            "close": 43.83,
+            "close_date": "2026-05-30",
+            "return_rate": 0.767339
           },
-          "distance_to_target": 1.733871,
+          "distance_to_target": 1.732661,
           "error_count": 0
         },
         "votes": {
@@ -840,7 +840,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 113.0,
             "return_rate": -0.005894
@@ -1023,7 +1023,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 109.53,
             "return_rate": 0.01652
@@ -1084,7 +1084,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 361.47,
             "return_rate": -0.003748
@@ -1185,79 +1185,6 @@
         "author_note": "_No response_"
       },
       {
-        "id": 40,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-05-22T06:14:38.107457Z",
-        "author": "CodeButter96",
-        "issue_number": 63,
-        "ticker": "NVDO",
-        "country": "US",
-        "market": "BATS",
-        "entry": {
-          "date": "2026-05-22",
-          "source": "google_sheets",
-          "price": 21.65
-        },
-        "target": {
-          "return_rate": 0.15,
-          "price": 24.8975
-        },
-        "duration": {
-          "days": 7,
-          "deadline": "2026-05-29"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-05-22T06:14:38.107457Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-05-22T22:16:23.512653Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-05-29",
-          "current": {
-            "close": 21.96,
-            "return_rate": 0.014319
-          },
-          "highest": {
-            "close": 21.96,
-            "close_date": "2026-05-29",
-            "return_rate": 0.014319
-          },
-          "lowest": {
-            "close": 21.65,
-            "close_date": "2026-05-22",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.135681,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-22T06:14:38.107457Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Leverage Shares 2x Capped Acc NVDA Monthly ETF",
-        "author_note": "_No response_"
-      },
-      {
         "id": 41,
         "schema_version": "1.0.0",
         "created_with": {
@@ -1301,10 +1228,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
-            "close": 6.99,
-            "return_rate": 0.153465
+            "close": 6.98,
+            "return_rate": 0.151815
           },
           "highest": {
             "close": 6.99,
@@ -1374,7 +1301,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 1090.0,
             "return_rate": 0.299166
@@ -1447,7 +1374,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 148.89,
             "return_rate": -0.072568
@@ -1520,7 +1447,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 866.64,
             "return_rate": 0.621798
@@ -1667,7 +1594,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-05-29",
+          "updated_at": "2026-05-30",
           "current": {
             "close": 22.84,
             "return_rate": -0.038316
