@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "8fe0f72"
+    "commit": "2f850d6"
   },
-  "generated_at": "2026-05-31T05:09:27.557701Z",
+  "generated_at": "2026-05-31T08:58:31.562126Z",
   "data": {
-    "count": 28,
+    "count": 29,
     "picks": [
       {
         "id": 9,
@@ -1842,6 +1842,55 @@
         },
         "instrument_name": "Murata Manufacturing Co., Ltd.",
         "author_note": "실 진입 8579엔"
+      },
+      {
+        "id": 54,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-31T08:58:31.562005Z",
+        "author": "saechimdaeki",
+        "issue_number": 81,
+        "ticker": "000150",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-05-31",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.15
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-31T08:58:31.562005Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-31T08:58:31.562005Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Doosan Corp",
+        "author_note": "_No response_"
       }
     ]
   }
