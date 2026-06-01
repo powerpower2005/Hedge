@@ -5,25 +5,17 @@ import { useI18n } from "../i18n/I18nContext.jsx";
 import { formatReturn, formatWinRate, returnRateColorClass } from "../lib/formatters.js";
 import { type } from "../lib/typographyClasses.js";
 import { ui } from "../lib/themeClasses.js";
-import { aggregateUserStats, sortUserStats } from "../lib/userLeaderboard.js";
+import { aggregateUserStats, sortLeaderboardStats } from "../lib/userLeaderboard.js";
 import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 const PAGE_SIZE = 20;
-
-const VALID_USER_SORT = new Set(["winRate", "attempts", "wins"]);
 
 function rankStickerText(t, rank) {
   if (rank === 1) return t("users.rankTitle1");
   if (rank === 2) return t("users.rankTitle2");
   if (rank === 3) return t("users.rankTitle3");
   return "";
-}
-
-function rankRuleText(t, sortKey) {
-  if (sortKey === "attempts") return t("users.rankRuleAttempts");
-  if (sortKey === "wins") return t("users.rankRuleWins");
-  return t("users.rankRuleWinRate");
 }
 
 function TotalReturnHelp({ text, triggerAriaLabel }) {
@@ -59,28 +51,16 @@ export function UsersLeaderboardPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(1);
 
-  const rawSort = searchParams.get("sort");
-  const sortKey = VALID_USER_SORT.has(rawSort) ? rawSort : "winRate";
-
   useEffect(() => {
-    if (rawSort != null && !VALID_USER_SORT.has(rawSort)) {
+    if (searchParams.has("sort")) {
       setSearchParams({}, { replace: true });
     }
-  }, [rawSort, setSearchParams]);
-
-  useEffect(() => {
-    setPage(1);
-  }, [sortKey]);
-
-  const setSortKey = (next) => {
-    if (next === "winRate") setSearchParams({}, { replace: true });
-    else setSearchParams({ sort: next }, { replace: true });
-  };
+  }, [searchParams, setSearchParams]);
 
   const sorted = useMemo(() => {
     const rows = aggregateUserStats(picks);
-    return sortUserStats(rows, sortKey);
-  }, [picks, sortKey]);
+    return sortLeaderboardStats(rows);
+  }, [picks]);
 
   const totalPages = sorted.length === 0 ? 0 : Math.ceil(sorted.length / PAGE_SIZE);
   const safePage = totalPages === 0 ? 1 : Math.min(page, totalPages);
@@ -104,28 +84,12 @@ export function UsersLeaderboardPage() {
         <p className={`mt-2 ${type.pageLead}`}>{t("users.subtitle")}</p>
       </header>
 
-      <div className="mt-6 flex flex-wrap items-end gap-4">
-        <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600" htmlFor="users-sort">
-          {t("users.sortLabel")}
-          <select
-            id="users-sort"
-            className="mt-1 min-w-[12rem] rounded border border-zinc-700 bg-zinc-950 px-2 py-1 text-sm text-white light:border-zinc-300 light:bg-white light:text-zinc-900"
-            value={sortKey}
-            onChange={(e) => setSortKey(e.target.value)}
-          >
-            <option value="winRate">{t("users.sortWinRate")}</option>
-            <option value="attempts">{t("users.sortAttempts")}</option>
-            <option value="wins">{t("users.sortWins")}</option>
-          </select>
-        </label>
+      <div className="mt-6 flex flex-col gap-2">
         <p className="max-w-xl text-xs text-zinc-500 light:text-zinc-600">
           {t("users.winRateHint")} {t("users.totalReturnHint")}
         </p>
         <p className="max-w-xl text-xs text-zinc-500 light:text-zinc-600">
-          {t("users.totalReturnRankingNote")}
-        </p>
-        <p className="max-w-xl text-xs text-zinc-500 light:text-zinc-600">
-          {t("users.rankRuleLabel")} {rankRuleText(t, sortKey)}
+          {t("users.rankRuleLabel")} {t("users.rankRuleFixed")}
         </p>
       </div>
 

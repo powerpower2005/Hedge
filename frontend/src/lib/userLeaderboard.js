@@ -43,35 +43,21 @@ export function aggregateUserStats(allPicks) {
   return rows;
 }
 
-/** @param {UserStatRow} a @param {UserStatRow} b */
-function cmpWinRate(a, b) {
-  if (a.winRate == null && b.winRate == null) return 0;
-  if (a.winRate == null) return 1;
-  if (b.winRate == null) return -1;
-  if (b.winRate !== a.winRate) return b.winRate - a.winRate;
-  if (b.wins !== a.wins) return b.wins - a.wins;
-  return b.total - a.total;
+/** @param {number | null} rate */
+function winRateSortKey(rate) {
+  return rate == null ? -1 : rate;
 }
 
 /** @param {UserStatRow} a @param {UserStatRow} b */
-function cmpAttempts(a, b) {
-  if (b.total !== a.total) return b.total - a.total;
+function cmpLeaderboardRank(a, b) {
   if (b.wins !== a.wins) return b.wins - a.wins;
+  const wr = winRateSortKey(b.winRate) - winRateSortKey(a.winRate);
+  if (wr !== 0) return wr;
+  if (b.totalReturn !== a.totalReturn) return b.totalReturn - a.totalReturn;
   return a.author.localeCompare(b.author);
 }
 
-/** @param {UserStatRow} a @param {UserStatRow} b */
-function cmpWins(a, b) {
-  if (b.wins !== a.wins) return b.wins - a.wins;
-  if (b.total !== a.total) return b.total - a.total;
-  return a.author.localeCompare(b.author);
-}
-
-/** @param {UserStatRow[]} rows @param {"winRate"|"attempts"|"wins"} sortKey */
-export function sortUserStats(rows, sortKey) {
-  const copy = [...rows];
-  if (sortKey === "attempts") copy.sort(cmpAttempts);
-  else if (sortKey === "wins") copy.sort(cmpWins);
-  else copy.sort(cmpWinRate);
-  return copy;
+/** Fixed ranking: wins → win rate → total return → username. */
+export function sortLeaderboardStats(rows) {
+  return [...rows].sort(cmpLeaderboardRank);
 }
