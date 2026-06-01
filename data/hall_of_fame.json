@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "cb1da24"
+    "commit": "973eb0b"
   },
-  "generated_at": "2026-05-29T22:43:02.143118Z",
+  "generated_at": "2026-06-01T23:10:42.975650Z",
   "data": {
-    "count": 11,
+    "count": 12,
     "picks": [
       {
         "id": 5,
@@ -818,6 +818,91 @@
           "achieved_close": 255.55,
           "days_taken": 22,
           "final_return_rate": 0.803331
+        }
+      },
+      {
+        "id": 42,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-24T04:44:18.865488Z",
+        "author": "gre150",
+        "issue_number": 66,
+        "ticker": "KORU",
+        "country": "US",
+        "market": "NYSEARCA",
+        "entry": {
+          "date": "2026-05-24",
+          "source": "google_sheets",
+          "price": 839.0
+        },
+        "target": {
+          "return_rate": 0.3,
+          "price": 1090.7
+        },
+        "duration": {
+          "days": 14,
+          "deadline": "2026-06-07"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-24T04:44:18.865488Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-05-24T22:11:47.434687Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-06-01T23:10:42.972504Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-06-01",
+          "current": {
+            "close": 1264.9,
+            "return_rate": 0.507628
+          },
+          "highest": {
+            "close": 1264.9,
+            "close_date": "2026-06-01",
+            "return_rate": 0.507628
+          },
+          "lowest": {
+            "close": 839.0,
+            "close_date": "2026-05-24",
+            "return_rate": 0.0
+          },
+          "distance_to_target": -0.207628,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-24T04:44:18.865488Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Direxion Daily MSCI South Korea Bull 3X ETF",
+        "author_note": "_No response_",
+        "achievement": {
+          "achieved_date": "2026-06-01",
+          "achieved_close": 1264.9,
+          "days_taken": 8,
+          "final_return_rate": 0.507628
         }
       }
     ]
