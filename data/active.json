@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "5298d03"
+    "commit": "4b8a2ea"
   },
-  "generated_at": "2026-05-31T22:14:56.233596Z",
+  "generated_at": "2026-06-01T00:53:34.086020Z",
   "data": {
-    "count": 30,
+    "count": 31,
     "picks": [
       {
         "id": 9,
@@ -1988,6 +1988,55 @@
         },
         "instrument_name": "Amphenol Corp",
         "author_note": "갑니다"
+      },
+      {
+        "id": 56,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-01T00:53:34.085948Z",
+        "author": "CodeButter96",
+        "issue_number": 83,
+        "ticker": "442580",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-06-01",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.6
+        },
+        "duration": {
+          "days": 180
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-01T00:53:34.085948Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-01T00:53:34.085948Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "PLUS Global HBM",
+        "author_note": "_No response_"
       }
     ]
   }
