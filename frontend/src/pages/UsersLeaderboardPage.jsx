@@ -102,27 +102,27 @@ export function UsersLeaderboardPage() {
           <div className="hidden md:mt-6 md:block">
             <div className="overflow-x-auto rounded-lg border border-zinc-800 light:border-zinc-200">
               <table
-                className="w-full min-w-[42rem] border-collapse text-left text-sm"
+                className={`${ui.table} min-w-[42rem]`}
                 aria-labelledby="users-page-title"
               >
                 <thead>
-                  <tr className="border-b border-zinc-800 bg-zinc-900/40 light:border-zinc-200 light:bg-zinc-100">
-                    <th scope="col" className="px-3 py-2 font-medium text-zinc-400 light:text-zinc-600">
+                  <tr className={ui.tableHeadRow}>
+                    <th scope="col" className={ui.thNum}>
                       {t("users.colRank")}
                     </th>
-                    <th scope="col" className="px-3 py-2 font-medium text-zinc-400 light:text-zinc-600">
+                    <th scope="col" className={ui.th}>
                       {t("users.colUser")}
                     </th>
-                    <th scope="col" className="px-3 py-2 font-medium text-zinc-400 light:text-zinc-600">
+                    <th scope="col" className={ui.thNum}>
                       {t("users.colAttempts")}
                     </th>
-                    <th scope="col" className="px-3 py-2 font-medium text-zinc-400 light:text-zinc-600">
+                    <th scope="col" className={ui.thNum}>
                       {t("users.colWins")}
                     </th>
-                    <th scope="col" className="px-3 py-2 font-medium text-zinc-400 light:text-zinc-600">
+                    <th scope="col" className={ui.thNum}>
                       {t("users.colWinRate")}
                     </th>
-                    <th scope="col" className="px-3 py-2 font-medium text-zinc-400 light:text-zinc-600">
+                    <th scope="col" className={ui.thNum}>
                       <span className="inline-flex items-center">
                         {t("users.colTotalReturn")}
                         <TotalReturnHelp
@@ -138,12 +138,9 @@ export function UsersLeaderboardPage() {
                     const rank = sliceStart + i + 1;
                     const titleSticker = rankStickerText(t, rank);
                     return (
-                      <tr
-                        key={row.author}
-                        className="border-b border-zinc-800/80 last:border-0 light:border-zinc-100 odd:bg-zinc-950/40 light:odd:bg-zinc-50/80"
-                      >
-                        <td className="px-3 py-2 tabular-nums text-zinc-500 light:text-zinc-600">{rank}</td>
-                        <td className="px-3 py-2 font-medium">
+                      <tr key={row.author} className={ui.tableBodyRow}>
+                        <td className={`${ui.tdNum} text-zinc-500 light:text-zinc-600`}>{rank}</td>
+                        <td className={`${ui.td} font-medium`}>
                           <span className="inline-flex items-center gap-2">
                             <Link
                               className="text-primary-500 hover:underline light:text-primary-600"
@@ -158,12 +155,12 @@ export function UsersLeaderboardPage() {
                             ) : null}
                           </span>
                         </td>
-                        <td className="px-3 py-2 tabular-nums">{row.total}</td>
-                        <td className="px-3 py-2 tabular-nums">{row.wins}</td>
-                        <td className="px-3 py-2 tabular-nums text-zinc-200 light:text-zinc-800">
+                        <td className={ui.tdNum}>{row.total}</td>
+                        <td className={ui.tdNum}>{row.wins}</td>
+                        <td className={`${ui.tdNum} text-zinc-200 light:text-zinc-800`}>
                           {row.winRate == null ? "—" : formatWinRate(row.winRate)}
                         </td>
-                        <td className={`px-3 py-2 tabular-nums ${returnRateColorClass(row.totalReturn)}`}>
+                        <td className={`${ui.tdNum} ${returnRateColorClass(row.totalReturn)}`}>
                           {formatReturn(row.totalReturn)}
                         </td>
                       </tr>
@@ -204,23 +201,23 @@ export function UsersLeaderboardPage() {
                       ) : null}
                     </span>
                   </div>
-                  <dl className="mt-3 grid grid-cols-2 gap-2 text-sm">
-                    <div>
-                      <dt className="text-xs text-zinc-500 light:text-zinc-600">{t("users.colAttempts")}</dt>
-                      <dd className="tabular-nums font-medium">{row.total}</dd>
+                  <dl className={`mt-3 ${ui.dlGrid}`}>
+                    <div className={ui.dlCell}>
+                      <dt className={ui.dlLabel}>{t("users.colAttempts")}</dt>
+                      <dd className={ui.dlValue}>{row.total}</dd>
                     </div>
-                    <div>
-                      <dt className="text-xs text-zinc-500 light:text-zinc-600">{t("users.colWins")}</dt>
-                      <dd className="tabular-nums font-medium">{row.wins}</dd>
+                    <div className={ui.dlCell}>
+                      <dt className={ui.dlLabel}>{t("users.colWins")}</dt>
+                      <dd className={ui.dlValue}>{row.wins}</dd>
                     </div>
-                    <div>
-                      <dt className="text-xs text-zinc-500 light:text-zinc-600">{t("users.colWinRate")}</dt>
-                      <dd className="tabular-nums font-medium text-zinc-200 light:text-zinc-800">
+                    <div className={ui.dlCell}>
+                      <dt className={ui.dlLabel}>{t("users.colWinRate")}</dt>
+                      <dd className={`${ui.dlValue} text-zinc-200 light:text-zinc-800`}>
                         {row.winRate == null ? "—" : formatWinRate(row.winRate)}
                       </dd>
                     </div>
-                    <div>
-                      <dt className="text-xs text-zinc-400 light:text-zinc-700">
+                    <div className={ui.dlCell}>
+                      <dt className={ui.dlLabel}>
                         <span className="inline-flex items-center">
                           {t("users.colTotalReturn")}
                           <TotalReturnHelp
@@ -229,7 +226,7 @@ export function UsersLeaderboardPage() {
                           />
                         </span>
                       </dt>
-                      <dd className={`tabular-nums font-medium ${returnRateColorClass(row.totalReturn)}`}>
+                      <dd className={`${ui.dlValue} ${returnRateColorClass(row.totalReturn)}`}>
                         {formatReturn(row.totalReturn)}
                       </dd>
                     </div>

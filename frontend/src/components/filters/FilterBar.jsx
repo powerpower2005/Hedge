@@ -6,7 +6,7 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
   const { t } = useI18n();
   return (
     <div className={`mb-6 flex flex-wrap items-end gap-4 ${ui.card} ${ui.cardPad}`}>
-      <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600">
+      <label className={`flex flex-col ${ui.label}`}>
         {t("filters.country")}
         <select
           className={ui.field}
@@ -20,7 +20,7 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
           <option value="JP">JP</option>
         </select>
       </label>
-      <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600">
+      <label className={`flex flex-col ${ui.label}`}>
         {t("filters.market")}
         <select
           className={ui.field}
@@ -35,7 +35,7 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
           ))}
         </select>
       </label>
-      <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600">
+      <label className={`flex flex-col ${ui.label}`}>
         {t("filters.tickerContains")}
         <input
           className={ui.field}
@@ -43,7 +43,7 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
           onChange={(e) => setFilters({ ...filters, ticker: e.target.value || null })}
         />
       </label>
-      <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600">
+      <label className={`flex flex-col ${ui.label}`}>
         {t("filters.sort")}
         <select
           className={ui.field}

@@ -49,8 +49,33 @@ export const ui = {
   tickerSecondary:
     "text-xs font-bold tracking-wide text-primary-400 tabular-nums light:text-primary-700",
   label: "text-xs font-medium text-zinc-400 light:text-zinc-600",
-  value: "text-sm font-semibold text-zinc-100 light:text-zinc-900",
+  value: "text-sm font-semibold tabular-nums text-zinc-100 light:text-zinc-900",
   valueLg: "text-lg font-bold tabular-nums text-zinc-100 light:text-zinc-900",
+  /** Stat / KPI cards: label top-left, value top-right */
+  statValue:
+    "mt-2 text-right text-2xl font-bold tabular-nums tracking-tight text-zinc-100 light:text-zinc-900",
+  statHint: "mt-1 text-right text-[11px] leading-snug text-zinc-500 light:text-zinc-600",
+  /** 2+ column metric grids inside cards */
+  metricGrid: "grid grid-cols-2 gap-3 sm:gap-4",
+  metricBlock: "min-w-0",
+  metricValue: "mt-1 text-right tabular-nums",
+  /** Data tables: names left, numbers right */
+  table: "w-full border-collapse text-sm",
+  tableHeadRow:
+    "border-b border-zinc-800 bg-zinc-900/40 light:border-zinc-200 light:bg-zinc-100",
+  tableBodyRow:
+    "border-b border-zinc-800/80 last:border-0 odd:bg-zinc-950/40 light:border-zinc-100 light:odd:bg-zinc-50/80",
+  th: "px-3 py-2.5 text-left text-xs font-semibold text-zinc-400 whitespace-nowrap light:text-zinc-600",
+  thNum:
+    "px-3 py-2.5 text-right text-xs font-semibold text-zinc-400 whitespace-nowrap light:text-zinc-600",
+  td: "px-3 py-2.5 align-top text-sm text-zinc-100 light:text-zinc-900",
+  tdNum: "px-3 py-2.5 align-top text-right text-sm tabular-nums text-zinc-100 light:text-zinc-900",
+  /** Mobile definition lists (label left, value right) */
+  dlGrid: "grid grid-cols-2 gap-x-4 gap-y-3 text-xs sm:grid-cols-3 sm:text-sm",
+  dlCell: "min-w-0",
+  dlLabel: "text-[11px] font-semibold uppercase tracking-wide text-zinc-400 light:text-zinc-600",
+  dlValue: "mt-0.5 text-right tabular-nums font-semibold text-zinc-100 light:text-zinc-900",
+  dlValueText: "mt-0.5 text-right font-medium text-zinc-200 light:text-zinc-800",
   sectionTitle: "text-lg font-bold text-zinc-100 light:text-zinc-900",
   link: "font-medium text-primary-400 underline-offset-2 hover:text-primary-300 hover:underline light:text-primary-700 light:hover:text-primary-800",
 };

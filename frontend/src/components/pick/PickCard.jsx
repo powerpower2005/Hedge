@@ -14,6 +14,7 @@ import { useI18n } from "../../i18n/I18nContext.jsx";
 import { ui } from "../../lib/themeClasses.js";
 import { type } from "../../lib/typographyClasses.js";
 import { StatusBadge } from "./StatusBadge.jsx";
+import { MetricBlock } from "../ui/MetricBlock.jsx";
 import { ProgressBar } from "../ui/ProgressBar.jsx";
 
 export function PickCard({ pick }) {
@@ -32,23 +33,17 @@ export function PickCard({ pick }) {
           <StatusBadge status={st} title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined} />
         </header>
 
-        <div className={`mt-4 grid grid-cols-2 gap-3 ${ui.innerPanel}`}>
-          <div>
-            <p className={ui.label}>{t("pickCard.target")}</p>
-            <p className="mt-1">
-              <ReturnRate rate={pick.target?.return_rate} className="text-base font-bold" />
-            </p>
-          </div>
-          <div>
-            <p className={ui.label}>{t("pickCard.progress")}</p>
-            <p className="mt-1">
-              {isEntryPending(pick) ? (
-                <span className={`text-sm ${type.meta}`}>{t("pick.pendingProgress")}</span>
-              ) : (
-                <ReturnRate rate={displayReturn} className="text-base font-bold" />
-              )}
-            </p>
-          </div>
+        <div className={`mt-4 ${ui.metricGrid} ${ui.innerPanel}`}>
+          <MetricBlock label={t("pickCard.target")}>
+            <ReturnRate rate={pick.target?.return_rate} className="text-base font-bold" />
+          </MetricBlock>
+          <MetricBlock label={t("pickCard.progress")} valueClass="text-sm">
+            {isEntryPending(pick) ? (
+              <span className={type.meta}>{t("pick.pendingProgress")}</span>
+            ) : (
+              <ReturnRate rate={displayReturn} className="text-base font-bold" />
+            )}
+          </MetricBlock>
         </div>
 
         <p className={`mt-3 ${type.meta}`}>

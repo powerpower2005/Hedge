@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PickList } from "../components/pick/PickList.jsx";
+import { StatBlock } from "../components/ui/StatBlock.jsx";
 import { useAllMergedPicks } from "../hooks/useAllMergedPicks.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { formatReturn } from "../lib/formatters.js";
@@ -8,6 +9,7 @@ import { pickReturnForLeaderboard } from "../lib/userLeaderboard.js";
 import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 import { ui } from "../lib/themeClasses.js";
+import { type } from "../lib/typographyClasses.js";
 
 export function UserPage() {
   const { username } = useParams();
@@ -25,41 +27,36 @@ export function UserPage() {
   }, [picks]);
 
   if (loading) return <PageLoading />;
-  if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
+  if (error) return <p className={`${ui.page} text-red-400 light:text-red-600`}>{dataLoadErrorMessage(error, t)}</p>;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
-      <Link to="/" className="text-sm text-primary-500 hover:underline light:text-primary-600">
-        {t("common.home")}
-      </Link>
-      <h1 className="mt-4 text-2xl font-bold text-white light:text-zinc-900">
-        {t("user.title", { name: username })}
-      </h1>
-      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className={`rounded-lg p-4 ${ui.innerPanel}`}>
-          <p className="text-xs text-zinc-500">{t("user.totalPicks")}</p>
-          <p className="text-2xl font-semibold">{stats.total}</p>
-        </div>
-        <div className={`rounded-lg p-4 ${ui.innerPanel}`}>
-          <p className="text-xs text-zinc-500">{t("user.achieved")}</p>
-          <p className="text-2xl font-semibold">{stats.wins}</p>
-        </div>
-        <div className={`rounded-lg p-4 ${ui.innerPanel}`}>
-          <p className="text-xs text-zinc-500">{t("user.avgTarget")}</p>
-          <p className="text-2xl font-semibold">{formatReturn(stats.avgTarget)}</p>
-        </div>
-        <div className={`rounded-lg p-4 ${ui.innerPanel}`}>
-          <p className="text-xs text-zinc-500">{t("user.totalReturn")}</p>
-          <p className="text-2xl font-semibold">{formatReturn(stats.totalReturn)}</p>
-          <p className="mt-1 text-[11px] leading-snug text-zinc-500 light:text-zinc-600">
-            {t("user.totalReturnHint")}
-          </p>
-        </div>
+    <article className={ui.page}>
+      <nav className="text-sm">
+        <Link to="/users" className={ui.link}>
+          {t("nav.ranking")}
+        </Link>
+        <span className="mx-2 text-zinc-600 light:text-zinc-400" aria-hidden>
+          /
+        </span>
+        <Link to="/" className={ui.link}>
+          {t("common.home")}
+        </Link>
+      </nav>
+      <h1 className={`mt-4 ${type.pageTitle}`}>{t("user.title", { name: username })}</h1>
+      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <StatBlock label={t("user.totalPicks")} value={stats.total} />
+        <StatBlock label={t("user.achieved")} value={stats.wins} />
+        <StatBlock label={t("user.avgTarget")} value={formatReturn(stats.avgTarget)} />
+        <StatBlock
+          label={t("user.totalReturn")}
+          value={formatReturn(stats.totalReturn)}
+          hint={t("user.totalReturnHint")}
+        />
       </div>
-      <h2 className="mt-8 text-lg font-semibold text-white light:text-zinc-900">{t("user.allPicks")}</h2>
+      <h2 className={`mt-8 ${ui.sectionTitle}`}>{t("user.allPicks")}</h2>
       <div className="mt-4">
         <PickList picks={picks} />
       </div>
-    </div>
+    </article>
   );
 }

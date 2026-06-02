@@ -12,15 +12,7 @@ import { ui } from "../lib/themeClasses.js";
 import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 import { ScheduleLink } from "../components/guide/ScheduleLink.jsx";
-
-function StatCard({ label, value, valueClass = "" }) {
-  return (
-    <div className={ui.statCard}>
-      <p className={ui.label}>{label}</p>
-      <p className={`mt-2 text-2xl font-bold tabular-nums text-zinc-100 light:text-zinc-900 ${valueClass}`}>{value}</p>
-    </div>
-  );
-}
+import { StatBlock } from "../components/ui/StatBlock.jsx";
 
 export function ActivePage() {
   const { t } = useI18n();
@@ -87,10 +79,10 @@ export function ActivePage() {
 
       {!allLoading ? (
         <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4" aria-label={t("active.statsLabel")}>
-          <StatCard label={t("active.statTotal")} value={stats.total} />
-          <StatCard label={t("active.statActive")} value={stats.activeCount} />
-          <StatCard label={t("active.statAchieved")} value={stats.achievedCount} />
-          <StatCard
+          <StatBlock label={t("active.statTotal")} value={stats.total} />
+          <StatBlock label={t("active.statActive")} value={stats.activeCount} />
+          <StatBlock label={t("active.statAchieved")} value={stats.achievedCount} />
+          <StatBlock
             label={t("active.statAvgReturn")}
             value={stats.avg == null ? "—" : formatReturn(stats.avg)}
             valueClass={stats.avg != null && stats.avg > 0 ? "text-primary-400 light:text-primary-700" : ""}

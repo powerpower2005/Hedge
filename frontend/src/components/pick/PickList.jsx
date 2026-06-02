@@ -6,18 +6,14 @@ import { PickDeadline } from "./PickDeadline.jsx";
 import { PickEntryPrice } from "./PickEntryPrice.jsx";
 import { PickProgress } from "./PickProgress.jsx";
 import { ReturnRate } from "./ReturnRate.jsx";
-import { type } from "../../lib/typographyClasses.js";
 import { ui } from "../../lib/themeClasses.js";
+import { type } from "../../lib/typographyClasses.js";
 import { StatusBadge } from "./StatusBadge.jsx";
 import { MarketBadge } from "./MarketBadge.jsx";
 import { PickCard } from "./PickCard.jsx";
 import { PickInstrumentHeading } from "./PickInstrumentHeading.jsx";
 import { getPickDisplayReturnRate } from "../../lib/pickSignMismatch.js";
 
-const listHeader = `${type.sectionLabel} px-3 py-2`;
-const thClass = `${listHeader} text-left whitespace-nowrap`;
-const tdClass = "px-3 py-2 align-top text-xs sm:text-sm";
-const tdNum = `${tdClass} whitespace-nowrap tabular-nums`;
 
 const VIEW_STORAGE_KEY = "hedge-pick-list-view";
 
@@ -69,34 +65,34 @@ function PickListMobileRow({ p, t }) {
           <PickListTickerCell p={p} t={t} />
           <StatusBadge status={p.status?.current} title={pendingHint} />
         </header>
-        <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2.5 text-xs sm:grid-cols-3">
-          <div>
-            <dt className={type.fieldLabel}>{t("pickList.colMarket")}</dt>
-            <dd className="mt-0.5">
+        <dl className={`mt-3 ${ui.dlGrid}`}>
+          <div className={ui.dlCell}>
+            <dt className={ui.dlLabel}>{t("pickList.colMarket")}</dt>
+            <dd className={`${ui.dlValueText} flex justify-end`}>
               <MarketBadge pick={p} />
             </dd>
           </div>
-          <div>
-            <dt className={type.fieldLabel}>{t("pickList.colTarget")}</dt>
-            <dd className="mt-0.5">
+          <div className={ui.dlCell}>
+            <dt className={ui.dlLabel}>{t("pickList.colTarget")}</dt>
+            <dd className={ui.dlValue}>
               <ReturnRate rate={p.target?.return_rate} />
             </dd>
           </div>
-          <div>
-            <dt className={type.fieldLabel}>{t("pickList.colEntry")}</dt>
-            <dd className={`mt-0.5 ${type.bodySm}`}>
+          <div className={ui.dlCell}>
+            <dt className={ui.dlLabel}>{t("pickList.colEntry")}</dt>
+            <dd className={ui.dlValueText}>
               <PickEntryPrice pick={p} />
             </dd>
           </div>
-          <div>
-            <dt className={type.fieldLabel}>{t("pickList.colDeadline")}</dt>
-            <dd className={`mt-0.5 ${type.bodySm}`}>
+          <div className={ui.dlCell}>
+            <dt className={ui.dlLabel}>{t("pickList.colDeadline")}</dt>
+            <dd className={ui.dlValueText}>
               <PickDeadline pick={p} />
             </dd>
           </div>
-          <div className="col-span-2 sm:col-span-1">
-            <dt className={type.fieldLabel}>{t("pickList.colProgress")}</dt>
-            <dd className={`mt-0.5 min-w-0 ${type.bodySm}`}>
+          <div className={`${ui.dlCell} col-span-2 sm:col-span-1`}>
+            <dt className={ui.dlLabel}>{t("pickList.colProgress")}</dt>
+            <dd className={`${ui.dlValueText} flex min-w-0 flex-col items-end`}>
               <PickProgress pick={p} />
             </dd>
           </div>
@@ -151,58 +147,60 @@ export function PickList({ picks }) {
       ) : (
         <div className={ui.card}>
           <div className="hidden overflow-x-auto md:block">
-            <table className="w-full min-w-[44rem] border-collapse text-left xl:min-w-0">
+            <table className={`${ui.table} min-w-[44rem] xl:min-w-0`}>
               <caption className="sr-only">{t("pickList.sectionLabel")}</caption>
               <thead>
-                <tr className="border-b border-zinc-800 light:border-zinc-200">
-                  <th scope="col" className={`${thClass} min-w-[9rem] xl:min-w-[10rem]`}>
+                <tr className={ui.tableHeadRow}>
+                  <th scope="col" className={`${ui.th} min-w-[9rem] xl:min-w-[10rem]`}>
                     {t("pickList.colTicker")}
                   </th>
-                  <th scope="col" className={thClass}>
+                  <th scope="col" className={ui.th}>
                     {t("pickList.colMarket")}
                   </th>
-                  <th scope="col" className={thClass}>
+                  <th scope="col" className={ui.thNum}>
                     {t("pickList.colTarget")}
                   </th>
-                  <th scope="col" className={`${thClass} min-w-[4.5rem]`}>
+                  <th scope="col" className={`${ui.thNum} min-w-[4.5rem]`}>
                     {t("pickList.colEntry")}
                   </th>
-                  <th scope="col" className={`${thClass} min-w-[5.5rem]`}>
+                  <th scope="col" className={`${ui.thNum} min-w-[5.5rem]`}>
                     {t("pickList.colDeadline")}
                   </th>
-                  <th scope="col" className={`${thClass} min-w-[7rem]`}>
+                  <th scope="col" className={`${ui.th} min-w-[7rem]`}>
                     {t("pickList.colProgress")}
                   </th>
-                  <th scope="col" className={`${thClass} text-right`}>
+                  <th scope="col" className={ui.thNum}>
                     {t("pickList.colStatus")}
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-800/80 light:divide-zinc-200">
+              <tbody>
                 {picks.map((p) => {
                   const pendingHint = isEntryPending(p) ? t("pick.pendingEntryHint") : undefined;
                   return (
-                    <tr key={p.id} className="hover:bg-zinc-900/50 light:hover:bg-zinc-50/80">
-                      <td className={tdClass}>
+                    <tr key={p.id} className={`${ui.tableBodyRow} hover:bg-zinc-900/50 light:hover:bg-zinc-50/80`}>
+                      <td className={ui.td}>
                         <PickListTickerCell p={p} t={t} />
                       </td>
-                      <td className={tdClass}>
+                      <td className={ui.td}>
                         <MarketBadge pick={p} />
                       </td>
-                      <td className={tdNum}>
+                      <td className={ui.tdNum}>
                         <ReturnRate rate={p.target?.return_rate} />
                       </td>
-                      <td className={tdNum}>
+                      <td className={ui.tdNum}>
                         <PickEntryPrice pick={p} />
                       </td>
-                      <td className={tdNum}>
+                      <td className={ui.tdNum}>
                         <PickDeadline pick={p} />
                       </td>
-                      <td className={`${tdClass} min-w-[7rem] max-w-[11rem] xl:max-w-none`}>
+                      <td className={`${ui.td} min-w-[7rem] max-w-[11rem] xl:max-w-none`}>
                         <PickProgress pick={p} />
                       </td>
-                      <td className={`${tdClass} text-right`}>
-                        <StatusBadge status={p.status?.current} title={pendingHint} />
+                      <td className={`${ui.tdNum} whitespace-nowrap`}>
+                        <span className="inline-flex justify-end">
+                          <StatusBadge status={p.status?.current} title={pendingHint} />
+                        </span>
                       </td>
                     </tr>
                   );

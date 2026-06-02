@@ -226,7 +226,7 @@ export default {
     rankRuleFixed:
       "Wins desc → tie: win rate desc → tie: total return desc → tie: username asc",
     totalReturnHint:
-      "Total return is the sum of each pick’s return (active: latest; achieved: recorded final; expired: last recorded). Not a capital-weighted portfolio return. Used for ties only.",
+      "Total return is the sum of each pick’s return (active: latest; achieved: recorded final; expired: last recorded). Not capital-weighted; breaks ties when wins and win rate match.",
     totalReturnFormula:
       "Total return = simple sum of each pick return. Active uses current return, achieved uses recorded final return (final_return_rate), and expired uses the last recorded return. This is not capital-weighted.",
     totalReturnFormulaAria: "Show total return formula",

@@ -22,15 +22,7 @@ import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
 import { ui } from "../lib/themeClasses.js";
 import { type } from "../lib/typographyClasses.js";
 import { pickDetailErrorMessage } from "../lib/userMessages.js";
-
-function MetricBox({ label, children }) {
-  return (
-    <div className="rounded-xl bg-zinc-800/40 p-3 light:bg-zinc-50">
-      <p className={ui.label}>{label}</p>
-      <div className="mt-1.5">{children}</div>
-    </div>
-  );
-}
+import { MetricBlock } from "../components/ui/MetricBlock.jsx";
 
 export function PickDetailPage() {
   const { id } = useParams();
@@ -124,24 +116,24 @@ export function PickDetailPage() {
           </p>
         ) : null}
 
-        <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-          <MetricBox label={t("pickDetail.targetReturn")}>
+        <div className={`mt-6 ${ui.metricGrid} lg:grid-cols-4`}>
+          <MetricBlock label={t("pickDetail.targetReturn")}>
             <ReturnRate rate={pick.target?.return_rate} className={ui.valueLg} />
-          </MetricBox>
-          <MetricBox label={t("pickDetail.currentReturn")}>
+          </MetricBlock>
+          <MetricBlock label={t("pickDetail.currentReturn")}>
             {isEntryPending(pick) ? (
               <span className={type.meta}>{t("pick.pendingProgress")}</span>
             ) : (
               <ReturnRate rate={displayReturn} className={ui.valueLg} />
             )}
-          </MetricBox>
-          <MetricBox label={t("pickDetail.entry")}>
+          </MetricBlock>
+          <MetricBlock label={t("pickDetail.entry")}>
             <span className={ui.valueLg}>
               <PickEntryPrice pick={pick} />
             </span>
-          </MetricBox>
-          <div className="rounded-xl bg-zinc-800/40 p-3 light:bg-zinc-50">
-            <PickPriceDisplay pick={pick} size="lg" />
+          </MetricBlock>
+          <div className={`${ui.metricBlock} rounded-xl bg-zinc-800/40 p-3 light:bg-zinc-50`}>
+            <PickPriceDisplay pick={pick} size="lg" className="text-right" />
           </div>
         </div>
 
@@ -150,8 +142,8 @@ export function PickDetailPage() {
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <section className={`${ui.card} ${ui.cardPad}`}>
-          <h2 className={`${ui.label} mb-2`}>{t("pickDetail.deadline")}</h2>
-          <p className={ui.valueLg}>
+          <h2 className={ui.label}>{t("pickDetail.deadline")}</h2>
+          <p className={`${ui.valueLg} mt-2 text-right`}>
             <PickDeadline pick={pick} />
           </p>
         </section>
