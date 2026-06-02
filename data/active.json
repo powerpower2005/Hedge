@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "973eb0b"
+    "commit": "87d8368"
   },
-  "generated_at": "2026-06-01T23:10:42.972650Z",
+  "generated_at": "2026-06-02T11:05:45.993629Z",
   "data": {
-    "count": 31,
+    "count": 30,
     "picks": [
       {
         "id": 9,
@@ -1448,10 +1448,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-01",
+          "updated_at": "2026-06-02",
           "current": {
-            "close": 3137.0,
-            "return_rate": -0.017846
+            "close": 2959.5,
+            "return_rate": -0.073419
           },
           "highest": {
             "close": 3194.0,
@@ -1695,80 +1695,6 @@
         },
         "instrument_name": "Naver Corp",
         "author_note": "_No response_"
-      },
-      {
-        "id": 53,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-05-29T14:03:39.787453Z",
-        "author": "cieske",
-        "issue_number": 80,
-        "ticker": "6981",
-        "country": "JP",
-        "market": "TYO",
-        "entry": {
-          "date": "2026-05-29",
-          "source": "google_sheets",
-          "price": 8538.0,
-          "close_session_date": "2026-05-29"
-        },
-        "target": {
-          "return_rate": 0.2,
-          "price": 10245.6
-        },
-        "duration": {
-          "days": 14,
-          "deadline": "2026-06-13"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-05-29T14:03:39.787453Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-05-29T17:49:12.393596Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-06-01",
-          "current": {
-            "close": 9625.0,
-            "return_rate": 0.127313
-          },
-          "highest": {
-            "close": 9625.0,
-            "close_date": "2026-06-01",
-            "return_rate": 0.127313
-          },
-          "lowest": {
-            "close": 8538.0,
-            "close_date": "2026-05-30",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.072687,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-29T14:03:39.787453Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Murata Manufacturing Co., Ltd.",
-        "author_note": "실 진입 8579엔"
       },
       {
         "id": 54,

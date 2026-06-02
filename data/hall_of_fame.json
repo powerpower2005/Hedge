@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "973eb0b"
+    "commit": "87d8368"
   },
-  "generated_at": "2026-06-01T23:10:42.975650Z",
+  "generated_at": "2026-06-02T11:05:45.996849Z",
   "data": {
-    "count": 12,
+    "count": 13,
     "picks": [
       {
         "id": 5,
@@ -903,6 +903,92 @@
           "achieved_close": 1264.9,
           "days_taken": 8,
           "final_return_rate": 0.507628
+        }
+      },
+      {
+        "id": 53,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-29T14:03:39.787453Z",
+        "author": "cieske",
+        "issue_number": 80,
+        "ticker": "6981",
+        "country": "JP",
+        "market": "TYO",
+        "entry": {
+          "date": "2026-05-29",
+          "source": "google_sheets",
+          "price": 8538.0,
+          "close_session_date": "2026-05-29"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 10245.6
+        },
+        "duration": {
+          "days": 14,
+          "deadline": "2026-06-13"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-29T14:03:39.787453Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-05-29T17:49:12.393596Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-06-02T11:05:45.993491Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-06-02",
+          "current": {
+            "close": 10490.0,
+            "return_rate": 0.228625
+          },
+          "highest": {
+            "close": 10490.0,
+            "close_date": "2026-06-02",
+            "return_rate": 0.228625
+          },
+          "lowest": {
+            "close": 8538.0,
+            "close_date": "2026-05-30",
+            "return_rate": 0.0
+          },
+          "distance_to_target": -0.028625,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-29T14:03:39.787453Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Murata Manufacturing Co., Ltd.",
+        "author_note": "실 진입 8579엔",
+        "achievement": {
+          "achieved_date": "2026-06-02",
+          "achieved_close": 10490.0,
+          "days_taken": 4,
+          "final_return_rate": 0.228625
         }
       }
     ]
