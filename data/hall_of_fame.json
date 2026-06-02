@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "87d8368"
+    "commit": "15f0115"
   },
-  "generated_at": "2026-06-02T11:05:45.996849Z",
+  "generated_at": "2026-06-02T23:09:15.457077Z",
   "data": {
-    "count": 13,
+    "count": 14,
     "picks": [
       {
         "id": 5,
@@ -989,6 +989,84 @@
           "achieved_close": 10490.0,
           "days_taken": 4,
           "final_return_rate": 0.228625
+        }
+      },
+      {
+        "id": 38,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "9376f9f"
+        },
+        "created_at": "2026-05-19T13:10:02.618195Z",
+        "author": "Eonyong",
+        "issue_number": 61,
+        "ticker": "COHR",
+        "country": "US",
+        "market": "NYSE",
+        "entry": {
+          "price": 362.83,
+          "date": "2026-05-19",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.1,
+          "price": 399.113
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-18"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-19T13:10:02.618210Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-06-02T23:09:15.453790Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-06-02",
+          "current": {
+            "close": 426.89,
+            "return_rate": 0.176557
+          },
+          "highest": {
+            "close": 426.89,
+            "close_date": "2026-06-02",
+            "return_rate": 0.176557
+          },
+          "lowest": {
+            "close": 362.83,
+            "close_date": "2026-05-19",
+            "return_rate": 0.0
+          },
+          "distance_to_target": -0.076557,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-19T13:10:02.618260Z"
+        },
+        "extensions": {},
+        "instrument_name": "Coherent Corp",
+        "author_note": "_No response_",
+        "achievement": {
+          "achieved_date": "2026-06-02",
+          "achieved_close": 426.89,
+          "days_taken": 14,
+          "final_return_rate": 0.176557
         }
       }
     ]
