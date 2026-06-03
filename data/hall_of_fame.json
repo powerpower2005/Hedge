@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "15f0115"
+    "commit": "09bcf84"
   },
-  "generated_at": "2026-06-02T23:09:15.457077Z",
+  "generated_at": "2026-06-03T23:14:13.444783Z",
   "data": {
-    "count": 14,
+    "count": 15,
     "picks": [
       {
         "id": 5,
@@ -1067,6 +1067,79 @@
           "achieved_close": 426.89,
           "days_taken": 14,
           "final_return_rate": 0.176557
+        }
+      },
+      {
+        "id": 25,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "c9bd9fa"
+        },
+        "created_at": "2026-05-07T02:25:51.456307Z",
+        "author": "chance0523",
+        "issue_number": 45,
+        "ticker": "AMD",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 355.26,
+          "date": "2026-05-07",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.5,
+          "price": 532.89
+        },
+        "duration": {
+          "days": 180,
+          "deadline": "2026-11-03"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-07T02:25:51.456325Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-06-03T23:14:13.441585Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-06-03",
+          "current": {
+            "close": 542.52,
+            "return_rate": 0.527107
+          },
+          "highest": {
+            "close": 542.52,
+            "close_date": "2026-06-03",
+            "return_rate": 0.527107
+          },
+          "distance_to_target": -0.027107,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-07T02:25:51.456381Z"
+        },
+        "extensions": {},
+        "instrument_name": "Advanced Micro Devices Inc",
+        "author_note": "_No response_",
+        "achievement": {
+          "achieved_date": "2026-06-03",
+          "achieved_close": 542.52,
+          "days_taken": 27,
+          "final_return_rate": 0.527107
         }
       }
     ]
