@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "09bcf84"
+    "commit": "a09f673"
   },
-  "generated_at": "2026-06-03T23:14:13.441822Z",
+  "generated_at": "2026-06-04T10:22:01.177932Z",
   "data": {
-    "count": 28,
+    "count": 29,
     "picks": [
       {
         "id": 9,
@@ -1859,6 +1859,55 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "HD Hyundai Electric Co Ltd",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 58,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-04T10:22:01.177853Z",
+        "author": "maebongpunch",
+        "issue_number": 85,
+        "ticker": "277810",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "date": "2026-06-04",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.2
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-04T10:22:01.177853Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-04T10:22:01.177853Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Rainbow Robotics",
         "author_note": "_No response_"
       }
     ]
