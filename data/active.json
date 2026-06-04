@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "e56c2ca"
+    "commit": "1065a56"
   },
-  "generated_at": "2026-06-04T10:26:08.755554Z",
+  "generated_at": "2026-06-04T10:42:26.270045Z",
   "data": {
     "count": 29,
     "picks": [
@@ -169,7 +169,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 110900.0,
             "return_rate": -0.39564
@@ -413,7 +413,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 9600.0,
             "return_rate": -0.217604
@@ -535,7 +535,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 14750.0,
             "return_rate": -0.473214
@@ -596,7 +596,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 37550.0,
             "return_rate": -0.313528
@@ -657,7 +657,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 4640.0,
             "return_rate": -0.249191
@@ -718,7 +718,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 34300.0,
             "return_rate": -0.15099
@@ -840,7 +840,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 32800.0,
             "return_rate": -0.160051
@@ -901,7 +901,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 55600.0,
             "return_rate": -0.177515
@@ -1028,7 +1028,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 7560.0,
             "return_rate": -0.127021
@@ -1467,7 +1467,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 759000.0,
             "return_rate": 0.103198
@@ -1540,7 +1540,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 280500.0,
             "return_rate": 0.368293
@@ -1613,7 +1613,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 1918000.0,
             "return_rate": -0.027383
@@ -1759,7 +1759,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 127675.0,
             "return_rate": 0.070425
@@ -1832,7 +1832,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-03",
+          "updated_at": "2026-06-04",
           "current": {
             "close": 995000.0,
             "return_rate": -0.055081
@@ -1877,26 +1877,50 @@
         "entry": {
           "date": "2026-06-04",
           "source": "google_sheets",
-          "pending": true
+          "price": 763000.0
         },
         "target": {
-          "return_rate": 0.2
+          "return_rate": 0.2,
+          "price": 915600.0
         },
         "duration": {
-          "days": 30
+          "days": 30,
+          "deadline": "2026-07-04"
         },
         "status": {
-          "current": "pending_entry",
+          "current": "active",
           "history": [
             {
               "status": "pending_entry",
               "at": "2026-06-04T10:22:01.177853Z",
               "engine_version": "1.0.0",
               "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-06-04T10:42:26.269982Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
             }
           ]
         },
         "progress": {
+          "updated_at": "2026-06-04",
+          "current": {
+            "close": 763000.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 763000.0,
+            "close_date": "2026-06-04",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 763000.0,
+            "close_date": "2026-06-04",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
           "error_count": 0
         },
         "votes": {
