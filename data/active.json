@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "25a4e53"
+    "commit": "3cf6e5d"
   },
-  "generated_at": "2026-06-05T11:44:11.561225Z",
+  "generated_at": "2026-06-05T22:35:50.049438Z",
   "data": {
     "count": 29,
     "picks": [
@@ -59,7 +59,7 @@
             "return_rate": 0.530829
           },
           "distance_to_target": 0.269171,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
@@ -119,7 +119,7 @@
             "return_rate": 0.243479
           },
           "distance_to_target": 0.456521,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
@@ -241,7 +241,7 @@
             "return_rate": 0.0
           },
           "distance_to_target": 0.4,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
@@ -302,7 +302,7 @@
             "return_rate": 0.053197
           },
           "distance_to_target": 0.446803,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
@@ -363,7 +363,7 @@
             "return_rate": 0.280206
           },
           "distance_to_target": 0.019794,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
@@ -485,7 +485,7 @@
             "return_rate": 0.767339
           },
           "distance_to_target": 1.732661,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
@@ -790,7 +790,7 @@
             "return_rate": 0.159145
           },
           "distance_to_target": 1.840855,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 2,
@@ -973,7 +973,7 @@
             "return_rate": 0.158422
           },
           "distance_to_target": 0.341578,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
@@ -1117,7 +1117,7 @@
             "return_rate": 0.0
           },
           "distance_to_target": 0.846535,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
@@ -1190,7 +1190,7 @@
             "return_rate": 0.0
           },
           "distance_to_target": 1.962938,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
@@ -1263,7 +1263,7 @@
             "return_rate": 0.0
           },
           "distance_to_target": 1.006999,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
@@ -1410,7 +1410,7 @@
             "return_rate": 0.0
           },
           "distance_to_target": 0.378421,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 1,
@@ -1702,7 +1702,7 @@
             "return_rate": 0.0
           },
           "distance_to_target": 0.45,
-          "error_count": 0
+          "error_count": 1
         },
         "votes": {
           "likes": 0,
