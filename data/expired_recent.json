@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "8fe0f72"
+    "commit": "b3c2dd0"
   },
-  "generated_at": "2026-05-31T05:09:27.556151Z",
+  "generated_at": "2026-06-06T22:17:32.074538Z",
   "data": {
-    "count": 8,
+    "count": 9,
     "picks": [
       {
         "id": 3,
@@ -592,6 +592,79 @@
           "return_rate": 0.014319
         },
         "expired_at": "2026-05-30T22:14:02.179142Z"
+      },
+      {
+        "id": 22,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "2ca889a"
+        },
+        "created_at": "2026-05-05T11:43:43.769478Z",
+        "author": "powerpower2005",
+        "issue_number": 42,
+        "ticker": "HOOD",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 73.66,
+          "date": "2026-05-05",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.3,
+          "price": 95.758
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-04"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-05T11:43:43.769495Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-06-06T22:17:32.071452Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-06-06",
+          "current": {
+            "close": 82.47,
+            "return_rate": 0.119604
+          },
+          "highest": {
+            "close": 94.3,
+            "close_date": "2026-05-29",
+            "return_rate": 0.280206
+          },
+          "distance_to_target": 0.019794,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-05T11:43:43.769590Z"
+        },
+        "extensions": {},
+        "instrument_name": "Robinhood Markets Inc",
+        "author_note": "올라간다",
+        "expiry": {
+          "close": 88.33,
+          "session_date": "2026-06-04",
+          "return_rate": 0.199158
+        },
+        "expired_at": "2026-06-06T22:17:32.071540Z"
       }
     ]
   }
