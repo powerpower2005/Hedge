@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "b71f42c"
+    "commit": "90f8e6b"
   },
-  "generated_at": "2026-06-07T05:12:18.918061Z",
+  "generated_at": "2026-06-07T10:09:02.208545Z",
   "data": {
-    "count": 8,
+    "count": 10,
     "picks": [
       {
         "id": 7,
@@ -598,6 +598,152 @@
           "return_rate": 0.199158
         },
         "expired_at": "2026-06-06T22:17:32.071540Z"
+      },
+      {
+        "id": 23,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "792880a"
+        },
+        "created_at": "2026-05-07T01:03:12.918649Z",
+        "author": "zerohoon0102",
+        "issue_number": 43,
+        "ticker": "044450",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "price": 12270.0,
+          "date": "2026-05-07",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 14724.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-06"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-07T01:03:12.918668Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-06-07T10:09:02.205463Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-06-07",
+          "current": {
+            "close": 9650.0,
+            "return_rate": -0.213529
+          },
+          "highest": {
+            "close": 12270.0,
+            "close_date": "2026-05-07",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-07T01:03:12.918732Z"
+        },
+        "extensions": {},
+        "instrument_name": "KSS Line Ltd",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 9650.0,
+          "session_date": "2026-06-06",
+          "return_rate": -0.213529
+        },
+        "expired_at": "2026-06-07T10:09:02.205554Z"
+      },
+      {
+        "id": 29,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "4f475b2"
+        },
+        "created_at": "2026-05-07T14:23:14.279342Z",
+        "author": "saechimdaeki",
+        "issue_number": 49,
+        "ticker": "475150",
+        "country": "KR",
+        "market": "KRX",
+        "entry": {
+          "price": 54700.0,
+          "date": "2026-05-07",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.15,
+          "price": 62905.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-06"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-07T14:23:14.279356Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-06-07T10:09:02.205586Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-06-07",
+          "current": {
+            "close": 35350.0,
+            "return_rate": -0.353748
+          },
+          "highest": {
+            "close": 54700.0,
+            "close_date": "2026-05-07",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.15,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-07T14:23:14.279415Z"
+        },
+        "extensions": {},
+        "instrument_name": "SK Eternix Co Ltd",
+        "author_note": "드가자",
+        "expiry": {
+          "close": 35350.0,
+          "session_date": "2026-06-06",
+          "return_rate": -0.353748
+        },
+        "expired_at": "2026-06-07T10:09:02.205644Z"
       }
     ]
   }
