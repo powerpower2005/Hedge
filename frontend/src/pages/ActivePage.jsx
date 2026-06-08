@@ -70,7 +70,7 @@ export function ActivePage() {
         </p>
         {IS_REPOSITORY_CONFIGURED ? (
           <div className="mt-6">
-            <a href={NEW_PICK_URL} className={ui.btnPrimary}>
+            <a href={NEW_PICK_URL} target="_blank" rel="noopener noreferrer" className={ui.btnPrimary}>
               {t("active.heroCta")}
             </a>
           </div>

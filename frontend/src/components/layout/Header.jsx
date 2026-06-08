@@ -133,7 +133,7 @@ export function Header() {
           <div className="flex shrink-0 items-center justify-between gap-2 lg:justify-start">
             <AppLogo />
             {IS_REPOSITORY_CONFIGURED ? (
-              <a href={NEW_PICK_URL} className={`${ui.btnPrimary} text-sm lg:hidden`}>
+              <a href={NEW_PICK_URL} target="_blank" rel="noopener noreferrer" className={`${ui.btnPrimary} text-sm lg:hidden`}>
                 <span aria-hidden>+</span> {t("nav.newPick")}
               </a>
             ) : null}
@@ -180,7 +180,7 @@ export function Header() {
                     />
                   </svg>
                 </button>
-                <a href={NEW_PICK_URL} className={`${ui.btnPrimary} hidden lg:inline-flex`}>
+                <a href={NEW_PICK_URL} target="_blank" rel="noopener noreferrer" className={`${ui.btnPrimary} hidden lg:inline-flex`}>
                   <span aria-hidden>+</span> {t("nav.newPick")}
                 </a>
               </>
