@@ -2,8 +2,9 @@ name: Daily Judgment JP
 
 on:
   schedule:
-    # TSE close 15:00 JST; refresh_jp_prices.py fills column D before judgment.
-    - cron: "30 6 * * *"
+    # TSE regular close 15:00 JST; refresh_jp_prices.py fills column D before judgment (16:00 JST).
+    - cron: "0 16 * * *"
+      timezone: "Asia/Tokyo"
   workflow_dispatch:
 
 concurrency:

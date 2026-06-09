@@ -2,8 +2,9 @@ name: Daily Judgment HK
 
 on:
   schedule:
-    # HKEX regular close 16:00 HKT (08:00 UTC); run 30 min later for closeyest.
-    - cron: "30 8 * * *"
+    # HKEX regular close 16:00 HKT; judgment 1 hour later (17:00 HKT).
+    - cron: "0 17 * * *"
+      timezone: "Asia/Hong_Kong"
   workflow_dispatch:
 
 concurrency:

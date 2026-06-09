@@ -2,8 +2,9 @@ name: Daily Judgment KR
 
 on:
   schedule:
-    # Stagger from other data jobs (UTC). Was 07:10; offset to reduce runner queue contention.
-    - cron: "7 7 * * *"
+    # KRX regular close 15:30 KST; judgment 1 hour later (16:30 KST).
+    - cron: "30 16 * * *"
+      timezone: "Asia/Seoul"
   workflow_dispatch:
 
 # Serialize with Register New Pick / operator fixes so only one data/ push to main at a time.
