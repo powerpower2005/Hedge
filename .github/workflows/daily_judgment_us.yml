@@ -2,8 +2,8 @@ name: Daily Judgment US
 
 on:
   schedule:
-    # NYSE/NASDAQ regular close 16:00 ET; judgment 1 hour later (17:00 America/New_York).
-    - cron: "0 17 * * *"
+    # NYSE/NASDAQ regular close 16:00 ET; judgment 2 hours later (18:00 America/New_York).
+    - cron: "0 18 * * *"
       timezone: "America/New_York"
   workflow_dispatch:
 

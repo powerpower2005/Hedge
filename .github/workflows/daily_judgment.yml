@@ -2,8 +2,8 @@ name: Daily Judgment KR
 
 on:
   schedule:
-    # KRX regular close 15:30 KST; judgment 1 hour later (16:30 KST).
-    - cron: "30 16 * * *"
+    # KRX regular close 15:30 KST; judgment 2 hours later (17:30 KST).
+    - cron: "30 17 * * *"
       timezone: "Asia/Seoul"
   workflow_dispatch:
 
