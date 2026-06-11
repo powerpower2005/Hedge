@@ -64,6 +64,15 @@ export default {
     subtitle: "지금 {count}건",
     nextStep: "아래 카드를 눌러 상세를 보세요. 상단 메뉴에서 진입 대기·달성·만료 목록으로 이동할 수 있습니다.",
   },
+  market: {
+    title: "주요 지수",
+    scrollHint: "옆으로 넘겨 더 보기",
+    nasdaq100: "나스닥100",
+    sp500: "S&P 500",
+    kospi: "코스피",
+    hangSeng: "항셍",
+    nikkei225: "닛케이225",
+  },
   hallOfFame: {
     title: "명예의 전당",
     subtitle: "목표에 도달해 달성으로 기록된 픽입니다.",

@@ -64,6 +64,15 @@ export default {
     subtitle: "{count} now",
     nextStep: "Click a card below for details. Use the top menu for entry pending, achieved, and expired lists.",
   },
+  market: {
+    title: "Market indices",
+    scrollHint: "Swipe for more",
+    nasdaq100: "Nasdaq 100",
+    sp500: "S&P 500",
+    kospi: "KOSPI",
+    hangSeng: "Hang Seng",
+    nikkei225: "Nikkei 225",
+  },
   hallOfFame: {
     title: "Hall of Fame",
     subtitle: "Picks that reached their target and were recorded as achieved.",

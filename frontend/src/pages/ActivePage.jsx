@@ -13,6 +13,7 @@ import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 import { ScheduleLink } from "../components/guide/ScheduleLink.jsx";
 import { StatBlock } from "../components/ui/StatBlock.jsx";
+import { MarketIndexRail, MarketIndexStrip } from "../components/market/MarketMiniCharts.jsx";
 
 export function ActivePage() {
   const { t } = useI18n();
@@ -55,7 +56,9 @@ export function ActivePage() {
   }
 
   return (
-    <article className={ui.page}>
+    <div className="mx-auto w-full max-w-7xl px-3 py-6 sm:px-4 sm:py-8 xl:px-6">
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start lg:gap-8 xl:grid-cols-[minmax(0,1fr)_20rem]">
+        <article>
       <section className={ui.hero} aria-labelledby="dashboard-hero-title">
         <h1 id="dashboard-hero-title" className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl light:text-zinc-900">
           {t("active.heroTitle")}
@@ -90,6 +93,10 @@ export function ActivePage() {
         </section>
       ) : null}
 
+      <div className="mt-6">
+        <MarketIndexStrip />
+      </div>
+
       <section id="pick-list" className="mt-8 scroll-mt-24" aria-labelledby="active-picks-title">
         <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
           <h2 id="active-picks-title" className={ui.sectionTitle}>
@@ -104,6 +111,10 @@ export function ActivePage() {
 
         <PickList picks={visible} />
       </section>
-    </article>
+        </article>
+
+        <MarketIndexRail />
+      </div>
+    </div>
   );
 }
