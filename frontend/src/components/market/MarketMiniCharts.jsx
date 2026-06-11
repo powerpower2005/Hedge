@@ -17,7 +17,7 @@ function useMiniChartScript() {
  * Single mini-chart card. The widget follows the page color-scheme automatically
  * (no `theme` attribute), so dark/light toggling needs no remount.
  */
-function MiniChartCard({ symbol, label, className = "" }) {
+function MiniChartCard({ symbol, label, timeFrame, className = "" }) {
   return (
     <div className={`${ui.card} overflow-hidden p-2 ${className}`}>
       <p className={`px-1 pb-1 ${ui.label}`}>{label}</p>
@@ -26,6 +26,7 @@ function MiniChartCard({ symbol, label, className = "" }) {
           symbol={symbol}
           line-chart-type="Baseline"
           show-time-scale=""
+          {...(timeFrame ? { "time-frame": timeFrame } : {})}
           style={{ display: "block", width: "100%", height: "100%" }}
         />
       </div>
@@ -42,7 +43,7 @@ export function MarketIndexRail() {
       <h2 className={`mb-3 ${ui.sectionTitle}`}>{t("market.title")}</h2>
       <div className="flex flex-col gap-3">
         {MARKET_INDICES.map((idx) => (
-          <MiniChartCard key={idx.symbol} symbol={idx.symbol} label={t(idx.labelKey)} />
+          <MiniChartCard key={idx.symbol} symbol={idx.symbol} label={t(idx.labelKey)} timeFrame={idx.timeFrame} />
         ))}
       </div>
     </aside>
@@ -65,6 +66,7 @@ export function MarketIndexStrip() {
             key={idx.symbol}
             symbol={idx.symbol}
             label={t(idx.labelKey)}
+            timeFrame={idx.timeFrame}
             className="w-60 shrink-0 snap-start"
           />
         ))}
