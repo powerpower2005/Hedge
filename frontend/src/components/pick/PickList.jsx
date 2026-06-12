@@ -68,7 +68,7 @@ function PickListMobileRow({ p, t }) {
         <dl className={`mt-3 ${ui.dlGrid}`}>
           <div className={ui.dlCell}>
             <dt className={ui.dlLabel}>{t("pickList.colMarket")}</dt>
-            <dd className={`${ui.dlValueText} flex justify-end`}>
+            <dd className={ui.dlValueText}>
               <MarketBadge pick={p} />
             </dd>
           </div>
@@ -92,7 +92,7 @@ function PickListMobileRow({ p, t }) {
           </div>
           <div className={`${ui.dlCell} col-span-2 sm:col-span-1`}>
             <dt className={ui.dlLabel}>{t("pickList.colProgress")}</dt>
-            <dd className={`${ui.dlValueText} flex min-w-0 flex-col items-end`}>
+            <dd className={`${ui.dlValueText} min-w-0`}>
               <PickProgress pick={p} />
             </dd>
           </div>

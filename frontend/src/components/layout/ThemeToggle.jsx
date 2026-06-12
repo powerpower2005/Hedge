@@ -12,7 +12,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={cycle}
-      className="rounded-md p-2 text-zinc-300 hover:bg-zinc-800 light:text-zinc-600 light:hover:bg-zinc-100"
+      className="rounded-xl p-2 text-zinc-400 hover:bg-zinc-800 light:text-zinc-600 light:hover:bg-zinc-100"
       title={label}
       aria-label={label}
     >

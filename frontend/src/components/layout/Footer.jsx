@@ -4,6 +4,7 @@ import { useDataCacheRevision } from "../../context/DataCacheContext.jsx";
 import { IS_REPOSITORY_CONFIGURED } from "../../lib/constants";
 import { getResolvedDataUrls } from "../../lib/githubRawRoot.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
+import { ui } from "../../lib/themeClasses.js";
 
 export function Footer() {
   const { t } = useI18n();
@@ -36,7 +37,7 @@ export function Footer() {
 
   return (
     <footer className="mt-16 border-t border-zinc-800 py-6 text-xs text-zinc-400 light:border-zinc-200 light:text-zinc-700">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-3 sm:px-4">
+      <div className={`${ui.shell} flex flex-wrap items-center justify-between gap-4`}>
         <p>
           {t("app.title")}
           {version && <span className="ml-2">v{version}</span>}

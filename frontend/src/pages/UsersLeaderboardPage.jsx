@@ -67,8 +67,16 @@ export function UsersLeaderboardPage() {
   const sliceStart = (safePage - 1) * PAGE_SIZE;
   const pageRows = sorted.slice(sliceStart, sliceStart + PAGE_SIZE);
 
-  if (loading) return <PageLoading />;
-  if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
+  if (loading) {
+    return (
+      <div className={ui.page}>
+        <PageLoading />
+      </div>
+    );
+  }
+  if (error) {
+    return <p className={`${ui.page} text-red-400 light:text-red-600`}>{dataLoadErrorMessage(error, t)}</p>;
+  }
 
   return (
     <article className={ui.page}>
@@ -183,23 +191,21 @@ export function UsersLeaderboardPage() {
                   key={row.author}
                   className="rounded-lg border border-zinc-800 bg-zinc-950/40 p-4 light:border-zinc-200 light:bg-zinc-50"
                 >
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="text-xs tabular-nums text-zinc-500 light:text-zinc-600">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <span className="shrink-0 text-xs tabular-nums text-zinc-500 light:text-zinc-600">
                       {t("users.cardRankLabel", { rank })}
                     </span>
-                    <span className="inline-flex items-center gap-2">
-                      <Link
-                        className="font-medium text-primary-500 hover:underline light:text-primary-600"
-                        to={`/user/${encodeURIComponent(row.author)}`}
-                      >
-                        @{row.author}
-                      </Link>
-                      {titleSticker ? (
-                        <span className="rounded-full border border-amber-500 bg-amber-300 px-2.5 py-0.5 text-xs font-extrabold tracking-tight text-zinc-900 shadow-sm light:border-amber-500 light:bg-amber-300 light:text-zinc-900">
-                          {titleSticker}
-                        </span>
-                      ) : null}
-                    </span>
+                    <Link
+                      className="font-medium text-primary-500 hover:underline light:text-primary-600"
+                      to={`/user/${encodeURIComponent(row.author)}`}
+                    >
+                      @{row.author}
+                    </Link>
+                    {titleSticker ? (
+                      <span className="rounded-full border border-amber-500 bg-amber-300 px-2.5 py-0.5 text-xs font-extrabold tracking-tight text-zinc-900 shadow-sm light:border-amber-500 light:bg-amber-300 light:text-zinc-900">
+                        {titleSticker}
+                      </span>
+                    ) : null}
                   </div>
                   <dl className={`mt-3 ${ui.dlGrid}`}>
                     <div className={ui.dlCell}>

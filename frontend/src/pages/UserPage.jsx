@@ -26,7 +26,13 @@ export function UserPage() {
     return { total, wins, avgTarget, totalReturn };
   }, [picks]);
 
-  if (loading) return <PageLoading />;
+  if (loading) {
+    return (
+      <div className={ui.page}>
+        <PageLoading />
+      </div>
+    );
+  }
   if (error) return <p className={`${ui.page} text-red-400 light:text-red-600`}>{dataLoadErrorMessage(error, t)}</p>;
 
   return (

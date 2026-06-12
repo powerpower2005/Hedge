@@ -116,7 +116,7 @@ export function PickDetailPage() {
           </p>
         ) : null}
 
-        <div className={`mt-6 ${ui.metricGrid} lg:grid-cols-4`}>
+        <div className={`mt-6 ${ui.metricGrid} ${ui.innerPanel} lg:grid-cols-4`}>
           <MetricBlock label={t("pickDetail.targetReturn")}>
             <ReturnRate rate={pick.target?.return_rate} className={ui.valueLg} />
           </MetricBlock>
@@ -132,8 +132,8 @@ export function PickDetailPage() {
               <PickEntryPrice pick={pick} />
             </span>
           </MetricBlock>
-          <div className={`${ui.metricBlock} rounded-xl bg-zinc-800/40 p-3 light:bg-zinc-50`}>
-            <PickPriceDisplay pick={pick} size="lg" className="text-right" />
+          <div className={ui.metricBlock}>
+            <PickPriceDisplay pick={pick} size="lg" />
           </div>
         </div>
 
@@ -143,16 +143,16 @@ export function PickDetailPage() {
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <section className={`${ui.card} ${ui.cardPad}`}>
           <h2 className={ui.label}>{t("pickDetail.deadline")}</h2>
-          <p className={`${ui.valueLg} mt-2 text-right`}>
+          <p className={`${ui.valueLg} mt-2`}>
             <PickDeadline pick={pick} />
           </p>
         </section>
         <section className={`${ui.card} ${ui.cardPad}`}>
-          <h2 className={`${ui.label} mb-2`}>{t("pickDetail.exchangeInfo")}</h2>
-          <p className="mt-1">
+          <h2 className={ui.label}>{t("pickDetail.exchangeInfo")}</h2>
+          <p className="mt-2">
             <MarketBadge pick={pick} className="text-sm" />
           </p>
-          <p className={`mt-1 ${type.meta}`}>
+          <p className={`mt-1.5 ${type.meta}`}>
             {countryLabel} · {currencyLabel}
           </p>
           {financeUrl ? (

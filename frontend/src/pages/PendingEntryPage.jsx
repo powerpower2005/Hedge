@@ -28,8 +28,16 @@ export function PendingEntryPage() {
     return [...f].sort(sorter);
   }, [pendingPicks, filters, sortKey]);
 
-  if (loading) return <PageLoading />;
-  if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
+  if (loading) {
+    return (
+      <div className={ui.page}>
+        <PageLoading />
+      </div>
+    );
+  }
+  if (error) {
+    return <p className={`${ui.page} text-red-400 light:text-red-600`}>{dataLoadErrorMessage(error, t)}</p>;
+  }
 
   return (
     <article className={ui.page}>

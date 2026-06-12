@@ -56,7 +56,7 @@ export function ActivePage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-3 py-6 sm:px-4 sm:py-8 xl:px-6">
+    <div className={ui.page}>
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start lg:gap-8 xl:grid-cols-[minmax(0,1fr)_20rem]">
         <article>
       <section className={ui.hero} aria-labelledby="dashboard-hero-title">

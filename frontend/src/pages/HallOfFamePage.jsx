@@ -59,8 +59,16 @@ export function HallOfFamePage() {
     return [...f].sort(sorter);
   }, [periodFiltered, filters, sortKey]);
 
-  if (loading) return <PageLoading />;
-  if (error) return <p className="px-4 py-8 text-red-400 light:text-red-600">{dataLoadErrorMessage(error, t)}</p>;
+  if (loading) {
+    return (
+      <div className={ui.page}>
+        <PageLoading />
+      </div>
+    );
+  }
+  if (error) {
+    return <p className={`${ui.page} text-red-400 light:text-red-600`}>{dataLoadErrorMessage(error, t)}</p>;
+  }
 
   return (
     <article className={ui.page}>
@@ -88,10 +96,10 @@ export function HallOfFamePage() {
       </div>
       {periodScope === "month" && (
         <div className="mb-4">
-          <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600 sm:inline-flex sm:items-center sm:gap-2">
+          <label className={`flex flex-col gap-1 sm:inline-flex sm:items-center sm:gap-2 ${ui.label}`}>
             <span className="sm:shrink-0">{t("hallOfFame.selectMonth")}</span>
             <select
-              className="mt-1 rounded border border-zinc-700 bg-zinc-950 px-2 py-1 text-sm text-white sm:mt-0 light:border-zinc-300 light:bg-white light:text-zinc-900"
+              className={`${ui.filterField} sm:w-auto`}
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
             >
@@ -109,10 +117,10 @@ export function HallOfFamePage() {
       )}
       {periodScope === "year" && (
         <div className="mb-4">
-          <label className="flex flex-col text-xs text-zinc-400 light:text-zinc-600 sm:inline-flex sm:items-center sm:gap-2">
+          <label className={`flex flex-col gap-1 sm:inline-flex sm:items-center sm:gap-2 ${ui.label}`}>
             <span className="sm:shrink-0">{t("hallOfFame.selectYear")}</span>
             <select
-              className="mt-1 rounded border border-zinc-700 bg-zinc-950 px-2 py-1 text-sm text-white sm:mt-0 light:border-zinc-300 light:bg-white light:text-zinc-900"
+              className={`${ui.filterField} sm:w-auto`}
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
             >

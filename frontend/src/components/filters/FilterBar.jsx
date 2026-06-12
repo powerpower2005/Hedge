@@ -2,14 +2,16 @@ import { MARKETS } from "../../lib/constants";
 import { useI18n } from "../../i18n/I18nContext.jsx";
 import { ui } from "../../lib/themeClasses.js";
 
+const filterLabel = `flex min-w-0 flex-col gap-1 ${ui.label}`;
+
 export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
   const { t } = useI18n();
   return (
-    <div className={`mb-6 flex flex-wrap items-end gap-4 ${ui.card} ${ui.cardPad}`}>
-      <label className={`flex flex-col ${ui.label}`}>
+    <div className={`mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 ${ui.card} ${ui.cardPad}`}>
+      <label className={filterLabel}>
         {t("filters.country")}
         <select
-          className={ui.field}
+          className={ui.filterField}
           value={filters.country || ""}
           onChange={(e) => setFilters({ ...filters, country: e.target.value || null })}
         >
@@ -20,10 +22,10 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
           <option value="JP">JP</option>
         </select>
       </label>
-      <label className={`flex flex-col ${ui.label}`}>
+      <label className={filterLabel}>
         {t("filters.market")}
         <select
-          className={ui.field}
+          className={ui.filterField}
           value={filters.market || ""}
           onChange={(e) => setFilters({ ...filters, market: e.target.value || null })}
         >
@@ -35,18 +37,18 @@ export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
           ))}
         </select>
       </label>
-      <label className={`flex flex-col ${ui.label}`}>
+      <label className={filterLabel}>
         {t("filters.tickerContains")}
         <input
-          className={ui.field}
+          className={ui.filterField}
           value={filters.ticker || ""}
           onChange={(e) => setFilters({ ...filters, ticker: e.target.value || null })}
         />
       </label>
-      <label className={`flex flex-col ${ui.label}`}>
+      <label className={filterLabel}>
         {t("filters.sort")}
         <select
-          className={ui.field}
+          className={ui.filterField}
           value={sortKey}
           onChange={(e) => setSortKey(e.target.value)}
         >

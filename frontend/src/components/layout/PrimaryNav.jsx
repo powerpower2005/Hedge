@@ -157,7 +157,10 @@ export function PrimaryNav() {
   }, [pathname]);
 
   return (
-    <nav className="relative z-50 min-w-0 flex-1 overflow-visible" aria-label={t("nav.primary")}>
+    <nav
+      className="relative z-50 flex min-w-0 flex-1 justify-center overflow-visible lg:justify-start"
+      aria-label={t("nav.primary")}
+    >
       <div className={`${ui.navGroup} w-fit max-w-full`}>
         {PRIMARY_NAV.map((entry) => {
           if (entry.children) {

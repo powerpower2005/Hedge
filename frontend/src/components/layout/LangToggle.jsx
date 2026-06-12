@@ -3,7 +3,7 @@ import { useI18n } from "../../i18n/I18nContext.jsx";
 export function LangToggle() {
   const { locale, setLocale, t } = useI18n();
   return (
-    <div className="flex items-center gap-1 rounded-md border border-zinc-700 px-1 py-0.5 light:border-zinc-300">
+    <div className="flex items-center gap-1 rounded-xl border border-zinc-700 px-1 py-0.5 light:border-zinc-300">
       <span className="sr-only">{t("lang.label")}</span>
       <button
         type="button"

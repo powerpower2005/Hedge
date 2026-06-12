@@ -20,7 +20,7 @@ function useMiniChartScript() {
 function MiniChartCard({ symbol, label, timeFrame, className = "" }) {
   return (
     <div className={`${ui.card} overflow-hidden p-2 ${className}`}>
-      <p className={`px-1 pb-1 ${ui.label}`}>{label}</p>
+      <p className={`px-2 pb-1.5 ${ui.label}`}>{label}</p>
       <div className="h-36">
         <tv-mini-chart
           symbol={symbol}
