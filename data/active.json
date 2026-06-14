@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "bd12ef1"
+    "commit": "5cff1d5"
   },
-  "generated_at": "2026-06-14T05:20:11.727979Z",
+  "generated_at": "2026-06-14T10:53:15.863003Z",
   "data": {
     "count": 28,
     "picks": [
@@ -1138,7 +1138,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 2749.5,
             "return_rate": -0.139167
