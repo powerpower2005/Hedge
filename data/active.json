@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "5cff1d5"
+    "commit": "a7552d3"
   },
-  "generated_at": "2026-06-14T10:53:15.863003Z",
+  "generated_at": "2026-06-14T11:12:17.415173Z",
   "data": {
-    "count": 28,
+    "count": 27,
     "picks": [
       {
         "id": 9,
@@ -169,7 +169,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 92300.0,
             "return_rate": -0.497003
@@ -413,7 +413,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 14210.0,
             "return_rate": -0.4925
@@ -474,7 +474,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 4875.0,
             "return_rate": -0.211165
@@ -535,7 +535,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 36850.0,
             "return_rate": -0.087871
@@ -619,67 +619,6 @@
         "author_note": "_No response_"
       },
       {
-        "id": 35,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "f9ef819"
-        },
-        "created_at": "2026-05-14T01:08:51.835346Z",
-        "author": "zerohoon0102",
-        "issue_number": 57,
-        "ticker": "060370",
-        "country": "KR",
-        "market": "KOSDAQ",
-        "entry": {
-          "price": 39050.0,
-          "date": "2026-05-14",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.15,
-          "price": 44907.5
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-06-13"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-05-14T01:08:51.835362Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-06-13",
-          "current": {
-            "close": 30300.0,
-            "return_rate": -0.224072
-          },
-          "highest": {
-            "close": 39050.0,
-            "close_date": "2026-05-14",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.15,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-14T01:08:51.835444Z"
-        },
-        "extensions": {},
-        "instrument_name": "LS Marine Solution Co Ltd",
-        "author_note": "_No response_"
-      },
-      {
         "id": 36,
         "schema_version": "1.0.0",
         "created_with": {
@@ -718,7 +657,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 52100.0,
             "return_rate": -0.22929
@@ -845,7 +784,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 7230.0,
             "return_rate": -0.165127
@@ -1284,7 +1223,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 607000.0,
             "return_rate": -0.117733
@@ -1357,7 +1296,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 247000.0,
             "return_rate": 0.204878
@@ -1430,7 +1369,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 1896000.0,
             "return_rate": -0.03854
@@ -1576,7 +1515,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 122650.0,
             "return_rate": 0.028296
@@ -1649,7 +1588,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 1130000.0,
             "return_rate": 0.073124
@@ -1722,7 +1661,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-13",
+          "updated_at": "2026-06-14",
           "current": {
             "close": 624000.0,
             "return_rate": -0.182176
