@@ -35,7 +35,7 @@ def near_target_picks(
     *,
     limit: int = 5,
 ) -> list[dict[str, Any]]:
-    """Smallest positive distance_to_target (closest to goal on best extreme)."""
+    """Smallest positive distance_to_target (closest to goal from current return)."""
     ranked: list[tuple[float, dict[str, Any]]] = []
     for pick in picks:
         if not _is_active_for_highlights(pick, country):

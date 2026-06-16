@@ -93,7 +93,6 @@ def update_progress(pick: dict, close: float, judgment_day: date) -> None:
                 "close_date": judgment_day.isoformat(),
                 "return_rate": rounded_return,
             }
-        extreme_close = pick["progress"].get("lowest", lowest)["close"]
     else:
         highest = pick["progress"]["highest"]
         if close > highest["close"]:
@@ -102,10 +101,9 @@ def update_progress(pick: dict, close: float, judgment_day: date) -> None:
                 "close_date": judgment_day.isoformat(),
                 "return_rate": rounded_return,
             }
-        extreme_close = pick["progress"]["highest"]["close"]
 
     pick["progress"]["distance_to_target"] = distance_to_target(
-        entry_price, target_price, target_return, extreme_close
+        entry_price, target_price, target_return, close
     )
     pick["progress"]["error_count"] = 0
 

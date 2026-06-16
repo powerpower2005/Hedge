@@ -17,9 +17,9 @@ def distance_to_target(
     entry_price: float,
     target_price: float,
     target_return: float,
-    extreme_close: float,
+    current_close: float,
 ) -> float:
-    """Remaining return gap to target from best extreme (high for long, low for short)."""
+    """Remaining return gap to target from today's close (target - current for long, current - target for short)."""
     if target_return < 0:
-        return round((extreme_close - target_price) / entry_price, 6)
-    return round((target_price - extreme_close) / entry_price, 6)
+        return round((current_close - target_price) / entry_price, 6)
+    return round((target_price - current_close) / entry_price, 6)

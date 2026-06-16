@@ -24,3 +24,13 @@ def test_distance_to_target_bullish():
 
 def test_distance_to_target_bearish():
     assert distance_to_target(100.0, 80.0, -0.2, 90.0) == pytest.approx(0.1)
+
+
+def test_distance_to_target_bullish_from_current_when_underwater():
+    # target +15%, current -3% -> 18%p remaining (not past-high based)
+    assert distance_to_target(100.0, 115.0, 0.15, 97.0) == pytest.approx(0.18)
+
+
+def test_distance_to_target_bearish_from_current_when_above_target_path():
+    # target -20%, current +5% -> 25%p remaining
+    assert distance_to_target(100.0, 80.0, -0.2, 105.0) == pytest.approx(0.25)
