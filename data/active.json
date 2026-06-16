@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "2b4f518"
+    "commit": "a60c21a"
   },
-  "generated_at": "2026-06-16T13:10:02.684305Z",
+  "generated_at": "2026-06-16T13:28:23.669355Z",
   "data": {
-    "count": 27,
+    "count": 28,
     "picks": [
       {
         "id": 9,
@@ -1835,6 +1835,55 @@
         },
         "instrument_name": "Qualcomm Inc",
         "author_note": "퀄컴 20%만 먹고 갑니다 스윙 이즈 굿 ~"
+      },
+      {
+        "id": 61,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-16T13:28:23.669273Z",
+        "author": "saechimdaeki",
+        "issue_number": 91,
+        "ticker": "RXT",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-06-16",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.15
+        },
+        "duration": {
+          "days": 14
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-16T13:28:23.669273Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-16T13:28:23.669273Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Rackspace Technology, Inc.",
+        "author_note": "단타"
       }
     ]
   }
