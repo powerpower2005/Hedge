@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "09bcf84"
+    "commit": "4f1e0da"
   },
-  "generated_at": "2026-06-03T23:14:13.444783Z",
+  "generated_at": "2026-06-17T23:17:33.502731Z",
   "data": {
-    "count": 15,
+    "count": 16,
     "picks": [
       {
         "id": 5,
@@ -1140,6 +1140,91 @@
           "achieved_close": 542.52,
           "days_taken": 27,
           "final_return_rate": 0.527107
+        }
+      },
+      {
+        "id": 61,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-16T13:28:23.669273Z",
+        "author": "saechimdaeki",
+        "issue_number": 91,
+        "ticker": "RXT",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-06-16",
+          "source": "google_sheets",
+          "price": 6.2
+        },
+        "target": {
+          "return_rate": 0.15,
+          "price": 7.13
+        },
+        "duration": {
+          "days": 14,
+          "deadline": "2026-06-30"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-16T13:28:23.669273Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-06-16T23:18:14.900418Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-06-17T23:17:33.499653Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-06-17",
+          "current": {
+            "close": 7.53,
+            "return_rate": 0.214516
+          },
+          "highest": {
+            "close": 7.53,
+            "close_date": "2026-06-17",
+            "return_rate": 0.214516
+          },
+          "lowest": {
+            "close": 6.2,
+            "close_date": "2026-06-16",
+            "return_rate": 0.0
+          },
+          "distance_to_target": -0.064516,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-16T13:28:23.669273Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Rackspace Technology, Inc.",
+        "author_note": "단타",
+        "achievement": {
+          "achieved_date": "2026-06-17",
+          "achieved_close": 7.53,
+          "days_taken": 1,
+          "final_return_rate": 0.214516
         }
       }
     ]
