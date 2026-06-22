@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "4b6638c"
+    "commit": "8df0a75"
   },
-  "generated_at": "2026-06-21T23:01:41.551618Z",
+  "generated_at": "2026-06-22T11:58:53.104736Z",
   "data": {
-    "count": 27,
+    "count": 28,
     "picks": [
       {
         "id": 9,
@@ -1835,6 +1835,55 @@
         },
         "instrument_name": "Qualcomm Inc",
         "author_note": "퀄컴 20%만 먹고 갑니다 스윙 이즈 굿 ~"
+      },
+      {
+        "id": 62,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-22T11:58:53.104662Z",
+        "author": "saechimdaeki",
+        "issue_number": 92,
+        "ticker": "KEEL",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-06-22",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.2
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-22T11:58:53.104662Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-22T11:58:53.104662Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Keel Infrastructure Corp",
+        "author_note": "데봅스들에게 죽음을"
       }
     ]
   }
