@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "662195a"
+    "commit": "9e6b6e2"
   },
-  "generated_at": "2026-06-23T12:27:51.120045Z",
+  "generated_at": "2026-06-23T13:36:53.629556Z",
   "data": {
-    "count": 27,
+    "count": 28,
     "picks": [
       {
         "id": 9,
@@ -1835,6 +1835,55 @@
         },
         "instrument_name": "Keel Infrastructure Corp",
         "author_note": "데봅스들에게 죽음을"
+      },
+      {
+        "id": 63,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-23T13:36:53.629456Z",
+        "author": "saechimdaeki",
+        "issue_number": 94,
+        "ticker": "BTQ",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-06-23",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.22
+        },
+        "duration": {
+          "days": 14
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-23T13:36:53.629456Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-23T13:36:53.629456Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "BTQ Technologies Corp",
+        "author_note": "단타"
       }
     ]
   }
