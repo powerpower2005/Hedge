@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "9e6b6e2"
+    "commit": "fce3883"
   },
-  "generated_at": "2026-06-23T13:36:53.629556Z",
+  "generated_at": "2026-06-23T14:06:23.933024Z",
   "data": {
-    "count": 28,
+    "count": 29,
     "picks": [
       {
         "id": 9,
@@ -1884,6 +1884,55 @@
         },
         "instrument_name": "BTQ Technologies Corp",
         "author_note": "단타"
+      },
+      {
+        "id": 64,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-23T14:06:23.932939Z",
+        "author": "saechimdaeki",
+        "issue_number": 95,
+        "ticker": "INFQ",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-06-23",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.3
+        },
+        "duration": {
+          "days": 90
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-23T14:06:23.932939Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-23T14:06:23.932939Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Infleqtion inc",
+        "author_note": "트럼프 리딩 따라가는 양자"
       }
     ]
   }
