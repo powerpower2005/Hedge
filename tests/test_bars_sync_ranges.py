@@ -10,7 +10,7 @@ def test_run_bars_sync_dry_run_plans_without_fetch(monkeypatch):
         calls.append(args)
         raise AssertionError("fetch should not run in dry-run")
 
-    monkeypatch.setattr("common.bars_sync.fetch_bars_google_finance", _boom)
+    monkeypatch.setattr("common.bars_sync.fetch_bars_google_finance_batch", _boom)
     picks = [
         {
             "country": "US",

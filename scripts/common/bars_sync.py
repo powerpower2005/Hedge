@@ -21,15 +21,15 @@ from .bars_sheets import (
     BarsFetchJob,
     batch_interval_sec,
     batch_size,
-    fetch_bars_google_finance,
     fetch_bars_google_finance_batch,
+    fetch_bars_with_symbol_candidates,
 )
 from .bars_storage import last_bar_date, load_bars_file, upsert_bars
 from .instrument_key import (
     BARS_SUPPORTED_COUNTRIES,
     InstrumentKey,
     bars_file_path,
-    finance_symbol,
+    finance_symbol_candidates,
     instrument_key_from_pick,
 )
 from .meta import touch_last_bars_sync_at
@@ -48,6 +48,7 @@ SyncMode = Literal["daily", "backfill"]
 class _FetchWork:
     key: InstrumentKey
     symbol: str
+    symbol_candidates: tuple[str, ...]
     start: date
     end: date
 
@@ -67,10 +68,25 @@ def _collect_fetch_work(
     work: list[_FetchWork] = []
     for key, inst_picks in sorted(grouped.items()):
         country, market, ticker = key
-        symbol = finance_symbol(country, market, ticker)
+        candidates = tuple(finance_symbol_candidates(country, market, ticker))
         for start, end in plan_fetch_windows(key, inst_picks, today, mode):
-            work.append(_FetchWork(key=key, symbol=symbol, start=start, end=end))
+            work.append(
+                _FetchWork(
+                    key=key,
+                    symbol=candidates[0],
+                    symbol_candidates=candidates,
+                    start=start,
+                    end=end,
+                )
+            )
     return work
+
+
+def _fetch_one_work(w: _FetchWork) -> list[dict[str, Any]]:
+    _symbol, bars = fetch_bars_with_symbol_candidates(
+        w.symbol_candidates, w.start, w.end
+    )
+    return bars
 
 
 def _fetch_work_batch(
@@ -84,13 +100,13 @@ def _fetch_work_batch(
         if len(batch) == 1:
             w = batch[0]
             try:
-                return [(w, fetch_bars_google_finance(w.symbol, w.start, w.end))]
+                return [(w, _fetch_one_work(w))]
             except BaseException as e:
                 return [(w, e)]
         out: list[tuple[_FetchWork, list[dict[str, Any]] | BaseException]] = []
         for w in batch:
             try:
-                out.append((w, fetch_bars_google_finance(w.symbol, w.start, w.end)))
+                out.append((w, _fetch_one_work(w)))
             except BaseException as e:
                 out.append((w, e))
         return out

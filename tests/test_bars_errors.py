@@ -58,19 +58,18 @@ def test_run_bars_sync_records_failure_on_fetch_error(monkeypatch, capsys):
         )
 
     monkeypatch.setattr("common.bars_sync.fetch_bars_google_finance_batch", _fail_batch)
-    monkeypatch.setattr(
-        "common.bars_sync.fetch_bars_google_finance",
-        lambda symbol, start, end: (_ for _ in ()).throw(
-            BarsFetchError(
-                phase="googfinance_empty",
-                symbol=symbol,
-                start=start,
-                end=end,
-                message="test failure",
-                detail="snapshot=empty",
-            )
-        ),
-    )
+
+    def _fail_candidates(candidates, start, end):
+        raise BarsFetchError(
+            phase="googfinance_empty",
+            symbol=candidates[0],
+            start=start,
+            end=end,
+            message="test failure",
+            detail="snapshot=empty",
+        )
+
+    monkeypatch.setattr("common.bars_sync.fetch_bars_with_symbol_candidates", _fail_candidates)
     picks = [
         {
             "country": "US",

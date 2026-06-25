@@ -424,3 +424,51 @@ def fetch_bars_google_finance(symbol: str, start: date, end: date) -> list[dict[
         return []
     results = fetch_bars_google_finance_batch([BarsFetchJob(symbol=symbol, start=start, end=end)])
     return results[0] if results else []
+
+
+def fetch_bars_with_symbol_candidates(
+    candidates: list[str] | tuple[str, ...],
+    start: date,
+    end: date,
+) -> tuple[str, list[dict[str, Any]]]:
+    """Try each exchange prefix until GOOGLEFINANCE returns OHLCV rows."""
+    if not candidates:
+        raise BarsFetchError(
+            phase="config",
+            symbol="n/a",
+            start=start,
+            end=end,
+            message="no symbol candidates",
+        )
+    last_err: BarsFetchError | None = None
+    for idx, symbol in enumerate(candidates):
+        try:
+            bars = fetch_bars_google_finance(symbol, start, end)
+            if bars:
+                if idx > 0:
+                    print(
+                        f"[bars] symbol fallback ok used={symbol} "
+                        f"skipped={list(candidates[:idx])}",
+                        file=sys.stderr,
+                    )
+                return symbol, bars
+        except BarsFetchError as e:
+            last_err = e
+            retryable = e.phase == "googfinance_empty" or "N/A" in e.message
+            if not retryable or idx + 1 >= len(candidates):
+                raise
+            print(
+                f"[bars] symbol retry failed={symbol} phase={e.phase}; "
+                f"next={candidates[idx + 1]}",
+                file=sys.stderr,
+            )
+    if last_err:
+        raise last_err
+    raise BarsFetchError(
+        phase="googfinance_empty",
+        symbol=candidates[0],
+        start=start,
+        end=end,
+        message="all symbol candidates returned no bars",
+        detail=f"candidates={list(candidates)}",
+    )

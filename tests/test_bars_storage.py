@@ -2,7 +2,12 @@ from datetime import date
 
 from common.bars_storage import merge_bars, upsert_bars
 from common.bars_sync import group_instruments, instrument_date_window, plan_fetch_windows
-from common.instrument_key import bars_file_path, finance_symbol, instrument_key_from_pick
+from common.instrument_key import (
+    bars_file_path,
+    finance_symbol,
+    finance_symbol_candidates,
+    instrument_key_from_pick,
+)
 
 
 def test_instrument_key_from_pick():
@@ -15,6 +20,19 @@ def test_finance_symbol():
     assert finance_symbol("US", "NASDAQ", "AAPL") == "NASDAQ:AAPL"
     assert finance_symbol("KR", "KOSDAQ", "035420") == "KOSDAQ:035420"
     assert finance_symbol("HK", "HKG", "0700") == "HKG:0700"
+
+
+def test_finance_symbol_candidates_kr_kospi():
+    assert finance_symbol_candidates("KR", "KOSPI", "000150") == [
+        "KOSPI:000150",
+        "KRX:000150",
+        "KOSDAQ:000150",
+    ]
+    assert finance_symbol_candidates("KR", "KOSDAQ", "035420") == [
+        "KOSDAQ:035420",
+        "KRX:035420",
+        "KOSPI:035420",
+    ]
 
 
 def test_merge_bars_upsert_and_sort():
