@@ -66,6 +66,11 @@ def batch_size() -> int:
     return max(1, _env_int("BARS_SHEETS_BATCH_SIZE", 5))
 
 
+def batch_interval_sec() -> float:
+    """Pause between multi-symbol fetch batches (Sheets quota headroom)."""
+    return max(0.0, _env_float("BARS_BATCH_INTERVAL_SEC", 5.0))
+
+
 def traceback_hint(exc: BaseException) -> str:
     return f"{type(exc).__name__}: {exc}"
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sys
+import time
 from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import date, timedelta
@@ -18,6 +19,7 @@ from .bars_errors import (
 )
 from .bars_sheets import (
     BarsFetchJob,
+    batch_interval_sec,
     batch_size,
     fetch_bars_google_finance,
     fetch_bars_google_finance_batch,
@@ -248,10 +250,12 @@ def run_bars_sync(
     updated = 0
     failures: list[SyncFailure] = []
     size = batch_size()
+    pause = batch_interval_sec()
+    batches = _chunked(work, size)
 
-    for batch in _chunked(work, size):
+    for batch_idx, batch in enumerate(batches):
         print(
-            f"[bars] batch fetch size={len(batch)} symbols="
+            f"[bars] batch fetch {batch_idx + 1}/{len(batches)} size={len(batch)} symbols="
             f"{','.join(w.symbol for w in batch)}",
             file=sys.stderr,
         )
@@ -276,6 +280,13 @@ def run_bars_sync(
                 log_sync_failure(failure)
             else:
                 pending[w.key].extend(result)
+
+        if pause > 0 and batch_idx < len(batches) - 1:
+            print(
+                f"[bars] batch pause {pause:.1f}s before next fetch (BARS_BATCH_INTERVAL_SEC)",
+                file=sys.stderr,
+            )
+            time.sleep(pause)
 
     for key, bars in pending.items():
         if not bars:
