@@ -47,17 +47,30 @@ def test_exit_code_allow_partial():
 
 
 def test_run_bars_sync_records_failure_on_fetch_error(monkeypatch, capsys):
-    def _fail(symbol, start, end):
+    def _fail_batch(jobs):
         raise BarsFetchError(
             phase="googfinance_empty",
-            symbol=symbol,
-            start=start,
-            end=end,
+            symbol=jobs[0].symbol,
+            start=jobs[0].start,
+            end=jobs[0].end,
             message="test failure",
             detail="snapshot=empty",
         )
 
-    monkeypatch.setattr("common.bars_sync.fetch_bars_google_finance", _fail)
+    monkeypatch.setattr("common.bars_sync.fetch_bars_google_finance_batch", _fail_batch)
+    monkeypatch.setattr(
+        "common.bars_sync.fetch_bars_google_finance",
+        lambda symbol, start, end: (_ for _ in ()).throw(
+            BarsFetchError(
+                phase="googfinance_empty",
+                symbol=symbol,
+                start=start,
+                end=end,
+                message="test failure",
+                detail="snapshot=empty",
+            )
+        ),
+    )
     picks = [
         {
             "country": "US",

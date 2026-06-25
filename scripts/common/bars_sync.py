@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import sys
-import time
 from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import date, timedelta
@@ -17,7 +16,12 @@ from .bars_errors import (
     instrument_label,
     log_sync_failure,
 )
-from .bars_sheets import fetch_bars_google_finance
+from .bars_sheets import (
+    BarsFetchJob,
+    batch_size,
+    fetch_bars_google_finance,
+    fetch_bars_google_finance_batch,
+)
 from .bars_storage import last_bar_date, load_bars_file, upsert_bars
 from .instrument_key import (
     BARS_SUPPORTED_COUNTRIES,
@@ -36,6 +40,58 @@ DAILY_CATCHUP_DAYS = 14
 BACKFILL_CHUNK_DAYS = 90
 
 SyncMode = Literal["daily", "backfill"]
+
+
+@dataclass(frozen=True)
+class _FetchWork:
+    key: InstrumentKey
+    symbol: str
+    start: date
+    end: date
+
+
+def _chunked(items: list[_FetchWork], size: int) -> list[list[_FetchWork]]:
+    if size < 1:
+        size = 1
+    return [items[i : i + size] for i in range(0, len(items), size)]
+
+
+def _collect_fetch_work(
+    grouped: dict[InstrumentKey, list[dict[str, Any]]],
+    *,
+    today: date,
+    mode: SyncMode,
+) -> list[_FetchWork]:
+    work: list[_FetchWork] = []
+    for key, inst_picks in sorted(grouped.items()):
+        country, market, ticker = key
+        symbol = finance_symbol(country, market, ticker)
+        for start, end in plan_fetch_windows(key, inst_picks, today, mode):
+            work.append(_FetchWork(key=key, symbol=symbol, start=start, end=end))
+    return work
+
+
+def _fetch_work_batch(
+    batch: list[_FetchWork],
+) -> list[tuple[_FetchWork, list[dict[str, Any]] | BaseException]]:
+    jobs = [BarsFetchJob(symbol=w.symbol, start=w.start, end=w.end) for w in batch]
+    try:
+        bars_lists = fetch_bars_google_finance_batch(jobs)
+        return [(w, bars) for w, bars in zip(batch, bars_lists)]
+    except BarsFetchError:
+        if len(batch) == 1:
+            w = batch[0]
+            try:
+                return [(w, fetch_bars_google_finance(w.symbol, w.start, w.end))]
+            except BaseException as e:
+                return [(w, e)]
+        out: list[tuple[_FetchWork, list[dict[str, Any]] | BaseException]] = []
+        for w in batch:
+            try:
+                out.append((w, fetch_bars_google_finance(w.symbol, w.start, w.end)))
+            except BaseException as e:
+                out.append((w, e))
+        return out
 
 
 @dataclass
@@ -150,59 +206,6 @@ def plan_fetch_windows(
     return windows
 
 
-def sync_instrument(
-    key: InstrumentKey,
-    picks: list[dict[str, Any]],
-    *,
-    today: date,
-    mode: SyncMode,
-    dry_run: bool,
-) -> bool:
-    country, market, ticker = key
-    symbol = finance_symbol(country, market, ticker)
-    windows = plan_fetch_windows(key, picks, today, mode)
-    if not windows:
-        return False
-
-    if dry_run:
-        for start, end in windows:
-            print(
-                f"[bars] dry-run plan {country}/{market}/{ticker} ({symbol}) "
-                f"{start.isoformat()}..{end.isoformat()} mode={mode}",
-                file=sys.stderr,
-            )
-        return True
-
-    collected: list[dict[str, Any]] = []
-    for start, end in windows:
-        try:
-            chunk = fetch_bars_google_finance(symbol, start, end)
-        except BarsFetchError as e:
-            raise BarsFetchError(
-                phase=e.phase,
-                symbol=e.symbol,
-                message=e.message,
-                start=e.start or start,
-                end=e.end or end,
-                detail=e.detail,
-                instrument=instrument_label(key),
-            ) from e
-        collected.extend(chunk)
-        time.sleep(0.5)
-
-    if not collected:
-        raise BarsFetchError(
-            phase="empty_result",
-            symbol=symbol,
-            start=windows[0][0],
-            end=windows[-1][1],
-            message="fetch completed but no bars collected across all windows",
-            instrument=instrument_label(key),
-            detail=f"windows={[(a.isoformat(), b.isoformat()) for a, b in windows]}",
-        )
-    return upsert_bars(key, collected)
-
-
 def run_bars_sync(
     picks: list[dict[str, Any]],
     *,
@@ -228,26 +231,57 @@ def run_bars_sync(
     if not grouped:
         return stats
 
+    work = _collect_fetch_work(grouped, today=today, mode=mode)
+    if dry_run:
+        for item in work:
+            c, m, t = item.key
+            print(
+                f"[bars] dry-run plan {c}/{m}/{t} ({item.symbol}) "
+                f"{item.start.isoformat()}..{item.end.isoformat()} mode={mode}",
+                file=sys.stderr,
+            )
+        stats.updated = len({w.key for w in work})
+        return stats
+
+    pending: dict[InstrumentKey, list[dict[str, Any]]] = defaultdict(list)
     errors = 0
     updated = 0
     failures: list[SyncFailure] = []
-    for key, inst_picks in sorted(grouped.items()):
-        country, market, ticker = key
-        symbol = finance_symbol(country, market, ticker)
-        windows = plan_fetch_windows(key, inst_picks, today, mode)
-        range_hint = None
-        if windows:
-            range_hint = f"{windows[0][0].isoformat()}..{windows[-1][1].isoformat()}"
-        try:
-            if sync_instrument(key, inst_picks, today=today, mode=mode, dry_run=dry_run):
-                updated += 1
-        except Exception as e:
-            errors += 1
-            failure = failure_from_exception(
-                key, symbol, e, date_range=range_hint
-            )
-            failures.append(failure)
-            log_sync_failure(failure)
+    size = batch_size()
+
+    for batch in _chunked(work, size):
+        print(
+            f"[bars] batch fetch size={len(batch)} symbols="
+            f"{','.join(w.symbol for w in batch)}",
+            file=sys.stderr,
+        )
+        for w, result in _fetch_work_batch(batch):
+            range_hint = f"{w.start.isoformat()}..{w.end.isoformat()}"
+            if isinstance(result, BaseException):
+                errors += 1
+                if isinstance(result, BarsFetchError) and not result.instrument:
+                    result = BarsFetchError(
+                        phase=result.phase,
+                        symbol=result.symbol,
+                        message=result.message,
+                        start=result.start,
+                        end=result.end,
+                        detail=result.detail,
+                        instrument=instrument_label(w.key),
+                    )
+                failure = failure_from_exception(
+                    w.key, w.symbol, result, date_range=range_hint
+                )
+                failures.append(failure)
+                log_sync_failure(failure)
+            else:
+                pending[w.key].extend(result)
+
+    for key, bars in pending.items():
+        if not bars:
+            continue
+        if upsert_bars(key, bars):
+            updated += 1
 
     stats.updated = updated
     stats.fetch_errors = errors
