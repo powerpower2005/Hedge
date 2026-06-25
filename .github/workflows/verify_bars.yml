@@ -1,0 +1,74 @@
+name: Verify daily bars
+
+on:
+  workflow_dispatch:
+    inputs:
+      country:
+        description: "Country filter"
+        required: false
+        type: choice
+        default: ALL
+        options:
+          - ALL
+          - US
+          - KR
+          - HK
+      include_recent_expired:
+        description: "Also check data/expired_recent.json instruments"
+        required: false
+        type: boolean
+        default: false
+      fail_on_warning:
+        description: "Fail on stale_through / empty_volume warnings"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Verify bar files
+        run: |
+          set -euo pipefail
+          args=()
+          if [[ "${{ inputs.country }}" != "" && "${{ inputs.country }}" != "ALL" ]]; then
+            args+=(--country "${{ inputs.country }}")
+          fi
+          if [[ "${{ inputs.include_recent_expired }}" == "true" ]]; then
+            args+=(--include-recent-expired)
+          fi
+          if [[ "${{ inputs.fail_on_warning }}" == "true" ]]; then
+            args+=(--fail-on-warning)
+          fi
+          python scripts/verify_bars.py "${args[@]}"
+
+      - name: Verify failed — context
+        if: failure()
+        run: |
+          echo "::group::Bars verify context"
+          if [[ -d data/bars/v1 ]]; then
+            count=$(find data/bars/v1 -name '*.json' 2>/dev/null | wc -l | tr -d ' ')
+            echo "bar_json_files=${count}"
+            find data/bars/v1 -name '*.json' 2>/dev/null | head -30 || true
+          else
+            echo "(no data/bars/v1 yet)"
+          fi
+          echo "Re-run Backfill daily bars if missing_file or empty_bars errors appear."
+          echo "::endgroup::"
