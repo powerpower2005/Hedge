@@ -49,6 +49,21 @@ def main() -> None:
 
     _run(["ajv", "validate", "-s", "schemas/meta.v1.json", "-d", "data/meta.json", "--strict=false"])
 
+    bars_root = ROOT / "data" / "bars" / "v1"
+    if bars_root.is_dir():
+        for path in sorted(bars_root.rglob("*.json")):
+            _run(
+                [
+                    "ajv",
+                    "validate",
+                    "-s",
+                    "schemas/instrument_bars.v1.json",
+                    "-d",
+                    str(path.relative_to(ROOT)),
+                    "--strict=false",
+                ]
+            )
+
 
 if __name__ == "__main__":
     try:

@@ -37,3 +37,10 @@ def touch_last_daily_judgment_at() -> None:
     meta = load_meta()
     meta["last_daily_judgment_at"] = now_iso()
     save_meta(meta)
+
+
+def touch_last_bars_sync_at() -> None:
+    """Record successful completion of sync_daily_bars / backfill_bars."""
+    meta = load_meta()
+    meta["last_bars_sync_at"] = now_iso()
+    save_meta(meta)

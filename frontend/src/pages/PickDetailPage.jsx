@@ -23,6 +23,7 @@ import { ui } from "../lib/themeClasses.js";
 import { type } from "../lib/typographyClasses.js";
 import { pickDetailErrorMessage } from "../lib/userMessages.js";
 import { MetricBlock } from "../components/ui/MetricBlock.jsx";
+import { PickDailyChart } from "../components/pick/PickDailyChart.jsx";
 
 export function PickDetailPage() {
   const { id } = useParams();
@@ -139,6 +140,8 @@ export function PickDetailPage() {
 
         <ProgressBar percent={progressPct} />
       </section>
+
+      <PickDailyChart pick={pick} />
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <section className={`${ui.card} ${ui.cardPad}`}>

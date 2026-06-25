@@ -35,6 +35,21 @@ jobs:
       - name: Validate data/meta.json
         run: ajv validate -s schemas/meta.v1.json -d data/meta.json --strict=false
 
+      - name: Validate data/bars/v1/**/*.json
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob globstar
+          files=(data/bars/v1/**/*.json)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No bar files yet (ok before first backfill)."
+            exit 0
+          fi
+          for f in "${files[@]}"; do
+            echo "validate $f"
+            ajv validate -s schemas/instrument_bars.v1.json -d "$f" --strict=false
+          done
+
       - name: Validate data/archive/*.json
         shell: bash
         run: |

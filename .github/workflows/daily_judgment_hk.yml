@@ -48,6 +48,11 @@ jobs:
           TELEGRAM_CHAT_ID_HEALTHY_GAEMI: ${{ secrets.TELEGRAM_CHAT_ID_HEALTHY_GAEMI }}
         run: python scripts/daily_judgment.py --country HK
 
+      - name: Sync daily bars (HK)
+        env:
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+        run: python scripts/sync_daily_bars.py --country HK
+
       - name: Commit and push
         env:
           BRANCH: main

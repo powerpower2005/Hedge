@@ -216,6 +216,12 @@ export default {
     authorNoteDisclaimer: "For context only; not used for targets or judgment.",
     achieved: "Achieved",
     achievedMeta: "Date {date} · Days {days} · Final {final}",
+    chartTitle: "Daily chart",
+    chartJpPreparing: "Daily chart for Japan picks is coming soon.",
+    chartNoData: "Chart data is not available yet.",
+    chartLoading: "Loading chart…",
+    chartEntryLine: "Entry",
+    chartTargetLine: "Target",
   },
   user: {
     title: "@{name}",

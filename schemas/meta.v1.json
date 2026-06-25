@@ -12,6 +12,11 @@
       "type": "string",
       "minLength": 1,
       "description": "ISO time when daily_judgment last finished successfully (repo batch close / progress)."
+    },
+    "last_bars_sync_at": {
+      "type": "string",
+      "minLength": 1,
+      "description": "ISO time when sync_daily_bars or backfill_bars last finished successfully."
     }
   },
   "additionalProperties": true

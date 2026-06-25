@@ -216,6 +216,12 @@ export default {
     authorNoteDisclaimer: "이 메모는 참고용이며, 목표가·판정에는 반영되지 않습니다.",
     achieved: "달성",
     achievedMeta: "일자 {date} · 경과 {days}일 · 최종 {final}",
+    chartTitle: "일봉 차트",
+    chartJpPreparing: "일본 종목 차트는 준비 중입니다.",
+    chartNoData: "차트 데이터가 아직 없습니다.",
+    chartLoading: "차트 불러오는 중…",
+    chartEntryLine: "진입",
+    chartTargetLine: "목표",
   },
   user: {
     title: "@{name}",
