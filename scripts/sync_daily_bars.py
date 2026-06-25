@@ -6,6 +6,7 @@ import argparse
 import sys
 from pathlib import Path
 
+from common.bars_errors import exit_code_for_stats, print_failure_report
 from common.bars_sync import run_bars_sync
 from common.storage import get_picks, load_list_file
 
@@ -16,6 +17,11 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Sync daily bars for active picks in one country.")
     p.add_argument("--country", required=True, choices=["US", "KR", "HK"])
     p.add_argument("--dry-run", action="store_true", help="Print planned fetch windows only; no Sheets or file writes.")
+    p.add_argument(
+        "--allow-partial",
+        action="store_true",
+        help="Exit 0 even if some instruments failed (errors still logged).",
+    )
     return p.parse_args()
 
 
@@ -32,8 +38,16 @@ def main() -> None:
         f"[sync_daily_bars] country={args.country} instruments={stats.instruments} "
         f"updated={stats.updated} errors={stats.fetch_errors} dry_run={stats.dry_run}"
     )
-    if stats.instruments > 0 and stats.updated == 0 and stats.fetch_errors >= stats.instruments:
-        sys.exit(1)
+    if stats.failures:
+        print_failure_report(stats.failures, script="sync_daily_bars", stats=stats)
+    code = exit_code_for_stats(stats, allow_partial=args.allow_partial)
+    if code != 0:
+        print(
+            f"[sync_daily_bars] FAILED country={args.country}: one or more instruments errored "
+            "(see FAILURE lines above). Judgment data may already be updated; fix bars and re-run this step.",
+            file=sys.stderr,
+        )
+    sys.exit(code)
 
 
 if __name__ == "__main__":

@@ -10,6 +10,7 @@ concurrency:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   backfill:
@@ -57,6 +58,25 @@ jobs:
             sleep $((i * 3))
           done
 
+      - name: Bars failed — context (no secrets)
+        if: failure()
+        run: |
+          bash scripts/bars_failure_context.sh
+          bash scripts/ci_failure_context.sh
+
       - name: Cleanup service account
         if: always()
         run: rm -f config/service_account.json
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[AUTO] Backfill daily bars failed - ${new Date().toISOString().split('T')[0]}`,
+              body: `Backfill daily bars workflow failed.\n\nCheck the **Backfill bars** step for \`[bars] FAILURE\` lines (phase, instrument, symbol, date range, formula snapshot).\n\nRun: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              labels: ['system-error', 'priority-high']
+            });

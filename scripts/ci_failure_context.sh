@@ -22,6 +22,14 @@ if [[ -d data ]]; then
 else
   echo "(no data/ directory)"
 fi
+echo "--- data/bars (daily OHLCV) ---"
+if [[ -d data/bars/v1 ]]; then
+  count=$(find data/bars/v1 -name '*.json' 2>/dev/null | wc -l | tr -d ' ')
+  echo "bar_json_files=${count}"
+  find data/bars/v1 -name '*.json' 2>/dev/null | head -15 || true
+else
+  echo "(no data/bars/v1 directory)"
+fi
 echo "--- data summaries (no pick bodies) ---"
 if command -v python >/dev/null 2>&1; then
   python <<'PY'

@@ -75,7 +75,11 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           echo "Judgment(HK): Sheet CSV/gspread + Secrets (GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_JSON, names only)."
+          echo "If **Sync daily bars (HK)** failed, search logs for [bars] FAILURE / phase= / formula snapshot."
           echo "Push: see commit step; rebase/push loop may conflict with concurrent data commits."
+          if [ -f scripts/bars_failure_context.sh ]; then
+            bash scripts/bars_failure_context.sh
+          fi
           if [ -f scripts/ci_failure_context.sh ]; then
             bash scripts/ci_failure_context.sh
           fi

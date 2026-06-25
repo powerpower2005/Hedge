@@ -5,11 +5,18 @@ from __future__ import annotations
 import sys
 import time
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any, Literal
 
+from .bars_errors import (
+    BarsFetchError,
+    SyncFailure,
+    failure_from_exception,
+    instrument_label,
+    log_sync_failure,
+)
 from .bars_sheets import fetch_bars_google_finance
 from .bars_storage import last_bar_date, load_bars_file, upsert_bars
 from .instrument_key import (
@@ -39,6 +46,7 @@ class SyncStats:
     skipped_country: int = 0
     fetch_errors: int = 0
     dry_run: bool = False
+    failures: list[SyncFailure] = field(default_factory=list)
 
 
 def _pick_start_date(pick: dict[str, Any]) -> date:
@@ -167,12 +175,31 @@ def sync_instrument(
 
     collected: list[dict[str, Any]] = []
     for start, end in windows:
-        chunk = fetch_bars_google_finance(symbol, start, end)
+        try:
+            chunk = fetch_bars_google_finance(symbol, start, end)
+        except BarsFetchError as e:
+            raise BarsFetchError(
+                phase=e.phase,
+                symbol=e.symbol,
+                message=e.message,
+                start=e.start or start,
+                end=e.end or end,
+                detail=e.detail,
+                instrument=instrument_label(key),
+            ) from e
         collected.extend(chunk)
         time.sleep(0.5)
 
     if not collected:
-        return False
+        raise BarsFetchError(
+            phase="empty_result",
+            symbol=symbol,
+            start=windows[0][0],
+            end=windows[-1][1],
+            message="fetch completed but no bars collected across all windows",
+            instrument=instrument_label(key),
+            detail=f"windows={[(a.isoformat(), b.isoformat()) for a, b in windows]}",
+        )
     return upsert_bars(key, collected)
 
 
@@ -203,17 +230,28 @@ def run_bars_sync(
 
     errors = 0
     updated = 0
+    failures: list[SyncFailure] = []
     for key, inst_picks in sorted(grouped.items()):
+        country, market, ticker = key
+        symbol = finance_symbol(country, market, ticker)
+        windows = plan_fetch_windows(key, inst_picks, today, mode)
+        range_hint = None
+        if windows:
+            range_hint = f"{windows[0][0].isoformat()}..{windows[-1][1].isoformat()}"
         try:
             if sync_instrument(key, inst_picks, today=today, mode=mode, dry_run=dry_run):
                 updated += 1
         except Exception as e:
             errors += 1
-            c, m, t = key
-            print(f"[bars] ERROR {c}/{m}/{t}: {e}", file=sys.stderr)
+            failure = failure_from_exception(
+                key, symbol, e, date_range=range_hint
+            )
+            failures.append(failure)
+            log_sync_failure(failure)
 
     stats.updated = updated
     stats.fetch_errors = errors
+    stats.failures = failures
 
     if not dry_run and updated > 0 and touch_meta:
         touch_last_bars_sync_at()
