@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "generator": {
+    "name": "called-it",
+    "version": "1.0.0",
+    "commit": "deace95"
+  },
+  "generated_at": "2026-06-25T15:34:43.843993Z",
+  "instrument": {
+    "country": "US",
+    "market": "NASDAQ",
+    "ticker": "KEEL"
+  },
+  "source": "google_sheets_googfinance",
+  "updated_at": "2026-06-24",
+  "bars": [
+    {
+      "date": "2026-06-22",
+      "open": 6.66,
+      "high": 7.37,
+      "low": 6.58,
+      "close": 6.66,
+      "volume": 109643489.0
+    },
+    {
+      "date": "2026-06-23",
+      "open": 6.17,
+      "high": 6.88,
+      "low": 6.04,
+      "close": 6.6,
+      "volume": 60104782.0
+    },
+    {
+      "date": "2026-06-24",
+      "open": 6.84,
+      "high": 6.9,
+      "low": 5.85,
+      "close": 6.12,
+      "volume": 68674711.0
+    }
+  ]
+}

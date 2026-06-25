@@ -2,5 +2,6 @@
   "schema_version": "1.0.0",
   "next_pick_id": 68,
   "updated_at": "2026-06-25T14:21:42.419389Z",
-  "last_daily_judgment_at": "2026-06-25T12:11:08.648181Z"
+  "last_daily_judgment_at": "2026-06-25T12:11:08.648181Z",
+  "last_bars_sync_at": "2026-06-25T15:34:43.847685Z"
 }

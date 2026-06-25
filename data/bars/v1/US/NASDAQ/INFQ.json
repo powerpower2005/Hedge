@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "generator": {
+    "name": "called-it",
+    "version": "1.0.0",
+    "commit": "deace95"
+  },
+  "generated_at": "2026-06-25T15:34:43.843793Z",
+  "instrument": {
+    "country": "US",
+    "market": "NASDAQ",
+    "ticker": "INFQ"
+  },
+  "source": "google_sheets_googfinance",
+  "updated_at": "2026-06-24",
+  "bars": [
+    {
+      "date": "2026-06-23",
+      "open": 14.56,
+      "high": 16.59,
+      "low": 14.42,
+      "close": 15.96,
+      "volume": 42803100.0
+    },
+    {
+      "date": "2026-06-24",
+      "open": 15.58,
+      "high": 15.59,
+      "low": 13.66,
+      "close": 14.1,
+      "volume": 22621061.0
+    }
+  ]
+}
