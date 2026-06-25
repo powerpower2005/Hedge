@@ -15,7 +15,7 @@ ACTIVE_PATH = Path("data/active.json")
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Sync daily bars for active picks in one country.")
     p.add_argument("--country", required=True, choices=["US", "KR", "HK"])
-    p.add_argument("--dry-run", action="store_true")
+    p.add_argument("--dry-run", action="store_true", help="Print planned fetch windows only; no Sheets or file writes.")
     return p.parse_args()
 
 

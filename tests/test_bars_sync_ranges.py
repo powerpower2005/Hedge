@@ -3,6 +3,30 @@ from datetime import date
 from common.bars_sync import plan_fetch_windows, run_bars_sync
 
 
+def test_run_bars_sync_dry_run_plans_without_fetch(monkeypatch):
+    calls: list[tuple] = []
+
+    def _boom(*args, **kwargs):
+        calls.append(args)
+        raise AssertionError("fetch should not run in dry-run")
+
+    monkeypatch.setattr("common.bars_sync.fetch_bars_google_finance", _boom)
+    picks = [
+        {
+            "country": "US",
+            "market": "NASDAQ",
+            "ticker": "TSLA",
+            "status": {"current": "active"},
+            "entry": {"date": "2026-04-01"},
+            "duration": {"deadline": "2026-07-01"},
+        },
+    ]
+    stats = run_bars_sync(picks, mode="backfill", dry_run=True, touch_meta=False)
+    assert stats.instruments == 1
+    assert stats.updated == 1
+    assert calls == []
+
+
 def test_run_bars_sync_dry_run_skips_jp():
     picks = [
         {

@@ -156,6 +156,15 @@ def sync_instrument(
     if not windows:
         return False
 
+    if dry_run:
+        for start, end in windows:
+            print(
+                f"[bars] dry-run plan {country}/{market}/{ticker} ({symbol}) "
+                f"{start.isoformat()}..{end.isoformat()} mode={mode}",
+                file=sys.stderr,
+            )
+        return True
+
     collected: list[dict[str, Any]] = []
     for start, end in windows:
         chunk = fetch_bars_google_finance(symbol, start, end)
@@ -164,12 +173,6 @@ def sync_instrument(
 
     if not collected:
         return False
-    if dry_run:
-        print(
-            f"[bars] dry-run would upsert {len(collected)} bar(s) for {country}/{market}/{ticker}",
-            file=sys.stderr,
-        )
-        return True
     return upsert_bars(key, collected)
 
 

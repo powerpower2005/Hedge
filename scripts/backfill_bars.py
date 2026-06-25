@@ -15,7 +15,7 @@ EXPIRED_PATH = Path("data/expired_recent.json")
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Backfill daily OHLCV bars (US/KR/HK; JP skipped).")
-    p.add_argument("--dry-run", action="store_true", help="Plan fetches without writing files.")
+    p.add_argument("--dry-run", action="store_true", help="Print planned fetch windows only; no Sheets or file writes.")
     p.add_argument(
         "--include-recent-expired",
         action="store_true",
