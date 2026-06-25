@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "deace95"
+    "commit": "24a77aa"
   },
-  "generated_at": "2026-06-25T15:34:43.844287Z",
+  "generated_at": "2026-06-25T23:13:13.282606Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "LITE"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-06-24",
+  "updated_at": "2026-06-25",
   "bars": [
     {
       "date": "2026-04-27",
@@ -341,6 +341,14 @@
       "low": 803.24,
       "close": 842.53,
       "volume": 4452727.0
+    },
+    {
+      "date": "2026-06-25",
+      "open": 887.25,
+      "high": 899.53,
+      "low": 810.24,
+      "close": 861.97,
+      "volume": 4459112.0
     }
   ]
 }
