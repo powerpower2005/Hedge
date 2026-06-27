@@ -1,8 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ColorType, createChart, CrosshairMode } from "lightweight-charts";
 import { useTheme } from "../../hooks/useTheme.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
 import { fetchJsonAllow404 } from "../../lib/fetchJson.js";
+import {
+  DETAIL_TRADING_BARS,
+  filterChartBars,
+  filterDetailTradingBars,
+} from "../../lib/chartBars.js";
 import {
   instrumentBarsUrl,
   isBarsChartJpDeferred,
@@ -11,6 +16,8 @@ import {
 import { ui } from "../../lib/themeClasses.js";
 import { type } from "../../lib/typographyClasses.js";
 import { isEntryPending } from "../../lib/pickEntry.js";
+
+/** @typedef {"pick" | "detail"} ChartMode */
 
 function chartColors(light) {
   if (light) {
@@ -48,6 +55,7 @@ export function PickDailyChart({ pick }) {
   const [loading, setLoading] = useState(false);
   const [bars, setBars] = useState(/** @type {object[] | null} */ (null));
   const [loadFailed, setLoadFailed] = useState(false);
+  const [mode, setMode] = useState(/** @type {ChartMode} */ ("pick"));
 
   const jpDeferred = isBarsChartJpDeferred(pick);
   const supported = isBarsChartSupported(pick);
@@ -82,9 +90,22 @@ export function PickDailyChart({ pick }) {
     };
   }, [pick, jpDeferred, supported]);
 
+  const displayedBars = useMemo(
+    () => (bars?.length ? filterChartBars(bars, mode, pick) : []),
+    [bars, mode, pick],
+  );
+
+  const detailBarCount = useMemo(
+    () => (bars?.length ? filterDetailTradingBars(bars).length : 0),
+    [bars],
+  );
+
+  const showShortDetailNotice =
+    mode === "detail" && detailBarCount > 0 && detailBarCount < DETAIL_TRADING_BARS;
+
   useEffect(() => {
     const el = containerRef.current;
-    if (!el || !bars?.length) return;
+    if (!el || !displayedBars.length) return;
 
     const colors = chartColors(effectiveLight);
     if (chartRef.current) {
@@ -119,7 +140,7 @@ export function PickDailyChart({ pick }) {
     });
 
     series.setData(
-      bars.map((b) => ({
+      displayedBars.map((b) => ({
         time: b.date,
         open: b.open,
         high: b.high,
@@ -167,7 +188,7 @@ export function PickDailyChart({ pick }) {
       chart.remove();
       chartRef.current = null;
     };
-  }, [bars, effectiveLight, pick, t]);
+  }, [displayedBars, effectiveLight, pick, t]);
 
   let body = null;
   if (jpDeferred) {
@@ -178,18 +199,63 @@ export function PickDailyChart({ pick }) {
     body = <p className={type.meta}>{t("pickDetail.chartLoading")}</p>;
   } else if (loadFailed) {
     body = <p className={type.meta}>{t("pickDetail.chartNoData")}</p>;
-  } else if (!bars?.length) {
+  } else if (!displayedBars.length) {
     body = <p className={type.meta}>{t("pickDetail.chartNoData")}</p>;
   } else {
-    body = <div ref={containerRef} className="h-80 w-full" />;
+    body = (
+      <>
+        {showShortDetailNotice ? (
+          <p className={`mb-2 ${type.meta}`}>
+            {t("pickDetail.chartShortDetailHistory", { count: detailBarCount })}
+          </p>
+        ) : null}
+        <div ref={containerRef} className="h-80 w-full" />
+      </>
+    );
   }
+
+  const tabId = (suffix) => `pick-daily-chart-tab-${suffix}`;
 
   return (
     <section className={`mt-4 ${ui.card} ${ui.cardPad}`} aria-labelledby="pick-daily-chart-title">
-      <h2 id="pick-daily-chart-title" className={ui.sectionTitle}>
-        {t("pickDetail.chartTitle")}
-      </h2>
-      <div className="mt-3">{body}</div>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 id="pick-daily-chart-title" className={ui.sectionTitle}>
+          {t("pickDetail.chartTitle")}
+        </h2>
+        {supported && !jpDeferred && !loading && !loadFailed && bars?.length ? (
+          <div
+            className="inline-flex rounded-lg border border-zinc-700/80 p-0.5 light:border-zinc-200"
+            role="tablist"
+            aria-label={t("pickDetail.chartTabListLabel")}
+          >
+            <button
+              type="button"
+              id={tabId("pick")}
+              role="tab"
+              aria-selected={mode === "pick"}
+              aria-controls="pick-daily-chart-panel"
+              className={ui.navTab(mode === "pick", "compact")}
+              onClick={() => setMode("pick")}
+            >
+              {t("pickDetail.chartTabPick")}
+            </button>
+            <button
+              type="button"
+              id={tabId("detail")}
+              role="tab"
+              aria-selected={mode === "detail"}
+              aria-controls="pick-daily-chart-panel"
+              className={ui.navTab(mode === "detail", "compact")}
+              onClick={() => setMode("detail")}
+            >
+              {t("pickDetail.chartTabDetail")}
+            </button>
+          </div>
+        ) : null}
+      </div>
+      <div id="pick-daily-chart-panel" role="tabpanel" aria-labelledby={tabId(mode)} className="mt-3">
+        {body}
+      </div>
     </section>
   );
 }
