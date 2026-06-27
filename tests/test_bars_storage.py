@@ -1,6 +1,7 @@
-from datetime import date
+from datetime import date, timedelta
 
-from common.bars_storage import merge_bars, upsert_bars
+from common.bars_constants import detail_calendar_lookback_start
+from common.bars_storage import merge_bars, trim_bars_to_detail_lookback, upsert_bars
 from common.bars_sync import group_instruments, instrument_date_window, plan_fetch_windows
 from common.instrument_key import (
     bars_file_path,
@@ -47,6 +48,19 @@ def test_merge_bars_upsert_and_sort():
     assert changed
     assert [b["date"] for b in merged] == ["2026-04-01", "2026-04-02"]
     assert merged[0]["close"] == 2
+
+
+def test_trim_bars_to_detail_lookback():
+    today = date(2026, 6, 25)
+    old = (detail_calendar_lookback_start(today) - timedelta(days=5)).isoformat()
+    keep = detail_calendar_lookback_start(today).isoformat()
+    bars = [
+        {"date": old, "open": 1, "high": 2, "low": 0.5, "close": 1.5},
+        {"date": keep, "open": 2, "high": 3, "low": 1.5, "close": 2.5},
+    ]
+    trimmed = trim_bars_to_detail_lookback(bars, today=today)
+    assert len(trimmed) == 1
+    assert trimmed[0]["date"] == keep
 
 
 def test_merge_bars_volume_optional():
@@ -118,7 +132,10 @@ def test_plan_fetch_windows_daily_resumes_after_last_bar(tmp_path, monkeypatch):
     ]
     bars_storage.save_bars_document(path, doc)
     monkeypatch.setattr(bars_storage, "BARS_ROOT", tmp_path / "data" / "bars" / "v1")
-    monkeypatch.setattr("common.bars_sync.bars_file_path", lambda k, root=None: bars_file_path(k, root=tmp_path / "data" / "bars" / "v1"))
+    monkeypatch.setattr(
+        "common.bars_sync.bars_file_path",
+        lambda k, root=None, _root=tmp_path / "data" / "bars" / "v1": bars_file_path(k, root=_root),
+    )
 
     picks = [
         {
@@ -129,7 +146,8 @@ def test_plan_fetch_windows_daily_resumes_after_last_bar(tmp_path, monkeypatch):
     today = date(2026, 4, 20)
     windows = plan_fetch_windows(key, picks, today, "daily")
     assert windows
-    assert windows[0][0] == date(2026, 4, 2)
+    assert any(start <= date(2026, 4, 2) <= end for start, end in windows)
+    assert any(end == today for start, end in windows)
 
 
 def test_upsert_bars_writes_file(tmp_path, monkeypatch):

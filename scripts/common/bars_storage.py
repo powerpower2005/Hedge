@@ -7,6 +7,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+from .bars_constants import detail_calendar_lookback_start
 from .instrument_key import BARS_ROOT, InstrumentKey, bars_file_path
 from .versioning import build_generator_meta, now_iso
 
@@ -55,6 +56,17 @@ def last_bar_date(bars: list[dict[str, Any]]) -> date | None:
     return date.fromisoformat(bars[-1]["date"])
 
 
+def trim_bars_to_detail_lookback(
+    bars: list[dict[str, Any]],
+    *,
+    today: date | None = None,
+) -> list[dict[str, Any]]:
+    """Drop bars older than the calendar lookback used for the 250-trading-day chart."""
+    today = today or date.today()
+    floor = detail_calendar_lookback_start(today).isoformat()
+    return [b for b in bars if b["date"] >= floor]
+
+
 def save_bars_document(path: Path, doc: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     doc = dict(doc)
@@ -73,6 +85,10 @@ def upsert_bars(
     path = bars_file_path(key, root=root)
     doc = load_bars_file(path) or empty_bars_document(key)
     merged, changed = merge_bars(doc.get("bars") or [], incoming)
+    trimmed = trim_bars_to_detail_lookback(merged)
+    if trimmed != merged:
+        changed = True
+    merged = trimmed
     if not changed:
         return False
     doc["bars"] = merged
