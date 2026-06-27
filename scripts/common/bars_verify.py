@@ -8,6 +8,7 @@ from datetime import date
 from typing import Any, Literal
 
 from .bars_errors import instrument_label
+from .bars_constants import DETAIL_TRADING_BARS
 from .bars_storage import last_bar_date, load_bars_file
 from .bars_sync import group_instruments, instrument_date_window
 from .instrument_key import BARS_ROOT, InstrumentKey, bars_file_path
@@ -214,6 +215,16 @@ def verify_instrument(
                 code="stale_through",
                 instrument=instrument,
                 message=f"last_bar={last.isoformat()} expected_through={range_end.isoformat()}",
+            )
+        )
+
+    if bars and len(bars) < DETAIL_TRADING_BARS:
+        issues.append(
+            BarsVerifyIssue(
+                severity="warning",
+                code="short_detail_history",
+                instrument=instrument,
+                message=f"trading_bars={len(bars)} expected>={DETAIL_TRADING_BARS}",
             )
         )
 
