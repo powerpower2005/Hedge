@@ -54,6 +54,9 @@ jobs:
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
         run: python scripts/sync_daily_bars.py --country US
 
+      - name: Verify daily bars (US)
+        run: python scripts/verify_bars.py --country US
+
       - name: Commit and push
         env:
           BRANCH: main
@@ -76,7 +79,7 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           echo "Judgment(US): Sheet CSV/gspread + Secrets (GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_JSON, names only)."
-          echo "If **Sync daily bars (US)** failed, search logs for [bars] FAILURE / phase= / formula snapshot."
+          echo "If **Sync daily bars (US)** or **Verify daily bars (US)** failed, search logs for [bars] FAILURE or [verify_bars] ERROR."
           echo "Push: see commit step; rebase/push loop may conflict with concurrent data commits."
           bash scripts/bars_failure_context.sh
           bash scripts/ci_failure_context.sh
