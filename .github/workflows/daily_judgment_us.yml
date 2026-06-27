@@ -52,7 +52,7 @@ jobs:
       - name: Sync daily bars (US)
         env:
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-        run: python scripts/sync_daily_bars.py --country US
+        run: python scripts/sync_daily_bars.py --country US --allow-partial
 
       - name: Commit and push
         env:

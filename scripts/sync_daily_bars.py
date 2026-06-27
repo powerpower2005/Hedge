@@ -8,6 +8,7 @@ from pathlib import Path
 
 from common.bars_errors import exit_code_for_stats, print_failure_report
 from common.bars_sync import run_bars_sync
+from common.market_calendar import should_skip_daily_bars_sync, today_by_country
 from common.storage import get_picks, load_list_file
 
 ACTIVE_PATH = Path("data/active.json")
@@ -27,6 +28,16 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    if not args.dry_run and should_skip_daily_bars_sync(
+        args.country, today_by_country(args.country)
+    ):
+        print(
+            f"[sync_daily_bars] skip country={args.country} "
+            f"date={today_by_country(args.country).isoformat()} "
+            "(weekend / routine market closure; no GF bar fetch)",
+        )
+        sys.exit(0)
+
     picks = get_picks(load_list_file(ACTIVE_PATH))
     stats = run_bars_sync(
         picks,

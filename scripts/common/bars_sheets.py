@@ -419,11 +419,34 @@ def fetch_bars_google_finance_batch(jobs: list[BarsFetchJob]) -> list[list[dict[
     return out
 
 
+def _single_day_lookback_days() -> int:
+    return _env_int("BARS_SINGLE_DAY_LOOKBACK_DAYS", 7)
+
+
 def fetch_bars_google_finance(symbol: str, start: date, end: date) -> list[dict[str, Any]]:
     if start > end:
         return []
-    results = fetch_bars_google_finance_batch([BarsFetchJob(symbol=symbol, start=start, end=end)])
-    return results[0] if results else []
+    try:
+        results = fetch_bars_google_finance_batch(
+            [BarsFetchJob(symbol=symbol, start=start, end=end)]
+        )
+        return results[0] if results else []
+    except BarsFetchError as e:
+        if e.phase != "googfinance_empty" or start != end:
+            raise
+        lookback = _single_day_lookback_days()
+        if lookback < 1:
+            raise
+        wider_start = start - timedelta(days=lookback)
+        print(
+            f"[bars] widening single-day fetch symbol={symbol} "
+            f"{start.isoformat()} -> {wider_start.isoformat()}..{end.isoformat()}",
+            file=sys.stderr,
+        )
+        results = fetch_bars_google_finance_batch(
+            [BarsFetchJob(symbol=symbol, start=wider_start, end=end)]
+        )
+        return results[0] if results else []
 
 
 def fetch_bars_with_symbol_candidates(

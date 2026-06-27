@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 from unittest.mock import patch
 
 from common.bars_errors import BarsFetchError
@@ -60,3 +60,32 @@ def test_fetch_bars_with_symbol_candidates_falls_back():
         )
     assert used == "KRX:000150"
     assert bars == sample
+
+
+def test_fetch_bars_google_finance_widens_single_day_on_empty():
+    day = date(2026, 6, 26)
+    sample = [{"date": "2026-06-26", "open": 1, "high": 2, "low": 0.5, "close": 1.5}]
+    calls: list[tuple[date, date]] = []
+
+    def fake_batch(jobs):
+        job = jobs[0]
+        calls.append((job.start, job.end))
+        if job.start == job.end:
+            raise BarsFetchError(
+                phase="googfinance_empty",
+                symbol=job.symbol,
+                start=job.start,
+                end=job.end,
+                message="N/A",
+            )
+        return [sample]
+
+    with patch("common.bars_sheets.fetch_bars_google_finance_batch", side_effect=fake_batch):
+        from common.bars_sheets import fetch_bars_google_finance
+
+        bars = fetch_bars_google_finance("KRX:036890", day, day)
+    assert bars == sample
+    assert len(calls) == 2
+    assert calls[0] == (day, day)
+    assert calls[1][0] == day - timedelta(days=7)
+    assert calls[1][1] == day
