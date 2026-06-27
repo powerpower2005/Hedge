@@ -10,6 +10,7 @@ from datetime import date, timedelta
 from pathlib import Path
 from typing import Any, Literal
 
+from .bars_constants import DETAIL_TRADING_BARS, detail_calendar_lookback_start
 from .bars_errors import (
     BarsFetchError,
     SyncFailure,
@@ -181,6 +182,47 @@ def instrument_date_window(
     return min(starts), max(ends)
 
 
+def fetch_floor_start(picks: list[dict[str, Any]], today: date) -> date:
+    """Earliest date to retain/fetch: min(pick entry, 250-trading-day lookback)."""
+    range_start, _ = instrument_date_window(picks, today)
+    return min(range_start, detail_calendar_lookback_start(today))
+
+
+def _first_bar_date(bars: list[dict[str, Any]]) -> date | None:
+    if not bars:
+        return None
+    raw = bars[0].get("date")
+    if isinstance(raw, str) and len(raw) >= 10:
+        return date.fromisoformat(raw[:10])
+    return None
+
+
+def _merge_adjacent_windows(
+    windows: list[tuple[date, date]],
+) -> list[tuple[date, date]]:
+    if not windows:
+        return []
+    ordered = sorted(windows)
+    merged: list[tuple[date, date]] = [ordered[0]]
+    for start, end in ordered[1:]:
+        prev_start, prev_end = merged[-1]
+        if start <= prev_end + timedelta(days=1):
+            merged[-1] = (prev_start, max(prev_end, end))
+        else:
+            merged.append((start, end))
+    return merged
+
+
+def _needs_detail_lookback(
+    existing: list[dict[str, Any]],
+    fetch_floor: date,
+) -> bool:
+    if len(existing) < DETAIL_TRADING_BARS:
+        return True
+    first = _first_bar_date(existing)
+    return first is not None and first > fetch_floor
+
+
 def plan_fetch_windows(
     key: InstrumentKey,
     picks: list[dict[str, Any]],
@@ -191,25 +233,35 @@ def plan_fetch_windows(
     if range_start > range_end:
         return []
 
+    fetch_floor = fetch_floor_start(picks, today)
+
     path = bars_file_path(key)
     doc = load_bars_file(path)
     existing = (doc or {}).get("bars") or []
     last = last_bar_date(existing)
+    first = _first_bar_date(existing)
 
     if mode == "daily":
-        fetch_start = range_start
-        if last is not None:
-            fetch_start = max(fetch_start, last + timedelta(days=1))
-        catchup_floor = today - timedelta(days=DAILY_CATCHUP_DAYS)
-        fetch_start = min(fetch_start, catchup_floor)
-        fetch_start = max(fetch_start, range_start)
-        if fetch_start > range_end:
-            return []
-        return [(fetch_start, range_end)]
+        windows: list[tuple[date, date]] = []
+        if _needs_detail_lookback(existing, fetch_floor):
+            lookback_end = (first - timedelta(days=1)) if first else range_end
+            if fetch_floor <= lookback_end:
+                windows.append((fetch_floor, lookback_end))
 
-    # backfill: full window in chunks
+        if last is None:
+            forward_start = fetch_floor
+        else:
+            forward_start = last + timedelta(days=1)
+        catchup_floor = today - timedelta(days=DAILY_CATCHUP_DAYS)
+        forward_start = min(forward_start, catchup_floor)
+        forward_start = max(forward_start, fetch_floor)
+        if forward_start <= range_end:
+            windows.append((forward_start, range_end))
+        return _merge_adjacent_windows(windows)
+
+    # backfill: full window in chunks from fetch_floor
     windows: list[tuple[date, date]] = []
-    cursor = range_start
+    cursor = fetch_floor
     while cursor <= range_end:
         chunk_end = min(cursor + timedelta(days=BACKFILL_CHUNK_DAYS - 1), range_end)
         if last is not None and chunk_end <= last:
