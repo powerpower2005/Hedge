@@ -1,9 +1,13 @@
-from datetime import date
+from datetime import date, timedelta
 
 from common.bars_constants import DETAIL_TRADING_BARS, detail_calendar_lookback_start
-from common.bars_sync import fetch_floor_start, plan_fetch_windows, run_bars_sync
+from common.bars_sync import (
+    fetch_floor_start,
+    is_bars_fully_synced,
+    plan_fetch_windows,
+    run_bars_sync,
+)
 from common.instrument_key import bars_file_path
-
 
 def test_run_bars_sync_dry_run_plans_without_fetch(monkeypatch):
     calls: list[tuple] = []
@@ -101,3 +105,43 @@ def test_plan_fetch_windows_recent_entry_backfills_detail_lookback(tmp_path, mon
     assert windows
     assert windows[0][0] == detail_calendar_lookback_start(today)
     assert windows[-1][1] == today
+
+
+def test_is_bars_fully_synced(tmp_path, monkeypatch):
+    from common import bars_storage
+
+    key = ("US", "NASDAQ", "TSLA")
+    root = tmp_path / "data" / "bars" / "v1"
+    path = bars_file_path(key, root=root)
+    today = date(2026, 6, 25)
+    floor = detail_calendar_lookback_start(today)
+    bars = [
+        {
+            "date": (floor + timedelta(days=i)).isoformat(),
+            "open": 1,
+            "high": 2,
+            "low": 0.5,
+            "close": 1.5,
+        }
+        for i in range(DETAIL_TRADING_BARS)
+    ]
+    bars[-1]["date"] = today.isoformat()
+    bars_storage.save_bars_document(
+        path,
+        {
+            "schema_version": "1.0.0",
+            "generator": {"name": "test", "version": "0"},
+            "generated_at": "2026-06-25T00:00:00Z",
+            "instrument": {"country": "US", "market": "NASDAQ", "ticker": "TSLA"},
+            "source": "google_sheets_googfinance",
+            "updated_at": today.isoformat(),
+            "bars": bars,
+        },
+    )
+    monkeypatch.setattr(bars_storage, "BARS_ROOT", root)
+    monkeypatch.setattr(
+        "common.bars_sync.bars_file_path",
+        lambda k, root=None, _root=root: bars_file_path(k, root=_root),
+    )
+    picks = [{"entry": {"date": "2026-04-01"}, "duration": {"deadline": "2026-07-01"}}]
+    assert is_bars_fully_synced(key, picks, today)

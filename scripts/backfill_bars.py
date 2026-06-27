@@ -39,7 +39,8 @@ def main() -> None:
     stats = run_bars_sync(picks, mode="backfill", dry_run=args.dry_run)
     print(
         f"[backfill_bars] instruments={stats.instruments} updated={stats.updated} "
-        f"errors={stats.fetch_errors} skipped_jp={stats.skipped_jp} dry_run={stats.dry_run}"
+        f"skipped_complete={stats.skipped_complete} errors={stats.fetch_errors} "
+        f"skipped_jp={stats.skipped_jp} dry_run={stats.dry_run}"
     )
     if stats.failures:
         print_failure_report(stats.failures, script="backfill_bars", stats=stats)

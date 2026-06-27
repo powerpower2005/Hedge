@@ -66,12 +66,30 @@ def _collect_fetch_work(
     *,
     today: date,
     mode: SyncMode,
+    stats: SyncStats | None = None,
 ) -> list[_FetchWork]:
     work: list[_FetchWork] = []
     for key, inst_picks in sorted(grouped.items()):
         country, market, ticker = key
         candidates = tuple(finance_symbol_candidates(country, market, ticker))
-        for start, end in plan_fetch_windows(key, inst_picks, today, mode):
+        windows = plan_fetch_windows(key, inst_picks, today, mode)
+        if not windows:
+            label = instrument_label(key)
+            if is_bars_fully_synced(key, inst_picks, today):
+                path = bars_file_path(key)
+                doc = load_bars_file(path) or {}
+                bars = doc.get("bars") or []
+                last = last_bar_date(bars)
+                if stats is not None:
+                    stats.skipped_complete += 1
+                bars_info(
+                    f"skip complete {label} bars={len(bars)} "
+                    f"through={last.isoformat() if last else 'n/a'}"
+                )
+            else:
+                bars_info(f"skip {label} (no fetch windows planned)")
+            continue
+        for start, end in windows:
             work.append(
                 _FetchWork(
                     key=key,
@@ -118,6 +136,7 @@ def _fetch_work_batch(
 class SyncStats:
     instruments: int = 0
     updated: int = 0
+    skipped_complete: int = 0
     skipped_jp: int = 0
     skipped_country: int = 0
     fetch_errors: int = 0
@@ -224,6 +243,30 @@ def _needs_detail_lookback(
     return first is not None and first > fetch_floor
 
 
+def is_bars_fully_synced(
+    key: InstrumentKey,
+    picks: list[dict[str, Any]],
+    today: date,
+) -> bool:
+    """True when bar file needs no further fetch (250 trading bars + through expected end)."""
+    path = bars_file_path(key)
+    doc = load_bars_file(path)
+    existing = (doc or {}).get("bars") or []
+    if not existing:
+        return False
+    _, range_end = instrument_date_window(picks, today)
+    fetch_floor = fetch_floor_start(picks, today)
+    last = last_bar_date(existing)
+    first = _first_bar_date(existing)
+    if last is None or last < range_end:
+        return False
+    if len(existing) < DETAIL_TRADING_BARS:
+        return False
+    if first is None or first > fetch_floor:
+        return False
+    return True
+
+
 def plan_fetch_windows(
     key: InstrumentKey,
     picks: list[dict[str, Any]],
@@ -302,7 +345,7 @@ def run_bars_sync(
     if not grouped:
         return stats
 
-    work = _collect_fetch_work(grouped, today=today, mode=mode)
+    work = _collect_fetch_work(grouped, today=today, mode=mode, stats=stats)
     if dry_run:
         for item in work:
             c, m, t = item.key

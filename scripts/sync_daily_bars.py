@@ -47,7 +47,8 @@ def main() -> None:
     )
     print(
         f"[sync_daily_bars] country={args.country} instruments={stats.instruments} "
-        f"updated={stats.updated} errors={stats.fetch_errors} dry_run={stats.dry_run}"
+        f"updated={stats.updated} skipped_complete={stats.skipped_complete} "
+        f"errors={stats.fetch_errors} dry_run={stats.dry_run}"
     )
     if stats.failures:
         print_failure_report(stats.failures, script="sync_daily_bars", stats=stats)
