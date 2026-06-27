@@ -21,7 +21,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--allow-partial",
         action="store_true",
-        help="Exit 0 even if some instruments failed (errors still logged).",
+        help="Exit 0 even if some instruments failed (manual/local only; CI daily judgment fails on any bar error).",
     )
     return p.parse_args()
 
