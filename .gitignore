@@ -35,4 +35,5 @@ locals/
 
 # Cursor / agent handbooks (clone-specific; avoid publishing ops layout)
 .agent
+agent.md
 .cursor/
