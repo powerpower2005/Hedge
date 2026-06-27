@@ -13,6 +13,7 @@ import gspread
 from gspread.exceptions import APIError
 
 from .bars_errors import BarsFetchError
+from .bars_log import bars_ok, bars_warn
 from .sheets import _formula_sep, get_client
 
 WORKSHEET_BARS_FETCH = "BarsFetch-v1"
@@ -116,11 +117,10 @@ def _call_with_quota_retry(
             last_exc = e
             if _is_quota_error(e) and attempt < QUOTA_RETRY_ATTEMPTS:
                 wait = QUOTA_RETRY_BASE_SEC * attempt
-                print(
-                    f"[bars] quota retry {attempt}/{QUOTA_RETRY_ATTEMPTS} "
+                bars_warn(
+                    f"quota retry {attempt}/{QUOTA_RETRY_ATTEMPTS} "
                     f"phase={phase} symbol={symbol} wait={wait:.0f}s "
-                    f"(Sheets write/read per minute limit; throttling)",
-                    file=sys.stderr,
+                    "(Sheets write/read per minute limit; throttling)"
                 )
                 time.sleep(wait)
                 continue
@@ -438,10 +438,9 @@ def fetch_bars_google_finance(symbol: str, start: date, end: date) -> list[dict[
         if lookback < 1:
             raise
         wider_start = start - timedelta(days=lookback)
-        print(
-            f"[bars] widening single-day fetch symbol={symbol} "
-            f"{start.isoformat()} -> {wider_start.isoformat()}..{end.isoformat()}",
-            file=sys.stderr,
+        bars_warn(
+            f"single-day empty symbol={symbol} {start.isoformat()}; "
+            f"widening to {wider_start.isoformat()}..{end.isoformat()}"
         )
         results = fetch_bars_google_finance_batch(
             [BarsFetchJob(symbol=symbol, start=wider_start, end=end)]
@@ -469,10 +468,8 @@ def fetch_bars_with_symbol_candidates(
             bars = fetch_bars_google_finance(symbol, start, end)
             if bars:
                 if idx > 0:
-                    print(
-                        f"[bars] symbol fallback ok used={symbol} "
-                        f"skipped={list(candidates[:idx])}",
-                        file=sys.stderr,
+                    bars_ok(
+                        f"symbol resolved used={symbol} skipped_prefixes={list(candidates[:idx])}"
                     )
                 return symbol, bars
         except BarsFetchError as e:
@@ -480,10 +477,9 @@ def fetch_bars_with_symbol_candidates(
             retryable = e.phase == "googfinance_empty" or "N/A" in e.message
             if not retryable or idx + 1 >= len(candidates):
                 raise
-            print(
-                f"[bars] symbol retry failed={symbol} phase={e.phase}; "
-                f"next={candidates[idx + 1]}",
-                file=sys.stderr,
+            bars_warn(
+                f"prefix miss symbol={symbol} phase={e.phase}; "
+                f"trying next={candidates[idx + 1]}"
             )
     if last_err:
         raise last_err

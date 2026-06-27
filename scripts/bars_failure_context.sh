@@ -5,7 +5,7 @@ echo "::group::Bars failure context (no secrets)"
 echo "time_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "workflow=${GITHUB_WORKFLOW:-n/a} job=${GITHUB_JOB:-n/a}"
 echo "--- grep recent bars log lines from this job (if present) ---"
-echo "Look above for lines starting with: [bars] FAILURE, [bars] DETAIL, ::error title=Bars failed"
+echo "Look above for: [bars] FAILURE (error), [bars] WARN (retry), [bars] OK (recovered), ::error title=Bars failed"
 echo "--- data/bars ---"
 if [[ -d data/bars/v1 ]]; then
   count=$(find data/bars/v1 -name '*.json' 2>/dev/null | wc -l | tr -d ' ')

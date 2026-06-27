@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any, Literal
 
 from .bars_constants import DETAIL_TRADING_BARS, detail_calendar_lookback_start
+from .bars_log import bars_info
 from .bars_errors import (
     BarsFetchError,
     SyncFailure,
@@ -322,10 +323,9 @@ def run_bars_sync(
     batches = _chunked(work, size)
 
     for batch_idx, batch in enumerate(batches):
-        print(
-            f"[bars] batch fetch {batch_idx + 1}/{len(batches)} size={len(batch)} symbols="
-            f"{','.join(w.symbol for w in batch)}",
-            file=sys.stderr,
+        bars_info(
+            f"batch fetch {batch_idx + 1}/{len(batches)} size={len(batch)} symbols="
+            f"{','.join(w.symbol for w in batch)}"
         )
         for w, result in _fetch_work_batch(batch):
             range_hint = f"{w.start.isoformat()}..{w.end.isoformat()}"
@@ -350,10 +350,7 @@ def run_bars_sync(
                 pending[w.key].extend(result)
 
         if pause > 0 and batch_idx < len(batches) - 1:
-            print(
-                f"[bars] batch pause {pause:.1f}s before next fetch (BARS_BATCH_INTERVAL_SEC)",
-                file=sys.stderr,
-            )
+            bars_info(f"batch pause {pause:.1f}s before next fetch (BARS_BATCH_INTERVAL_SEC)")
             time.sleep(pause)
 
     for key, bars in pending.items():
