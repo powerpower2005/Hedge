@@ -3,8 +3,8 @@ import { IS_REPOSITORY_CONFIGURED } from "./constants.js";
 import { getResolvedRawRootUrl } from "./githubRawRoot.js";
 import { fetchJson, fetchJsonAllow404 } from "./fetchJson.js";
 
-/** Earliest calendar year to probe for `data/archive/{year}.json` (404s ignored). */
-export const ARCHIVE_PROBE_YEAR_MIN = 2015;
+/** Project launch year; archive files only exist from this year onward (404s ignored). */
+export const ARCHIVE_PROBE_YEAR_MIN = 2026;
 const cacheSlots = {
   all: /** @type {{ ts: number, picks: object[] } | null} */ (null),
   hallArchive: /** @type {{ ts: number, picks: object[] } | null} */ (null),
