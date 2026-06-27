@@ -8,6 +8,7 @@ import { HallOfFamePage } from "./pages/HallOfFamePage.jsx";
 import { ExpiredPage } from "./pages/ExpiredPage.jsx";
 import { PendingEntryPage } from "./pages/PendingEntryPage.jsx";
 import { PickDetailPage } from "./pages/PickDetailPage.jsx";
+import { PickTradingHistoryPage } from "./pages/PickTradingHistoryPage.jsx";
 import { UserPage } from "./pages/UserPage.jsx";
 import { UsersLeaderboardPage } from "./pages/UsersLeaderboardPage.jsx";
 import { AboutPage } from "./pages/AboutPage.jsx";
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/hall-of-fame" element={<HallOfFamePage />} />
           <Route path="/pending-entry" element={<PendingEntryPage />} />
           <Route path="/expired" element={<ExpiredPage />} />
+          <Route path="/pick/:id/history" element={<PickTradingHistoryPage />} />
           <Route path="/pick/:id" element={<PickDetailPage />} />
           <Route path="/users" element={<UsersLeaderboardPage />} />
           <Route path="/user/:username" element={<UserPage />} />

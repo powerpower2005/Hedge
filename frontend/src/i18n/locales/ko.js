@@ -220,12 +220,17 @@ export default {
     chartTabListLabel: "일봉 차트 범위",
     chartTabPick: "픽 구간",
     chartTabDetail: "250거래일",
+    chartViewHistoryLink: "250거래일 보기 →",
     chartShortDetailHistory: "거래일 {count}봉 (250봉 미만)",
     chartJpPreparing: "일본 종목 차트는 준비 중입니다.",
     chartNoData: "차트 데이터가 아직 없습니다.",
     chartLoading: "차트 불러오는 중…",
     chartEntryLine: "진입",
     chartTargetLine: "목표",
+  },
+  pickHistoryChart: {
+    documentTitle: "250거래일 | 햇제",
+    backToPick: "픽 상세로",
   },
   user: {
     title: "@{name}",

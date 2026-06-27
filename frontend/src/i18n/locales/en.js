@@ -220,12 +220,17 @@ export default {
     chartTabListLabel: "Chart range",
     chartTabPick: "Pick range",
     chartTabDetail: "250 sessions",
+    chartViewHistoryLink: "View 250 sessions →",
     chartShortDetailHistory: "{count} trading sessions (under 250)",
     chartJpPreparing: "Daily chart for Japan picks is coming soon.",
     chartNoData: "Chart data is not available yet.",
     chartLoading: "Loading chart…",
     chartEntryLine: "Entry",
     chartTargetLine: "Target",
+  },
+  pickHistoryChart: {
+    documentTitle: "250 sessions | Hedge",
+    backToPick: "Back to pick",
   },
   user: {
     title: "@{name}",

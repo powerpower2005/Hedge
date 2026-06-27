@@ -13,6 +13,7 @@ export function DocumentTitle() {
     else if (pathname === "/users") key = "users.documentTitle";
     else if (pathname === "/pending-entry") key = "pendingEntryPage.documentTitle";
     else if (pathname === "/expired") key = "expired.documentTitle";
+    else if (/^\/pick\/[^/]+\/history$/.test(pathname)) key = "pickHistoryChart.documentTitle";
     document.title = t(key);
     document.documentElement.lang = locale === "en" ? "en" : "ko";
   }, [t, locale, pathname]);

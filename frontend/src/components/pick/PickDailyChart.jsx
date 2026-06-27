@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { ColorType, createChart, CrosshairMode } from "lightweight-charts";
 import { useTheme } from "../../hooks/useTheme.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
@@ -16,8 +17,6 @@ import {
 import { ui } from "../../lib/themeClasses.js";
 import { type } from "../../lib/typographyClasses.js";
 import { isEntryPending } from "../../lib/pickEntry.js";
-
-/** @typedef {"pick" | "detail"} ChartMode */
 
 function chartColors(light) {
   if (light) {
@@ -45,9 +44,9 @@ function chartColors(light) {
 }
 
 /**
- * @param {{ pick: object }} props
+ * @param {{ pick: object, mode?: "pick" | "detail", historyHref?: string }} props
  */
-export function PickDailyChart({ pick }) {
+export function PickDailyChart({ pick, mode = "pick", historyHref }) {
   const { t } = useI18n();
   const { effectiveLight } = useTheme();
   const containerRef = useRef(/** @type {HTMLDivElement | null} */ (null));
@@ -55,7 +54,6 @@ export function PickDailyChart({ pick }) {
   const [loading, setLoading] = useState(false);
   const [bars, setBars] = useState(/** @type {object[] | null} */ (null));
   const [loadFailed, setLoadFailed] = useState(false);
-  const [mode, setMode] = useState(/** @type {ChartMode} */ ("pick"));
 
   const jpDeferred = isBarsChartJpDeferred(pick);
   const supported = isBarsChartSupported(pick);
@@ -102,6 +100,9 @@ export function PickDailyChart({ pick }) {
 
   const showShortDetailNotice =
     mode === "detail" && detailBarCount > 0 && detailBarCount < DETAIL_TRADING_BARS;
+
+  const chartTitle =
+    mode === "detail" ? t("pickDetail.chartTabDetail") : t("pickDetail.chartTabPick");
 
   useEffect(() => {
     const el = containerRef.current;
@@ -214,46 +215,19 @@ export function PickDailyChart({ pick }) {
     );
   }
 
-  const tabId = (suffix) => `pick-daily-chart-tab-${suffix}`;
-
   return (
     <section className={`mt-4 ${ui.card} ${ui.cardPad}`} aria-labelledby="pick-daily-chart-title">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 id="pick-daily-chart-title" className={ui.sectionTitle}>
-          {t("pickDetail.chartTitle")}
+          {chartTitle}
         </h2>
-        {supported && !jpDeferred && !loading && !loadFailed && bars?.length ? (
-          <div
-            className="inline-flex rounded-lg border border-zinc-700/80 p-0.5 light:border-zinc-200"
-            role="tablist"
-            aria-label={t("pickDetail.chartTabListLabel")}
-          >
-            <button
-              type="button"
-              id={tabId("pick")}
-              role="tab"
-              aria-selected={mode === "pick"}
-              aria-controls="pick-daily-chart-panel"
-              className={ui.navTab(mode === "pick", "compact")}
-              onClick={() => setMode("pick")}
-            >
-              {t("pickDetail.chartTabPick")}
-            </button>
-            <button
-              type="button"
-              id={tabId("detail")}
-              role="tab"
-              aria-selected={mode === "detail"}
-              aria-controls="pick-daily-chart-panel"
-              className={ui.navTab(mode === "detail", "compact")}
-              onClick={() => setMode("detail")}
-            >
-              {t("pickDetail.chartTabDetail")}
-            </button>
-          </div>
+        {mode === "pick" && historyHref && supported && !jpDeferred && !loading && !loadFailed && bars?.length ? (
+          <Link to={historyHref} className={`text-sm ${ui.link}`}>
+            {t("pickDetail.chartViewHistoryLink")}
+          </Link>
         ) : null}
       </div>
-      <div id="pick-daily-chart-panel" role="tabpanel" aria-labelledby={tabId(mode)} className="mt-3">
+      <div id="pick-daily-chart-panel" className="mt-3">
         {body}
       </div>
     </section>

@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { ProgressBar } from "../components/ui/ProgressBar.jsx";
 import { StatusBadge } from "../components/pick/StatusBadge.jsx";
-import { useDataCacheRevision } from "../context/DataCacheContext.jsx";
-import { IS_REPOSITORY_CONFIGURED, pickIssueUrl } from "../lib/constants.js";
+import { usePickById } from "../hooks/usePickById.js";
+import { pickIssueUrl } from "../lib/constants.js";
 import { useI18n } from "../i18n/I18nContext.jsx";
 import { PickDeadline } from "../components/pick/PickDeadline.jsx";
 import { PickEntryPrice } from "../components/pick/PickEntryPrice.jsx";
@@ -18,7 +17,6 @@ import { PickInstrumentHeading } from "../components/pick/PickInstrumentHeading.
 import { getPickDisplayReturnRate } from "../lib/pickSignMismatch.js";
 import { googleFinanceQuoteUrl } from "../lib/googleFinanceUrl.js";
 import { pickCountryLabel, pickCurrencyLabel } from "../lib/pickCountryMeta.js";
-import { loadAllPublicPicksCached } from "../lib/publicPickFetch.js";
 import { ui } from "../lib/themeClasses.js";
 import { type } from "../lib/typographyClasses.js";
 import { pickDetailErrorMessage } from "../lib/userMessages.js";
@@ -26,37 +24,8 @@ import { MetricBlock } from "../components/ui/MetricBlock.jsx";
 import { PickDailyChart } from "../components/pick/PickDailyChart.jsx";
 
 export function PickDetailPage() {
-  const { id } = useParams();
   const { t } = useI18n();
-  const dataRevision = useDataCacheRevision();
-  const [pick, setPick] = useState(null);
-  const [err, setErr] = useState(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    const want = Number(id);
-    setPick(null);
-    setErr(null);
-    (async () => {
-      if (!IS_REPOSITORY_CONFIGURED) {
-        if (!cancelled) setErr({ code: "loadfailed" });
-        return;
-      }
-      try {
-        const merged = await loadAllPublicPicksCached();
-        const found = merged.find((p) => p.id === want);
-        if (!cancelled) {
-          if (found) setPick(found);
-          else setErr({ code: "notfound" });
-        }
-      } catch (e) {
-        if (!cancelled) setErr({ code: "loadfailed", dev: String(e?.message ?? e) });
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [id, dataRevision]);
+  const { pick, err, pickId } = usePickById();
 
   if (err && !pick) {
     return <p className={`${ui.page} text-red-400 light:text-red-600`}>{pickDetailErrorMessage(err, t)}</p>;
@@ -141,7 +110,7 @@ export function PickDetailPage() {
         <ProgressBar percent={progressPct} />
       </section>
 
-      <PickDailyChart pick={pick} />
+      <PickDailyChart pick={pick} mode="pick" historyHref={`/pick/${pickId}/history`} />
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <section className={`${ui.card} ${ui.cardPad}`}>
