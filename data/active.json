@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "8086dfa"
+    "commit": "6f61ea8"
   },
-  "generated_at": "2026-06-28T06:26:42.422189Z",
+  "generated_at": "2026-06-28T10:32:10.665021Z",
   "data": {
-    "count": 34,
+    "count": 33,
     "picks": [
       {
         "id": 9,
@@ -957,80 +957,6 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "Direxion Daily MU Bull 2X ETF",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 49,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-05-26T17:20:26.064617Z",
-        "author": "powerpower2005",
-        "issue_number": 76,
-        "ticker": "7012",
-        "country": "JP",
-        "market": "TYO",
-        "entry": {
-          "date": "2026-05-26",
-          "source": "google_sheets",
-          "price": 3194.0,
-          "close_session_date": "2026-05-26"
-        },
-        "target": {
-          "return_rate": 0.2,
-          "price": 3832.8
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-06-26"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-05-26T17:20:26.064617Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-05-27T10:38:29.259144Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-06-26",
-          "current": {
-            "close": 2941.5,
-            "return_rate": -0.079054
-          },
-          "highest": {
-            "close": 3266.0,
-            "close_date": "2026-06-18",
-            "return_rate": 0.022542
-          },
-          "lowest": {
-            "close": 3194.0,
-            "close_date": "2026-05-27",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.279054,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-26T17:20:26.064617Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Kawasaki Heavy Industries, Ltd.",
         "author_note": "_No response_"
       },
       {
