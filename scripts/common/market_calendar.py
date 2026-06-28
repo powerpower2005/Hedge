@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 COUNTRY_TIMEZONES = {
@@ -34,3 +34,11 @@ def should_skip_daily_bars_sync(country: str, day: date | None = None) -> bool:
     """Skip GF bar fetch on routine non-trading calendar days."""
     day = day or today_by_country(country)
     return is_weekend_closed(country, day)
+
+
+def expected_bar_through_date(country: str, day: date) -> date:
+    """Last calendar date daily bars should cover through (v1: weekend closure only)."""
+    expected = day
+    while is_weekend_closed(country, expected):
+        expected -= timedelta(days=1)
+    return expected

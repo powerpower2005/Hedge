@@ -12,6 +12,7 @@ from .bars_constants import DETAIL_TRADING_BARS
 from .bars_storage import last_bar_date, load_bars_file
 from .bars_sync import group_instruments, instrument_date_window
 from .instrument_key import BARS_ROOT, InstrumentKey, bars_file_path
+from .market_calendar import expected_bar_through_date
 
 IssueSeverity = Literal["error", "warning"]
 REQUIRED_FIELDS = ("open", "high", "low", "close")
@@ -206,6 +207,8 @@ def verify_instrument(
 
     issues = _verify_document(key, doc)
     _range_start, range_end = instrument_date_window(picks, today)
+    country, _market, _ticker = key
+    range_end = min(range_end, expected_bar_through_date(country, today))
     bars = doc.get("bars") or []
     last = last_bar_date(bars) if bars else None
     if last is not None and last < range_end:

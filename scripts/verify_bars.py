@@ -7,6 +7,8 @@ import sys
 from pathlib import Path
 
 from common.bars_verify import exit_code_for_verify, print_verify_report, verify_bars_for_picks
+from common.instrument_key import BARS_SUPPORTED_COUNTRIES
+from common.market_calendar import should_skip_daily_bars_sync, today_by_country
 from common.storage import get_picks, load_list_file
 
 ACTIVE_PATH = Path("data/active.json")
@@ -35,8 +37,25 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
+def _should_skip_verify(country: str | None) -> bool:
+    if country:
+        return should_skip_daily_bars_sync(country, today_by_country(country))
+    return all(
+        should_skip_daily_bars_sync(c, today_by_country(c)) for c in sorted(BARS_SUPPORTED_COUNTRIES)
+    )
+
+
 def main() -> None:
     args = parse_args()
+    if _should_skip_verify(args.country):
+        label = args.country or "ALL"
+        day = today_by_country(args.country) if args.country else today_by_country("KR")
+        print(
+            f"[verify_bars] skip country={label} date={day.isoformat()} "
+            "(weekend / routine market closure; no bar verification)",
+        )
+        sys.exit(0)
+
     picks = get_picks(load_list_file(ACTIVE_PATH))
     if args.include_recent_expired and EXPIRED_PATH.exists():
         picks = picks + get_picks(load_list_file(EXPIRED_PATH))

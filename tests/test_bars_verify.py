@@ -128,3 +128,33 @@ def test_verify_ok_and_stale_warning(tmp_path):
     assert codes == {"stale_through", "short_detail_history"}
     assert exit_code_for_verify(stats) == 0
     assert exit_code_for_verify(stats, fail_on_warning=True) == 1
+
+
+def test_verify_no_stale_on_weekend_when_through_friday(tmp_path):
+    key = ("KR", "KOSPI", "000660")
+    path = bars_file_path(key, root=tmp_path / "bars")
+    save_bars_document(
+        path,
+        {
+            "schema_version": "1.0.0",
+            "generator": {"name": "test", "version": "0"},
+            "generated_at": "2026-06-28T00:00:00Z",
+            "instrument": {"country": "KR", "market": "KOSPI", "ticker": "000660"},
+            "source": "google_sheets_googfinance",
+            "updated_at": "2026-06-26",
+            "bars": [
+                {"date": "2026-06-26", "open": 1, "high": 2, "low": 0.5, "close": 1.5},
+            ],
+        },
+    )
+    pick = {
+        "country": "KR",
+        "market": "KOSPI",
+        "ticker": "000660",
+        "status": {"current": "active"},
+        "entry": {"date": "2026-04-01"},
+        "duration": {"deadline": "2026-07-01"},
+    }
+    stats = verify_bars_for_picks([pick], today=date(2026, 6, 28), root=tmp_path / "bars")
+    codes = {i.code for i in stats.issues}
+    assert "stale_through" not in codes

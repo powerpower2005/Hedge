@@ -1,6 +1,7 @@
 from datetime import date
 
 from common.market_calendar import (
+    expected_bar_through_date,
     is_weekend_closed,
     should_skip_daily_bars_sync,
     today_by_country,
@@ -21,3 +22,9 @@ def test_should_skip_daily_bars_sync():
 
 def test_today_by_country_returns_date():
     assert isinstance(today_by_country("KR"), date)
+
+
+def test_expected_bar_through_date_weekend_rolls_to_friday():
+    assert expected_bar_through_date("KR", date(2026, 6, 28)) == date(2026, 6, 26)
+    assert expected_bar_through_date("KR", date(2026, 6, 27)) == date(2026, 6, 26)
+    assert expected_bar_through_date("KR", date(2026, 6, 26)) == date(2026, 6, 26)
