@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "307c504"
+    "commit": "8086dfa"
   },
-  "generated_at": "2026-06-28T05:08:03.669080Z",
+  "generated_at": "2026-06-28T06:26:42.422189Z",
   "data": {
-    "count": 33,
+    "count": 34,
     "picks": [
       {
         "id": 9,
@@ -2272,6 +2272,55 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "SK Hynix Inc",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 69,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-28T06:26:42.422115Z",
+        "author": "WookeyKim95",
+        "issue_number": 102,
+        "ticker": "042660",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-06-28",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.3
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-28T06:26:42.422115Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-28T06:26:42.422115Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Hanwha Ocean Co Ltd",
         "author_note": "_No response_"
       }
     ]
