@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "c424f13"
+    "commit": "b80a41b"
   },
-  "generated_at": "2026-06-29T08:17:35.554321Z",
+  "generated_at": "2026-06-29T08:47:55.797014Z",
   "data": {
-    "count": 34,
+    "count": 35,
     "picks": [
       {
         "id": 9,
@@ -2296,6 +2296,55 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "ProShares UltraPro QQQ",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 71,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-29T08:47:55.796933Z",
+        "author": "Eonyong",
+        "issue_number": 105,
+        "ticker": "226950",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "date": "2026-06-29",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.2
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-29T08:47:55.796933Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-29T08:47:55.796933Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "OliX Pharmaceuticals Inc",
         "author_note": "_No response_"
       }
     ]
