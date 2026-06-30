@@ -19,10 +19,10 @@ from .sheets import _formula_sep, get_client
 WORKSHEET_BARS_FETCH = "BarsFetch-v1"
 SCRATCH_COL = "Z"
 SCRATCH_CELL = "Z1"
-ROW_STRIDE = 100
-POLL_ATTEMPTS = 6
-POLL_SLEEP_SEC = 3.0
-INITIAL_WAIT_SEC = 5.0
+ROW_STRIDE = 300
+POLL_ATTEMPTS = 12
+POLL_SLEEP_SEC = 5.0
+INITIAL_WAIT_SEC = 15.0
 WRITE_MIN_INTERVAL_SEC = 1.1
 READ_MIN_INTERVAL_SEC = 1.1
 QUOTA_RETRY_ATTEMPTS = 4
@@ -70,6 +70,11 @@ def batch_size() -> int:
 def batch_interval_sec() -> float:
     """Pause between multi-symbol fetch batches (Sheets quota headroom)."""
     return max(0.0, _env_float("BARS_BATCH_INTERVAL_SEC", 5.0))
+
+
+def row_stride() -> int:
+    """Vertical gap between scratch formulas (must exceed GF spill row count)."""
+    return max(100, _env_int("BARS_SHEETS_ROW_STRIDE", ROW_STRIDE))
 
 
 def traceback_hint(exc: BaseException) -> str:
@@ -213,11 +218,11 @@ def _all_formula(symbol: str, start: date, end: date) -> str:
 
 
 def _scratch_row(index: int) -> int:
-    return 1 + index * ROW_STRIDE
+    return 1 + index * row_stride()
 
 
 def _read_range_for_row(row: int) -> str:
-    end_row = row + ROW_STRIDE - 1
+    end_row = row + row_stride() - 1
     return f"{SCRATCH_COL}{row}:AF{end_row}"
 
 
@@ -411,7 +416,7 @@ def fetch_bars_google_finance_batch(jobs: list[BarsFetchJob]) -> list[list[dict[
                 end=job.end,
                 message=(
                     f"{e.message} (after {poll_attempts} batch polls; "
-                    f"batch_size={len(active_jobs)} row_stride={ROW_STRIDE})"
+                    f"batch_size={len(active_jobs)} row_stride={row_stride()})"
                 ),
                 detail=(e.detail or "")
                 + f" formula={_all_formula(job.symbol, job.start, job.end)}",

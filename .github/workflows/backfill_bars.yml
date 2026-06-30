@@ -39,6 +39,10 @@ jobs:
       - name: Backfill bars (US/KR/HK active picks)
         env:
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          BARS_SHEETS_INITIAL_WAIT_SEC: "15"
+          BARS_SHEETS_POLL_ATTEMPTS: "12"
+          BARS_SHEETS_POLL_SLEEP_SEC: "5"
+          BARS_SHEETS_ROW_STRIDE: "300"
         run: python scripts/backfill_bars.py
 
       - name: Commit and push

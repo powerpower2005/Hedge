@@ -107,6 +107,40 @@ def test_plan_fetch_windows_recent_entry_backfills_detail_lookback(tmp_path, mon
     assert windows[-1][1] == today
 
 
+def test_plan_fetch_windows_daily_chunks_lookback_and_forward(tmp_path, monkeypatch):
+    from common import bars_storage
+
+    key = ("KR", "KOSDAQ", "036620")
+    root = tmp_path / "data" / "bars" / "v1"
+    path = bars_file_path(key, root=root)
+    doc = bars_storage.empty_bars_document(key)
+    doc["bars"] = [
+        {"date": "2026-05-08", "open": 1, "high": 2, "low": 0.5, "close": 1.5},
+        {"date": "2026-06-26", "open": 1, "high": 2, "low": 0.5, "close": 1.5},
+    ]
+    bars_storage.save_bars_document(path, doc)
+    monkeypatch.setattr(bars_storage, "BARS_ROOT", root)
+    monkeypatch.setattr(
+        "common.bars_sync.bars_file_path",
+        lambda k, root=None, _root=root: bars_file_path(k, root=_root),
+    )
+    picks = [
+        {
+            "entry": {"date": "2026-05-08"},
+            "duration": {"deadline": "2026-08-06"},
+        }
+    ]
+    today = date(2026, 6, 30)
+    windows = plan_fetch_windows(key, picks, today, "daily")
+    assert len(windows) >= 3
+    max_span_days = max((end - start).days for start, end in windows)
+    assert max_span_days <= 89
+    assert not any(
+        start == detail_calendar_lookback_start(today) and end == today
+        for start, end in windows
+    )
+
+
 def test_is_bars_fully_synced(tmp_path, monkeypatch):
     from common import bars_storage
 

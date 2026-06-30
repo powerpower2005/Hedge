@@ -217,20 +217,21 @@ def _first_bar_date(bars: list[dict[str, Any]]) -> date | None:
     return None
 
 
-def _merge_adjacent_windows(
-    windows: list[tuple[date, date]],
+def _split_date_range(
+    start: date,
+    end: date,
+    chunk_days: int = BACKFILL_CHUNK_DAYS,
 ) -> list[tuple[date, date]]:
-    if not windows:
+    """Split [start, end] into GF-friendly chunks (avoids long-range timeout / spill overlap)."""
+    if start > end or chunk_days < 1:
         return []
-    ordered = sorted(windows)
-    merged: list[tuple[date, date]] = [ordered[0]]
-    for start, end in ordered[1:]:
-        prev_start, prev_end = merged[-1]
-        if start <= prev_end + timedelta(days=1):
-            merged[-1] = (prev_start, max(prev_end, end))
-        else:
-            merged.append((start, end))
-    return merged
+    out: list[tuple[date, date]] = []
+    cursor = start
+    while cursor <= end:
+        chunk_end = min(cursor + timedelta(days=chunk_days - 1), end)
+        out.append((cursor, chunk_end))
+        cursor = chunk_end + timedelta(days=1)
+    return out
 
 
 def _needs_detail_lookback(
@@ -287,10 +288,11 @@ def plan_fetch_windows(
 
     if mode == "daily":
         windows: list[tuple[date, date]] = []
-        if _needs_detail_lookback(existing, fetch_floor):
-            lookback_end = (first - timedelta(days=1)) if first else range_end
+        lookback_end: date | None = None
+        if _needs_detail_lookback(existing, fetch_floor) and first is not None:
+            lookback_end = first - timedelta(days=1)
             if fetch_floor <= lookback_end:
-                windows.append((fetch_floor, lookback_end))
+                windows.extend(_split_date_range(fetch_floor, lookback_end))
 
         if last is None:
             forward_start = fetch_floor
@@ -299,9 +301,11 @@ def plan_fetch_windows(
         catchup_floor = today - timedelta(days=DAILY_CATCHUP_DAYS)
         forward_start = min(forward_start, catchup_floor)
         forward_start = max(forward_start, fetch_floor)
+        if lookback_end is not None:
+            forward_start = max(forward_start, lookback_end + timedelta(days=1))
         if forward_start <= range_end:
-            windows.append((forward_start, range_end))
-        return _merge_adjacent_windows(windows)
+            windows.extend(_split_date_range(forward_start, range_end))
+        return windows
 
     # backfill: full window in chunks from fetch_floor
     windows: list[tuple[date, date]] = []
