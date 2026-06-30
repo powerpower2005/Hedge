@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "generator": {
+    "name": "called-it",
+    "version": "1.0.0",
+    "commit": "303318f"
+  },
+  "generated_at": "2026-06-30T14:09:05.931063Z",
+  "instrument": {
+    "country": "KR",
+    "market": "KOSDAQ",
+    "ticker": "226950"
+  },
+  "source": "google_sheets_googfinance",
+  "updated_at": "2026-06-30",
+  "bars": [
+    {
+      "date": "2026-06-30",
+      "open": 165900.0,
+      "high": 171600.0,
+      "low": 155200.0,
+      "close": 155600.0,
+      "volume": 401264.0
+    }
+  ],
+  "finance_symbol": "KOSDAQ:226950"
+}
