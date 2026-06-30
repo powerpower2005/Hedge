@@ -13,7 +13,8 @@ import { PageLoading } from "../components/ui/PageLoading.jsx";
 import { dataLoadErrorMessage } from "../lib/userMessages.js";
 import { ScheduleLink } from "../components/guide/ScheduleLink.jsx";
 import { StatBlock } from "../components/ui/StatBlock.jsx";
-import { MarketIndexRail, MarketIndexStrip } from "../components/market/MarketMiniCharts.jsx";
+import { MarketIndexRail, MarketIndexStrip, MarketSidebarReveal } from "../components/market/MarketMiniCharts.jsx";
+import { useMarketSidebar } from "../hooks/useMarketSidebar.js";
 
 export function ActivePage() {
   const { t } = useI18n();
@@ -21,6 +22,7 @@ export function ActivePage() {
   const { picks: allPicks, loading: allLoading } = useAllMergedPicks();
   const [filters, setFilters] = useState({});
   const [sortKey, setSortKey] = useState("latest");
+  const { open: sidebarOpen, toggle: toggleSidebar } = useMarketSidebar();
 
   const activePicks = useMemo(() => picks.filter((p) => !isEntryPending(p)), [picks]);
 
@@ -57,7 +59,14 @@ export function ActivePage() {
 
   return (
     <div className={ui.page}>
-      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start lg:gap-8 xl:grid-cols-[minmax(0,1fr)_20rem]">
+      {!sidebarOpen ? <MarketSidebarReveal onOpen={toggleSidebar} /> : null}
+      <div
+        className={
+          sidebarOpen
+            ? "lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start lg:gap-8 xl:grid-cols-[minmax(0,1fr)_20rem]"
+            : undefined
+        }
+      >
         <article>
       <section className={ui.hero} aria-labelledby="dashboard-hero-title">
         <h1 id="dashboard-hero-title" className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl light:text-zinc-900">
@@ -113,7 +122,7 @@ export function ActivePage() {
       </section>
         </article>
 
-        <MarketIndexRail />
+        {sidebarOpen ? <MarketIndexRail onCollapse={toggleSidebar} /> : null}
       </div>
     </div>
   );

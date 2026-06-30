@@ -67,6 +67,8 @@ export default {
   market: {
     title: "Market indices",
     scrollHint: "Swipe for more",
+    hide: "Hide indices sidebar",
+    show: "Show market indices",
     nasdaq100: "Nasdaq 100",
     sp500: "S&P 500",
     kospi: "KOSPI",

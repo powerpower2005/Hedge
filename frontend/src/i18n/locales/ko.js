@@ -67,6 +67,8 @@ export default {
   market: {
     title: "주요 지수",
     scrollHint: "옆으로 넘겨 더 보기",
+    hide: "지수 사이드바 숨기기",
+    show: "주요 지수 보기",
     nasdaq100: "나스닥100",
     sp500: "S&P 500",
     kospi: "코스피",
