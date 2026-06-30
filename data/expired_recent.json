@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "6f61ea8"
+    "commit": "303318f"
   },
-  "generated_at": "2026-06-28T10:32:10.668174Z",
+  "generated_at": "2026-06-30T14:05:17.163083Z",
   "data": {
-    "count": 7,
+    "count": 9,
     "picks": [
       {
         "id": 40,
@@ -556,6 +556,176 @@
           "return_rate": -0.079054
         },
         "expired_at": "2026-06-28T10:32:10.664921Z"
+      },
+      {
+        "id": 51,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-28T04:54:46.048963Z",
+        "author": "sex-student",
+        "issue_number": 78,
+        "ticker": "012330",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-05-28",
+          "source": "google_sheets",
+          "price": 688000.0
+        },
+        "target": {
+          "return_rate": 0.69,
+          "price": 1162720.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-27"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-28T04:54:46.048963Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-05-28T11:00:53.155589Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-06-30T14:05:17.159428Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-06-30",
+          "current": {
+            "close": 502000.0,
+            "return_rate": -0.270349
+          },
+          "highest": {
+            "close": 768000.0,
+            "close_date": "2026-05-30",
+            "return_rate": 0.116279
+          },
+          "lowest": {
+            "close": 688000.0,
+            "close_date": "2026-05-28",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.960349,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-28T04:54:46.048963Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Hyundai Mobis Co Ltd",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 486500.0,
+          "session_date": "2026-06-27",
+          "return_rate": -0.292878
+        },
+        "expired_at": "2026-06-30T14:05:17.159517Z"
+      },
+      {
+        "id": 52,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-29T02:11:36.243952Z",
+        "author": "sex-student",
+        "issue_number": 79,
+        "ticker": "035420",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-05-29",
+          "source": "google_sheets",
+          "price": 205000.0
+        },
+        "target": {
+          "return_rate": 0.74,
+          "price": 356700.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-28"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-29T02:11:36.243952Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-05-29T10:52:30.461698Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-06-30T14:05:17.159536Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-06-30",
+          "current": {
+            "close": 204000.0,
+            "return_rate": -0.004878
+          },
+          "highest": {
+            "close": 280500.0,
+            "close_date": "2026-06-03",
+            "return_rate": 0.368293
+          },
+          "lowest": {
+            "close": 205000.0,
+            "close_date": "2026-05-29",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.744878,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-29T02:11:36.243952Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Naver Corp",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 196400.0,
+          "session_date": "2026-06-27",
+          "return_rate": -0.041951
+        },
+        "expired_at": "2026-06-30T14:05:17.159572Z"
       }
     ]
   }

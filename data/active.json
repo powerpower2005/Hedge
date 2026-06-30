@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "44b4b6b"
+    "commit": "303318f"
   },
-  "generated_at": "2026-06-30T14:00:40.596527Z",
+  "generated_at": "2026-06-30T14:05:17.159788Z",
   "data": {
-    "count": 35,
+    "count": 33,
     "picks": [
       {
         "id": 9,
@@ -169,17 +169,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 81500.0,
-            "return_rate": -0.555858
+            "close": 44900.0,
+            "return_rate": -0.755313
           },
           "highest": {
             "close": 196800.0,
             "close_date": "2026-04-28",
             "return_rate": 0.07248
           },
-          "distance_to_target": 1.055858,
+          "distance_to_target": 1.255313,
           "error_count": 0
         },
         "votes": {
@@ -413,17 +413,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 10160.0,
-            "return_rate": -0.637143
+            "close": 11100.0,
+            "return_rate": -0.603571
           },
           "highest": {
             "close": 28000.0,
             "close_date": "2026-05-07",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.837143,
+          "distance_to_target": 1.803571,
           "error_count": 0
         },
         "votes": {
@@ -474,17 +474,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 3590.0,
-            "return_rate": -0.419094
+            "close": 4075.0,
+            "return_rate": -0.340615
           },
           "highest": {
             "close": 6180.0,
             "close_date": "2026-05-08",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.419094,
+          "distance_to_target": 1.340615,
           "error_count": 0
         },
         "votes": {
@@ -535,17 +535,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 32550.0,
-            "return_rate": -0.194307
+            "close": 35800.0,
+            "return_rate": -0.113861
           },
           "highest": {
             "close": 41800.0,
             "close_date": "2026-05-11",
             "return_rate": 0.034653
           },
-          "distance_to_target": 0.894307,
+          "distance_to_target": 0.813861,
           "error_count": 0
         },
         "votes": {
@@ -657,17 +657,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 38600.0,
-            "return_rate": -0.428994
+            "close": 41600.0,
+            "return_rate": -0.384615
           },
           "highest": {
             "close": 67700.0,
             "close_date": "2026-05-15",
             "return_rate": 0.001479
           },
-          "distance_to_target": 0.628994,
+          "distance_to_target": 0.584615,
           "error_count": 0
         },
         "votes": {
@@ -1033,152 +1033,6 @@
         "author_note": "45%만 먹겠습니다 왜 등록 안된거지"
       },
       {
-        "id": 51,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-05-28T04:54:46.048963Z",
-        "author": "sex-student",
-        "issue_number": 78,
-        "ticker": "012330",
-        "country": "KR",
-        "market": "KOSPI",
-        "entry": {
-          "date": "2026-05-28",
-          "source": "google_sheets",
-          "price": 688000.0
-        },
-        "target": {
-          "return_rate": 0.69,
-          "price": 1162720.0
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-06-27"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-05-28T04:54:46.048963Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-05-28T11:00:53.155589Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-06-27",
-          "current": {
-            "close": 486500.0,
-            "return_rate": -0.292878
-          },
-          "highest": {
-            "close": 768000.0,
-            "close_date": "2026-05-30",
-            "return_rate": 0.116279
-          },
-          "lowest": {
-            "close": 688000.0,
-            "close_date": "2026-05-28",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.982878,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-28T04:54:46.048963Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Hyundai Mobis Co Ltd",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 52,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-05-29T02:11:36.243952Z",
-        "author": "sex-student",
-        "issue_number": 79,
-        "ticker": "035420",
-        "country": "KR",
-        "market": "KOSPI",
-        "entry": {
-          "date": "2026-05-29",
-          "source": "google_sheets",
-          "price": 205000.0
-        },
-        "target": {
-          "return_rate": 0.74,
-          "price": 356700.0
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-06-28"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-05-29T02:11:36.243952Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-05-29T10:52:30.461698Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-06-27",
-          "current": {
-            "close": 196400.0,
-            "return_rate": -0.041951
-          },
-          "highest": {
-            "close": 280500.0,
-            "close_date": "2026-06-03",
-            "return_rate": 0.368293
-          },
-          "lowest": {
-            "close": 205000.0,
-            "close_date": "2026-05-29",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.781951,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-29T02:11:36.243952Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Naver Corp",
-        "author_note": "_No response_"
-      },
-      {
         "id": 54,
         "schema_version": "1.0.0",
         "created_with": {
@@ -1222,10 +1076,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 1442000.0,
-            "return_rate": -0.268763
+            "close": 1487000.0,
+            "return_rate": -0.245943
           },
           "highest": {
             "close": 2203000.0,
@@ -1237,7 +1091,7 @@
             "close_date": "2026-05-31",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.418763,
+          "distance_to_target": 0.395943,
           "error_count": 0
         },
         "votes": {
@@ -1368,10 +1222,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 144310.0,
-            "return_rate": 0.209893
+            "close": 141200.0,
+            "return_rate": 0.183819
           },
           "highest": {
             "close": 148000.0,
@@ -1383,7 +1237,7 @@
             "close_date": "2026-06-01",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.390107,
+          "distance_to_target": 0.416181,
           "error_count": 0
         },
         "votes": {
@@ -1441,10 +1295,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 883000.0,
-            "return_rate": -0.161443
+            "close": 937000.0,
+            "return_rate": -0.110161
           },
           "highest": {
             "close": 1194000.0,
@@ -1456,7 +1310,7 @@
             "close_date": "2026-06-01",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.361443,
+          "distance_to_target": 0.310161,
           "error_count": 0
         },
         "votes": {
@@ -1514,10 +1368,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 480000.0,
-            "return_rate": -0.370904
+            "close": 516000.0,
+            "return_rate": -0.323722
           },
           "highest": {
             "close": 763000.0,
@@ -1529,7 +1383,7 @@
             "close_date": "2026-06-04",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.570904,
+          "distance_to_target": 0.523722,
           "error_count": 0
         },
         "votes": {
@@ -1952,22 +1806,22 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 4425.0,
-            "return_rate": -0.045307
+            "close": 4650.0,
+            "return_rate": 0.003236
           },
           "highest": {
-            "close": 4635.0,
-            "close_date": "2026-06-24",
-            "return_rate": 0.0
+            "close": 4650.0,
+            "close_date": "2026-06-30",
+            "return_rate": 0.003236
           },
           "lowest": {
             "close": 4635.0,
             "close_date": "2026-06-24",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.045307,
+          "distance_to_target": 0.996764,
           "error_count": 0
         },
         "votes": {
@@ -2025,22 +1879,22 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 48850.0,
-            "return_rate": 0.0
+            "close": 52800.0,
+            "return_rate": 0.08086
           },
           "highest": {
-            "close": 48850.0,
-            "close_date": "2026-06-27",
-            "return_rate": 0.0
+            "close": 52800.0,
+            "close_date": "2026-06-30",
+            "return_rate": 0.08086
           },
           "lowest": {
             "close": 48850.0,
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.0,
+          "distance_to_target": 0.91914,
           "error_count": 0
         },
         "votes": {
@@ -2098,22 +1952,22 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 12990.0,
-            "return_rate": 0.0
+            "close": 14260.0,
+            "return_rate": 0.097768
           },
           "highest": {
-            "close": 12990.0,
-            "close_date": "2026-06-27",
-            "return_rate": 0.0
+            "close": 14260.0,
+            "close_date": "2026-06-30",
+            "return_rate": 0.097768
           },
           "lowest": {
             "close": 12990.0,
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.0,
+          "distance_to_target": 0.902232,
           "error_count": 0
         },
         "votes": {
@@ -2171,10 +2025,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-06-27",
+          "updated_at": "2026-06-30",
           "current": {
-            "close": 2673000.0,
-            "return_rate": 0.0
+            "close": 2650000.0,
+            "return_rate": -0.008605
           },
           "highest": {
             "close": 2673000.0,
@@ -2186,7 +2040,7 @@
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.0,
+          "distance_to_target": 1.008605,
           "error_count": 0
         },
         "votes": {
@@ -2214,28 +2068,52 @@
         "country": "KR",
         "market": "KOSPI",
         "entry": {
-          "date": "2026-06-28",
+          "date": "2026-06-30",
           "source": "google_sheets",
-          "pending": true
+          "price": 100300.0
         },
         "target": {
-          "return_rate": 0.3
+          "return_rate": 0.3,
+          "price": 130390.0
         },
         "duration": {
-          "days": 30
+          "days": 30,
+          "deadline": "2026-07-30"
         },
         "status": {
-          "current": "pending_entry",
+          "current": "active",
           "history": [
             {
               "status": "pending_entry",
               "at": "2026-06-28T06:26:42.422115Z",
               "engine_version": "1.0.0",
               "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-06-30T14:05:17.159696Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
             }
           ]
         },
         "progress": {
+          "updated_at": "2026-06-30",
+          "current": {
+            "close": 100300.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 100300.0,
+            "close_date": "2026-06-30",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 100300.0,
+            "close_date": "2026-06-30",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.3,
           "error_count": 0
         },
         "votes": {
@@ -2336,28 +2214,52 @@
         "country": "KR",
         "market": "KOSDAQ",
         "entry": {
-          "date": "2026-06-29",
+          "date": "2026-06-30",
           "source": "google_sheets",
-          "pending": true
+          "price": 167200.0
         },
         "target": {
-          "return_rate": 0.2
+          "return_rate": 0.2,
+          "price": 200640.0
         },
         "duration": {
-          "days": 30
+          "days": 30,
+          "deadline": "2026-07-30"
         },
         "status": {
-          "current": "pending_entry",
+          "current": "active",
           "history": [
             {
               "status": "pending_entry",
               "at": "2026-06-29T08:47:55.796933Z",
               "engine_version": "1.0.0",
               "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-06-30T14:05:17.159745Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
             }
           ]
         },
         "progress": {
+          "updated_at": "2026-06-30",
+          "current": {
+            "close": 167200.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 167200.0,
+            "close_date": "2026-06-30",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 167200.0,
+            "close_date": "2026-06-30",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.2,
           "error_count": 0
         },
         "votes": {
