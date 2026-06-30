@@ -15,6 +15,32 @@ SCHEMA_VERSION = "1.0.0"
 SOURCE_GOOGLE_SHEETS = "google_sheets_googfinance"
 
 
+def ordered_finance_symbol_candidates(
+    country: str,
+    market: str,
+    ticker: str,
+    doc: dict[str, Any] | None,
+) -> tuple[str, ...]:
+    """Prefix try-order; cached finance_symbol from a prior successful fetch goes first."""
+    from .instrument_key import finance_symbol_candidates
+
+    all_candidates = finance_symbol_candidates(country, market, ticker)
+    cached = (doc or {}).get("finance_symbol")
+    if isinstance(cached, str) and cached in all_candidates:
+        return (cached, *(c for c in all_candidates if c != cached))
+    return tuple(all_candidates)
+
+
+def touch_finance_symbol(key: InstrumentKey, symbol: str) -> None:
+    """Persist resolved GOOGLEFINANCE symbol so later syncs skip prefix probing."""
+    path = bars_file_path(key)
+    doc = load_bars_file(path) or empty_bars_document(key)
+    if doc.get("finance_symbol") == symbol:
+        return
+    doc["finance_symbol"] = symbol
+    save_bars_document(path, doc)
+
+
 def load_bars_file(path: Path) -> dict[str, Any] | None:
     if not path.exists():
         return None

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import sys
 import time
 from collections import defaultdict
@@ -26,24 +27,35 @@ from .bars_sheets import (
     fetch_bars_google_finance_batch,
     fetch_bars_with_symbol_candidates,
 )
-from .bars_storage import last_bar_date, load_bars_file, upsert_bars
+from .bars_storage import (
+    last_bar_date,
+    load_bars_file,
+    ordered_finance_symbol_candidates,
+    touch_finance_symbol,
+    upsert_bars,
+)
 from .instrument_key import (
     BARS_SUPPORTED_COUNTRIES,
     InstrumentKey,
     bars_file_path,
-    finance_symbol_candidates,
     instrument_key_from_pick,
 )
+from .market_calendar import expected_bar_through_date
 from .meta import touch_last_bars_sync_at
 
 ACTIVE_PATH = Path("data/active.json")
 EXPIRED_PATH = Path("data/expired_recent.json")
 
 SYNC_STATUSES = frozenset({"pending_entry", "active", "suspended"})
-DAILY_CATCHUP_DAYS = 14
 BACKFILL_CHUNK_DAYS = 90
 
 SyncMode = Literal["daily", "backfill"]
+
+
+def daily_lookback_enabled() -> bool:
+    """Daily sync normally appends recent bars only; lookback is for backfill (or BARS_DAILY_LOOKBACK=1)."""
+    raw = (os.environ.get("BARS_DAILY_LOOKBACK") or "0").strip().lower()
+    return raw in ("1", "true", "yes")
 
 
 @dataclass(frozen=True)
@@ -71,7 +83,9 @@ def _collect_fetch_work(
     work: list[_FetchWork] = []
     for key, inst_picks in sorted(grouped.items()):
         country, market, ticker = key
-        candidates = tuple(finance_symbol_candidates(country, market, ticker))
+        path = bars_file_path(key)
+        doc = load_bars_file(path)
+        candidates = ordered_finance_symbol_candidates(country, market, ticker, doc)
         windows = plan_fetch_windows(key, inst_picks, today, mode)
         if not windows:
             label = instrument_label(key)
@@ -84,6 +98,16 @@ def _collect_fetch_work(
                     stats.skipped_complete += 1
                 bars_info(
                     f"skip complete {label} bars={len(bars)} "
+                    f"through={last.isoformat() if last else 'n/a'}"
+                )
+            elif is_bars_daily_caught_up(key, inst_picks, today):
+                doc = load_bars_file(path) or {}
+                bars = doc.get("bars") or []
+                last = last_bar_date(bars)
+                if stats is not None:
+                    stats.skipped_current += 1
+                bars_info(
+                    f"skip current {label} bars={len(bars)} "
                     f"through={last.isoformat() if last else 'n/a'}"
                 )
             else:
@@ -99,36 +123,41 @@ def _collect_fetch_work(
                     end=end,
                 )
             )
+    if stats is not None:
+        stats.fetch_planned = len(work)
+    work.sort(key=lambda w: ((w.end - w.start).days, w.start))
     return work
 
 
-def _fetch_one_work(w: _FetchWork) -> list[dict[str, Any]]:
-    _symbol, bars = fetch_bars_with_symbol_candidates(
+def _fetch_one_work(w: _FetchWork) -> tuple[str, list[dict[str, Any]]]:
+    symbol, bars = fetch_bars_with_symbol_candidates(
         w.symbol_candidates, w.start, w.end
     )
-    return bars
+    return symbol, bars
 
 
 def _fetch_work_batch(
     batch: list[_FetchWork],
-) -> list[tuple[_FetchWork, list[dict[str, Any]] | BaseException]]:
+) -> list[tuple[_FetchWork, str, list[dict[str, Any]] | BaseException]]:
     jobs = [BarsFetchJob(symbol=w.symbol, start=w.start, end=w.end) for w in batch]
     try:
         bars_lists = fetch_bars_google_finance_batch(jobs)
-        return [(w, bars) for w, bars in zip(batch, bars_lists)]
+        return [(w, w.symbol, bars) for w, bars in zip(batch, bars_lists)]
     except BarsFetchError:
         if len(batch) == 1:
             w = batch[0]
             try:
-                return [(w, _fetch_one_work(w))]
+                symbol, bars = _fetch_one_work(w)
+                return [(w, symbol, bars)]
             except BaseException as e:
-                return [(w, e)]
-        out: list[tuple[_FetchWork, list[dict[str, Any]] | BaseException]] = []
+                return [(w, w.symbol, e)]
+        out: list[tuple[_FetchWork, str, list[dict[str, Any]] | BaseException]] = []
         for w in batch:
             try:
-                out.append((w, _fetch_one_work(w)))
+                symbol, bars = _fetch_one_work(w)
+                out.append((w, symbol, bars))
             except BaseException as e:
-                out.append((w, e))
+                out.append((w, w.symbol, e))
         return out
 
 
@@ -137,6 +166,8 @@ class SyncStats:
     instruments: int = 0
     updated: int = 0
     skipped_complete: int = 0
+    skipped_current: int = 0
+    fetch_planned: int = 0
     skipped_jp: int = 0
     skipped_country: int = 0
     fetch_errors: int = 0
@@ -202,6 +233,17 @@ def instrument_date_window(
     return min(starts), max(ends)
 
 
+def effective_range_end(
+    key: InstrumentKey,
+    picks: list[dict[str, Any]],
+    today: date,
+) -> date:
+    """Last calendar date daily sync should cover (pick deadline capped by market today)."""
+    _, range_end = instrument_date_window(picks, today)
+    country, _, _ = key
+    return min(range_end, expected_bar_through_date(country, today))
+
+
 def fetch_floor_start(picks: list[dict[str, Any]], today: date) -> date:
     """Earliest date to retain/fetch: min(pick entry, 250-trading-day lookback)."""
     range_start, _ = instrument_date_window(picks, today)
@@ -244,6 +286,23 @@ def _needs_detail_lookback(
     return first is not None and first > fetch_floor
 
 
+def is_bars_daily_caught_up(
+    key: InstrumentKey,
+    picks: list[dict[str, Any]],
+    today: date,
+) -> bool:
+    """True when the latest expected trading day is already in the bar file (daily append not needed)."""
+    path = bars_file_path(key)
+    doc = load_bars_file(path)
+    existing = (doc or {}).get("bars") or []
+    if not existing:
+        return False
+    last = last_bar_date(existing)
+    if last is None:
+        return False
+    return last >= effective_range_end(key, picks, today)
+
+
 def is_bars_fully_synced(
     key: InstrumentKey,
     picks: list[dict[str, Any]],
@@ -255,7 +314,7 @@ def is_bars_fully_synced(
     existing = (doc or {}).get("bars") or []
     if not existing:
         return False
-    _, range_end = instrument_date_window(picks, today)
+    range_end = effective_range_end(key, picks, today)
     fetch_floor = fetch_floor_start(picks, today)
     last = last_bar_date(existing)
     first = _first_bar_date(existing)
@@ -274,7 +333,8 @@ def plan_fetch_windows(
     today: date,
     mode: SyncMode,
 ) -> list[tuple[date, date]]:
-    range_start, range_end = instrument_date_window(picks, today)
+    range_start, _ = instrument_date_window(picks, today)
+    range_end = effective_range_end(key, picks, today)
     if range_start > range_end:
         return []
 
@@ -289,22 +349,21 @@ def plan_fetch_windows(
     if mode == "daily":
         windows: list[tuple[date, date]] = []
         lookback_end: date | None = None
-        if _needs_detail_lookback(existing, fetch_floor) and first is not None:
+        if daily_lookback_enabled() and _needs_detail_lookback(existing, fetch_floor) and first is not None:
             lookback_end = first - timedelta(days=1)
             if fetch_floor <= lookback_end:
                 windows.extend(_split_date_range(fetch_floor, lookback_end))
 
-        if last is None:
-            forward_start = fetch_floor
-        else:
-            forward_start = last + timedelta(days=1)
-        catchup_floor = today - timedelta(days=DAILY_CATCHUP_DAYS)
-        forward_start = min(forward_start, catchup_floor)
-        forward_start = max(forward_start, fetch_floor)
-        if lookback_end is not None:
-            forward_start = max(forward_start, lookback_end + timedelta(days=1))
-        if forward_start <= range_end:
-            windows.extend(_split_date_range(forward_start, range_end))
+        if last is None or last < range_end:
+            if last is None:
+                forward_start = range_start if not daily_lookback_enabled() else fetch_floor
+            else:
+                forward_start = last + timedelta(days=1)
+            forward_start = max(forward_start, range_start)
+            if lookback_end is not None:
+                forward_start = max(forward_start, lookback_end + timedelta(days=1))
+            if forward_start <= range_end:
+                windows.extend(_split_date_range(forward_start, range_end))
         return windows
 
     # backfill: full window in chunks from fetch_floor
@@ -362,6 +421,7 @@ def run_bars_sync(
         return stats
 
     pending: dict[InstrumentKey, list[dict[str, Any]]] = defaultdict(list)
+    resolved_symbols: dict[InstrumentKey, str] = {}
     errors = 0
     updated = 0
     failures: list[SyncFailure] = []
@@ -374,7 +434,7 @@ def run_bars_sync(
             f"batch fetch {batch_idx + 1}/{len(batches)} size={len(batch)} symbols="
             f"{','.join(w.symbol for w in batch)}"
         )
-        for w, result in _fetch_work_batch(batch):
+        for w, used_symbol, result in _fetch_work_batch(batch):
             range_hint = f"{w.start.isoformat()}..{w.end.isoformat()}"
             if isinstance(result, BaseException):
                 errors += 1
@@ -395,6 +455,7 @@ def run_bars_sync(
                 log_sync_failure(failure)
             else:
                 pending[w.key].extend(result)
+                resolved_symbols[w.key] = used_symbol
 
         if pause > 0 and batch_idx < len(batches) - 1:
             bars_info(f"batch pause {pause:.1f}s before next fetch (BARS_BATCH_INTERVAL_SEC)")
@@ -403,6 +464,9 @@ def run_bars_sync(
     for key, bars in pending.items():
         if not bars:
             continue
+        symbol = resolved_symbols.get(key)
+        if symbol:
+            touch_finance_symbol(key, symbol)
         if upsert_bars(key, bars):
             updated += 1
 

@@ -335,6 +335,31 @@ def _parse_batch_slice(rows: list[list[Any]], job: BarsFetchJob) -> list[dict[st
     )
 
 
+def _poll_timing_for_jobs(jobs: list[BarsFetchJob]) -> tuple[float, int, float]:
+    """Shorter GF waits for small date windows (daily catchup); longer for backfill chunks."""
+    max_span = 0
+    for job in jobs:
+        if job.start <= job.end:
+            max_span = max(max_span, (job.end - job.start).days)
+    if max_span <= 14:
+        return (
+            _env_float("BARS_SHEETS_FAST_INITIAL_WAIT_SEC", 5.0),
+            _env_int("BARS_SHEETS_FAST_POLL_ATTEMPTS", 6),
+            _env_float("BARS_SHEETS_FAST_POLL_SLEEP_SEC", 2.0),
+        )
+    if max_span <= 90:
+        return (
+            _env_float("BARS_SHEETS_MED_INITIAL_WAIT_SEC", 10.0),
+            _env_int("BARS_SHEETS_MED_POLL_ATTEMPTS", 8),
+            _env_float("BARS_SHEETS_MED_POLL_SLEEP_SEC", 3.0),
+        )
+    return (
+        _env_float("BARS_SHEETS_INITIAL_WAIT_SEC", INITIAL_WAIT_SEC),
+        _env_int("BARS_SHEETS_POLL_ATTEMPTS", POLL_ATTEMPTS),
+        _env_float("BARS_SHEETS_POLL_SLEEP_SEC", POLL_SLEEP_SEC),
+    )
+
+
 def fetch_bars_google_finance_batch(jobs: list[BarsFetchJob]) -> list[list[dict[str, Any]]]:
     """Fetch multiple symbols in one Sheets write + batched reads (quota-friendly)."""
     if not jobs:
@@ -368,9 +393,7 @@ def fetch_bars_google_finance_batch(jobs: list[BarsFetchJob]) -> list[list[dict[
         end=active_jobs[-1].end,
     )
 
-    initial = _env_float("BARS_SHEETS_INITIAL_WAIT_SEC", INITIAL_WAIT_SEC)
-    poll_attempts = _env_int("BARS_SHEETS_POLL_ATTEMPTS", POLL_ATTEMPTS)
-    poll_sleep = _env_float("BARS_SHEETS_POLL_SLEEP_SEC", POLL_SLEEP_SEC)
+    initial, poll_attempts, poll_sleep = _poll_timing_for_jobs(active_jobs)
     time.sleep(initial)
 
     last_slices: list[list[list[Any]]] = [[] for _ in active_jobs]

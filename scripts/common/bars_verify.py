@@ -10,7 +10,7 @@ from typing import Any, Literal
 from .bars_errors import instrument_label
 from .bars_constants import DETAIL_TRADING_BARS
 from .bars_storage import last_bar_date, load_bars_file
-from .bars_sync import group_instruments, instrument_date_window
+from .bars_sync import group_instruments, instrument_date_window, is_bars_daily_caught_up
 from .instrument_key import BARS_ROOT, InstrumentKey, bars_file_path
 from .market_calendar import expected_bar_through_date
 
@@ -32,6 +32,7 @@ class BarsVerifyIssue:
 class BarsVerifyStats:
     instruments: int = 0
     ok: int = 0
+    skipped_current: int = 0
     errors: int = 0
     warnings: int = 0
     issues: list[BarsVerifyIssue] = field(default_factory=list)
@@ -240,12 +241,16 @@ def verify_bars_for_picks(
     country: str | None = None,
     today: date | None = None,
     root=BARS_ROOT,
+    skip_if_current: bool = False,
 ) -> BarsVerifyStats:
     today = today or date.today()
     grouped = group_instruments(picks, country=country)
     stats = BarsVerifyStats(instruments=len(grouped))
 
     for key, inst_picks in sorted(grouped.items()):
+        if skip_if_current and is_bars_daily_caught_up(key, inst_picks, today):
+            stats.skipped_current += 1
+            continue
         inst_issues = verify_instrument(key, inst_picks, today=today, root=root)
         stats.issues.extend(inst_issues)
         if not inst_issues:
@@ -279,6 +284,7 @@ def log_verify_issue(issue: BarsVerifyIssue) -> None:
 def print_verify_report(stats: BarsVerifyStats) -> None:
     print(
         f"[verify_bars] instruments={stats.instruments} ok={stats.ok} "
+        f"skipped_current={stats.skipped_current} "
         f"errors={stats.errors} warnings={stats.warnings}",
         file=sys.stderr,
     )

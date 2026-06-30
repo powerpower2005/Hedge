@@ -17,7 +17,7 @@ permissions:
   issues: write
 
 jobs:
-  judge:
+  judgment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -49,19 +49,7 @@ jobs:
           TELEGRAM_CHAT_ID_HEALTHY_GAEMI: ${{ secrets.TELEGRAM_CHAT_ID_HEALTHY_GAEMI }}
         run: python scripts/daily_judgment.py --country US
 
-      - name: Sync daily bars (US)
-        env:
-          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          BARS_SHEETS_INITIAL_WAIT_SEC: "15"
-          BARS_SHEETS_POLL_ATTEMPTS: "12"
-          BARS_SHEETS_POLL_SLEEP_SEC: "5"
-          BARS_SHEETS_ROW_STRIDE: "300"
-        run: python scripts/sync_daily_bars.py --country US
-
-      - name: Verify daily bars (US)
-        run: python scripts/verify_bars.py --country US
-
-      - name: Commit and push
+      - name: Commit and push judgment
         env:
           BRANCH: main
         run: |
@@ -77,22 +65,19 @@ jobs:
             sleep $((i * 3))
           done
 
-      - name: Job failed — context (no secrets)
+      - name: Judgment failed — context (no secrets)
         if: failure()
         env:
           REPO: ${{ github.repository }}
         run: |
           echo "Judgment(US): Sheet CSV/gspread + Secrets (GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_JSON, names only)."
-          echo "If **Sync daily bars (US)** or **Verify daily bars (US)** failed, search logs for [bars] FAILURE or [verify_bars] ERROR."
-          echo "Push: see commit step; rebase/push loop may conflict with concurrent data commits."
-          bash scripts/bars_failure_context.sh
           bash scripts/ci_failure_context.sh
 
       - name: Cleanup service account
         if: always()
         run: rm -f config/service_account.json
 
-      - name: Create issue on failure
+      - name: Create issue on judgment failure
         if: failure()
         uses: actions/github-script@v7
         with:
@@ -101,6 +86,107 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: `[AUTO] Daily judgment US failed - ${new Date().toISOString().split('T')[0]}`,
-              body: `Daily judgment US workflow failed.\n\nIf judgment succeeded but bars failed, check **Sync daily bars (US)** for \`[bars] FAILURE\` lines.\n\nRun: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              body: `Daily judgment US **judgment** job failed (progress/achievement not pushed).\n\nRun: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
               labels: ['system-error', 'priority-high']
             });
+
+  sync-bars:
+    needs: judgment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Write service account
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          python -c "import os, pathlib; pathlib.Path('config').mkdir(exist_ok=True); pathlib.Path('config/service_account.json').write_text(os.environ['GOOGLE_SERVICE_ACCOUNT_JSON'], encoding='utf-8')"
+
+      - name: Sync daily bars (US)
+        env:
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          BARS_SHEETS_ROW_STRIDE: "300"
+          BARS_BATCH_INTERVAL_SEC: "2"
+        run: python scripts/sync_daily_bars.py --country US
+
+      - name: Commit and push bars
+        env:
+          BRANCH: main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            exit 0
+          fi
+          git commit -m "chore(data): sync daily bars US $(date -u +%Y-%m-%d)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin "$BRANCH" && git push origin "$BRANCH" && break
+            sleep $((i * 3))
+          done
+
+      - name: Bars sync failed — context (no secrets)
+        if: failure()
+        run: |
+          echo "Sync daily bars (US) failed. Judgment may already be on main."
+          bash scripts/bars_failure_context.sh
+          bash scripts/ci_failure_context.sh
+
+      - name: Cleanup service account
+        if: always()
+        run: rm -f config/service_account.json
+
+      - name: Create issue on bars sync failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[AUTO] Sync daily bars US failed - ${new Date().toISOString().split('T')[0]}`,
+              body: `Daily judgment US **sync-bars** job failed. Judgment data should already be committed.\n\nSearch logs for \`[bars] FAILURE\`. Re-run the **sync-bars** job or \`backfill_bars\` workflow.\n\nRun: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              labels: ['system-error', 'priority-high']
+            });
+
+  verify-bars:
+    needs: [judgment, sync-bars]
+    if: always() && needs.judgment.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Verify daily bars (US)
+        id: verify
+        continue-on-error: true
+        run: python scripts/verify_bars.py --country US
+
+      - name: Verify warnings
+        if: steps.verify.outcome == 'failure'
+        run: echo "::warning title=Bar verify US::verify_bars reported issues; charts may be stale. See job log."

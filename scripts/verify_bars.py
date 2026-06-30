@@ -34,6 +34,12 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Exit 1 when stale_through or empty_volume warnings exist.",
     )
+    p.add_argument(
+        "--skip-current",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Skip instruments already caught up through latest trading day (default: skip).",
+    )
     return p.parse_args()
 
 
@@ -60,7 +66,11 @@ def main() -> None:
     if args.include_recent_expired and EXPIRED_PATH.exists():
         picks = picks + get_picks(load_list_file(EXPIRED_PATH))
 
-    stats = verify_bars_for_picks(picks, country=args.country)
+    stats = verify_bars_for_picks(
+        picks,
+        country=args.country,
+        skip_if_current=args.skip_current,
+    )
     print_verify_report(stats)
     code = exit_code_for_verify(stats, fail_on_warning=args.fail_on_warning)
     if code != 0:
