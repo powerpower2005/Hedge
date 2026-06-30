@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "28ae5a0"
+    "commit": "44b4b6b"
   },
-  "generated_at": "2026-06-27T04:58:21.606494Z",
+  "generated_at": "2026-06-30T14:04:23.435236Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "TSLA"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-06-26",
+  "updated_at": "2026-06-29",
   "bars": [
     {
       "date": "2026-06-08",
@@ -125,6 +125,15 @@
       "low": 368.6,
       "close": 379.71,
       "volume": 53434139.0
+    },
+    {
+      "date": "2026-06-29",
+      "open": 381.79,
+      "high": 413.27,
+      "low": 379.3,
+      "close": 411.84,
+      "volume": 57645799.0
     }
-  ]
+  ],
+  "finance_symbol": "NASDAQ:TSLA"
 }
