@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "303318f"
+    "commit": "6cffffc"
   },
-  "generated_at": "2026-06-30T14:05:17.163083Z",
+  "generated_at": "2026-07-01T11:37:17.654133Z",
   "data": {
-    "count": 9,
+    "count": 10,
     "picks": [
       {
         "id": 40,
@@ -726,6 +726,91 @@
           "return_rate": -0.041951
         },
         "expired_at": "2026-06-30T14:05:17.159572Z"
+      },
+      {
+        "id": 54,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-31T08:58:31.562005Z",
+        "author": "saechimdaeki",
+        "issue_number": 81,
+        "ticker": "000150",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-05-31",
+          "source": "google_sheets",
+          "price": 1972000.0
+        },
+        "target": {
+          "return_rate": 0.15,
+          "price": 2267800.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-06-30"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-31T08:58:31.562005Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-05-31T09:49:14.881528Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-07-01T11:37:17.650839Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-07-01",
+          "current": {
+            "close": 1487000.0,
+            "return_rate": -0.245943
+          },
+          "highest": {
+            "close": 2203000.0,
+            "close_date": "2026-06-02",
+            "return_rate": 0.11714
+          },
+          "lowest": {
+            "close": 1972000.0,
+            "close_date": "2026-05-31",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.395943,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-31T08:58:31.562005Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Doosan Corp",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 1487000.0,
+          "session_date": "2026-06-30",
+          "return_rate": -0.245943
+        },
+        "expired_at": "2026-07-01T11:37:17.650919Z"
       }
     ]
   }
