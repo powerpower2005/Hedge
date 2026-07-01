@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "cc80470"
+    "commit": "910b830"
   },
-  "generated_at": "2026-06-30T23:05:34.385303Z",
+  "generated_at": "2026-07-01T23:05:47.687137Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "BTQ"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-06-30",
+  "updated_at": "2026-07-01",
   "bars": [
     {
       "date": "2026-06-22",
@@ -69,6 +69,14 @@
       "low": 5.27,
       "close": 5.39,
       "volume": 3138618.0
+    },
+    {
+      "date": "2026-07-01",
+      "open": 5.24,
+      "high": 5.67,
+      "low": 5.16,
+      "close": 5.33,
+      "volume": 3531045.0
     }
   ],
   "finance_symbol": "NASDAQ:BTQ"
