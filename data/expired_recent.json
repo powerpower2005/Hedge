@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "6cffffc"
+    "commit": "c71f79b"
   },
-  "generated_at": "2026-07-01T11:37:17.654133Z",
+  "generated_at": "2026-07-02T11:04:45.889937Z",
   "data": {
-    "count": 10,
+    "count": 11,
     "picks": [
       {
         "id": 40,
@@ -811,6 +811,91 @@
           "return_rate": -0.245943
         },
         "expired_at": "2026-07-01T11:37:17.650919Z"
+      },
+      {
+        "id": 57,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-01T01:20:22.184174Z",
+        "author": "Eonyong",
+        "issue_number": 84,
+        "ticker": "267260",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-06-01",
+          "source": "google_sheets",
+          "price": 1053000.0
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 1263600.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-07-01"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-01T01:20:22.184174Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-06-01T12:45:26.548340Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-07-02T11:04:45.886726Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-07-02",
+          "current": {
+            "close": 1012000.0,
+            "return_rate": -0.038936
+          },
+          "highest": {
+            "close": 1194000.0,
+            "close_date": "2026-06-15",
+            "return_rate": 0.133903
+          },
+          "lowest": {
+            "close": 1053000.0,
+            "close_date": "2026-06-01",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.238936,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-01T01:20:22.184174Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "HD Hyundai Electric Co Ltd",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 972000.0,
+          "session_date": "2026-07-01",
+          "return_rate": -0.076923
+        },
+        "expired_at": "2026-07-02T11:04:45.886804Z"
       }
     ]
   }
