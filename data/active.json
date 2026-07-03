@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "cacc120"
+    "commit": "fd333b2"
   },
-  "generated_at": "2026-07-03T11:07:19.919785Z",
+  "generated_at": "2026-07-03T11:09:45.760549Z",
   "data": {
-    "count": 33,
+    "count": 34,
     "picks": [
       {
         "id": 9,
@@ -2248,6 +2248,55 @@
         },
         "instrument_name": "SK Hynix Inc",
         "author_note": "존버중(평단 대충 7/3 종가랑 비슷)"
+      },
+      {
+        "id": 74,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-07-03T11:09:45.760468Z",
+        "author": "cieske",
+        "issue_number": 113,
+        "ticker": "MU",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-07-03",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.5
+        },
+        "duration": {
+          "days": 180
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-07-03T11:09:45.760468Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-07-03T11:09:45.760468Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Micron Technology Inc",
+        "author_note": "마이크론 연말까지 존버(1500달러 목표), 현재 평단 1030"
       }
     ]
   }
