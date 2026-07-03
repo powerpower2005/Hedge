@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "587c74e"
+    "commit": "3787ab8"
   },
-  "generated_at": "2026-07-02T22:57:27.881919Z",
+  "generated_at": "2026-07-03T08:02:47.171595Z",
   "data": {
-    "count": 31,
+    "count": 32,
     "picks": [
       {
         "id": 9,
@@ -2126,6 +2126,55 @@
         },
         "instrument_name": "OliX Pharmaceuticals Inc",
         "author_note": "_No response_"
+      },
+      {
+        "id": 72,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-07-03T08:02:47.171512Z",
+        "author": "saechimdaeki",
+        "issue_number": 111,
+        "ticker": "SNDK",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-07-03",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.15
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-07-03T08:02:47.171512Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-07-03T08:02:47.171512Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "SanDisk Corp",
+        "author_note": "자.... 두 과 자"
       }
     ]
   }
