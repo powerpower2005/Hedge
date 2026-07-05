@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "4499f28"
+    "commit": "4145d8e"
   },
-  "generated_at": "2026-07-05T04:45:13.170392Z",
+  "generated_at": "2026-07-05T10:36:13.456164Z",
   "data": {
-    "count": 10,
+    "count": 11,
     "picks": [
       {
         "id": 22,
@@ -811,6 +811,91 @@
           "return_rate": -0.076923
         },
         "expired_at": "2026-07-02T11:04:45.886804Z"
+      },
+      {
+        "id": 58,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-04T10:22:01.177853Z",
+        "author": "maebongpunch",
+        "issue_number": 85,
+        "ticker": "277810",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "date": "2026-06-04",
+          "source": "google_sheets",
+          "price": 763000.0
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 915600.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-07-04"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-04T10:22:01.177853Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-06-04T10:42:26.269982Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-07-05T10:36:13.452619Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-07-05",
+          "current": {
+            "close": 492500.0,
+            "return_rate": -0.354522
+          },
+          "highest": {
+            "close": 763000.0,
+            "close_date": "2026-06-04",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 763000.0,
+            "close_date": "2026-06-04",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.554522,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-04T10:22:01.177853Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Rainbow Robotics",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 492500.0,
+          "session_date": "2026-07-04",
+          "return_rate": -0.354522
+        },
+        "expired_at": "2026-07-05T10:36:13.452702Z"
       }
     ]
   }
