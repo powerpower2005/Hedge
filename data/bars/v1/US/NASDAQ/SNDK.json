@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "generator": {
+    "name": "called-it",
+    "version": "1.0.0",
+    "commit": "00948a7"
+  },
+  "generated_at": "2026-07-06T23:01:12.733586Z",
+  "instrument": {
+    "country": "US",
+    "market": "NASDAQ",
+    "ticker": "SNDK"
+  },
+  "source": "google_sheets_googfinance",
+  "updated_at": "2026-07-06",
+  "bars": [
+    {
+      "date": "2026-07-06",
+      "open": 1828.68,
+      "high": 1837.77,
+      "low": 1713.2,
+      "close": 1744.43,
+      "volume": 8738194.0
+    }
+  ],
+  "finance_symbol": "NASDAQ:SNDK"
+}

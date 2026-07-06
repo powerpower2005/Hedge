@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "generator": {
+    "name": "called-it",
+    "version": "1.0.0",
+    "commit": "00948a7"
+  },
+  "generated_at": "2026-07-06T23:01:12.733061Z",
+  "instrument": {
+    "country": "US",
+    "market": "NASDAQ",
+    "ticker": "MU"
+  },
+  "source": "google_sheets_googfinance",
+  "updated_at": "2026-07-06",
+  "bars": [
+    {
+      "date": "2026-07-06",
+      "open": 1007.0,
+      "high": 1019.0,
+      "low": 980.85,
+      "close": 984.75,
+      "volume": 35954310.0
+    }
+  ],
+  "finance_symbol": "NASDAQ:MU"
+}
