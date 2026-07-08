@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "65d34df"
+    "commit": "48b685a"
   },
-  "generated_at": "2026-07-07T22:55:08.476478Z",
+  "generated_at": "2026-07-08T22:59:01.168772Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "QCOM"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-07-07",
+  "updated_at": "2026-07-08",
   "bars": [
     {
       "date": "2026-06-09",
@@ -165,6 +165,14 @@
       "low": 179.0,
       "close": 182.97,
       "volume": 15524261.0
+    },
+    {
+      "date": "2026-07-08",
+      "open": 180.52,
+      "high": 187.12,
+      "low": 180.51,
+      "close": 186.56,
+      "volume": 10257868.0
     }
   ],
   "finance_symbol": "NASDAQ:QCOM"

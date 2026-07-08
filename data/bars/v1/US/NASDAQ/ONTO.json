@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "65d34df"
+    "commit": "48b685a"
   },
-  "generated_at": "2026-07-07T22:55:08.475832Z",
+  "generated_at": "2026-07-08T22:59:01.168099Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "ONTO"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-07-07",
+  "updated_at": "2026-07-08",
   "bars": [
     {
       "date": "2026-04-27",
@@ -405,6 +405,14 @@
       "low": 268.54,
       "close": 279.93,
       "volume": 1493523.0
+    },
+    {
+      "date": "2026-07-08",
+      "open": 277.76,
+      "high": 295.39,
+      "low": 275.11,
+      "close": 291.45,
+      "volume": 1373220.0
     }
   ],
   "finance_symbol": "NYSE:ONTO"
