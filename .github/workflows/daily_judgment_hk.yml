@@ -5,6 +5,9 @@ on:
     # HKEX regular close 16:00 HKT; judgment 2 hours later (18:00 HKT).
     - cron: "0 18 * * *"
       timezone: "Asia/Hong_Kong"
+    # Fallback when queued behind repo-data-main or hosted runner was unavailable.
+    - cron: "0 21 * * *"
+      timezone: "Asia/Hong_Kong"
   workflow_dispatch:
 
 concurrency:

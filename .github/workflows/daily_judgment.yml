@@ -5,6 +5,9 @@ on:
     # KRX regular close 15:30 KST; judgment 2 hours later (17:30 KST).
     - cron: "30 17 * * *"
       timezone: "Asia/Seoul"
+    # Fallback when queued behind repo-data-main or hosted runner was unavailable.
+    - cron: "30 20 * * *"
+      timezone: "Asia/Seoul"
   workflow_dispatch:
 
 # Serialize with Register New Pick / operator fixes so only one data/ push to main at a time.

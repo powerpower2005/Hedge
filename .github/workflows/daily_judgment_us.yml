@@ -5,6 +5,9 @@ on:
     # NYSE/NASDAQ regular close 16:00 ET; judgment 2 hours later (18:00 America/New_York).
     - cron: "0 18 * * *"
       timezone: "America/New_York"
+    # Fallback when queued behind repo-data-main or hosted runner was unavailable.
+    - cron: "0 21 * * *"
+      timezone: "America/New_York"
   workflow_dispatch:
 
 # Serialize with other data writers so only one data/ push to main at a time.
