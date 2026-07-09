@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "48b685a"
+    "commit": "35cb3fa"
   },
-  "generated_at": "2026-07-08T22:56:31.847519Z",
+  "generated_at": "2026-07-09T23:03:20.707146Z",
   "data": {
-    "count": 12,
+    "count": 13,
     "picks": [
       {
         "id": 22,
@@ -981,6 +981,91 @@
           "return_rate": -0.289608
         },
         "expired_at": "2026-07-08T22:56:31.844062Z"
+      },
+      {
+        "id": 59,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-08T10:55:43.589969Z",
+        "author": "HOWSANG",
+        "issue_number": 86,
+        "ticker": "TSLA",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-06-08",
+          "source": "google_sheets",
+          "price": 408.95
+        },
+        "target": {
+          "return_rate": 0.15,
+          "price": 470.2925
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-07-08"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-08T10:55:43.589969Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-06-08T22:50:54.659975Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-07-09T23:03:20.703954Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-07-09",
+          "current": {
+            "close": 406.55,
+            "return_rate": -0.005869
+          },
+          "highest": {
+            "close": 425.3,
+            "close_date": "2026-07-01",
+            "return_rate": 0.03998
+          },
+          "lowest": {
+            "close": 408.95,
+            "close_date": "2026-06-08",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.155869,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-08T10:55:43.589969Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Tesla Inc",
+        "author_note": "to the moon",
+        "expiry": {
+          "close": 394.06,
+          "session_date": "2026-07-08",
+          "return_rate": -0.03641
+        },
+        "expired_at": "2026-07-09T23:03:20.704035Z"
       }
     ]
   }
