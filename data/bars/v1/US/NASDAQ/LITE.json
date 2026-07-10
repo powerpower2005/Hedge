@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "35cb3fa"
+    "commit": "7942831"
   },
-  "generated_at": "2026-07-09T23:05:36.734692Z",
+  "generated_at": "2026-07-10T04:58:08.271766Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -396,7 +396,7 @@
       "high": 747.0,
       "low": 716.13,
       "close": 731.25,
-      "volume": 3748560.0
+      "volume": 3805531.0
     },
     {
       "date": "2026-07-07",
@@ -404,7 +404,7 @@
       "high": 732.57,
       "low": 680.43,
       "close": 698.91,
-      "volume": 3654245.0
+      "volume": 3750797.0
     },
     {
       "date": "2026-07-08",
@@ -412,7 +412,7 @@
       "high": 719.12,
       "low": 683.4,
       "close": 707.1,
-      "volume": 2571847.0
+      "volume": 2586225.0
     },
     {
       "date": "2026-07-09",

@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "35cb3fa"
+    "commit": "7942831"
   },
-  "generated_at": "2026-07-09T23:05:36.736466Z",
+  "generated_at": "2026-07-10T04:58:08.274246Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -392,11 +392,11 @@
     },
     {
       "date": "2026-07-06",
-      "open": 318.33,
+      "open": 316.5,
       "high": 320.24,
       "low": 299.13,
       "close": 303.86,
-      "volume": 971917.0
+      "volume": 973167.0
     },
     {
       "date": "2026-07-07",
@@ -404,7 +404,7 @@
       "high": 292.0,
       "low": 268.54,
       "close": 279.93,
-      "volume": 1493523.0
+      "volume": 1499726.0
     },
     {
       "date": "2026-07-08",
@@ -412,7 +412,7 @@
       "high": 295.39,
       "low": 275.11,
       "close": 291.45,
-      "volume": 1373220.0
+      "volume": 1374727.0
     },
     {
       "date": "2026-07-09",
@@ -420,7 +420,7 @@
       "high": 333.54,
       "low": 313.63,
       "close": 317.02,
-      "volume": 1762370.0
+      "volume": 1766114.0
     }
   ],
   "finance_symbol": "NYSE:ONTO"
