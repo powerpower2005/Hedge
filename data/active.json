@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "35cb3fa"
+    "commit": "7942831"
   },
-  "generated_at": "2026-07-09T23:03:20.704140Z",
+  "generated_at": "2026-07-10T04:50:56.353656Z",
   "data": {
-    "count": 31,
+    "count": 30,
     "picks": [
       {
         "id": 9,
@@ -48,7 +48,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 73.88,
             "return_rate": -0.127333
@@ -108,7 +108,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 785.77,
             "return_rate": -0.07217
@@ -230,7 +230,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 72.19,
             "return_rate": -0.362335
@@ -291,7 +291,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 317.02,
             "return_rate": 0.084534
@@ -352,7 +352,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 16.9,
             "return_rate": -0.318548
@@ -596,7 +596,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 63.01,
             "return_rate": -0.445676
@@ -718,7 +718,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 89.7,
             "return_rate": -0.167517
@@ -784,10 +784,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
-            "close": 7.34,
-            "return_rate": 0.211221
+            "close": 7.32,
+            "return_rate": 0.207921
           },
           "highest": {
             "close": 9.5,
@@ -799,7 +799,7 @@
             "close_date": "2026-05-22",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.788779,
+          "distance_to_target": 0.792079,
           "error_count": 0
         },
         "votes": {
@@ -857,7 +857,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 47.9,
             "return_rate": -0.701632
@@ -930,7 +930,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 764.63,
             "return_rate": 0.4309
@@ -1003,7 +1003,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 16.04,
             "return_rate": -0.324632
@@ -1076,7 +1076,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 162.24,
             "return_rate": 0.090616
@@ -1179,79 +1179,6 @@
         "author_note": "_No response_"
       },
       {
-        "id": 60,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-06-09T08:03:39.529316Z",
-        "author": "saechimdaeki",
-        "issue_number": 87,
-        "ticker": "QCOM",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-06-09",
-          "source": "google_sheets",
-          "price": 217.77
-        },
-        "target": {
-          "return_rate": 0.2,
-          "price": 261.324
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-07-09"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-06-09T08:03:39.529316Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-06-09T22:26:20.479996Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-07-09",
-          "current": {
-            "close": 191.11,
-            "return_rate": -0.122423
-          },
-          "highest": {
-            "close": 226.11,
-            "close_date": "2026-06-18",
-            "return_rate": 0.038297
-          },
-          "lowest": {
-            "close": 217.77,
-            "close_date": "2026-06-09",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.322423,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-06-09T08:03:39.529316Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Qualcomm Inc",
-        "author_note": "퀄컴 20%만 먹고 갑니다 스윙 이즈 굿 ~"
-      },
-      {
         "id": 62,
         "schema_version": "1.0.0",
         "created_with": {
@@ -1295,7 +1222,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 4.84,
             "return_rate": -0.273273
@@ -1368,7 +1295,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 11.75,
             "return_rate": -0.263784
@@ -1806,7 +1733,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 76.34,
             "return_rate": -0.011012
@@ -1952,7 +1879,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 1858.27,
             "return_rate": 0.064911
@@ -2098,7 +2025,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-09",
+          "updated_at": "2026-07-10",
           "current": {
             "close": 991.64,
             "return_rate": 0.016483
