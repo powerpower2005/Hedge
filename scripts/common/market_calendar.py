@@ -42,3 +42,10 @@ def expected_bar_through_date(country: str, day: date) -> date:
     while is_weekend_closed(country, expected):
         expected -= timedelta(days=1)
     return expected
+
+
+def advance_past_weekend_closed(country: str, day: date) -> date:
+    """Move forward across Sat/Sun so GF fetch ranges start on a trading day."""
+    while is_weekend_closed(country, day):
+        day += timedelta(days=1)
+    return day

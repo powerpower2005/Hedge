@@ -1,6 +1,7 @@
 from datetime import date
 
 from common.market_calendar import (
+    advance_past_weekend_closed,
     expected_bar_through_date,
     is_weekend_closed,
     should_skip_daily_bars_sync,
@@ -28,3 +29,9 @@ def test_expected_bar_through_date_weekend_rolls_to_friday():
     assert expected_bar_through_date("KR", date(2026, 6, 28)) == date(2026, 6, 26)
     assert expected_bar_through_date("KR", date(2026, 6, 27)) == date(2026, 6, 26)
     assert expected_bar_through_date("KR", date(2026, 6, 26)) == date(2026, 6, 26)
+
+
+def test_advance_past_weekend_closed():
+    assert advance_past_weekend_closed("KR", date(2026, 7, 11)) == date(2026, 7, 13)
+    assert advance_past_weekend_closed("KR", date(2026, 7, 13)) == date(2026, 7, 13)
+    assert advance_past_weekend_closed("KR", date(2026, 6, 26)) == date(2026, 6, 26)

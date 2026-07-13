@@ -40,7 +40,7 @@ from .instrument_key import (
     bars_file_path,
     instrument_key_from_pick,
 )
-from .market_calendar import expected_bar_through_date
+from .market_calendar import advance_past_weekend_closed, expected_bar_through_date
 from .meta import touch_last_bars_sync_at
 
 ACTIVE_PATH = Path("data/active.json")
@@ -259,6 +259,14 @@ def _first_bar_date(bars: list[dict[str, Any]]) -> date | None:
     return None
 
 
+def _gf_fetch_start(country: str, start: date, range_end: date) -> date | None:
+    """First calendar day to request from GF, skipping routine weekend closure."""
+    start = advance_past_weekend_closed(country, start)
+    if start > range_end:
+        return None
+    return start
+
+
 def _split_date_range(
     start: date,
     end: date,
@@ -346,6 +354,8 @@ def plan_fetch_windows(
     last = last_bar_date(existing)
     first = _first_bar_date(existing)
 
+    country, _, _ = key
+
     if mode == "daily":
         windows: list[tuple[date, date]] = []
         lookback_end: date | None = None
@@ -362,7 +372,8 @@ def plan_fetch_windows(
             forward_start = max(forward_start, range_start)
             if lookback_end is not None:
                 forward_start = max(forward_start, lookback_end + timedelta(days=1))
-            if forward_start <= range_end:
+            forward_start = _gf_fetch_start(country, forward_start, range_end)
+            if forward_start is not None:
                 windows.extend(_split_date_range(forward_start, range_end))
         return windows
 
@@ -377,7 +388,8 @@ def plan_fetch_windows(
         win_start = cursor
         if last is not None and win_start <= last:
             win_start = last + timedelta(days=1)
-        if win_start <= chunk_end:
+        win_start = _gf_fetch_start(country, win_start, chunk_end)
+        if win_start is not None and win_start <= chunk_end:
             windows.append((win_start, chunk_end))
         cursor = chunk_end + timedelta(days=1)
     return windows

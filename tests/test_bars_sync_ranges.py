@@ -68,7 +68,10 @@ def test_plan_fetch_windows_backfill_chunks(tmp_path, monkeypatch):
     ]
     windows = plan_fetch_windows(key, picks, date(2026, 6, 1), "backfill")
     assert len(windows) >= 2
-    assert windows[0][0] == fetch_floor_start(picks, date(2026, 6, 1))
+    floor = fetch_floor_start(picks, date(2026, 6, 1))
+    from common.market_calendar import advance_past_weekend_closed
+
+    assert windows[0][0] == advance_past_weekend_closed("US", floor)
     assert windows[-1][1] == date(2026, 6, 1)
 
 
@@ -134,7 +137,27 @@ def test_plan_fetch_windows_daily_forward_only_by_default(tmp_path, monkeypatch)
     today = date(2026, 6, 30)
     windows = plan_fetch_windows(key, picks, today, "daily")
     assert len(windows) == 1
-    assert windows[0] == (date(2026, 6, 27), today)
+    assert windows[0] == (date(2026, 6, 29), today)
+
+
+def test_plan_fetch_windows_daily_skips_weekend_after_friday(tmp_path, monkeypatch):
+    from common import bars_storage
+
+    key = ("KR", "KOSDAQ", "036620")
+    root = tmp_path / "data" / "bars" / "v1"
+    path = bars_file_path(key, root=root)
+    doc = bars_storage.empty_bars_document(key)
+    doc["bars"] = [{"date": "2026-07-10", "open": 1, "high": 2, "low": 0.5, "close": 1.5}]
+    bars_storage.save_bars_document(path, doc)
+    monkeypatch.setattr(bars_storage, "BARS_ROOT", root)
+    monkeypatch.setattr(
+        "common.bars_sync.bars_file_path",
+        lambda k, root=None, _root=root: bars_file_path(k, root=_root),
+    )
+    picks = [{"entry": {"date": "2026-05-08"}, "duration": {"deadline": "2026-08-06"}}]
+    today = date(2026, 7, 13)  # Monday after Fri 7/10
+    windows = plan_fetch_windows(key, picks, today, "daily")
+    assert windows == [(date(2026, 7, 13), date(2026, 7, 13))]
 
 
 def test_is_bars_daily_caught_up_when_through_expected(tmp_path, monkeypatch):
