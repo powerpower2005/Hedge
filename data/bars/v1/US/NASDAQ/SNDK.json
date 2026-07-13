@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "884bff9"
+    "commit": "7428343"
   },
-  "generated_at": "2026-07-13T13:43:26.601261Z",
+  "generated_at": "2026-07-13T22:48:11.298391Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "SNDK"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-07-10",
+  "updated_at": "2026-07-13",
   "bars": [
     {
       "date": "2026-07-06",
@@ -53,6 +53,14 @@
       "low": 1773.0,
       "close": 1915.92,
       "volume": 11022652.0
+    },
+    {
+      "date": "2026-07-13",
+      "open": 1792.86,
+      "high": 1800.0,
+      "low": 1646.17,
+      "close": 1673.97,
+      "volume": 13581551.0
     }
   ],
   "finance_symbol": "NASDAQ:SNDK"
