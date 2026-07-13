@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "44401f0"
+    "commit": "884bff9"
   },
-  "generated_at": "2026-07-10T22:54:22.418449Z",
+  "generated_at": "2026-07-13T13:43:26.595414Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -320,7 +320,7 @@
     },
     {
       "date": "2026-07-08",
-      "open": 64.19,
+      "open": 64.18,
       "high": 64.48,
       "low": 61.88,
       "close": 64.07,
@@ -332,7 +332,7 @@
       "high": 64.8,
       "low": 61.67,
       "close": 63.01,
-      "volume": 9263456.0
+      "volume": 9366304.0
     },
     {
       "date": "2026-07-10",
@@ -340,7 +340,7 @@
       "high": 72.86,
       "low": 65.07,
       "close": 66.14,
-      "volume": 36530142.0
+      "volume": 36802133.0
     }
   ],
   "finance_symbol": "NYSE:CRCL"

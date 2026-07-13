@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "44401f0"
+    "commit": "884bff9"
   },
-  "generated_at": "2026-07-10T22:54:22.417575Z",
+  "generated_at": "2026-07-13T13:43:26.594617Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -436,7 +436,7 @@
       "high": 75.53,
       "low": 71.77,
       "close": 73.88,
-      "volume": 10601588.0
+      "volume": 10675620.0
     },
     {
       "date": "2026-07-10",
@@ -444,7 +444,7 @@
       "high": 74.08,
       "low": 71.3,
       "close": 73.32,
-      "volume": 7275757.0
+      "volume": 7403609.0
     }
   ],
   "finance_symbol": "NASDAQ:ASTS"
