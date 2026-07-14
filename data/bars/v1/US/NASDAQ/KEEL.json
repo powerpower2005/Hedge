@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "7428343"
+    "commit": "ee36947"
   },
-  "generated_at": "2026-07-13T22:48:11.294715Z",
+  "generated_at": "2026-07-14T04:03:19.014391Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -132,7 +132,7 @@
       "high": 4.58,
       "low": 4.18,
       "close": 4.36,
-      "volume": 23202329.0
+      "volume": 23374691.0
     }
   ],
   "finance_symbol": "NASDAQ:KEEL"
