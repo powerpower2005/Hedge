@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "fea6853"
+    "commit": "b287625"
   },
-  "generated_at": "2026-07-14T12:04:58.379267Z",
+  "generated_at": "2026-07-14T12:44:41.445484Z",
   "data": {
     "count": 30,
     "picks": [
@@ -659,15 +659,15 @@
         "progress": {
           "updated_at": "2026-07-14",
           "current": {
-            "close": 33000.0,
-            "return_rate": -0.511834
+            "close": 31450.0,
+            "return_rate": -0.534763
           },
           "highest": {
             "close": 67700.0,
             "close_date": "2026-05-15",
             "return_rate": 0.001479
           },
-          "distance_to_target": 0.711834,
+          "distance_to_target": 0.734763,
           "error_count": 0
         },
         "votes": {
@@ -1662,8 +1662,8 @@
         "progress": {
           "updated_at": "2026-07-14",
           "current": {
-            "close": 78800.0,
-            "return_rate": -0.214357
+            "close": 76800.0,
+            "return_rate": -0.234297
           },
           "highest": {
             "close": 116100.0,
@@ -1675,7 +1675,7 @@
             "close_date": "2026-06-30",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.514357,
+          "distance_to_target": 0.534297,
           "error_count": 0
         },
         "votes": {
