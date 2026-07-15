@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "6be40db"
+    "commit": "2f73580"
   },
-  "generated_at": "2026-07-15T04:04:13.049420Z",
+  "generated_at": "2026-07-15T22:52:47.126619Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "ASTS"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-07-14",
+  "updated_at": "2026-07-15",
   "bars": [
     {
       "date": "2026-04-23",
@@ -461,6 +461,14 @@
       "low": 68.64,
       "close": 68.82,
       "volume": 9303666.0
+    },
+    {
+      "date": "2026-07-15",
+      "open": 68.86,
+      "high": 70.38,
+      "low": 64.59,
+      "close": 66.31,
+      "volume": 11692971.0
     }
   ],
   "finance_symbol": "NASDAQ:ASTS"
