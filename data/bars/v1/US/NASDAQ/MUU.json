@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "2f73580"
+    "commit": "a79e3f8"
   },
-  "generated_at": "2026-07-15T22:52:47.132219Z",
+  "generated_at": "2026-07-16T04:14:41.313366Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -256,35 +256,35 @@
     },
     {
       "date": "2026-07-09",
-      "open": 799.9,
-      "high": 830.0,
-      "low": 759.0,
-      "close": 764.63,
+      "open": 39.99,
+      "high": 41.5,
+      "low": 37.95,
+      "close": 38.23,
       "volume": 2588616.0
     },
     {
       "date": "2026-07-10",
-      "open": 721.25,
-      "high": 773.35,
-      "low": 705.0,
-      "close": 745.39,
+      "open": 36.06,
+      "high": 38.67,
+      "low": 35.25,
+      "close": 37.27,
       "volume": 1635517.0
     },
     {
       "date": "2026-07-13",
-      "open": 670.71,
-      "high": 690.8,
-      "low": 629.16,
-      "close": 678.2,
+      "open": 33.54,
+      "high": 34.54,
+      "low": 31.46,
+      "close": 33.91,
       "volume": 1765705.0
     },
     {
       "date": "2026-07-14",
-      "open": 747.01,
-      "high": 760.69,
-      "low": 696.24,
-      "close": 742.65,
-      "volume": 1582959.0
+      "open": 37.35,
+      "high": 38.03,
+      "low": 34.81,
+      "close": 37.13,
+      "volume": 1628217.0
     },
     {
       "date": "2026-07-15",
