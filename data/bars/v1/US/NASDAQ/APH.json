@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "3ccb8f6"
+    "commit": "8890710"
   },
-  "generated_at": "2026-07-16T22:52:31.420258Z",
+  "generated_at": "2026-07-17T22:42:01.549790Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "APH"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-07-16",
+  "updated_at": "2026-07-17",
   "bars": [
     {
       "date": "2026-06-01",
@@ -269,6 +269,14 @@
       "low": 152.47,
       "close": 153.14,
       "volume": 5266528.0
+    },
+    {
+      "date": "2026-07-17",
+      "open": 149.76,
+      "high": 153.51,
+      "low": 146.04,
+      "close": 151.2,
+      "volume": 6696630.0
     }
   ],
   "finance_symbol": "NYSE:APH"
