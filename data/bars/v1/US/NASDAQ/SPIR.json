@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "82ada73"
+    "commit": "98476fa"
   },
-  "generated_at": "2026-07-20T22:49:56.448295Z",
+  "generated_at": "2026-07-21T04:22:19.268325Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -308,7 +308,7 @@
       "high": 12.14,
       "low": 10.88,
       "close": 10.96,
-      "volume": 2064154.0
+      "volume": 2066243.0
     }
   ],
   "finance_symbol": "NYSE:SPIR"
