@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "82ada73"
+    "commit": "ba568b5"
   },
-  "generated_at": "2026-07-20T22:49:56.443624Z",
+  "generated_at": "2026-07-21T22:47:50.011808Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "KEEL"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-07-20",
+  "updated_at": "2026-07-21",
   "bars": [
     {
       "date": "2026-06-22",
@@ -173,6 +173,14 @@
       "low": 4.05,
       "close": 4.34,
       "volume": 28221565.0
+    },
+    {
+      "date": "2026-07-21",
+      "open": 4.61,
+      "high": 4.73,
+      "low": 4.48,
+      "close": 4.65,
+      "volume": 25516860.0
     }
   ],
   "finance_symbol": "NASDAQ:KEEL"
