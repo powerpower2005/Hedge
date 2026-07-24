@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "9c09c04"
+    "commit": "d9e0d9e"
   },
-  "generated_at": "2026-07-24T04:18:53.746715Z",
+  "generated_at": "2026-07-24T22:56:00.208938Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "TMDX"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-07-23",
+  "updated_at": "2026-07-24",
   "bars": [
     {
       "date": "2026-04-27",
@@ -501,6 +501,14 @@
       "low": 69.52,
       "close": 71.13,
       "volume": 570521.0
+    },
+    {
+      "date": "2026-07-24",
+      "open": 72.38,
+      "high": 73.86,
+      "low": 68.8,
+      "close": 72.26,
+      "volume": 1138584.0
     }
   ],
   "finance_symbol": "NASDAQ:TMDX"
