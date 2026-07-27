@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "d9e0d9e"
+    "commit": "4a749fe"
   },
-  "generated_at": "2026-07-24T22:56:00.199970Z",
+  "generated_at": "2026-07-27T04:41:22.204774Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -316,7 +316,7 @@
       "high": 158.86,
       "low": 151.29,
       "close": 152.67,
-      "volume": 5516919.0
+      "volume": 5606017.0
     }
   ],
   "finance_symbol": "NYSE:APH"

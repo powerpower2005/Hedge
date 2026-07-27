@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "d9e0d9e"
+    "commit": "4a749fe"
   },
-  "generated_at": "2026-07-24T22:56:00.201794Z",
+  "generated_at": "2026-07-27T04:41:22.206412Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -404,7 +404,7 @@
       "high": 79.57,
       "low": 71.67,
       "close": 71.88,
-      "volume": 25173009.0
+      "volume": 25487842.0
     }
   ],
   "finance_symbol": "NASDAQ:CRWV"
