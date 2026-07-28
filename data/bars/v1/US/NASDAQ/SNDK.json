@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "e162666"
+    "commit": "1ad8468"
   },
-  "generated_at": "2026-07-27T22:55:04.195109Z",
+  "generated_at": "2026-07-28T04:13:19.431277Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -140,7 +140,7 @@
       "high": 1462.99,
       "low": 1222.01,
       "close": 1278.23,
-      "volume": 20905472.0
+      "volume": 21275560.0
     }
   ],
   "finance_symbol": "NASDAQ:SNDK"
