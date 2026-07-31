@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "2089cf8"
+    "commit": "721335a"
   },
-  "generated_at": "2026-07-30T22:56:39.210006Z",
+  "generated_at": "2026-07-31T00:38:54.015307Z",
   "data": {
-    "count": 26,
+    "count": 27,
     "picks": [
       {
         "id": 19,
@@ -1798,6 +1798,55 @@
         },
         "instrument_name": "Micron Technology Inc",
         "author_note": "마이크론 연말까지 존버(1500달러 목표), 현재 평단 1030"
+      },
+      {
+        "id": 75,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-07-31T00:38:54.015234Z",
+        "author": "cieske",
+        "issue_number": 120,
+        "ticker": "005930",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-07-31",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.3
+        },
+        "duration": {
+          "days": 180
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-07-31T00:38:54.015234Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-07-31T00:38:54.015234Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Samsung Electronics Co Ltd",
+        "author_note": "_No response_"
       }
     ]
   }
