@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "generator": {
+    "name": "called-it",
+    "version": "1.0.0",
+    "commit": "e8aade1"
+  },
+  "generated_at": "2026-07-31T11:08:10.270590Z",
+  "instrument": {
+    "country": "KR",
+    "market": "KOSPI",
+    "ticker": "005930"
+  },
+  "source": "google_sheets_googfinance",
+  "updated_at": "2026-07-30",
+  "bars": [
+    {
+      "date": "2026-07-24",
+      "open": 266000.0,
+      "high": 266500.0,
+      "low": 247000.0,
+      "close": 249500.0,
+      "volume": 26175580.0
+    },
+    {
+      "date": "2026-07-27",
+      "open": 257000.0,
+      "high": 258500.0,
+      "low": 246000.0,
+      "close": 254000.0,
+      "volume": 23296044.0
+    },
+    {
+      "date": "2026-07-28",
+      "open": 238500.0,
+      "high": 240000.0,
+      "low": 218500.0,
+      "close": 220000.0,
+      "volume": 41639623.0
+    },
+    {
+      "date": "2026-07-29",
+      "open": 226500.0,
+      "high": 234000.0,
+      "low": 189200.0,
+      "close": 208500.0,
+      "volume": 65555523.0
+    },
+    {
+      "date": "2026-07-30",
+      "open": 214000.0,
+      "high": 226000.0,
+      "low": 202000.0,
+      "close": 207000.0,
+      "volume": 46694193.0
+    }
+  ],
+  "finance_symbol": "KRX:005930"
+}
