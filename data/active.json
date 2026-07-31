@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "ae9f798"
+    "commit": "e8aade1"
   },
-  "generated_at": "2026-07-31T10:46:45.224685Z",
+  "generated_at": "2026-07-31T11:04:21.542234Z",
   "data": {
-    "count": 27,
+    "count": 25,
     "picks": [
       {
         "id": 19,
@@ -231,7 +231,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-30",
+          "updated_at": "2026-07-31",
           "current": {
             "close": 6160.0,
             "return_rate": -0.78
@@ -292,7 +292,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-30",
+          "updated_at": "2026-07-31",
           "current": {
             "close": 3965.0,
             "return_rate": -0.358414
@@ -353,7 +353,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-30",
+          "updated_at": "2026-07-31",
           "current": {
             "close": 46400.0,
             "return_rate": 0.148515
@@ -475,17 +475,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-30",
+          "updated_at": "2026-07-31",
           "current": {
-            "close": 24750.0,
-            "return_rate": -0.633876
+            "close": 25550.0,
+            "return_rate": -0.622041
           },
           "highest": {
             "close": 67700.0,
             "close_date": "2026-05-15",
             "return_rate": 0.001479
           },
-          "distance_to_target": 0.833876,
+          "distance_to_target": 0.822041,
           "error_count": 0
         },
         "votes": {
@@ -967,10 +967,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-30",
+          "updated_at": "2026-07-31",
           "current": {
-            "close": 85550.0,
-            "return_rate": -0.28275
+            "close": 81025.0,
+            "return_rate": -0.320687
           },
           "highest": {
             "close": 148000.0,
@@ -982,7 +982,7 @@
             "close_date": "2026-06-01",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.88275,
+          "distance_to_target": 0.920687,
           "error_count": 0
         },
         "votes": {
@@ -1113,7 +1113,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-30",
+          "updated_at": "2026-07-31",
           "current": {
             "close": 3655.0,
             "return_rate": -0.211435
@@ -1186,7 +1186,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-30",
+          "updated_at": "2026-07-31",
           "current": {
             "close": 27900.0,
             "return_rate": -0.428864
@@ -1259,10 +1259,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-30",
+          "updated_at": "2026-07-31",
           "current": {
-            "close": 12100.0,
-            "return_rate": -0.068514
+            "close": 11830.0,
+            "return_rate": -0.089299
           },
           "highest": {
             "close": 14750.0,
@@ -1274,7 +1274,7 @@
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.068514,
+          "distance_to_target": 1.089299,
           "error_count": 0
         },
         "votes": {
@@ -1332,10 +1332,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-30",
+          "updated_at": "2026-07-31",
           "current": {
-            "close": 1401000.0,
-            "return_rate": -0.47587
+            "close": 1322000.0,
+            "return_rate": -0.505425
           },
           "highest": {
             "close": 2673000.0,
@@ -1347,7 +1347,7 @@
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.47587,
+          "distance_to_target": 1.505425,
           "error_count": 0
         },
         "votes": {
@@ -1359,79 +1359,6 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "SK Hynix Inc",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 69,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-06-28T06:26:42.422115Z",
-        "author": "WookeyKim95",
-        "issue_number": 102,
-        "ticker": "042660",
-        "country": "KR",
-        "market": "KOSPI",
-        "entry": {
-          "date": "2026-06-30",
-          "source": "google_sheets",
-          "price": 100300.0
-        },
-        "target": {
-          "return_rate": 0.3,
-          "price": 130390.0
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-07-30"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-06-28T06:26:42.422115Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-06-30T14:05:17.159696Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-07-30",
-          "current": {
-            "close": 79300.0,
-            "return_rate": -0.209372
-          },
-          "highest": {
-            "close": 116100.0,
-            "close_date": "2026-07-06",
-            "return_rate": 0.157527
-          },
-          "lowest": {
-            "close": 100300.0,
-            "close_date": "2026-06-30",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.509372,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-06-28T06:26:42.422115Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Hanwha Ocean Co Ltd",
         "author_note": "_No response_"
       },
       {
@@ -1505,79 +1432,6 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "ProShares UltraPro QQQ",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 71,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-06-29T08:47:55.796933Z",
-        "author": "Eonyong",
-        "issue_number": 105,
-        "ticker": "226950",
-        "country": "KR",
-        "market": "KOSDAQ",
-        "entry": {
-          "date": "2026-06-30",
-          "source": "google_sheets",
-          "price": 167200.0
-        },
-        "target": {
-          "return_rate": 0.2,
-          "price": 200640.0
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-07-30"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-06-29T08:47:55.796933Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-06-30T14:05:17.159745Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-07-30",
-          "current": {
-            "close": 89500.0,
-            "return_rate": -0.464713
-          },
-          "highest": {
-            "close": 167200.0,
-            "close_date": "2026-06-30",
-            "return_rate": 0.0
-          },
-          "lowest": {
-            "close": 167200.0,
-            "close_date": "2026-06-30",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.664713,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-06-29T08:47:55.796933Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "OliX Pharmaceuticals Inc",
         "author_note": "_No response_"
       },
       {
@@ -1697,10 +1551,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-07-30",
+          "updated_at": "2026-07-31",
           "current": {
-            "close": 1401000.0,
-            "return_rate": -0.359396
+            "close": 1322000.0,
+            "return_rate": -0.395519
           },
           "highest": {
             "close": 2425000.0,
@@ -1712,7 +1566,7 @@
             "close_date": "2026-07-03",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.759396,
+          "distance_to_target": 0.795519,
           "error_count": 0
         },
         "votes": {
@@ -1815,26 +1669,50 @@
         "entry": {
           "date": "2026-07-31",
           "source": "google_sheets",
-          "pending": true
+          "price": 207000.0
         },
         "target": {
-          "return_rate": 0.3
+          "return_rate": 0.3,
+          "price": 269100.0
         },
         "duration": {
-          "days": 180
+          "days": 180,
+          "deadline": "2027-01-27"
         },
         "status": {
-          "current": "pending_entry",
+          "current": "active",
           "history": [
             {
               "status": "pending_entry",
               "at": "2026-07-31T00:38:54.015234Z",
               "engine_version": "1.0.0",
               "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-07-31T11:04:21.542182Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
             }
           ]
         },
         "progress": {
+          "updated_at": "2026-07-31",
+          "current": {
+            "close": 207000.0,
+            "return_rate": 0.0
+          },
+          "highest": {
+            "close": 207000.0,
+            "close_date": "2026-07-31",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 207000.0,
+            "close_date": "2026-07-31",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.3,
           "error_count": 0
         },
         "votes": {

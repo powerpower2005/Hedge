@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "c6871f1"
+    "commit": "e8aade1"
   },
-  "generated_at": "2026-07-26T04:18:00.313473Z",
+  "generated_at": "2026-07-31T11:04:21.544776Z",
   "data": {
-    "count": 13,
+    "count": 15,
     "picks": [
       {
         "id": 49,
@@ -1077,6 +1077,176 @@
           "return_rate": -0.854496
         },
         "expired_at": "2026-07-25T10:06:17.517844Z"
+      },
+      {
+        "id": 69,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-28T06:26:42.422115Z",
+        "author": "WookeyKim95",
+        "issue_number": 102,
+        "ticker": "042660",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-06-30",
+          "source": "google_sheets",
+          "price": 100300.0
+        },
+        "target": {
+          "return_rate": 0.3,
+          "price": 130390.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-07-30"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-28T06:26:42.422115Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-06-30T14:05:17.159696Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-07-31T11:04:21.541956Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-07-31",
+          "current": {
+            "close": 79300.0,
+            "return_rate": -0.209372
+          },
+          "highest": {
+            "close": 116100.0,
+            "close_date": "2026-07-06",
+            "return_rate": 0.157527
+          },
+          "lowest": {
+            "close": 100300.0,
+            "close_date": "2026-06-30",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.509372,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-28T06:26:42.422115Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Hanwha Ocean Co Ltd",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 79300.0,
+          "session_date": "2026-07-30",
+          "return_rate": -0.209372
+        },
+        "expired_at": "2026-07-31T11:04:21.542043Z"
+      },
+      {
+        "id": 71,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-29T08:47:55.796933Z",
+        "author": "Eonyong",
+        "issue_number": 105,
+        "ticker": "226950",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "date": "2026-06-30",
+          "source": "google_sheets",
+          "price": 167200.0
+        },
+        "target": {
+          "return_rate": 0.2,
+          "price": 200640.0
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-07-30"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-29T08:47:55.796933Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-06-30T14:05:17.159745Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-07-31T11:04:21.542063Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-07-31",
+          "current": {
+            "close": 89500.0,
+            "return_rate": -0.464713
+          },
+          "highest": {
+            "close": 167200.0,
+            "close_date": "2026-06-30",
+            "return_rate": 0.0
+          },
+          "lowest": {
+            "close": 167200.0,
+            "close_date": "2026-06-30",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.664713,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-29T08:47:55.796933Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "OliX Pharmaceuticals Inc",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 89500.0,
+          "session_date": "2026-07-30",
+          "return_rate": -0.464713
+        },
+        "expired_at": "2026-07-31T11:04:21.542111Z"
       }
     ]
   }
