@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "5dcdb75"
+    "commit": "6b50749"
   },
-  "generated_at": "2026-07-31T22:54:09.005728Z",
+  "generated_at": "2026-08-03T04:34:28.165570Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -236,7 +236,7 @@
       "high": 9.99,
       "low": 9.05,
       "close": 9.98,
-      "volume": 8567813.0
+      "volume": 8725707.0
     },
     {
       "date": "2026-07-31",
@@ -244,7 +244,7 @@
       "high": 10.26,
       "low": 9.57,
       "close": 9.83,
-      "volume": 6475703.0
+      "volume": 6577067.0
     }
   ],
   "finance_symbol": "NYSE:INFQ"
