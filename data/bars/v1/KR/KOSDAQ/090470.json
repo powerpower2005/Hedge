@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "00d65a2"
+    "commit": "111f505"
   },
-  "generated_at": "2026-08-03T13:57:55.893174Z",
+  "generated_at": "2026-08-04T13:15:17.580803Z",
   "instrument": {
     "country": "KR",
     "market": "KOSDAQ",
     "ticker": "090470"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-08-03",
+  "updated_at": "2026-08-04",
   "bars": [
     {
       "date": "2026-06-24",
@@ -237,6 +237,14 @@
       "low": 3960.0,
       "close": 4160.0,
       "volume": 27939.0
+    },
+    {
+      "date": "2026-08-04",
+      "open": 4295.0,
+      "high": 4355.0,
+      "low": 4150.0,
+      "close": 4325.0,
+      "volume": 13119.0
     }
   ],
   "finance_symbol": "KOSDAQ:090470"

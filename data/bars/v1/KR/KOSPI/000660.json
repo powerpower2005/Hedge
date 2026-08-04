@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "00d65a2"
+    "commit": "111f505"
   },
-  "generated_at": "2026-08-03T13:57:55.896729Z",
+  "generated_at": "2026-08-04T13:15:17.584406Z",
   "instrument": {
     "country": "KR",
     "market": "KOSPI",
     "ticker": "000660"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-08-03",
+  "updated_at": "2026-08-04",
   "bars": [
     {
       "date": "2025-06-30",
@@ -2149,6 +2149,14 @@
       "low": 1562000.0,
       "close": 1567000.0,
       "volume": 5432833.0
+    },
+    {
+      "date": "2026-08-04",
+      "open": 1620000.0,
+      "high": 1630000.0,
+      "low": 1483000.0,
+      "close": 1577000.0,
+      "volume": 5391210.0
     }
   ],
   "finance_symbol": "KRX:000660"
