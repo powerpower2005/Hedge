@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "454bf27"
+    "commit": "a814d4a"
   },
-  "generated_at": "2026-08-03T22:52:57.572476Z",
+  "generated_at": "2026-08-04T04:12:16.312294Z",
   "data": {
-    "count": 25,
+    "count": 24,
     "picks": [
       {
         "id": 19,
@@ -48,7 +48,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 81.55,
             "return_rate": -0.279657
@@ -109,7 +109,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 268.49,
             "return_rate": -0.081489
@@ -170,7 +170,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 13.1,
             "return_rate": -0.471774
@@ -414,7 +414,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 60.35,
             "return_rate": -0.469077
@@ -536,7 +536,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 85.76,
             "return_rate": -0.204084
@@ -602,7 +602,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 6.03,
             "return_rate": -0.00495
@@ -675,7 +675,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 29.2,
             "return_rate": -0.818114
@@ -748,7 +748,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 23.99,
             "return_rate": -0.955106
@@ -821,7 +821,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 12.28,
             "return_rate": -0.482947
@@ -894,7 +894,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 163.34,
             "return_rate": 0.09801
@@ -1040,7 +1040,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 10.98,
             "return_rate": -0.31203
@@ -1405,7 +1405,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 67.96,
             "return_rate": -0.119575
@@ -1433,79 +1433,6 @@
         },
         "instrument_name": "ProShares UltraPro QQQ",
         "author_note": "_No response_"
-      },
-      {
-        "id": 72,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-07-03T08:02:47.171512Z",
-        "author": "saechimdaeki",
-        "issue_number": 111,
-        "ticker": "SNDK",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-07-04",
-          "source": "google_sheets",
-          "price": 1745.0
-        },
-        "target": {
-          "return_rate": 0.15,
-          "price": 2006.75
-        },
-        "duration": {
-          "days": 30,
-          "deadline": "2026-08-03"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-07-03T08:02:47.171512Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-07-04T22:49:04.106218Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-08-03",
-          "current": {
-            "close": 1288.03,
-            "return_rate": -0.261874
-          },
-          "highest": {
-            "close": 1915.92,
-            "close_date": "2026-07-10",
-            "return_rate": 0.097948
-          },
-          "lowest": {
-            "close": 1745.0,
-            "close_date": "2026-07-04",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.411874,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-07-03T08:02:47.171512Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "SanDisk Corp",
-        "author_note": "자.... 두 과 자"
       },
       {
         "id": 73,
@@ -1624,7 +1551,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-03",
+          "updated_at": "2026-08-04",
           "current": {
             "close": 829.5,
             "return_rate": -0.149719
