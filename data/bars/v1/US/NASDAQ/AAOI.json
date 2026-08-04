@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "generator": {
+    "name": "called-it",
+    "version": "1.0.0",
+    "commit": "5b93d7d"
+  },
+  "generated_at": "2026-08-04T22:55:06.489184Z",
+  "instrument": {
+    "country": "US",
+    "market": "NASDAQ",
+    "ticker": "AAOI"
+  },
+  "source": "google_sheets_googfinance",
+  "updated_at": "2026-08-04",
+  "bars": [
+    {
+      "date": "2026-08-04",
+      "open": 128.57,
+      "high": 136.27,
+      "low": 123.5,
+      "close": 131.63,
+      "volume": 20533313.0
+    }
+  ],
+  "finance_symbol": "NASDAQ:AAOI"
+}
