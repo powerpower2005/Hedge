@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "a814d4a"
+    "commit": "df90647"
   },
-  "generated_at": "2026-08-04T04:12:16.313987Z",
+  "generated_at": "2026-08-06T10:59:23.584426Z",
   "data": {
-    "count": 11,
+    "count": 12,
     "picks": [
       {
         "id": 58,
@@ -906,6 +906,79 @@
           "return_rate": -0.261874
         },
         "expired_at": "2026-08-04T04:12:16.312256Z"
+      },
+      {
+        "id": 27,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "e1a4e16"
+        },
+        "created_at": "2026-05-07T04:31:48.524474Z",
+        "author": "kimgwanghoon",
+        "issue_number": 47,
+        "ticker": "432720",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "price": 28000.0,
+          "date": "2026-05-07",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 1.2,
+          "price": 61600.0
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-08-05"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-07T04:31:48.524490Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-08-06T10:59:23.582149Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-08-06",
+          "current": {
+            "close": 8540.0,
+            "return_rate": -0.695
+          },
+          "highest": {
+            "close": 28000.0,
+            "close_date": "2026-05-07",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 1.895,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-07T04:31:48.524540Z"
+        },
+        "extensions": {},
+        "instrument_name": "Qualitas Semiconductor Co Ltd",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 7980.0,
+          "session_date": "2026-08-05",
+          "return_rate": -0.715
+        },
+        "expired_at": "2026-08-06T10:59:23.582236Z"
       }
     ]
   }
