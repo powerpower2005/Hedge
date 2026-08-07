@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "4fbc7d9"
+    "commit": "f3b944b"
   },
-  "generated_at": "2026-08-07T09:07:17.192889Z",
+  "generated_at": "2026-08-07T09:30:24.282774Z",
   "data": {
-    "count": 24,
+    "count": 22,
     "picks": [
       {
         "id": 19,
@@ -193,128 +193,6 @@
         "author_note": "_No response_"
       },
       {
-        "id": 30,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "806ebec"
-        },
-        "created_at": "2026-05-08T10:42:46.846667Z",
-        "author": "bsgreentea",
-        "issue_number": 50,
-        "ticker": "036620",
-        "country": "KR",
-        "market": "KOSDAQ",
-        "entry": {
-          "price": 6180.0,
-          "date": "2026-05-08",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 1.0,
-          "price": 12360.0
-        },
-        "duration": {
-          "days": 90,
-          "deadline": "2026-08-06"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-05-08T10:42:46.846685Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-08-06",
-          "current": {
-            "close": 4400.0,
-            "return_rate": -0.288026
-          },
-          "highest": {
-            "close": 6180.0,
-            "close_date": "2026-05-08",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 1.288026,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-08T10:42:46.846744Z"
-        },
-        "extensions": {},
-        "instrument_name": "Gamsung Corporation Co Ltd",
-        "author_note": "스노우피크 붐은 온다"
-      },
-      {
-        "id": 31,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "f991807"
-        },
-        "created_at": "2026-05-08T10:55:37.264606Z",
-        "author": "bsgreentea",
-        "issue_number": 52,
-        "ticker": "251970",
-        "country": "KR",
-        "market": "KOSDAQ",
-        "entry": {
-          "price": 40400.0,
-          "date": "2026-05-08",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.7,
-          "price": 68680.0
-        },
-        "duration": {
-          "days": 90,
-          "deadline": "2026-08-06"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-05-08T10:55:37.264621Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-08-06",
-          "current": {
-            "close": 46750.0,
-            "return_rate": 0.157178
-          },
-          "highest": {
-            "close": 49950.0,
-            "close_date": "2026-07-30",
-            "return_rate": 0.236386
-          },
-          "distance_to_target": 0.542822,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-08T10:55:37.264658Z"
-        },
-        "extensions": {},
-        "instrument_name": "Pum Tech Korea Co Ltd",
-        "author_note": "펌텍 붐은 온다"
-      },
-      {
         "id": 34,
         "schema_version": "1.0.0",
         "created_with": {
@@ -414,17 +292,17 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-06",
+          "updated_at": "2026-08-07",
           "current": {
-            "close": 31550.0,
-            "return_rate": -0.533284
+            "close": 31350.0,
+            "return_rate": -0.536243
           },
           "highest": {
             "close": 67700.0,
             "close_date": "2026-05-15",
             "return_rate": 0.001479
           },
-          "distance_to_target": 0.733284,
+          "distance_to_target": 0.736243,
           "error_count": 0
         },
         "votes": {
@@ -906,7 +784,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-06",
+          "updated_at": "2026-08-07",
           "current": {
             "close": 92495.0,
             "return_rate": -0.224523
@@ -1052,10 +930,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-06",
+          "updated_at": "2026-08-07",
           "current": {
-            "close": 4415.0,
-            "return_rate": -0.047465
+            "close": 4365.0,
+            "return_rate": -0.058252
           },
           "highest": {
             "close": 4665.0,
@@ -1067,7 +945,7 @@
             "close_date": "2026-06-24",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.047465,
+          "distance_to_target": 1.058252,
           "error_count": 0
         },
         "votes": {
@@ -1125,7 +1003,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-06",
+          "updated_at": "2026-08-07",
           "current": {
             "close": 35500.0,
             "return_rate": -0.273286
@@ -1198,7 +1076,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-06",
+          "updated_at": "2026-08-07",
           "current": {
             "close": 14140.0,
             "return_rate": 0.08853
@@ -1271,7 +1149,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-06",
+          "updated_at": "2026-08-07",
           "current": {
             "close": 1495000.0,
             "return_rate": -0.440703
@@ -1417,7 +1295,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-06",
+          "updated_at": "2026-08-07",
           "current": {
             "close": 1495000.0,
             "return_rate": -0.316415
@@ -1563,10 +1441,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-06",
+          "updated_at": "2026-08-07",
           "current": {
-            "close": 246000.0,
-            "return_rate": 0.188406
+            "close": 230500.0,
+            "return_rate": 0.113527
           },
           "highest": {
             "close": 262500.0,
@@ -1578,7 +1456,7 @@
             "close_date": "2026-07-31",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.111594,
+          "distance_to_target": 0.186473,
           "error_count": 0
         },
         "votes": {

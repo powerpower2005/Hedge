@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "df90647"
+    "commit": "f3b944b"
   },
-  "generated_at": "2026-08-06T10:59:23.584426Z",
+  "generated_at": "2026-08-07T09:30:24.285312Z",
   "data": {
-    "count": 12,
+    "count": 14,
     "picks": [
       {
         "id": 58,
@@ -979,6 +979,152 @@
           "return_rate": -0.715
         },
         "expired_at": "2026-08-06T10:59:23.582236Z"
+      },
+      {
+        "id": 30,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "806ebec"
+        },
+        "created_at": "2026-05-08T10:42:46.846667Z",
+        "author": "bsgreentea",
+        "issue_number": 50,
+        "ticker": "036620",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "price": 6180.0,
+          "date": "2026-05-08",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 1.0,
+          "price": 12360.0
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-08-06"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-08T10:42:46.846685Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-08-07T09:30:24.282435Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-08-07",
+          "current": {
+            "close": 4400.0,
+            "return_rate": -0.288026
+          },
+          "highest": {
+            "close": 6180.0,
+            "close_date": "2026-05-08",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 1.288026,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-08T10:42:46.846744Z"
+        },
+        "extensions": {},
+        "instrument_name": "Gamsung Corporation Co Ltd",
+        "author_note": "스노우피크 붐은 온다",
+        "expiry": {
+          "close": 4400.0,
+          "session_date": "2026-08-06",
+          "return_rate": -0.288026
+        },
+        "expired_at": "2026-08-07T09:30:24.282570Z"
+      },
+      {
+        "id": 31,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "f991807"
+        },
+        "created_at": "2026-05-08T10:55:37.264606Z",
+        "author": "bsgreentea",
+        "issue_number": 52,
+        "ticker": "251970",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "price": 40400.0,
+          "date": "2026-05-08",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 0.7,
+          "price": 68680.0
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-08-06"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-08T10:55:37.264621Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-08-07T09:30:24.282597Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-08-07",
+          "current": {
+            "close": 49850.0,
+            "return_rate": 0.233911
+          },
+          "highest": {
+            "close": 49950.0,
+            "close_date": "2026-07-30",
+            "return_rate": 0.236386
+          },
+          "distance_to_target": 0.466089,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-05-08T10:55:37.264658Z"
+        },
+        "extensions": {},
+        "instrument_name": "Pum Tech Korea Co Ltd",
+        "author_note": "펌텍 붐은 온다",
+        "expiry": {
+          "close": 46750.0,
+          "session_date": "2026-08-06",
+          "return_rate": 0.157178
+        },
+        "expired_at": "2026-08-07T09:30:24.282641Z"
       }
     ]
   }
