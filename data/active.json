@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "dd3859f"
+    "commit": "db89957"
   },
-  "generated_at": "2026-08-08T13:49:32.291524Z",
+  "generated_at": "2026-08-08T22:18:35.705132Z",
   "data": {
     "count": 22,
     "picks": [
@@ -48,7 +48,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 83.89,
             "return_rate": -0.258988
@@ -109,7 +109,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 308.3,
             "return_rate": 0.054702
@@ -170,7 +170,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 16.4,
             "return_rate": -0.33871
@@ -231,7 +231,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 66.67,
             "return_rate": -0.413478
@@ -353,7 +353,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 90.67,
             "return_rate": -0.158515
@@ -419,7 +419,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 6.18,
             "return_rate": 0.019802
@@ -492,7 +492,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 31.26,
             "return_rate": -0.805282
@@ -565,7 +565,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 26.62,
             "return_rate": -0.950184
@@ -638,7 +638,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 14.33,
             "return_rate": -0.396632
@@ -711,7 +711,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 169.18,
             "return_rate": 0.137268
@@ -857,7 +857,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 11.91,
             "return_rate": -0.253759
@@ -1222,7 +1222,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 74.47,
             "return_rate": -0.035238
@@ -1368,7 +1368,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
             "close": 877.57,
             "return_rate": -0.100445
@@ -1514,22 +1514,22 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-07",
+          "updated_at": "2026-08-08",
           "current": {
-            "close": 135.39,
-            "return_rate": 0.028565
+            "close": 135.63,
+            "return_rate": 0.030388
           },
           "highest": {
-            "close": 135.39,
-            "close_date": "2026-08-07",
-            "return_rate": 0.028565
+            "close": 135.63,
+            "close_date": "2026-08-08",
+            "return_rate": 0.030388
           },
           "lowest": {
             "close": 131.63,
             "close_date": "2026-08-04",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.271435,
+          "distance_to_target": 0.269612,
           "error_count": 0
         },
         "votes": {
