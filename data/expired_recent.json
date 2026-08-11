@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "671b5dc"
+    "commit": "8a9dfbd"
   },
-  "generated_at": "2026-08-09T02:51:14.799272Z",
+  "generated_at": "2026-08-11T22:32:24.271407Z",
   "data": {
-    "count": 11,
+    "count": 12,
     "picks": [
       {
         "id": 60,
@@ -870,6 +870,79 @@
           "return_rate": 0.157178
         },
         "expired_at": "2026-08-07T09:30:24.282641Z"
+      },
+      {
+        "id": 34,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.1",
+          "commit": "efcb2a4"
+        },
+        "created_at": "2026-05-12T02:02:26.252314Z",
+        "author": "0xsuky",
+        "issue_number": 56,
+        "ticker": "CRCL",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "price": 113.67,
+          "date": "2026-05-12",
+          "source": "google_sheets"
+        },
+        "target": {
+          "return_rate": 2.0,
+          "price": 341.01
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-08-10"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "active",
+              "at": "2026-05-12T02:02:26.252330Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "expired",
+              "at": "2026-08-11T22:32:24.269307Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-08-11",
+          "current": {
+            "close": 71.16,
+            "return_rate": -0.373977
+          },
+          "highest": {
+            "close": 131.76,
+            "close_date": "2026-05-12",
+            "return_rate": 0.159145
+          },
+          "distance_to_target": 2.373977,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 2,
+          "dislikes": 0,
+          "last_synced": "2026-05-26T08:44:44.755634Z"
+        },
+        "extensions": {},
+        "instrument_name": "Circle Internet Group Inc",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 67.05,
+          "session_date": "2026-08-10",
+          "return_rate": -0.410135
+        },
+        "expired_at": "2026-08-11T22:32:24.269387Z"
       }
     ]
   }
