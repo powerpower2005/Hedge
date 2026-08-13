@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "8c8204e"
+    "commit": "bd6d989"
   },
-  "generated_at": "2026-08-13T09:19:02.453135Z",
+  "generated_at": "2026-08-13T09:38:44.473830Z",
   "data": {
-    "count": 21,
+    "count": 20,
     "picks": [
       {
         "id": 19,
@@ -190,67 +190,6 @@
         },
         "extensions": {},
         "instrument_name": "Intuitive Machines Inc",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 36,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "177f914"
-        },
-        "created_at": "2026-05-14T01:09:44.396828Z",
-        "author": "zerohoon0102",
-        "issue_number": 58,
-        "ticker": "365340",
-        "country": "KR",
-        "market": "KOSDAQ",
-        "entry": {
-          "price": 67600.0,
-          "date": "2026-05-14",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.2,
-          "price": 81120.0
-        },
-        "duration": {
-          "days": 90,
-          "deadline": "2026-08-12"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-05-14T01:09:44.396846Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-08-12",
-          "current": {
-            "close": 35650.0,
-            "return_rate": -0.472633
-          },
-          "highest": {
-            "close": 67700.0,
-            "close_date": "2026-05-15",
-            "return_rate": 0.001479
-          },
-          "distance_to_target": 0.672633,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-14T01:09:44.396887Z"
-        },
-        "extensions": {},
-        "instrument_name": "SungEel HiTech Co Ltd",
         "author_note": "_No response_"
       },
       {
@@ -723,10 +662,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-12",
+          "updated_at": "2026-08-13",
           "current": {
-            "close": 92380.0,
-            "return_rate": -0.225487
+            "close": 95780.0,
+            "return_rate": -0.196982
           },
           "highest": {
             "close": 148000.0,
@@ -738,7 +677,7 @@
             "close_date": "2026-06-01",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.825487,
+          "distance_to_target": 0.796982,
           "error_count": 0
         },
         "votes": {
@@ -869,7 +808,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-12",
+          "updated_at": "2026-08-13",
           "current": {
             "close": 4410.0,
             "return_rate": -0.048544
@@ -942,10 +881,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-12",
+          "updated_at": "2026-08-13",
           "current": {
-            "close": 38300.0,
-            "return_rate": -0.215967
+            "close": 37250.0,
+            "return_rate": -0.237462
           },
           "highest": {
             "close": 56400.0,
@@ -957,7 +896,7 @@
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.215967,
+          "distance_to_target": 1.237462,
           "error_count": 0
         },
         "votes": {
@@ -1015,10 +954,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-12",
+          "updated_at": "2026-08-13",
           "current": {
-            "close": 14530.0,
-            "return_rate": 0.118553
+            "close": 14500.0,
+            "return_rate": 0.116243
           },
           "highest": {
             "close": 14750.0,
@@ -1030,7 +969,7 @@
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.881447,
+          "distance_to_target": 0.883757,
           "error_count": 0
         },
         "votes": {
@@ -1088,10 +1027,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-12",
+          "updated_at": "2026-08-13",
           "current": {
-            "close": 1425000.0,
-            "return_rate": -0.466891
+            "close": 1504000.0,
+            "return_rate": -0.437336
           },
           "highest": {
             "close": 2673000.0,
@@ -1103,7 +1042,7 @@
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.466891,
+          "distance_to_target": 1.437336,
           "error_count": 0
         },
         "votes": {
@@ -1234,10 +1173,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-12",
+          "updated_at": "2026-08-13",
           "current": {
-            "close": 1425000.0,
-            "return_rate": -0.348422
+            "close": 1504000.0,
+            "return_rate": -0.3123
           },
           "highest": {
             "close": 2425000.0,
@@ -1249,7 +1188,7 @@
             "close_date": "2026-07-03",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.748422,
+          "distance_to_target": 0.7123,
           "error_count": 0
         },
         "votes": {
@@ -1380,10 +1319,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-12",
+          "updated_at": "2026-08-13",
           "current": {
-            "close": 239500.0,
-            "return_rate": 0.157005
+            "close": 255500.0,
+            "return_rate": 0.2343
           },
           "highest": {
             "close": 262500.0,
@@ -1395,7 +1334,7 @@
             "close_date": "2026-07-31",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.142995,
+          "distance_to_target": 0.0657,
           "error_count": 0
         },
         "votes": {
