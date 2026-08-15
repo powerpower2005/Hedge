@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "93fb01c"
+    "commit": "9a2d51b"
   },
-  "generated_at": "2026-08-15T08:36:40.262565Z",
+  "generated_at": "2026-08-15T08:53:16.172072Z",
   "data": {
-    "count": 19,
+    "count": 18,
     "picks": [
       {
         "id": 19,
@@ -601,10 +601,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-14",
+          "updated_at": "2026-08-15",
           "current": {
-            "close": 100500.0,
-            "return_rate": -0.157409
+            "close": 102965.0,
+            "return_rate": -0.136743
           },
           "highest": {
             "close": 148000.0,
@@ -616,7 +616,7 @@
             "close_date": "2026-06-01",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.757409,
+          "distance_to_target": 0.736743,
           "error_count": 0
         },
         "votes": {
@@ -747,22 +747,22 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-14",
+          "updated_at": "2026-08-15",
           "current": {
-            "close": 4540.0,
-            "return_rate": -0.020496
+            "close": 4700.0,
+            "return_rate": 0.014024
           },
           "highest": {
-            "close": 4665.0,
-            "close_date": "2026-07-02",
-            "return_rate": 0.006472
+            "close": 4700.0,
+            "close_date": "2026-08-15",
+            "return_rate": 0.014024
           },
           "lowest": {
             "close": 4635.0,
             "close_date": "2026-06-24",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.020496,
+          "distance_to_target": 0.985976,
           "error_count": 0
         },
         "votes": {
@@ -820,7 +820,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-14",
+          "updated_at": "2026-08-15",
           "current": {
             "close": 36950.0,
             "return_rate": -0.243603
@@ -893,10 +893,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-14",
+          "updated_at": "2026-08-15",
           "current": {
-            "close": 14400.0,
-            "return_rate": 0.108545
+            "close": 14490.0,
+            "return_rate": 0.115473
           },
           "highest": {
             "close": 14750.0,
@@ -908,7 +908,7 @@
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.891455,
+          "distance_to_target": 0.884527,
           "error_count": 0
         },
         "votes": {
@@ -966,10 +966,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-14",
+          "updated_at": "2026-08-15",
           "current": {
-            "close": 1593000.0,
-            "return_rate": -0.40404
+            "close": 1645000.0,
+            "return_rate": -0.384587
           },
           "highest": {
             "close": 2673000.0,
@@ -981,7 +981,7 @@
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.40404,
+          "distance_to_target": 1.384587,
           "error_count": 0
         },
         "votes": {
@@ -1112,10 +1112,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-14",
+          "updated_at": "2026-08-15",
           "current": {
-            "close": 1593000.0,
-            "return_rate": -0.271605
+            "close": 1645000.0,
+            "return_rate": -0.247828
           },
           "highest": {
             "close": 2425000.0,
@@ -1127,7 +1127,7 @@
             "close_date": "2026-07-03",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.671605,
+          "distance_to_target": 0.647828,
           "error_count": 0
         },
         "votes": {
@@ -1213,79 +1213,6 @@
         },
         "instrument_name": "Micron Technology Inc",
         "author_note": "마이크론 연말까지 존버(1500달러 목표), 현재 평단 1030"
-      },
-      {
-        "id": 75,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-07-31T00:38:54.015234Z",
-        "author": "cieske",
-        "issue_number": 120,
-        "ticker": "005930",
-        "country": "KR",
-        "market": "KOSPI",
-        "entry": {
-          "date": "2026-07-31",
-          "source": "google_sheets",
-          "price": 207000.0
-        },
-        "target": {
-          "return_rate": 0.3,
-          "price": 269100.0
-        },
-        "duration": {
-          "days": 180,
-          "deadline": "2027-01-27"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-07-31T00:38:54.015234Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-07-31T11:04:21.542182Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-08-14",
-          "current": {
-            "close": 268000.0,
-            "return_rate": 0.294686
-          },
-          "highest": {
-            "close": 268000.0,
-            "close_date": "2026-08-14",
-            "return_rate": 0.294686
-          },
-          "lowest": {
-            "close": 207000.0,
-            "close_date": "2026-07-31",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.005314,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-07-31T00:38:54.015234Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Samsung Electronics Co Ltd",
-        "author_note": "_No response_"
       },
       {
         "id": 76,

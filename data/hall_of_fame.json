@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "4f1e0da"
+    "commit": "9a2d51b"
   },
-  "generated_at": "2026-06-17T23:17:33.502731Z",
+  "generated_at": "2026-08-15T08:53:16.174196Z",
   "data": {
-    "count": 16,
+    "count": 17,
     "picks": [
       {
         "id": 5,
@@ -1225,6 +1225,91 @@
           "achieved_close": 7.53,
           "days_taken": 1,
           "final_return_rate": 0.214516
+        }
+      },
+      {
+        "id": 75,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-07-31T00:38:54.015234Z",
+        "author": "cieske",
+        "issue_number": 120,
+        "ticker": "005930",
+        "country": "KR",
+        "market": "KOSPI",
+        "entry": {
+          "date": "2026-07-31",
+          "source": "google_sheets",
+          "price": 207000.0
+        },
+        "target": {
+          "return_rate": 0.3,
+          "price": 269100.0
+        },
+        "duration": {
+          "days": 180,
+          "deadline": "2027-01-27"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-07-31T00:38:54.015234Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-07-31T11:04:21.542182Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-08-15T08:53:16.171935Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-08-15",
+          "current": {
+            "close": 274500.0,
+            "return_rate": 0.326087
+          },
+          "highest": {
+            "close": 274500.0,
+            "close_date": "2026-08-15",
+            "return_rate": 0.326087
+          },
+          "lowest": {
+            "close": 207000.0,
+            "close_date": "2026-07-31",
+            "return_rate": 0.0
+          },
+          "distance_to_target": -0.026087,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-07-31T00:38:54.015234Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Samsung Electronics Co Ltd",
+        "author_note": "_No response_",
+        "achievement": {
+          "achieved_date": "2026-08-15",
+          "achieved_close": 274500.0,
+          "days_taken": 15,
+          "final_return_rate": 0.326087
         }
       }
     ]
