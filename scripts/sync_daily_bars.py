@@ -34,7 +34,7 @@ def main() -> None:
         print(
             f"[sync_daily_bars] skip country={args.country} "
             f"date={today_by_country(args.country).isoformat()} "
-            "(weekend / routine market closure; no GF bar fetch)",
+            "(weekend / exchange holiday; no GF bar fetch)",
         )
         sys.exit(0)
 

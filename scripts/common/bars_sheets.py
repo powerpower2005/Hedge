@@ -447,8 +447,13 @@ def fetch_bars_google_finance_batch(jobs: list[BarsFetchJob]) -> list[list[dict[
     return out
 
 
-def _single_day_lookback_days() -> int:
+def _short_range_lookback_days() -> int:
     return _env_int("BARS_SINGLE_DAY_LOOKBACK_DAYS", 7)
+
+
+def _short_empty_span_days() -> int:
+    """Widen GF when empty for ranges this short (holidays/weekends GF often N/A)."""
+    return _env_int("BARS_SHORT_EMPTY_SPAN_DAYS", 7)
 
 
 def fetch_bars_google_finance(symbol: str, start: date, end: date) -> list[dict[str, Any]]:
@@ -460,14 +465,15 @@ def fetch_bars_google_finance(symbol: str, start: date, end: date) -> list[dict[
         )
         return results[0] if results else []
     except BarsFetchError as e:
-        if e.phase != "googfinance_empty" or start != end:
+        span_days = (end - start).days
+        if e.phase != "googfinance_empty" or span_days > _short_empty_span_days():
             raise
-        lookback = _single_day_lookback_days()
+        lookback = _short_range_lookback_days()
         if lookback < 1:
             raise
         wider_start = start - timedelta(days=lookback)
         bars_warn(
-            f"single-day empty symbol={symbol} {start.isoformat()}; "
+            f"short-range empty symbol={symbol} {start.isoformat()}..{end.isoformat()}; "
             f"widening to {wider_start.isoformat()}..{end.isoformat()}"
         )
         results = fetch_bars_google_finance_batch(

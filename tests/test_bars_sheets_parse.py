@@ -89,3 +89,31 @@ def test_fetch_bars_google_finance_widens_single_day_on_empty():
     assert calls[0] == (day, day)
     assert calls[1][0] == day - timedelta(days=7)
     assert calls[1][1] == day
+
+
+def test_fetch_bars_google_finance_widens_short_multi_day_on_empty():
+    start = date(2026, 8, 17)
+    end = date(2026, 8, 18)
+    sample = [{"date": "2026-08-18", "open": 1, "high": 2, "low": 0.5, "close": 1.5}]
+    calls: list[tuple[date, date]] = []
+
+    def fake_batch(jobs):
+        job = jobs[0]
+        calls.append((job.start, job.end))
+        if job.start == start:
+            raise BarsFetchError(
+                phase="googfinance_empty",
+                symbol=job.symbol,
+                start=job.start,
+                end=job.end,
+                message="N/A",
+            )
+        return [sample]
+
+    with patch("common.bars_sheets.fetch_bars_google_finance_batch", side_effect=fake_batch):
+        from common.bars_sheets import fetch_bars_google_finance
+
+        bars = fetch_bars_google_finance("KOSDAQ:036890", start, end)
+    assert bars == sample
+    assert calls[0] == (start, end)
+    assert calls[1] == (start - timedelta(days=7), end)

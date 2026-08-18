@@ -160,6 +160,26 @@ def test_plan_fetch_windows_daily_skips_weekend_after_friday(tmp_path, monkeypat
     assert windows == [(date(2026, 7, 13), date(2026, 7, 13))]
 
 
+def test_plan_fetch_windows_daily_skips_kr_liberation_substitute(tmp_path, monkeypatch):
+    from common import bars_storage
+
+    key = ("KR", "KOSDAQ", "036890")
+    root = tmp_path / "data" / "bars" / "v1"
+    path = bars_file_path(key, root=root)
+    doc = bars_storage.empty_bars_document(key)
+    doc["bars"] = [{"date": "2026-08-14", "open": 1, "high": 2, "low": 0.5, "close": 1.5}]
+    bars_storage.save_bars_document(path, doc)
+    monkeypatch.setattr(bars_storage, "BARS_ROOT", root)
+    monkeypatch.setattr(
+        "common.bars_sync.bars_file_path",
+        lambda k, root=None, _root=root: bars_file_path(k, root=_root),
+    )
+    picks = [{"entry": {"date": "2026-07-13"}, "duration": {"deadline": "2026-09-01"}}]
+    today = date(2026, 8, 18)  # Tue after Sat Liberation Day + Mon substitute
+    windows = plan_fetch_windows(key, picks, today, "daily")
+    assert windows == [(date(2026, 8, 18), date(2026, 8, 18))]
+
+
 def test_is_bars_daily_caught_up_when_through_expected(tmp_path, monkeypatch):
     from common import bars_storage
 
