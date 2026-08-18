@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "313d4a1"
+    "commit": "900441f"
   },
-  "generated_at": "2026-08-17T22:14:45.168051Z",
+  "generated_at": "2026-08-18T02:14:34.138326Z",
   "data": {
     "count": 18,
     "picks": [
@@ -1041,8 +1041,8 @@
         "progress": {
           "updated_at": "2026-08-17",
           "current": {
-            "close": 76.79,
-            "return_rate": -0.005182
+            "close": 76.4,
+            "return_rate": -0.010234
           },
           "highest": {
             "close": 81.0,
@@ -1054,7 +1054,7 @@
             "close_date": "2026-06-30",
             "return_rate": 0.0
           },
-          "distance_to_target": 10.005182,
+          "distance_to_target": 10.010234,
           "error_count": 0
         },
         "votes": {
