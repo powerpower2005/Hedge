@@ -10,7 +10,15 @@ from common.bars_sync import (
 )
 from common.instrument_key import bars_file_path
 
-def test_run_bars_sync_dry_run_plans_without_fetch(monkeypatch):
+def test_run_bars_sync_dry_run_plans_without_fetch(tmp_path, monkeypatch):
+    from common import bars_storage
+
+    root = tmp_path / "data" / "bars" / "v1"
+    monkeypatch.setattr(bars_storage, "BARS_ROOT", root)
+    monkeypatch.setattr(
+        "common.bars_sync.bars_file_path",
+        lambda k, root=None, _root=root: bars_file_path(k, root=_root),
+    )
     calls: list[tuple] = []
 
     def _boom(*args, **kwargs):
@@ -28,7 +36,13 @@ def test_run_bars_sync_dry_run_plans_without_fetch(monkeypatch):
             "duration": {"deadline": "2026-07-01"},
         },
     ]
-    stats = run_bars_sync(picks, mode="backfill", dry_run=True, touch_meta=False)
+    stats = run_bars_sync(
+        picks,
+        mode="backfill",
+        today=date(2026, 7, 1),
+        dry_run=True,
+        touch_meta=False,
+    )
     assert stats.instruments == 1
     assert stats.updated == 1
     assert calls == []

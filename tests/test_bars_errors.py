@@ -2,6 +2,7 @@ from datetime import date
 
 from common.bars_errors import BarsFetchError, exit_code_for_stats, failure_from_exception
 from common.bars_sync import SyncStats, run_bars_sync
+from common.instrument_key import bars_file_path
 
 
 def test_bars_fetch_error_str_includes_phase_and_range():
@@ -46,7 +47,16 @@ def test_exit_code_allow_partial():
     assert exit_code_for_stats(stats, allow_partial=True) == 0
 
 
-def test_run_bars_sync_records_failure_on_fetch_error(monkeypatch, capsys):
+def test_run_bars_sync_records_failure_on_fetch_error(tmp_path, monkeypatch, capsys):
+    from common import bars_storage
+
+    root = tmp_path / "data" / "bars" / "v1"
+    monkeypatch.setattr(bars_storage, "BARS_ROOT", root)
+    monkeypatch.setattr(
+        "common.bars_sync.bars_file_path",
+        lambda k, root=None, _root=root: bars_file_path(k, root=_root),
+    )
+
     def _fail_batch(jobs):
         raise BarsFetchError(
             phase="googfinance_empty",
@@ -77,10 +87,16 @@ def test_run_bars_sync_records_failure_on_fetch_error(monkeypatch, capsys):
             "ticker": "TSLA",
             "status": {"current": "active"},
             "entry": {"date": "2026-04-01"},
-            "duration": {"deadline": "2026-07-01"},
+            "duration": {"deadline": "2026-04-02"},
         },
     ]
-    stats = run_bars_sync(picks, mode="backfill", dry_run=False, touch_meta=False)
+    stats = run_bars_sync(
+        picks,
+        mode="daily",
+        today=date(2026, 4, 2),
+        dry_run=False,
+        touch_meta=False,
+    )
     assert stats.fetch_errors == 1
     assert len(stats.failures) == 1
     assert stats.failures[0].phase == "googfinance_empty"
