@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "2be8c16"
+    "commit": "ba47a18"
   },
-  "generated_at": "2026-08-20T02:21:50.914191Z",
+  "generated_at": "2026-08-20T22:18:35.827591Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "SPIR"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-08-19",
+  "updated_at": "2026-08-20",
   "bars": [
     {
       "date": "2026-05-27",
@@ -485,6 +485,14 @@
       "low": 13.26,
       "close": 13.7,
       "volume": 409802.0
+    },
+    {
+      "date": "2026-08-20",
+      "open": 13.48,
+      "high": 14.0,
+      "low": 12.94,
+      "close": 13.89,
+      "volume": 602370.0
     }
   ],
   "finance_symbol": "NYSE:SPIR"
