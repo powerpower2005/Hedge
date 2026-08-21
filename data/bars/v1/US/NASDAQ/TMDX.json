@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "ba47a18"
+    "commit": "4151a25"
   },
-  "generated_at": "2026-08-20T22:18:35.829192Z",
+  "generated_at": "2026-08-21T02:27:46.243416Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -652,7 +652,7 @@
       "high": 94.99,
       "low": 90.15,
       "close": 93.97,
-      "volume": 701649.0
+      "volume": 703325.0
     },
     {
       "date": "2026-08-20",
@@ -660,7 +660,7 @@
       "high": 94.3,
       "low": 90.64,
       "close": 90.85,
-      "volume": 588227.0
+      "volume": 589599.0
     }
   ],
   "finance_symbol": "NASDAQ:TMDX"
