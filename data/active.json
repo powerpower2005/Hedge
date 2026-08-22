@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "7ec7872"
+    "commit": "d52c530"
   },
-  "generated_at": "2026-08-22T10:11:41.375065Z",
+  "generated_at": "2026-08-22T11:01:56.998403Z",
   "data": {
-    "count": 18,
+    "count": 19,
     "picks": [
       {
         "id": 19,
@@ -1285,6 +1285,55 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "Applied Optoelectronics Inc",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 77,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-08-22T11:01:56.998327Z",
+        "author": "soxlsoxl",
+        "issue_number": 127,
+        "ticker": "META",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-08-22",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.1
+        },
+        "duration": {
+          "days": 30
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-08-22T11:01:56.998327Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-08-22T11:01:56.998327Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Meta Platforms Inc",
         "author_note": "_No response_"
       }
     ]
