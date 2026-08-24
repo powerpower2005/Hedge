@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "generator": {
+    "name": "called-it",
+    "version": "1.0.0",
+    "commit": "e25cac5"
+  },
+  "generated_at": "2026-08-24T22:17:45.302422Z",
+  "instrument": {
+    "country": "US",
+    "market": "NASDAQ",
+    "ticker": "AMZN"
+  },
+  "source": "google_sheets_googfinance",
+  "updated_at": "2026-08-24",
+  "bars": [
+    {
+      "date": "2026-08-24",
+      "open": 259.6,
+      "high": 263.32,
+      "low": 259.05,
+      "close": 262.04,
+      "volume": 27756090.0
+    }
+  ],
+  "finance_symbol": "NASDAQ:AMZN"
+}

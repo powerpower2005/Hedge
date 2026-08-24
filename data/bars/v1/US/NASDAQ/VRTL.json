@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "967456c"
+    "commit": "e25cac5"
   },
-  "generated_at": "2026-08-21T22:15:18.005616Z",
+  "generated_at": "2026-08-24T22:17:45.313555Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "VRTL"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-08-21",
+  "updated_at": "2026-08-24",
   "bars": [
     {
       "date": "2026-05-26",
@@ -509,6 +509,14 @@
       "low": 27.48,
       "close": 28.41,
       "volume": 59426.0
+    },
+    {
+      "date": "2026-08-24",
+      "open": 27.14,
+      "high": 27.14,
+      "low": 25.78,
+      "close": 26.81,
+      "volume": 57818.0
     }
   ],
   "finance_symbol": "NASDAQ:VRTL"
