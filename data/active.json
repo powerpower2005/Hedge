@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "59d5ebb"
+    "commit": "9341b9d"
   },
-  "generated_at": "2026-08-25T22:16:43.255525Z",
+  "generated_at": "2026-08-25T23:27:03.188351Z",
   "data": {
-    "count": 20,
+    "count": 21,
     "picks": [
       {
         "id": 19,
@@ -1432,6 +1432,55 @@
         },
         "instrument_name": "Amazon.com Inc",
         "author_note": "_No response_"
+      },
+      {
+        "id": 79,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-08-25T23:27:03.188290Z",
+        "author": "cieske",
+        "issue_number": 130,
+        "ticker": "OKLO",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-08-25",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.2
+        },
+        "duration": {
+          "days": 90
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-08-25T23:27:03.188290Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-08-25T23:27:03.188290Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Oklo Inc",
+        "author_note": "make 원전 great again"
       }
     ]
   }
