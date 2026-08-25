@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "e25cac5"
+    "commit": "64b060b"
   },
-  "generated_at": "2026-08-24T22:17:45.307472Z",
+  "generated_at": "2026-08-25T02:22:52.987056Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -15,12 +15,44 @@
   "updated_at": "2026-08-24",
   "bars": [
     {
+      "date": "2026-08-18",
+      "open": 557.48,
+      "high": 560.66,
+      "low": 543.21,
+      "close": 543.67,
+      "volume": 27094871.0
+    },
+    {
+      "date": "2026-08-19",
+      "open": 541.34,
+      "high": 554.07,
+      "low": 537.27,
+      "close": 546.03,
+      "volume": 16971740.0
+    },
+    {
+      "date": "2026-08-20",
+      "open": 546.95,
+      "high": 549.99,
+      "low": 539.31,
+      "close": 545.83,
+      "volume": 13872173.0
+    },
+    {
+      "date": "2026-08-21",
+      "open": 546.89,
+      "high": 553.87,
+      "low": 543.23,
+      "close": 549.9,
+      "volume": 13848015.0
+    },
+    {
       "date": "2026-08-24",
       "open": 550.2,
       "high": 561.42,
       "low": 546.3,
       "close": 559.02,
-      "volume": 12719871.0
+      "volume": 12990583.0
     }
   ],
   "finance_symbol": "NASDAQ:META"

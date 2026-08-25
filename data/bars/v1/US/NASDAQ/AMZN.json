@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "e25cac5"
+    "commit": "64b060b"
   },
-  "generated_at": "2026-08-24T22:17:45.302422Z",
+  "generated_at": "2026-08-25T02:22:52.982375Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -14,6 +14,38 @@
   "source": "google_sheets_googfinance",
   "updated_at": "2026-08-24",
   "bars": [
+    {
+      "date": "2026-08-18",
+      "open": 260.63,
+      "high": 262.18,
+      "low": 257.73,
+      "close": 259.45,
+      "volume": 33171263.0
+    },
+    {
+      "date": "2026-08-19",
+      "open": 260.85,
+      "high": 266.4,
+      "low": 258.58,
+      "close": 265.84,
+      "volume": 35762440.0
+    },
+    {
+      "date": "2026-08-20",
+      "open": 263.16,
+      "high": 263.84,
+      "low": 259.52,
+      "close": 260.11,
+      "volume": 28374099.0
+    },
+    {
+      "date": "2026-08-21",
+      "open": 260.74,
+      "high": 261.09,
+      "low": 257.04,
+      "close": 258.63,
+      "volume": 35722956.0
+    },
     {
       "date": "2026-08-24",
       "open": 259.6,
