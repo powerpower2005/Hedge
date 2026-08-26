@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "59d5ebb"
+    "commit": "741c088"
   },
-  "generated_at": "2026-08-25T22:18:30.399593Z",
+  "generated_at": "2026-08-26T02:29:33.890894Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -60,7 +60,7 @@
       "high": 570.8,
       "low": 561.4,
       "close": 570.05,
-      "volume": 9647922.0
+      "volume": 9647917.0
     }
   ],
   "finance_symbol": "NASDAQ:META"
