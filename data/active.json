@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "1ad33c3"
+    "commit": "6057cc5"
   },
-  "generated_at": "2026-08-27T02:26:01.126239Z",
+  "generated_at": "2026-08-27T09:38:10.259445Z",
   "data": {
-    "count": 20,
+    "count": 21,
     "picks": [
       {
         "id": 19,
@@ -1432,6 +1432,55 @@
         },
         "instrument_name": "Oklo Inc",
         "author_note": "make 원전 great again"
+      },
+      {
+        "id": 80,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-08-27T09:38:10.259361Z",
+        "author": "soxlsoxl",
+        "issue_number": 131,
+        "ticker": "BITX",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-08-27",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.1
+        },
+        "duration": {
+          "days": 90
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-08-27T09:38:10.259361Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-08-27T09:38:10.259361Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "2x Bitcoin ETF",
+        "author_note": "_No response_"
       }
     ]
   }
