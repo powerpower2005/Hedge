@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "a471007"
+    "commit": "1ad33c3"
   },
-  "generated_at": "2026-08-23T02:13:24.008935Z",
+  "generated_at": "2026-08-27T02:26:01.128381Z",
   "data": {
-    "count": 11,
+    "count": 12,
     "picks": [
       {
         "id": 12,
@@ -847,6 +847,91 @@
           "return_rate": -0.000186
         },
         "expired_at": "2026-08-13T22:31:53.327068Z"
+      },
+      {
+        "id": 50,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-05-27T04:43:50.032937Z",
+        "author": "saechimdaeki",
+        "issue_number": 77,
+        "ticker": "SPIR",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-05-27",
+          "source": "google_sheets",
+          "price": 23.75
+        },
+        "target": {
+          "return_rate": 0.45,
+          "price": 34.4375
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-08-25"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-05-27T04:43:50.032937Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-05-27T22:51:20.233623Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-08-27T02:26:01.126013Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-08-26",
+          "current": {
+            "close": 13.54,
+            "return_rate": -0.429895
+          },
+          "highest": {
+            "close": 25.45,
+            "close_date": "2026-05-28",
+            "return_rate": 0.071579
+          },
+          "lowest": {
+            "close": 23.75,
+            "close_date": "2026-05-27",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.879895,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 1,
+          "dislikes": 0,
+          "last_synced": "2026-05-27T04:51:35.517359Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Spire Global Inc",
+        "author_note": "45%만 먹겠습니다 왜 등록 안된거지",
+        "expiry": {
+          "close": 13.73,
+          "session_date": "2026-08-25",
+          "return_rate": -0.421895
+        },
+        "expired_at": "2026-08-27T02:26:01.126092Z"
       }
     ]
   }
