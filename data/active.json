@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "1a04079"
+    "commit": "fe8b856"
   },
-  "generated_at": "2026-08-30T05:51:27.271019Z",
+  "generated_at": "2026-08-30T06:14:25.661012Z",
   "data": {
-    "count": 22,
+    "count": 21,
     "picks": [
       {
         "id": 19,
@@ -48,7 +48,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 88.43,
             "return_rate": -0.218885
@@ -109,7 +109,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 270.79,
             "return_rate": -0.07362
@@ -170,7 +170,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 15.37,
             "return_rate": -0.380242
@@ -236,7 +236,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 5.0,
             "return_rate": -0.174917
@@ -309,7 +309,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 26.92,
             "return_rate": -0.832316
@@ -382,7 +382,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 29.18,
             "return_rate": -0.945394
@@ -410,79 +410,6 @@
         },
         "instrument_name": "Direxion Daily MU Bull 2X ETF",
         "author_note": "_No response_"
-      },
-      {
-        "id": 55,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-05-31T09:00:15.257520Z",
-        "author": "saechimdaeki",
-        "issue_number": 82,
-        "ticker": "APH",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-05-31",
-          "source": "google_sheets",
-          "price": 148.76
-        },
-        "target": {
-          "return_rate": 0.45,
-          "price": 215.702
-        },
-        "duration": {
-          "days": 90,
-          "deadline": "2026-08-29"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-05-31T09:00:15.257520Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-05-31T22:14:56.233529Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-08-29",
-          "current": {
-            "close": 157.74,
-            "return_rate": 0.060366
-          },
-          "highest": {
-            "close": 176.32,
-            "close_date": "2026-06-30",
-            "return_rate": 0.185265
-          },
-          "lowest": {
-            "close": 148.76,
-            "close_date": "2026-05-31",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.389634,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-31T09:00:15.257520Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Amphenol Corp",
-        "author_note": "갑니다"
       },
       {
         "id": 56,
@@ -601,7 +528,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 12.8,
             "return_rate": -0.197995
@@ -966,7 +893,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 71.85,
             "return_rate": -0.06918
@@ -1112,7 +1039,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 932.86,
             "return_rate": -0.04377
@@ -1185,7 +1112,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 106.23,
             "return_rate": -0.192965
@@ -1258,7 +1185,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 578.02,
             "return_rate": 0.051137
@@ -1331,7 +1258,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 266.43,
             "return_rate": 0.030159
@@ -1404,7 +1331,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 40.14,
             "return_rate": -0.093291
@@ -1477,7 +1404,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 17.32,
             "return_rate": -0.027513
@@ -1550,7 +1477,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-08-29",
+          "updated_at": "2026-08-30",
           "current": {
             "close": 78.82,
             "return_rate": 0.024301
