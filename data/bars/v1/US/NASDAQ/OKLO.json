@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "5e1a964"
+    "commit": "b1e04e8"
   },
-  "generated_at": "2026-09-01T00:57:07.289043Z",
+  "generated_at": "2026-09-01T06:09:03.920900Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -68,7 +68,7 @@
       "high": 42.67,
       "low": 39.51,
       "close": 40.14,
-      "volume": 11293217.0
+      "volume": 11362450.0
     },
     {
       "date": "2026-08-31",
@@ -76,7 +76,7 @@
       "high": 40.95,
       "low": 39.5,
       "close": 40.57,
-      "volume": 6181150.0
+      "volume": 6232221.0
     }
   ],
   "finance_symbol": "NYSE:OKLO"

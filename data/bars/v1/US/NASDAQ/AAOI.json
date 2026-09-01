@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "5e1a964"
+    "commit": "b1e04e8"
   },
-  "generated_at": "2026-09-01T00:57:07.281945Z",
+  "generated_at": "2026-09-01T06:09:03.913713Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -204,7 +204,7 @@
       "high": 108.67,
       "low": 104.06,
       "close": 107.69,
-      "volume": 4556837.0
+      "volume": 4609495.0
     }
   ],
   "finance_symbol": "NASDAQ:AAOI"
