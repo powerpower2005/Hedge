@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "cabdaaf"
+    "commit": "feaabc5"
   },
-  "generated_at": "2026-09-02T05:29:04.079095Z",
+  "generated_at": "2026-09-02T23:45:08.263483Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "META"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-09-01",
+  "updated_at": "2026-09-02",
   "bars": [
     {
       "date": "2026-08-18",
@@ -101,6 +101,14 @@
       "low": 556.1,
       "close": 578.54,
       "volume": 15796899.0
+    },
+    {
+      "date": "2026-09-02",
+      "open": 578.79,
+      "high": 600.38,
+      "low": 577.0,
+      "close": 592.85,
+      "volume": 15634836.0
     }
   ],
   "finance_symbol": "NASDAQ:META"
