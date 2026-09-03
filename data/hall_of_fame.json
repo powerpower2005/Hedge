@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "9a2d51b"
+    "commit": "790fbdf"
   },
-  "generated_at": "2026-08-15T08:53:16.174196Z",
+  "generated_at": "2026-09-03T23:42:24.976925Z",
   "data": {
-    "count": 17,
+    "count": 18,
     "picks": [
       {
         "id": 5,
@@ -1310,6 +1310,91 @@
           "achieved_close": 274500.0,
           "days_taken": 15,
           "final_return_rate": 0.326087
+        }
+      },
+      {
+        "id": 77,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-08-22T11:01:56.998327Z",
+        "author": "soxlsoxl",
+        "issue_number": 127,
+        "ticker": "META",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-08-22",
+          "source": "google_sheets",
+          "price": 549.9
+        },
+        "target": {
+          "return_rate": 0.1,
+          "price": 604.89
+        },
+        "duration": {
+          "days": 30,
+          "deadline": "2026-09-21"
+        },
+        "status": {
+          "current": "achieved",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-08-22T11:01:56.998327Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-08-22T22:12:03.233982Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "achieved",
+              "at": "2026-09-03T23:42:24.974452Z",
+              "engine_version": "1.0.0",
+              "reason": "close_touched_target"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-09-03",
+          "current": {
+            "close": 610.68,
+            "return_rate": 0.110529
+          },
+          "highest": {
+            "close": 610.68,
+            "close_date": "2026-09-03",
+            "return_rate": 0.110529
+          },
+          "lowest": {
+            "close": 549.9,
+            "close_date": "2026-08-22",
+            "return_rate": 0.0
+          },
+          "distance_to_target": -0.010529,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-08-22T11:01:56.998327Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Meta Platforms Inc",
+        "author_note": "_No response_",
+        "achievement": {
+          "achieved_date": "2026-09-03",
+          "achieved_close": 610.68,
+          "days_taken": 12,
+          "final_return_rate": 0.110529
         }
       }
     ]
