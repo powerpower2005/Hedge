@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "923699e"
+    "commit": "ead60f2"
   },
-  "generated_at": "2026-09-03T15:04:58.857861Z",
+  "generated_at": "2026-09-04T12:51:11.797552Z",
   "instrument": {
     "country": "KR",
     "market": "KOSPI",
@@ -14,14 +14,6 @@
   "source": "google_sheets_googfinance",
   "updated_at": "2026-09-03",
   "bars": [
-    {
-      "date": "2025-07-30",
-      "open": 263000.0,
-      "high": 266000.0,
-      "low": 260500.0,
-      "close": 263500.0,
-      "volume": 2482807.0
-    },
     {
       "date": "2025-07-31",
       "open": 271000.0,
