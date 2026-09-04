@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "790fbdf"
+    "commit": "349d871"
   },
-  "generated_at": "2026-09-03T23:44:27.675359Z",
+  "generated_at": "2026-09-04T05:36:36.587448Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -732,7 +732,7 @@
       "high": 259.01,
       "low": 251.06,
       "close": 254.55,
-      "volume": 760272.0
+      "volume": 766946.0
     },
     {
       "date": "2026-09-03",
