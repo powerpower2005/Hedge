@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "83dbe98"
+    "commit": "aba59ce"
   },
-  "generated_at": "2026-09-08T23:45:37.963809Z",
+  "generated_at": "2026-09-09T00:05:20.360027Z",
   "data": {
-    "count": 20,
+    "count": 21,
     "picks": [
       {
         "id": 19,
@@ -1431,6 +1431,55 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "Uber Technologies Inc",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 82,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-09-09T00:05:20.359958Z",
+        "author": "LimJunYeol",
+        "issue_number": 142,
+        "ticker": "XYZ",
+        "country": "US",
+        "market": "NYSE",
+        "entry": {
+          "date": "2026-09-09",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.3
+        },
+        "duration": {
+          "days": 90
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-09-09T00:05:20.359958Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-09-09T00:05:20.359958Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Block Inc",
         "author_note": "_No response_"
       }
     ]
