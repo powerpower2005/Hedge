@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "2b7c01e"
+    "commit": "b074710"
   },
-  "generated_at": "2026-09-10T15:04:33.772291Z",
+  "generated_at": "2026-09-11T12:57:06.245542Z",
   "instrument": {
     "country": "KR",
     "market": "KOSDAQ",
@@ -421,6 +421,14 @@
       "low": 4320.0,
       "close": 4600.0,
       "volume": 98290.0
+    },
+    {
+      "date": "2026-09-07",
+      "open": 4630.0,
+      "high": 4745.0,
+      "low": 4460.0,
+      "close": 4580.0,
+      "volume": 42787.0
     },
     {
       "date": "2026-09-08",
