@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "182e2ec"
+    "commit": "46dd5d4"
   },
-  "generated_at": "2026-09-11T23:44:05.645236Z",
+  "generated_at": "2026-09-14T05:54:11.143609Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -148,7 +148,7 @@
       "high": 253.15,
       "low": 249.58,
       "close": 251.89,
-      "volume": 24867036.0
+      "volume": 25484814.0
     },
     {
       "date": "2026-09-11",
@@ -156,7 +156,7 @@
       "high": 257.59,
       "low": 253.14,
       "close": 256.78,
-      "volume": 25899569.0
+      "volume": 26724122.0
     }
   ],
   "finance_symbol": "NASDAQ:AMZN"
