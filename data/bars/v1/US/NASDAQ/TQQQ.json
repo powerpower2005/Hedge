@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "35cf64e"
+    "commit": "4683cbd"
   },
-  "generated_at": "2026-09-15T05:56:01.505528Z",
+  "generated_at": "2026-09-15T23:52:22.387543Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "TQQQ"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-09-14",
+  "updated_at": "2026-09-15",
   "bars": [
     {
       "date": "2026-06-23",
@@ -477,6 +477,14 @@
       "low": 67.34,
       "close": 69.27,
       "volume": 49910317.0
+    },
+    {
+      "date": "2026-09-15",
+      "open": 69.13,
+      "high": 69.33,
+      "low": 67.61,
+      "close": 67.9,
+      "volume": 37888588.0
     }
   ],
   "finance_symbol": "NASDAQ:TQQQ"

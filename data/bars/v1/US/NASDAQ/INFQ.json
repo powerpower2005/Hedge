@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "35cf64e"
+    "commit": "4683cbd"
   },
-  "generated_at": "2026-09-15T05:56:01.498580Z",
+  "generated_at": "2026-09-15T23:52:22.380599Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "INFQ"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-09-14",
+  "updated_at": "2026-09-15",
   "bars": [
     {
       "date": "2026-06-22",
@@ -485,6 +485,14 @@
       "low": 12.36,
       "close": 12.6,
       "volume": 8298430.0
+    },
+    {
+      "date": "2026-09-15",
+      "open": 12.5,
+      "high": 13.02,
+      "low": 12.29,
+      "close": 12.67,
+      "volume": 6965754.0
     }
   ],
   "finance_symbol": "NYSE:INFQ"
