@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "4683cbd"
+    "commit": "63f660f"
   },
-  "generated_at": "2026-09-15T23:52:22.378938Z",
+  "generated_at": "2026-09-16T05:44:57.999788Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -156,7 +156,7 @@
       "high": 17.0,
       "low": 15.89,
       "close": 16.48,
-      "volume": 18699621.0
+      "volume": 19245275.0
     }
   ],
   "finance_symbol": "BATS:BITX"
