@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "63f660f"
+    "commit": "a6d2610"
   },
-  "generated_at": "2026-09-16T05:44:57.999788Z",
+  "generated_at": "2026-09-17T00:00:50.297983Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "BITX"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-09-15",
+  "updated_at": "2026-09-16",
   "bars": [
     {
       "date": "2026-08-20",
@@ -157,6 +157,14 @@
       "low": 15.89,
       "close": 16.48,
       "volume": 19245275.0
+    },
+    {
+      "date": "2026-09-16",
+      "open": 16.25,
+      "high": 16.62,
+      "low": 15.97,
+      "close": 16.41,
+      "volume": 8665938.0
     }
   ],
   "finance_symbol": "BATS:BITX"
