@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "ba71ecd"
+    "commit": "61a3432"
   },
-  "generated_at": "2026-09-22T05:51:47.870297Z",
+  "generated_at": "2026-09-22T15:33:29.605974Z",
   "data": {
-    "count": 3,
+    "count": 4,
     "picks": [
       {
         "id": 50,
@@ -263,6 +263,91 @@
           "return_rate": -0.125313
         },
         "expired_at": "2026-09-22T05:51:47.867852Z"
+      },
+      {
+        "id": 65,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-06-24T02:18:31.005983Z",
+        "author": "WookeyKim95",
+        "issue_number": 96,
+        "ticker": "090470",
+        "country": "KR",
+        "market": "KOSDAQ",
+        "entry": {
+          "date": "2026-06-24",
+          "source": "google_sheets",
+          "price": 4635.0
+        },
+        "target": {
+          "return_rate": 1.0,
+          "price": 9270.0
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-09-22"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-06-24T02:18:31.005983Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-06-24T11:22:07.290817Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-09-22T15:33:29.603637Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-09-23",
+          "current": {
+            "close": 4250.0,
+            "return_rate": -0.083064
+          },
+          "highest": {
+            "close": 4950.0,
+            "close_date": "2026-09-02",
+            "return_rate": 0.067961
+          },
+          "lowest": {
+            "close": 4635.0,
+            "close_date": "2026-06-24",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 1.083064,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-06-24T02:18:31.005983Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "JAS Robotics Inc",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 4300.0,
+          "session_date": "2026-09-22",
+          "return_rate": -0.072276
+        },
+        "expired_at": "2026-09-22T15:33:29.603729Z"
       }
     ]
   }
