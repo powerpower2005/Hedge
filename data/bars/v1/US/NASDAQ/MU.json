@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "38497be"
+    "commit": "7177104"
   },
-  "generated_at": "2026-09-21T06:00:32.135031Z",
+  "generated_at": "2026-09-22T00:26:41.475259Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "MU"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-09-18",
+  "updated_at": "2026-09-21",
   "bars": [
     {
       "date": "2026-07-06",
@@ -445,6 +445,14 @@
       "low": 977.83,
       "close": 1015.8,
       "volume": 35803504.0
+    },
+    {
+      "date": "2026-09-21",
+      "open": 1044.99,
+      "high": 1064.49,
+      "low": 1030.68,
+      "close": 1043.96,
+      "volume": 27105627.0
     }
   ],
   "finance_symbol": "NASDAQ:MU"
