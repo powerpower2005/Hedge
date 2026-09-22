@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "7177104"
+    "commit": "ba71ecd"
   },
-  "generated_at": "2026-09-22T00:26:41.477881Z",
+  "generated_at": "2026-09-22T05:57:31.393872Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -828,7 +828,7 @@
       "high": 277.14,
       "low": 268.27,
       "close": 275.98,
-      "volume": 811973.0
+      "volume": 817996.0
     }
   ],
   "finance_symbol": "NYSE:ONTO"
