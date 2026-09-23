@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "2884e00"
+    "commit": "817ce4b"
   },
-  "generated_at": "2026-09-23T15:13:19.575230Z",
+  "generated_at": "2026-09-23T15:29:52.513920Z",
   "data": {
     "count": 18,
     "picks": [
@@ -455,7 +455,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-09-23",
+          "updated_at": "2026-09-24",
           "current": {
             "close": 108870.0,
             "return_rate": -0.087235
@@ -528,7 +528,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-09-23",
+          "updated_at": "2026-09-24",
           "current": {
             "close": 32150.0,
             "return_rate": -0.341863
@@ -601,7 +601,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-09-23",
+          "updated_at": "2026-09-24",
           "current": {
             "close": 11970.0,
             "return_rate": -0.078522
@@ -674,10 +674,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-09-23",
+          "updated_at": "2026-09-24",
           "current": {
-            "close": 1840000.0,
-            "return_rate": -0.311635
+            "close": 1862000.0,
+            "return_rate": -0.303404
           },
           "highest": {
             "close": 2673000.0,
@@ -689,7 +689,7 @@
             "close_date": "2026-06-27",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.311635,
+          "distance_to_target": 1.303404,
           "error_count": 0
         },
         "votes": {
@@ -820,10 +820,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-09-23",
+          "updated_at": "2026-09-24",
           "current": {
-            "close": 1840000.0,
-            "return_rate": -0.158665
+            "close": 1862000.0,
+            "return_rate": -0.148605
           },
           "highest": {
             "close": 2425000.0,
@@ -835,7 +835,7 @@
             "close_date": "2026-07-03",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.558665,
+          "distance_to_target": 0.548605,
           "error_count": 0
         },
         "votes": {
