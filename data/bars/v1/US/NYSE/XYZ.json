@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "cfad52a"
+    "commit": "3174a48"
   },
-  "generated_at": "2026-09-29T01:23:03.781121Z",
+  "generated_at": "2026-09-29T06:42:40.148709Z",
   "instrument": {
     "country": "US",
     "market": "NYSE",
@@ -156,7 +156,7 @@
       "high": 75.31,
       "low": 73.23,
       "close": 73.31,
-      "volume": 5514819.0
+      "volume": 5522547.0
     }
   ],
   "finance_symbol": "NYSE:XYZ"
