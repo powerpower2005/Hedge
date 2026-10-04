@@ -3,97 +3,12 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "f871fa0"
+    "commit": "39017f6"
   },
-  "generated_at": "2026-09-27T05:47:57.621138Z",
+  "generated_at": "2026-10-04T06:22:19.918370Z",
   "data": {
-    "count": 3,
+    "count": 2,
     "picks": [
-      {
-        "id": 55,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-05-31T09:00:15.257520Z",
-        "author": "saechimdaeki",
-        "issue_number": 82,
-        "ticker": "APH",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-05-31",
-          "source": "google_sheets",
-          "price": 148.76
-        },
-        "target": {
-          "return_rate": 0.45,
-          "price": 215.702
-        },
-        "duration": {
-          "days": 90,
-          "deadline": "2026-08-29"
-        },
-        "status": {
-          "current": "expired",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-05-31T09:00:15.257520Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-05-31T22:14:56.233529Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            },
-            {
-              "status": "expired",
-              "at": "2026-08-30T06:14:25.660789Z",
-              "engine_version": "1.0.0",
-              "reason": "deadline_passed_without_achievement"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-08-30",
-          "current": {
-            "close": 157.74,
-            "return_rate": 0.060366
-          },
-          "highest": {
-            "close": 176.32,
-            "close_date": "2026-06-30",
-            "return_rate": 0.185265
-          },
-          "lowest": {
-            "close": 148.76,
-            "close_date": "2026-05-31",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.389634,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-31T09:00:15.257520Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Amphenol Corp",
-        "author_note": "갑니다",
-        "expiry": {
-          "close": 157.74,
-          "session_date": "2026-08-29",
-          "return_rate": 0.060366
-        },
-        "expired_at": "2026-08-30T06:14:25.660853Z"
-      },
       {
         "id": 64,
         "schema_version": "1.0.0",
