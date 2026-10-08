@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "81ceb78"
+    "commit": "c6bb219"
   },
-  "generated_at": "2026-10-08T01:28:32.673394Z",
+  "generated_at": "2026-10-08T07:05:52.916720Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -548,7 +548,7 @@
       "high": 1089.22,
       "low": 1011.42,
       "close": 1088.0,
-      "volume": 30124170.0
+      "volume": 30859503.0
     }
   ],
   "finance_symbol": "NASDAQ:MU"
