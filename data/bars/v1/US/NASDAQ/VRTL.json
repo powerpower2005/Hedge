@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "8370b84"
+    "commit": "24509b1"
   },
-  "generated_at": "2026-10-15T00:13:15.520071Z",
+  "generated_at": "2026-10-15T05:39:27.830228Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -804,7 +804,7 @@
       "high": 21.22,
       "low": 18.7,
       "close": 19.08,
-      "volume": 252514.0
+      "volume": 272739.0
     }
   ],
   "finance_symbol": "NASDAQ:VRTL"
