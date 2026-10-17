@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "3c4b81c"
+    "commit": "b9394c1"
   },
-  "generated_at": "2026-10-16T05:33:04.030388Z",
+  "generated_at": "2026-10-17T00:05:21.798895Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "MUU"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-16",
   "bars": [
     {
       "date": "2026-05-26",
@@ -813,6 +813,14 @@
       "low": 23.24,
       "close": 27.5,
       "volume": 36889632.0
+    },
+    {
+      "date": "2026-10-16",
+      "open": 25.92,
+      "high": 26.04,
+      "low": 24.13,
+      "close": 24.34,
+      "volume": 23957564.0
     }
   ],
   "finance_symbol": "NASDAQ:MUU"
