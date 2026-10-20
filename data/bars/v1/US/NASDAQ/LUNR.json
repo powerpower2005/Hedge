@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "c87cc04"
+    "commit": "8866212"
   },
-  "generated_at": "2026-10-20T00:52:29.564757Z",
+  "generated_at": "2026-10-20T05:46:30.484016Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -924,7 +924,7 @@
       "high": 11.2,
       "low": 10.7,
       "close": 10.74,
-      "volume": 4210383.0
+      "volume": 4239045.0
     }
   ],
   "finance_symbol": "NASDAQ:LUNR"
