@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "generator": {
+    "name": "called-it",
+    "version": "1.0.0",
+    "commit": "c87cc04"
+  },
+  "generated_at": "2026-10-20T00:52:29.571652Z",
+  "instrument": {
+    "country": "US",
+    "market": "NASDAQ",
+    "ticker": "SOXL"
+  },
+  "source": "google_sheets_googfinance",
+  "updated_at": "2026-10-19",
+  "bars": [
+    {
+      "date": "2026-10-19",
+      "open": 103.95,
+      "high": 104.98,
+      "low": 97.8,
+      "close": 98.65,
+      "volume": 93464358.0
+    }
+  ],
+  "finance_symbol": "NYSEARCA:SOXL"
+}

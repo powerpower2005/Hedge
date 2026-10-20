@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "2b00c89"
+    "commit": "c87cc04"
   },
-  "generated_at": "2026-10-19T05:49:56.757418Z",
+  "generated_at": "2026-10-20T00:52:29.561274Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "AAOI"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-10-16",
+  "updated_at": "2026-10-19",
   "bars": [
     {
       "date": "2026-07-29",
@@ -469,6 +469,14 @@
       "low": 75.43,
       "close": 75.57,
       "volume": 14151995.0
+    },
+    {
+      "date": "2026-10-19",
+      "open": 80.0,
+      "high": 80.47,
+      "low": 75.62,
+      "close": 78.2,
+      "volume": 11313150.0
     }
   ],
   "finance_symbol": "NASDAQ:AAOI"
