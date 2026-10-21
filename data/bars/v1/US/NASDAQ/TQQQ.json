@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "6bfa325"
+    "commit": "e451ab6"
   },
-  "generated_at": "2026-10-21T00:16:26.321892Z",
+  "generated_at": "2026-10-21T05:49:24.953284Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -676,7 +676,7 @@
       "high": 72.44,
       "low": 70.13,
       "close": 70.64,
-      "volume": 54920537.0
+      "volume": 55777715.0
     },
     {
       "date": "2026-10-20",
@@ -684,7 +684,7 @@
       "high": 71.93,
       "low": 68.28,
       "close": 70.41,
-      "volume": 50846499.0
+      "volume": 53963601.0
     }
   ],
   "finance_symbol": "NASDAQ:TQQQ"
