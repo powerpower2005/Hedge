@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "84ef506"
+    "commit": "c09b4f1"
   },
-  "generated_at": "2026-10-22T00:21:32.188442Z",
+  "generated_at": "2026-10-22T05:51:09.919724Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -851,8 +851,8 @@
       "open": 3.01,
       "high": 3.06,
       "low": 2.8,
-      "close": 2.87,
-      "volume": 16121666.0
+      "close": 2.86,
+      "volume": 16377180.0
     }
   ],
   "finance_symbol": "NASDAQ:FRMI"
