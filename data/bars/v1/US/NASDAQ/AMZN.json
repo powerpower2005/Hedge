@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "c09b4f1"
+    "commit": "dcff5bb"
   },
-  "generated_at": "2026-10-22T05:51:09.918719Z",
+  "generated_at": "2026-10-23T00:17:30.866988Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "AMZN"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-10-21",
+  "updated_at": "2026-10-22",
   "bars": [
     {
       "date": "2026-08-18",
@@ -381,6 +381,14 @@
       "low": 259.29,
       "close": 262.37,
       "volume": 31214698.0
+    },
+    {
+      "date": "2026-10-22",
+      "open": 258.18,
+      "high": 258.41,
+      "low": 248.0,
+      "close": 250.38,
+      "volume": 48231865.0
     }
   ],
   "finance_symbol": "NASDAQ:AMZN"
