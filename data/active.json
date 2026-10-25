@@ -3,134 +3,12 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "a8e1790"
+    "commit": "f57f476"
   },
-  "generated_at": "2026-10-25T05:20:10.342200Z",
+  "generated_at": "2026-10-25T05:41:46.863644Z",
   "data": {
-    "count": 20,
+    "count": 18,
     "picks": [
-      {
-        "id": 19,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "3a17794"
-        },
-        "created_at": "2026-04-27T11:37:37.087352Z",
-        "author": "KHR0907",
-        "issue_number": 39,
-        "ticker": "TMDX",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "price": 113.21,
-          "date": "2026-04-27",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.4,
-          "price": 158.494
-        },
-        "duration": {
-          "days": 180,
-          "deadline": "2026-10-24"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-04-27T11:37:37.087365Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-10-24",
-          "current": {
-            "close": 70.74,
-            "return_rate": -0.375144
-          },
-          "highest": {
-            "close": 113.21,
-            "close_date": "2026-04-27",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.775144,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-04-27T11:37:37.087406Z"
-        },
-        "extensions": {},
-        "instrument_name": "TransMedics Group Inc",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 20,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.1",
-          "commit": "5c8e511"
-        },
-        "created_at": "2026-04-27T11:39:24.169729Z",
-        "author": "KHR0907",
-        "issue_number": 40,
-        "ticker": "ONTO",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "price": 292.31,
-          "date": "2026-04-27",
-          "source": "google_sheets"
-        },
-        "target": {
-          "return_rate": 0.5,
-          "price": 438.465
-        },
-        "duration": {
-          "days": 180,
-          "deadline": "2026-10-24"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "active",
-              "at": "2026-04-27T11:39:24.169743Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-10-24",
-          "current": {
-            "close": 198.68,
-            "return_rate": -0.320311
-          },
-          "highest": {
-            "close": 378.45,
-            "close_date": "2026-06-30",
-            "return_rate": 0.294687
-          },
-          "distance_to_target": 0.820311,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-04-27T11:39:24.169799Z"
-        },
-        "extensions": {},
-        "instrument_name": "Onto Innovation Inc",
-        "author_note": "_No response_"
-      },
       {
         "id": 26,
         "schema_version": "1.0.0",
@@ -170,7 +48,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 10.52,
             "return_rate": -0.575806
@@ -236,7 +114,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 2.55,
             "return_rate": -0.579208
@@ -309,7 +187,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 14.26,
             "return_rate": -0.911175
@@ -382,7 +260,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 24.01,
             "return_rate": -0.955069
@@ -747,7 +625,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 66.29,
             "return_rate": -0.14121
@@ -893,7 +771,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 877.55,
             "return_rate": -0.100465
@@ -966,7 +844,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 67.51,
             "return_rate": -0.487123
@@ -1039,7 +917,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 248.0,
             "return_rate": -0.041101
@@ -1112,7 +990,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 26.35,
             "return_rate": -0.404789
@@ -1185,7 +1063,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 66.7,
             "return_rate": -0.133203
@@ -1258,7 +1136,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 76.46,
             "return_rate": -0.045443
@@ -1404,7 +1282,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-10-24",
+          "updated_at": "2026-10-25",
           "current": {
             "close": 83.56,
             "return_rate": -0.152965
