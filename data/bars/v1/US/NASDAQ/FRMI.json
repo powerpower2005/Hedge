@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "0a2bf24"
+    "commit": "e6ab659"
   },
-  "generated_at": "2026-10-27T06:04:10.869287Z",
+  "generated_at": "2026-10-28T00:51:16.756673Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "FRMI"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-10-26",
+  "updated_at": "2026-10-27",
   "bars": [
     {
       "date": "2026-05-22",
@@ -877,6 +877,14 @@
       "low": 2.44,
       "close": 2.54,
       "volume": 12643156.0
+    },
+    {
+      "date": "2026-10-27",
+      "open": 2.6,
+      "high": 2.75,
+      "low": 2.55,
+      "close": 2.62,
+      "volume": 21086671.0
     }
   ],
   "finance_symbol": "NASDAQ:FRMI"
