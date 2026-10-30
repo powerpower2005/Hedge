@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "250bae5"
+    "commit": "42e0bae"
   },
-  "generated_at": "2026-10-30T01:28:24.982232Z",
+  "generated_at": "2026-10-30T06:54:02.731356Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -892,7 +892,7 @@
       "high": 29.2,
       "low": 26.55,
       "close": 26.98,
-      "volume": 15700225.0
+      "volume": 17837785.0
     }
   ],
   "finance_symbol": "NASDAQ:MUU"
