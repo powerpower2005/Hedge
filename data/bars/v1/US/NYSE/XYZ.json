@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "42e0bae"
+    "commit": "07a929e"
   },
-  "generated_at": "2026-10-30T06:54:02.737662Z",
+  "generated_at": "2026-10-31T01:17:07.670933Z",
   "instrument": {
     "country": "US",
     "market": "NYSE",
     "ticker": "XYZ"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-10-29",
+  "updated_at": "2026-10-30",
   "bars": [
     {
       "date": "2026-09-02",
@@ -341,6 +341,14 @@
       "low": 74.81,
       "close": 76.95,
       "volume": 4333849.0
+    },
+    {
+      "date": "2026-10-30",
+      "open": 75.84,
+      "high": 76.68,
+      "low": 75.05,
+      "close": 76.22,
+      "volume": 5790279.0
     }
   ],
   "finance_symbol": "NYSE:XYZ"
