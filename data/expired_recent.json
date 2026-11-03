@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "b1e8a14"
+    "commit": "edb6e10"
   },
-  "generated_at": "2026-11-01T06:52:23.071031Z",
+  "generated_at": "2026-11-03T09:01:24.596624Z",
   "data": {
-    "count": 2,
+    "count": 3,
     "picks": [
       {
         "id": 19,
@@ -154,6 +154,91 @@
           "return_rate": -0.320311
         },
         "expired_at": "2026-10-25T05:41:46.863508Z"
+      },
+      {
+        "id": 76,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-08-04T10:22:37.356225Z",
+        "author": "cieske",
+        "issue_number": 121,
+        "ticker": "AAOI",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-08-04",
+          "source": "google_sheets",
+          "price": 131.63
+        },
+        "target": {
+          "return_rate": 0.3,
+          "price": 171.119
+        },
+        "duration": {
+          "days": 90,
+          "deadline": "2026-11-02"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-08-04T10:22:37.356225Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-08-04T22:53:13.034758Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-11-03T09:01:24.594498Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-11-03",
+          "current": {
+            "close": 62.5,
+            "return_rate": -0.525184
+          },
+          "highest": {
+            "close": 154.86,
+            "close_date": "2026-08-17",
+            "return_rate": 0.17648
+          },
+          "lowest": {
+            "close": 131.63,
+            "close_date": "2026-08-04",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.825184,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-08-04T10:22:37.356225Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Applied Optoelectronics Inc",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 62.47,
+          "session_date": "2026-11-02",
+          "return_rate": -0.525412
+        },
+        "expired_at": "2026-11-03T09:01:24.594589Z"
       }
     ]
   }
