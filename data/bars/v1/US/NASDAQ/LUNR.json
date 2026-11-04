@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "edb6e10"
+    "commit": "4bd08b4"
   },
-  "generated_at": "2026-11-03T09:06:12.282230Z",
+  "generated_at": "2026-11-04T02:51:18.085277Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "LUNR"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-11-02",
+  "updated_at": "2026-11-03",
   "bars": [
     {
       "date": "2026-05-07",
@@ -1005,6 +1005,14 @@
       "low": 9.82,
       "close": 9.86,
       "volume": 6011249.0
+    },
+    {
+      "date": "2026-11-03",
+      "open": 10.24,
+      "high": 10.7,
+      "low": 10.09,
+      "close": 10.5,
+      "volume": 5718199.0
     }
   ],
   "finance_symbol": "NASDAQ:LUNR"
