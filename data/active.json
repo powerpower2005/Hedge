@@ -5,9 +5,9 @@
     "version": "1.0.0",
     "commit": "3114b9a"
   },
-  "generated_at": "2026-11-04T09:09:42.048446Z",
+  "generated_at": "2026-11-04T09:10:32.888022Z",
   "data": {
-    "count": 17,
+    "count": 18,
     "picks": [
       {
         "id": 41,
@@ -1224,6 +1224,55 @@
           "entry_lock": "first_judgment_close"
         },
         "instrument_name": "Aehr Test Systems",
+        "author_note": "_No response_"
+      },
+      {
+        "id": 86,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-11-04T09:10:32.887959Z",
+        "author": "noru-empty",
+        "issue_number": 149,
+        "ticker": "CIFR",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-11-04",
+          "source": "google_sheets",
+          "pending": true
+        },
+        "target": {
+          "return_rate": 0.1
+        },
+        "duration": {
+          "days": 7
+        },
+        "status": {
+          "current": "pending_entry",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-11-04T09:10:32.887959Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            }
+          ]
+        },
+        "progress": {
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-11-04T09:10:32.887959Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Cipher Digital Inc",
         "author_note": "_No response_"
       }
     ]
