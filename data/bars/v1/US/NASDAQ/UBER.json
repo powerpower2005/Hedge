@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "bd65ad1"
+    "commit": "6b91511"
   },
-  "generated_at": "2026-11-05T02:59:39.531355Z",
+  "generated_at": "2026-11-05T09:03:21.478364Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -436,7 +436,7 @@
       "high": 72.5,
       "low": 67.36,
       "close": 69.87,
-      "volume": 36867823.0
+      "volume": 36952639.0
     }
   ],
   "finance_symbol": "NYSE:UBER"

@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "bd65ad1"
+    "commit": "6b91511"
   },
-  "generated_at": "2026-11-05T02:59:39.525002Z",
+  "generated_at": "2026-11-05T09:03:21.470619Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -15,12 +15,44 @@
   "updated_at": "2026-11-04",
   "bars": [
     {
+      "date": "2026-10-29",
+      "open": 62.55,
+      "high": 64.5,
+      "low": 60.45,
+      "close": 61.21,
+      "volume": 1578466.0
+    },
+    {
+      "date": "2026-10-30",
+      "open": 54.17,
+      "high": 58.0,
+      "low": 51.72,
+      "close": 54.89,
+      "volume": 2673441.0
+    },
+    {
+      "date": "2026-11-02",
+      "open": 55.66,
+      "high": 57.29,
+      "low": 50.52,
+      "close": 51.47,
+      "volume": 4225554.0
+    },
+    {
+      "date": "2026-11-03",
+      "open": 57.03,
+      "high": 66.21,
+      "low": 54.01,
+      "close": 65.11,
+      "volume": 8753668.0
+    },
+    {
       "date": "2026-11-04",
       "open": 64.34,
       "high": 65.49,
       "low": 57.0,
-      "close": 60.83,
-      "volume": 3948322.0
+      "close": 60.84,
+      "volume": 3980864.0
     }
   ],
   "finance_symbol": "NASDAQ:AEHR"

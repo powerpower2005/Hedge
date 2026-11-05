@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "bd65ad1"
+    "commit": "6b91511"
   },
-  "generated_at": "2026-11-05T02:59:39.526056Z",
+  "generated_at": "2026-11-05T09:03:21.472228Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -15,12 +15,44 @@
   "updated_at": "2026-11-04",
   "bars": [
     {
+      "date": "2026-10-29",
+      "open": 8.52,
+      "high": 8.71,
+      "low": 7.97,
+      "close": 8.1,
+      "volume": 39466829.0
+    },
+    {
+      "date": "2026-10-30",
+      "open": 7.51,
+      "high": 7.99,
+      "low": 6.93,
+      "close": 7.29,
+      "volume": 56617486.0
+    },
+    {
+      "date": "2026-11-02",
+      "open": 7.36,
+      "high": 7.39,
+      "low": 6.62,
+      "close": 6.86,
+      "volume": 55429407.0
+    },
+    {
+      "date": "2026-11-03",
+      "open": 7.12,
+      "high": 8.15,
+      "low": 7.02,
+      "close": 8.12,
+      "volume": 67835411.0
+    },
+    {
       "date": "2026-11-04",
       "open": 6.99,
       "high": 7.34,
       "low": 6.18,
-      "close": 6.51,
-      "volume": 103012154.0
+      "close": 6.5,
+      "volume": 103834711.0
     }
   ],
   "finance_symbol": "NASDAQ:CIFR"
