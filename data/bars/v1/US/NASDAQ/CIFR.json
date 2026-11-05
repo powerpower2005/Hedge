@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "generator": {
+    "name": "called-it",
+    "version": "1.0.0",
+    "commit": "bd65ad1"
+  },
+  "generated_at": "2026-11-05T02:59:39.526056Z",
+  "instrument": {
+    "country": "US",
+    "market": "NASDAQ",
+    "ticker": "CIFR"
+  },
+  "source": "google_sheets_googfinance",
+  "updated_at": "2026-11-04",
+  "bars": [
+    {
+      "date": "2026-11-04",
+      "open": 6.99,
+      "high": 7.34,
+      "low": 6.18,
+      "close": 6.51,
+      "volume": 103012154.0
+    }
+  ],
+  "finance_symbol": "NASDAQ:CIFR"
+}
