@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "bd65ad1"
+    "commit": "6b91511"
   },
-  "generated_at": "2026-11-05T02:58:11.086073Z",
+  "generated_at": "2026-11-05T08:57:58.514769Z",
   "data": {
     "count": 18,
     "picks": [
@@ -53,7 +53,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
             "close": 1.82,
             "return_rate": -0.69967
@@ -126,7 +126,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
             "close": 15.07,
             "return_rate": -0.906129
@@ -199,7 +199,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
             "close": 19.23,
             "return_rate": -0.964014
@@ -564,7 +564,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
             "close": 62.24,
             "return_rate": -0.193678
@@ -710,7 +710,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
             "close": 795.23,
             "return_rate": -0.184848
@@ -783,7 +783,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
             "close": 266.03,
             "return_rate": 0.028612
@@ -856,7 +856,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
             "close": 22.12,
             "return_rate": -0.500339
@@ -929,7 +929,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
             "close": 69.87,
             "return_rate": -0.092008
@@ -1002,7 +1002,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
             "close": 87.63,
             "return_rate": 0.094007
@@ -1148,7 +1148,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
             "close": 66.68,
             "return_rate": -0.324075
@@ -1221,22 +1221,22 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
-            "close": 60.83,
-            "return_rate": 0.0
+            "close": 60.84,
+            "return_rate": 0.000164
           },
           "highest": {
-            "close": 60.83,
-            "close_date": "2026-11-04",
-            "return_rate": 0.0
+            "close": 60.84,
+            "close_date": "2026-11-05",
+            "return_rate": 0.000164
           },
           "lowest": {
             "close": 60.83,
             "close_date": "2026-11-04",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.1,
+          "distance_to_target": 0.099836,
           "error_count": 0
         },
         "votes": {
@@ -1294,10 +1294,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-04",
+          "updated_at": "2026-11-05",
           "current": {
-            "close": 6.51,
-            "return_rate": 0.0
+            "close": 6.5,
+            "return_rate": -0.001536
           },
           "highest": {
             "close": 6.51,
@@ -1309,7 +1309,7 @@
             "close_date": "2026-11-04",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.1,
+          "distance_to_target": 0.101536,
           "error_count": 0
         },
         "votes": {
