@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "6b91511"
+    "commit": "34ffaa1"
   },
-  "generated_at": "2026-11-05T09:03:21.472228Z",
+  "generated_at": "2026-11-06T02:59:33.926388Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "CIFR"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-11-04",
+  "updated_at": "2026-11-05",
   "bars": [
     {
       "date": "2026-10-29",
@@ -53,6 +53,14 @@
       "low": 6.18,
       "close": 6.5,
       "volume": 103834711.0
+    },
+    {
+      "date": "2026-11-05",
+      "open": 6.19,
+      "high": 6.31,
+      "low": 5.07,
+      "close": 5.54,
+      "volume": 80994969.0
     }
   ],
   "finance_symbol": "NASDAQ:CIFR"
