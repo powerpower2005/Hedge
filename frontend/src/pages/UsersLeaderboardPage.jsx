@@ -11,10 +11,16 @@ import { dataLoadErrorMessage } from "../lib/userMessages.js";
 
 const PAGE_SIZE = 20;
 
-function rankStickerText(t, rank) {
+function rankStickerText(t, rank, totalParticipants) {
   if (rank === 1) return t("users.rankTitle1");
   if (rank === 2) return t("users.rankTitle2");
   if (rank === 3) return t("users.rankTitle3");
+  if (totalParticipants < 6) return "";
+
+  const placesFromLast = totalParticipants - rank;
+  if (placesFromLast === 2) return t("users.rankBottom3");
+  if (placesFromLast === 1) return t("users.rankBottom2");
+  if (placesFromLast === 0) return t("users.rankBottom1");
   return "";
 }
 
@@ -144,7 +150,7 @@ export function UsersLeaderboardPage() {
                 <tbody>
                   {pageRows.map((row, i) => {
                     const rank = sliceStart + i + 1;
-                    const titleSticker = rankStickerText(t, rank);
+                    const titleSticker = rankStickerText(t, rank, sorted.length);
                     return (
                       <tr key={row.author} className={ui.tableBodyRow}>
                         <td className={`${ui.tdNum} text-zinc-500 light:text-zinc-600`}>{rank}</td>
@@ -185,7 +191,7 @@ export function UsersLeaderboardPage() {
           >
             {pageRows.map((row, i) => {
               const rank = sliceStart + i + 1;
-              const titleSticker = rankStickerText(t, rank);
+              const titleSticker = rankStickerText(t, rank, sorted.length);
               return (
                 <li
                   key={row.author}
