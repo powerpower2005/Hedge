@@ -106,7 +106,7 @@ function NavDropdown({ entry, pathname, openId, setOpenId }) {
               left: menuPos.left,
               minWidth: menuPos.minWidth,
             }}
-            className="z-[100] overflow-hidden rounded-xl border-2 border-zinc-600 bg-zinc-900 py-1 shadow-xl light:border-zinc-300 light:bg-white"
+            className={`z-[100] overflow-hidden rounded-md border border-zinc-700 bg-zinc-900 py-1 shadow-xl light:border-zinc-300 light:bg-[#f7f5ed] ${entry.id === "picks" ? "xl:hidden" : ""}`}
           >
             {children.map((leaf) => (
               <NavLink
@@ -134,7 +134,8 @@ function NavDropdown({ entry, pathname, openId, setOpenId }) {
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-controls={isOpen ? menuId : undefined}
-        className={ui.navTab(isActive || isOpen)}
+        className="site-nav-tab"
+        data-active={isActive || isOpen}
         onClick={toggle}
       >
         <span className="inline-flex items-center justify-center gap-1">
@@ -161,17 +162,35 @@ export function PrimaryNav() {
       className="relative z-50 flex min-w-0 flex-1 justify-center overflow-visible lg:justify-start"
       aria-label={t("nav.primary")}
     >
-      <div className={`${ui.navGroup} w-fit max-w-full`}>
+      <div className="site-nav">
         {PRIMARY_NAV.map((entry) => {
           if (entry.children) {
             return (
-              <NavDropdown
-                key={entry.id}
-                entry={entry}
-                pathname={pathname}
-                openId={openId}
-                setOpenId={setOpenId}
-              />
+              <div key={entry.id} className="site-nav-group">
+                <div className={entry.id === "picks" ? "xl:hidden" : ""}>
+                  <NavDropdown
+                    entry={entry}
+                    pathname={pathname}
+                    openId={openId}
+                    setOpenId={setOpenId}
+                  />
+                </div>
+                {entry.id === "picks" ? (
+                  <div className="hidden items-stretch xl:flex">
+                    {entry.children.map((leaf) => (
+                      <NavLink
+                        key={leaf.to}
+                        to={leaf.to}
+                        end={leaf.end}
+                        className="site-nav-tab"
+                        data-active={pathnameMatchesLeaf(pathname, leaf)}
+                      >
+                        {t(leaf.labelKey)}
+                      </NavLink>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             );
           }
           const leafActive =
@@ -183,7 +202,8 @@ export function PrimaryNav() {
               key={entry.id}
               to={entry.to}
               end={entry.end}
-              className={ui.navTab(leafActive)}
+              className="site-nav-tab"
+              data-active={leafActive}
             >
               {t(entry.labelKey)}
             </NavLink>

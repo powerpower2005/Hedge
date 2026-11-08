@@ -92,24 +92,24 @@ export function MarketSidebarReveal({ onOpen }) {
   );
 }
 
-/** Mobile/tablet strip: horizontal scroll, hidden at lg+. */
-export function MarketIndexStrip() {
+/** Scrollable index strip, also shown on desktop when the rail is closed. */
+export function MarketIndexStrip({ className = "" }) {
   const { t } = useI18n();
   useMiniChartScript();
   return (
-    <section className="lg:hidden" aria-label={t("market.title")}>
-      <div className="mb-2 flex items-baseline justify-between gap-2">
+    <section className={`market-strip ${className}`} aria-label={t("market.title")}>
+      <div className="market-strip-heading">
         <h2 className={ui.sectionTitle}>{t("market.title")}</h2>
-        <span className={ui.label}>{t("market.scrollHint")}</span>
+        <span className={`${ui.label} xl:hidden`}>{t("market.scrollHint")}</span>
       </div>
-      <div className="-mx-3 flex snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-2 sm:-mx-4 sm:px-4">
+      <div className="market-strip-track">
         {MARKET_INDICES.map((idx) => (
           <MiniChartCard
             key={idx.symbol}
             symbol={idx.symbol}
             label={t(idx.labelKey)}
             timeFrame={idx.timeFrame}
-            className="w-60 shrink-0 snap-start"
+            className="market-strip-cell"
           />
         ))}
       </div>

@@ -26,14 +26,14 @@ export function PickCard({ pick }) {
   const displayReturn = getPickDisplayReturnRate(pick);
 
   return (
-    <article className={`flex h-full flex-col ${ui.card} overflow-hidden`}>
-      <div className={`flex flex-1 flex-col ${ui.cardPad}`}>
-        <header className="flex items-start justify-between gap-2">
+    <article className={`pick-card flex h-full flex-col ${ui.card} overflow-hidden`}>
+      <div className={`pick-card-content flex flex-1 flex-col ${ui.cardPad}`}>
+        <header className="pick-card-heading flex items-start justify-between gap-2">
           <PickInstrumentHeading pick={pick} variant="card" currentReturnRate={displayReturn} />
           <StatusBadge status={st} title={isEntryPending(pick) ? t("pick.pendingEntryHint") : undefined} />
         </header>
 
-        <div className={`mt-4 ${ui.metricGrid} ${ui.innerPanel}`}>
+        <div className={`pick-card-metrics mt-4 ${ui.metricGrid} ${ui.innerPanel}`}>
           <MetricBlock label={t("pickCard.target")}>
             <ReturnRate rate={pick.target?.return_rate} className="text-base font-bold" />
           </MetricBlock>
@@ -46,7 +46,7 @@ export function PickCard({ pick }) {
           </MetricBlock>
         </div>
 
-        <p className={`mt-3 ${type.meta}`}>
+        <p className={`pick-card-author mt-3 ${type.meta}`}>
           <Link className={ui.link} to={`/user/${pick.author}`}>
             @{pick.author}
           </Link>
@@ -58,12 +58,12 @@ export function PickCard({ pick }) {
           ) : null}
         </p>
         {!isEntryPending(pick) ? (
-          <div className="mt-2">
+          <div className="pick-card-price mt-2">
             <PickPriceDisplay pick={pick} size="sm" />
           </div>
         ) : null}
 
-        <footer className={`mt-3 flex flex-wrap items-center gap-3 text-xs text-zinc-400 light:text-zinc-600`}>
+        <footer className="pick-card-footer mt-3 flex flex-wrap items-center gap-3 text-xs text-zinc-400 light:text-zinc-600">
           <span className="inline-flex items-center gap-1">
             <PickDeadline pick={pick} />
           </span>
@@ -82,6 +82,7 @@ export function PickCard({ pick }) {
           <div
             className="h-1.5 overflow-hidden rounded-full bg-zinc-700 light:bg-zinc-200"
             role="progressbar"
+            aria-label={t("pickDetail.targetAchievement")}
             aria-valuenow={progressPct}
             aria-valuemin={0}
             aria-valuemax={100}

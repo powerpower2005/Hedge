@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ColorType, createChart, CrosshairMode } from "lightweight-charts";
-import { useTheme } from "../../hooks/useTheme.js";
 import { useI18n } from "../../i18n/I18nContext.jsx";
 import { fetchJsonAllow404 } from "../../lib/fetchJson.js";
 import {
@@ -21,12 +20,12 @@ import { isEntryPending } from "../../lib/pickEntry.js";
 function chartColors(light) {
   if (light) {
     return {
-      background: "#ffffff",
-      text: "#52525b",
-      grid: "#e4e4e7",
-      border: "#d4d4d8",
-      up: "#2FA084",
-      down: "#ef4444",
+      background: "#f7f5ed",
+      text: "#4f554d",
+      grid: "#e6e2d8",
+      border: "#c9c6ba",
+      up: "#237450",
+      down: "#b5503e",
       entry: "#2563eb",
       target: "#9333ea",
     };
@@ -48,12 +47,23 @@ function chartColors(light) {
  */
 export function PickDailyChart({ pick, mode = "pick", historyHref }) {
   const { t } = useI18n();
-  const { effectiveLight } = useTheme();
   const containerRef = useRef(/** @type {HTMLDivElement | null} */ (null));
   const chartRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [bars, setBars] = useState(/** @type {object[] | null} */ (null));
   const [loadFailed, setLoadFailed] = useState(false);
+  const [effectiveLight, setEffectiveLight] = useState(() =>
+    document.documentElement.classList.contains("light"),
+  );
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const update = () => setEffectiveLight(root.classList.contains("light"));
+    const observer = new MutationObserver(update);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+    update();
+    return () => observer.disconnect();
+  }, []);
 
   const jpDeferred = isBarsChartJpDeferred(pick);
   const supported = isBarsChartSupported(pick);
@@ -216,7 +226,7 @@ export function PickDailyChart({ pick, mode = "pick", historyHref }) {
   }
 
   return (
-    <section className={`mt-4 ${ui.card} ${ui.cardPad}`} aria-labelledby="pick-daily-chart-title">
+    <section className="detail-rule mt-5 pt-4" aria-labelledby="pick-daily-chart-title">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 id="pick-daily-chart-title" className={ui.sectionTitle}>
           {chartTitle}
@@ -227,7 +237,7 @@ export function PickDailyChart({ pick, mode = "pick", historyHref }) {
           </Link>
         ) : null}
       </div>
-      <div id="pick-daily-chart-panel" className="mt-3">
+      <div id="pick-daily-chart-panel" className="mt-3 min-w-0">
         {body}
       </div>
     </section>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" fill="none">
+  <defs>
+    <linearGradient id="paper" x2="1" y2="1">
+      <stop stop-color="#102f25"/>
+      <stop offset="1" stop-color="#1b533e"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M0 48V0h48" stroke="#dce9b5" stroke-opacity=".14"/>
+    </pattern>
+    <path id="ridge" d="M-35 290C43 253 81 271 135 236c55-35 66-102 126-114 43-9 70 38 120 26 58-15 56-80 111-93 45-11 74 43 119 28 40-14 57-66 111-81 27-7 52 2 75 13"/>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h720v300H0z"/>
+  <path fill="url(#grid)" d="M0 0h720v300H0z"/>
+  <g stroke="#dce9b5" stroke-width=".85">
+    <use href="#ridge" transform="translate(0 3)" opacity=".87"/>
+    <use href="#ridge" transform="translate(0 10) scale(1 .985)" opacity=".78"/>
+    <use href="#ridge" transform="translate(0 17) scale(1 .972)" opacity=".71"/>
+    <use href="#ridge" transform="translate(0 24) scale(1 .96)" opacity=".65"/>
+    <use href="#ridge" transform="translate(0 31) scale(1 .949)" opacity=".60"/>
+    <use href="#ridge" transform="translate(0 38) scale(1 .939)" opacity=".57"/>
+    <use href="#ridge" transform="translate(0 45) scale(1 .93)" opacity=".53"/>
+    <use href="#ridge" transform="translate(0 52) scale(1 .921)" opacity=".49"/>
+    <use href="#ridge" transform="translate(0 60) scale(1 .913)" opacity=".46"/>
+    <use href="#ridge" transform="translate(0 68) scale(1 .905)" opacity=".43"/>
+    <use href="#ridge" transform="translate(0 76) scale(1 .898)" opacity=".40"/>
+    <use href="#ridge" transform="translate(0 84) scale(1 .891)" opacity=".37"/>
+    <use href="#ridge" transform="translate(0 92) scale(1 .884)" opacity=".34"/>
+    <use href="#ridge" transform="translate(0 100) scale(1 .878)" opacity=".31"/>
+    <use href="#ridge" transform="translate(0 108) scale(1 .872)" opacity=".28"/>
+    <use href="#ridge" transform="translate(0 116) scale(1 .866)" opacity=".25"/>
+    <use href="#ridge" transform="translate(0 124) scale(1 .86)" opacity=".22"/>
+    <use href="#ridge" transform="translate(0 132) scale(1 .855)" opacity=".20"/>
+    <use href="#ridge" transform="translate(0 140) scale(1 .85)" opacity=".18"/>
+    <use href="#ridge" transform="translate(0 148) scale(1 .845)" opacity=".16"/>
+  </g>
+  <path d="M51 42v63h65m-70-52h10m-10 16h10m-10 16h10m11 15v10m16-10v10m16-10v10" stroke="#dce9b5" stroke-opacity=".65"/>
+</svg>

@@ -7,7 +7,7 @@ const filterLabel = `flex min-w-0 flex-col gap-1 ${ui.label}`;
 export function FilterBar({ filters, setFilters, sortKey, setSortKey }) {
   const { t } = useI18n();
   return (
-    <div className={`mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 ${ui.card} ${ui.cardPad}`}>
+    <div className={`pick-filters mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 ${ui.card} ${ui.cardPad}`}>
       <label className={filterLabel}>
         {t("filters.country")}
         <select

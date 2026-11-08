@@ -1,28 +1,26 @@
-/** Green SaaS theme (#EEEEEE / #6FCF97 / #2FA084 / #1F6F5F; red unchanged). */
+/** Shared surfaces for the light and dark themes. */
 
 export const ui = {
   /** Shared horizontal shell — header, footer, and page content use the same max width. */
-  shell: "mx-auto w-full max-w-6xl px-3 sm:px-4 xl:px-6",
-  page: "mx-auto w-full max-w-6xl px-3 py-6 sm:px-4 sm:py-8 xl:px-6",
+  shell: "mx-auto w-full max-w-[90rem] px-4 sm:px-6 xl:px-9",
+  page: "mx-auto w-full max-w-[90rem] px-4 py-6 sm:px-6 xl:px-9",
   card:
-    "rounded-2xl border-2 border-zinc-600 bg-zinc-900 shadow-sm light:border-zinc-300 light:bg-white light:shadow-md",
+    "rounded-md border border-zinc-700 bg-zinc-900 light:border-[#d9d6cb] light:bg-[#fbfaf5]",
   dialog:
     "rounded-2xl border-2 border-zinc-600 bg-zinc-900 shadow-xl light:border-zinc-300 light:bg-white",
   cardPad: "p-5 sm:p-6",
   innerPanel:
-    "rounded-xl border-2 border-zinc-600/90 bg-zinc-800/40 p-3 light:border-zinc-300 light:bg-zinc-50",
+    "rounded-sm border border-zinc-700 bg-zinc-800/40 p-3 light:border-[#d9d6cb] light:bg-[#f3f1e8]",
   field:
     "mt-1 rounded-lg border-2 border-zinc-600 bg-zinc-950 px-2.5 py-1.5 text-sm text-white shadow-sm light:border-zinc-300 light:bg-white light:text-zinc-900",
   filterField:
-    "w-full rounded-lg border-2 border-zinc-600 bg-zinc-950 px-2.5 py-1.5 text-sm text-white shadow-sm light:border-zinc-300 light:bg-white light:text-zinc-900",
-  hero:
-    "rounded-2xl border-2 border-primary-700/50 bg-gradient-to-br from-primary-950/50 via-zinc-900 to-zinc-900 p-6 sm:p-8 light:border-primary-400 light:from-primary-50 light:via-primary-100 light:to-white",
+    "w-full rounded-sm border border-zinc-600 bg-zinc-950 px-2.5 py-1.5 text-sm text-white light:border-[#c9c6ba] light:bg-[#fbfaf5] light:text-zinc-900",
   btnPrimary:
-    "inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-500 focus-visible:outline-none light:bg-primary-600 light:hover:bg-primary-500",
+    "inline-flex items-center justify-center gap-1.5 rounded-sm bg-primary-400 px-4 py-2.5 text-sm font-semibold text-zinc-950 transition hover:bg-primary-300 focus-visible:outline-none light:bg-primary-700 light:text-white light:hover:bg-primary-800",
   btnPrimaryLg:
     "inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary-600 px-5 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-primary-500 focus-visible:outline-none light:bg-primary-600 light:hover:bg-primary-500",
   btnSecondary:
-    "inline-flex items-center justify-center gap-1.5 rounded-xl border-2 border-zinc-600 bg-zinc-800/60 px-4 py-2.5 text-sm font-medium text-zinc-100 transition hover:bg-zinc-800 light:border-zinc-300 light:bg-white light:text-zinc-800 light:hover:bg-zinc-50",
+    "inline-flex items-center justify-center gap-1.5 rounded-sm border border-zinc-600 bg-zinc-800/60 px-4 py-2.5 text-sm font-medium text-zinc-100 transition hover:bg-zinc-800 light:border-[#c9c6ba] light:bg-[#fbfaf5] light:text-zinc-800 light:hover:bg-[#f0ede2]",
   btnSecondaryLg:
     "inline-flex items-center justify-center gap-1.5 rounded-xl border-2 border-zinc-600 bg-zinc-800/60 px-5 py-3 text-base font-medium text-zinc-100 transition hover:bg-zinc-800 light:border-zinc-300 light:bg-white light:text-zinc-800 light:hover:bg-zinc-50",
   statCard:

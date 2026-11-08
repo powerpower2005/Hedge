@@ -129,17 +129,17 @@ export function PickList({ picks }) {
         <legend className="sr-only">{t("pickList.viewLabel")}</legend>
         <span className="text-xs font-medium text-zinc-400 light:text-zinc-600">{t("pickList.viewLabel")}</span>
         <div className={ui.navGroup}>
-          <button type="button" className={ui.navTab(view === "card", "compact")} onClick={() => setViewMode("card")}>
+          <button type="button" aria-pressed={view === "card"} className={ui.navTab(view === "card", "compact")} onClick={() => setViewMode("card")}>
             {t("pickList.viewCards")}
           </button>
-          <button type="button" className={ui.navTab(view === "list", "compact")} onClick={() => setViewMode("list")}>
+          <button type="button" aria-pressed={view === "list"} className={ui.navTab(view === "list", "compact")} onClick={() => setViewMode("list")}>
             {t("pickList.viewList")}
           </button>
         </div>
       </fieldset>
 
       {view === "card" ? (
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="pick-card-grid grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {picks.map((p) => (
             <PickCard key={p.id} pick={p} />
           ))}

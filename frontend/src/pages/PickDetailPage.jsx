@@ -50,14 +50,14 @@ export function PickDetailPage() {
   const currencyLabel = pickCurrencyLabel(pick.country);
 
   return (
-    <article className={ui.page}>
+    <article className={`${ui.page} pick-detail`}>
       <nav className="mb-4">
         <Link to="/" className={`inline-flex items-center gap-1 text-sm ${ui.link}`}>
           <span aria-hidden>←</span> {t("common.backShort")}
         </Link>
       </nav>
 
-      <section className={`${ui.card} ${ui.cardPad}`}>
+      <section>
         <header>
           <div className="flex flex-wrap items-start justify-between gap-3">
             <PickInstrumentHeading
@@ -86,19 +86,19 @@ export function PickDetailPage() {
           </p>
         ) : null}
 
-        <div className={`mt-6 ${ui.metricGrid} ${ui.innerPanel} lg:grid-cols-4`}>
+        <div className="detail-metrics">
           <MetricBlock label={t("pickDetail.targetReturn")}>
-            <ReturnRate rate={pick.target?.return_rate} className={ui.valueLg} />
+            <ReturnRate rate={pick.target?.return_rate} className="detail-number" />
           </MetricBlock>
           <MetricBlock label={t("pickDetail.currentReturn")}>
             {isEntryPending(pick) ? (
               <span className={type.meta}>{t("pick.pendingProgress")}</span>
             ) : (
-              <ReturnRate rate={displayReturn} className={ui.valueLg} />
+              <ReturnRate rate={displayReturn} className="detail-number" />
             )}
           </MetricBlock>
           <MetricBlock label={t("pickDetail.entry")}>
-            <span className={ui.valueLg}>
+            <span className="detail-number">
               <PickEntryPrice pick={pick} />
             </span>
           </MetricBlock>
@@ -112,14 +112,14 @@ export function PickDetailPage() {
 
       <PickDailyChart pick={pick} mode="pick" historyHref={`/pick/${pickId}/history`} />
 
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        <section className={`${ui.card} ${ui.cardPad}`}>
+      <div className="detail-band mt-5 grid gap-x-8 sm:grid-cols-2">
+        <section className="py-4">
           <h2 className={ui.label}>{t("pickDetail.deadline")}</h2>
           <p className={`${ui.valueLg} mt-2`}>
             <PickDeadline pick={pick} />
           </p>
         </section>
-        <section className={`${ui.card} ${ui.cardPad}`}>
+        <section className="py-4">
           <h2 className={ui.label}>{t("pickDetail.exchangeInfo")}</h2>
           <p className="mt-2">
             <MarketBadge pick={pick} className="text-sm" />
@@ -141,7 +141,7 @@ export function PickDetailPage() {
       </div>
 
       {pick.author_note ? (
-        <section className={`mt-4 ${ui.card} ${ui.cardPad}`}>
+        <section className="detail-rule mt-4 py-4">
           <h2 className={ui.sectionTitle}>{t("pickDetail.pickReason")}</h2>
           <p className={`mt-3 whitespace-pre-wrap break-words ${type.body}`}>{pick.author_note}</p>
           <p className={`mt-3 ${type.metaSm}`}>{t("pickDetail.authorNoteDisclaimer")}</p>
@@ -167,17 +167,17 @@ export function PickDetailPage() {
       ) : null}
 
       {issueUrl ? (
-        <section className={`mt-4 ${ui.card} ${ui.cardPad}`} aria-labelledby="vote-section-title">
+        <section className="detail-rule mt-5 py-4" aria-labelledby="vote-section-title">
           <h2 id="vote-section-title" className={ui.sectionTitle}>
             {t("pickDetail.votes")}
           </h2>
           <p className={`mt-2 ${type.meta}`}>{t("pickDetail.voteCtaBody")}</p>
-          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="mt-4 flex flex-wrap gap-3">
             <a
               href={issueUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${ui.btnSecondaryLg} justify-center gap-2 py-3.5 sm:py-4`}
+              className={`${ui.btnSecondary} light:!border-primary-700/20 light:!bg-[#dbedaa] light:!text-primary-800`}
             >
               <span className="text-lg leading-none" aria-hidden>
                 👍
@@ -188,7 +188,7 @@ export function PickDetailPage() {
               href={issueUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${ui.btnSecondaryLg} justify-center gap-2 py-3.5 sm:py-4`}
+              className={ui.btnSecondary}
             >
               <span className="text-lg leading-none" aria-hidden>
                 👎
@@ -208,7 +208,7 @@ export function PickDetailPage() {
       ) : null}
 
       {pick.achievement ? (
-        <section className={`mt-4 ${ui.card} ${ui.cardPad}`}>
+        <section className="detail-rule mt-4 py-4">
           <p className={type.sectionLabel}>{t("pickDetail.achieved")}</p>
           <p className={`mt-3 ${type.body}`}>
             {t("pickDetail.achievedMeta", {

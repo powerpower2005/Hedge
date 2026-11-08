@@ -10,7 +10,7 @@ function readStoredOpen() {
   } catch {
     /* ignore */
   }
-  return true;
+  return false;
 }
 
 function persistOpen(open) {

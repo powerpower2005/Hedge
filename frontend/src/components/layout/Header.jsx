@@ -128,13 +128,13 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 overflow-visible border-b border-zinc-800/80 bg-zinc-950/95 backdrop-blur light:border-zinc-200 light:bg-white/95">
+      <header className="site-header sticky top-0 z-40 overflow-visible border-b backdrop-blur">
         <div className={`${ui.shell} flex flex-col gap-2 overflow-visible py-3 sm:gap-3 lg:flex-row lg:items-center lg:gap-4`}>
           <div className="flex shrink-0 items-center justify-between gap-2 lg:justify-start">
             <AppLogo />
             {IS_REPOSITORY_CONFIGURED ? (
-              <a href={NEW_PICK_URL} target="_blank" rel="noopener noreferrer" className={`${ui.btnPrimary} text-sm lg:hidden`}>
-                <span aria-hidden>+</span> {t("nav.newPick")}
+              <a href={NEW_PICK_URL} target="_blank" rel="noopener noreferrer" className="site-new-pick inline-flex lg:hidden">
+                {t("nav.newPick")} <span aria-hidden>↗</span>
               </a>
             ) : null}
           </div>
@@ -180,8 +180,8 @@ export function Header() {
                     />
                   </svg>
                 </button>
-                <a href={NEW_PICK_URL} target="_blank" rel="noopener noreferrer" className={`${ui.btnPrimary} hidden lg:inline-flex`}>
-                  <span aria-hidden>+</span> {t("nav.newPick")}
+                <a href={NEW_PICK_URL} target="_blank" rel="noopener noreferrer" className="site-new-pick hidden lg:inline-flex">
+                  {t("nav.newPick")} <span aria-hidden>↗</span>
                 </a>
               </>
             )}
@@ -189,7 +189,7 @@ export function Header() {
         </div>
 
         {IS_REPOSITORY_CONFIGURED ? (
-          <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border-t border-zinc-800 bg-zinc-900/80 px-4 py-2 text-center text-xs font-medium text-zinc-300 light:border-zinc-200 light:bg-primary-50 light:text-primary-900">
+          <p className="site-judgment flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border-t px-4 py-1.5 text-center text-xs font-medium text-zinc-300 light:text-zinc-700">
             {judgmentLabel ? (
               <>
                 <span>{t("nav.lastJudgment", { time: judgmentLabel })}</span>

@@ -31,7 +31,7 @@ export function PickInstrumentHeading({
         : ui.instrumentPrimary;
   const primaryClass = `${primaryBase} hover:underline ${mismatch ? mismatchNameClass : ""}`;
 
-  const tickerClass = `${ui.tickerSecondary} hover:underline`;
+  const tickerClass = `instrument-ticker ${ui.tickerSecondary} hover:underline`;
 
   const primaryEl = pickId ? (
     <TruncatedWithTooltip
@@ -59,24 +59,18 @@ export function PickInstrumentHeading({
 
   if (variant === "detail") {
     return (
-      <div className={className}>
+      <div className={`instrument-detail ${className}`} data-has-ticker={showTickerSubline}>
         <TruncatedWithTooltip
           as="h1"
-          className={`truncate ${primaryClass}`}
+          className={`instrument-detail-name truncate ${primaryBase} ${mismatch ? mismatchNameClass : ""}`}
           title={primaryLabel}
         >
           {primaryLabel}
         </TruncatedWithTooltip>
-        {showTickerSubline ? (
-          <p className="mt-1.5 flex flex-wrap items-center gap-2">
-            {tickerEl}
-            <MarketBadge pick={pick} />
-          </p>
-        ) : (
-          <p className="mt-1.5">
-            <MarketBadge pick={pick} />
-          </p>
-        )}
+        {showTickerSubline ? <p className="instrument-detail-ticker">{tickerEl}</p> : null}
+        <p className="instrument-detail-market">
+          <MarketBadge pick={pick} />
+        </p>
       </div>
     );
   }
@@ -91,9 +85,9 @@ export function PickInstrumentHeading({
   }
 
   return (
-    <div className={`min-w-0 ${className}`}>
+    <div className={`instrument-card min-w-0 ${className}`}>
       {primaryEl}
-      <div className="mt-1 flex flex-wrap items-center gap-2">
+      <div className="instrument-card-market mt-1 flex flex-wrap items-center gap-2">
         {tickerEl}
         <MarketBadge pick={pick} />
       </div>

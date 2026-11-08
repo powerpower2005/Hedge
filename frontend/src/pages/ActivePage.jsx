@@ -58,7 +58,7 @@ export function ActivePage() {
   }
 
   return (
-    <div className={ui.page}>
+    <div className={`${ui.page} dashboard`}>
       {!sidebarOpen ? <MarketSidebarReveal onOpen={toggleSidebar} /> : null}
       <div
         className={
@@ -67,59 +67,56 @@ export function ActivePage() {
             : undefined
         }
       >
-        <article>
-      <section className={ui.hero} aria-labelledby="dashboard-hero-title">
-        <h1 id="dashboard-hero-title" className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl light:text-zinc-900">
-          {t("active.heroTitle")}
-        </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-300 light:text-zinc-700">
-          {t("guide.quickTagline")}
-        </p>
-        <p className="mt-2 max-w-2xl text-sm text-zinc-400 light:text-zinc-600">{t("active.nextStep")}</p>
-        <p className="mt-3 max-w-2xl text-sm text-zinc-400 light:text-zinc-600">
-          {t("schedule.dashboardTeaser")}{" "}
-          <ScheduleLink />
-        </p>
-        {IS_REPOSITORY_CONFIGURED ? (
-          <div className="mt-6">
-            <a href={NEW_PICK_URL} target="_blank" rel="noopener noreferrer" className={ui.btnPrimary}>
-              {t("active.heroCta")}
-            </a>
+        <article className="min-w-0">
+          <section className="dashboard-hero" aria-labelledby="dashboard-hero-title">
+            <div className="py-2">
+              <h1 id="dashboard-hero-title" className="dashboard-title">{t("active.heroTitle")}</h1>
+              <p className="mt-3 max-w-xl text-sm text-zinc-300 sm:text-base light:text-zinc-700">
+                {t("guide.quickTagline")}
+              </p>
+              {IS_REPOSITORY_CONFIGURED ? (
+                <a href={NEW_PICK_URL} target="_blank" rel="noopener noreferrer" className={`mt-5 ${ui.btnPrimary}`}>
+                  {t("active.heroCta")} <span aria-hidden>↗</span>
+                </a>
+              ) : null}
+            </div>
+            <div className="dashboard-hero-art" aria-hidden="true" />
+          </section>
+
+          <div className="dashboard-overview">
+            <p className="dashboard-schedule text-sm text-zinc-400 light:text-zinc-700">
+              {t("schedule.dashboardTeaser")}{" "}
+              <ScheduleLink className="font-semibold" />
+            </p>
+            {!allLoading ? (
+              <section className="dashboard-stats" aria-label={t("active.statsLabel")}>
+                <StatBlock label={t("active.statTotal")} value={stats.total} />
+                <StatBlock label={t("active.statActive")} value={stats.activeCount} />
+                <StatBlock label={t("active.statAchieved")} value={stats.achievedCount} />
+                <StatBlock
+                  label={t("active.statAvgReturn")}
+                  value={stats.avg == null ? "—" : formatReturn(stats.avg)}
+                  valueClass={stats.avg != null && stats.avg > 0 ? "!text-primary-400 light:!text-primary-700" : ""}
+                />
+              </section>
+            ) : null}
           </div>
-        ) : null}
-      </section>
 
-      {!allLoading ? (
-        <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4" aria-label={t("active.statsLabel")}>
-          <StatBlock label={t("active.statTotal")} value={stats.total} />
-          <StatBlock label={t("active.statActive")} value={stats.activeCount} />
-          <StatBlock label={t("active.statAchieved")} value={stats.achievedCount} />
-          <StatBlock
-            label={t("active.statAvgReturn")}
-            value={stats.avg == null ? "—" : formatReturn(stats.avg)}
-            valueClass={stats.avg != null && stats.avg > 0 ? "text-primary-400 light:text-primary-700" : ""}
-          />
-        </section>
-      ) : null}
+          <MarketIndexStrip className={sidebarOpen ? "lg:hidden" : ""} />
 
-      <div className="mt-6">
-        <MarketIndexStrip />
-      </div>
-
-      <section id="pick-list" className="mt-8 scroll-mt-24" aria-labelledby="active-picks-title">
-        <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
-          <h2 id="active-picks-title" className={ui.sectionTitle}>
-            {t("active.title")}{" "}
-            <span className="text-base font-medium text-zinc-400 light:text-zinc-600">
-              {t("active.subtitle", { count })}
-            </span>
-          </h2>
-        </div>
-
-        <FilterBar filters={filters} setFilters={setFilters} sortKey={sortKey} setSortKey={setSortKey} />
-
-        <PickList picks={visible} />
-      </section>
+          <section id="pick-list" className="dashboard-picks scroll-mt-36" aria-labelledby="active-picks-title">
+            <div className="dashboard-pick-controls">
+              <h2 id="active-picks-title" className="dashboard-section-title">
+                {t("active.title")}{" "}
+                <span className="whitespace-nowrap text-sm font-medium tracking-normal text-zinc-400 light:text-zinc-600">
+                  {t("active.subtitle", { count })}
+                </span>
+              </h2>
+              <FilterBar filters={filters} setFilters={setFilters} sortKey={sortKey} setSortKey={setSortKey} />
+            </div>
+            <p className="mb-3 text-xs text-zinc-400 light:text-zinc-600">{t("active.nextStep")}</p>
+            <PickList picks={visible} />
+          </section>
         </article>
 
         {sidebarOpen ? <MarketIndexRail onCollapse={toggleSidebar} /> : null}

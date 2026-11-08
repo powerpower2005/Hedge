@@ -6,7 +6,7 @@ export function AppLogo() {
   return (
     <Link to="/" className="inline-flex items-center gap-2 rounded-lg focus-visible:outline-none">
       <span
-        className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-600 text-white shadow-sm light:bg-primary-600"
+        className="flex h-8 w-8 items-center justify-center rounded-sm bg-primary-700 text-white"
         aria-hidden
       >
         <svg
@@ -34,7 +34,7 @@ export function AppLogo() {
           <circle cx="16" cy="6" r="1.25" fill="currentColor" />
         </svg>
       </span>
-      <span className="text-lg font-bold tracking-tight text-zinc-100 light:text-zinc-900">{t("app.title")}</span>
+      <span className="whitespace-nowrap text-xl font-extrabold tracking-tight text-zinc-100 light:text-zinc-900">{t("app.title")}</span>
     </Link>
   );
 }
