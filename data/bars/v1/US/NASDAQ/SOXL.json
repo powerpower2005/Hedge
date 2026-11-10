@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "99d44fc"
+    "commit": "ad85bad"
   },
-  "generated_at": "2026-11-10T04:27:00.538774Z",
+  "generated_at": "2026-11-10T09:21:53.754868Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -172,7 +172,7 @@
       "high": 57.5,
       "low": 47.36,
       "close": 56.2,
-      "volume": 256824164.0
+      "volume": 265842797.0
     }
   ],
   "finance_symbol": "NYSEARCA:SOXL"

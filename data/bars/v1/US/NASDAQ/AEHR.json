@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "99d44fc"
+    "commit": "ad85bad"
   },
-  "generated_at": "2026-11-10T04:27:00.531202Z",
+  "generated_at": "2026-11-10T09:21:53.751304Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -76,7 +76,7 @@
       "high": 60.91,
       "low": 53.3,
       "close": 59.81,
-      "volume": 1938285.0
+      "volume": 1971026.0
     }
   ],
   "finance_symbol": "NASDAQ:AEHR"
