@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "1a588c5"
+    "commit": "077cb06"
   },
-  "generated_at": "2026-11-11T02:26:06.288989Z",
+  "generated_at": "2026-11-11T08:56:13.470269Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -83,8 +83,8 @@
       "open": 6.53,
       "high": 6.84,
       "low": 6.28,
-      "close": 6.52,
-      "volume": 33553859.0
+      "close": 6.53,
+      "volume": 34265210.0
     }
   ],
   "finance_symbol": "NASDAQ:CIFR"
