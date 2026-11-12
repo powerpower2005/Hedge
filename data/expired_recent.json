@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "e661e72"
+    "commit": "92be816"
   },
-  "generated_at": "2026-11-08T06:43:10.824047Z",
+  "generated_at": "2026-11-12T09:18:27.795069Z",
   "data": {
-    "count": 4,
+    "count": 6,
     "picks": [
       {
         "id": 19,
@@ -312,6 +312,176 @@
           "return_rate": -0.576613
         },
         "expired_at": "2026-11-04T08:37:26.969649Z"
+      },
+      {
+        "id": 85,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-11-04T09:09:42.048383Z",
+        "author": "noru-empty",
+        "issue_number": 148,
+        "ticker": "AEHR",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-11-04",
+          "source": "google_sheets",
+          "price": 60.83
+        },
+        "target": {
+          "return_rate": 0.1,
+          "price": 66.913
+        },
+        "duration": {
+          "days": 7,
+          "deadline": "2026-11-11"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-11-04T09:09:42.048383Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-11-05T02:58:11.085984Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-11-12T09:18:27.793132Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-11-12",
+          "current": {
+            "close": 65.78,
+            "return_rate": 0.081374
+          },
+          "highest": {
+            "close": 65.85,
+            "close_date": "2026-11-11",
+            "return_rate": 0.082525
+          },
+          "lowest": {
+            "close": 60.83,
+            "close_date": "2026-11-04",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.018626,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-11-04T09:09:42.048383Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Aehr Test Systems",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 65.85,
+          "session_date": "2026-11-11",
+          "return_rate": 0.082525
+        },
+        "expired_at": "2026-11-12T09:18:27.793244Z"
+      },
+      {
+        "id": 86,
+        "schema_version": "1.0.0",
+        "created_with": {
+          "engine_version": "1.0.0",
+          "rules_version": "1.0.7"
+        },
+        "created_at": "2026-11-04T09:10:32.887959Z",
+        "author": "noru-empty",
+        "issue_number": 149,
+        "ticker": "CIFR",
+        "country": "US",
+        "market": "NASDAQ",
+        "entry": {
+          "date": "2026-11-04",
+          "source": "google_sheets",
+          "price": 6.51
+        },
+        "target": {
+          "return_rate": 0.1,
+          "price": 7.161
+        },
+        "duration": {
+          "days": 7,
+          "deadline": "2026-11-11"
+        },
+        "status": {
+          "current": "expired",
+          "history": [
+            {
+              "status": "pending_entry",
+              "at": "2026-11-04T09:10:32.887959Z",
+              "engine_version": "1.0.0",
+              "reason": "initial_registration"
+            },
+            {
+              "status": "active",
+              "at": "2026-11-05T02:58:11.086034Z",
+              "engine_version": "1.0.0",
+              "reason": "entry_locked_first_judgment_close"
+            },
+            {
+              "status": "expired",
+              "at": "2026-11-12T09:18:27.793263Z",
+              "engine_version": "1.0.0",
+              "reason": "deadline_passed_without_achievement"
+            }
+          ]
+        },
+        "progress": {
+          "updated_at": "2026-11-12",
+          "current": {
+            "close": 7.11,
+            "return_rate": 0.092166
+          },
+          "highest": {
+            "close": 7.11,
+            "close_date": "2026-11-11",
+            "return_rate": 0.092166
+          },
+          "lowest": {
+            "close": 6.51,
+            "close_date": "2026-11-04",
+            "return_rate": 0.0
+          },
+          "distance_to_target": 0.007834,
+          "error_count": 0
+        },
+        "votes": {
+          "likes": 0,
+          "dislikes": 0,
+          "last_synced": "2026-11-04T09:10:32.887959Z"
+        },
+        "extensions": {
+          "entry_lock": "first_judgment_close"
+        },
+        "instrument_name": "Cipher Digital Inc",
+        "author_note": "_No response_",
+        "expiry": {
+          "close": 7.11,
+          "session_date": "2026-11-11",
+          "return_rate": 0.092166
+        },
+        "expired_at": "2026-11-12T09:18:27.793300Z"
       }
     ]
   }

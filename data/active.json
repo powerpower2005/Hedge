@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "72436d4"
+    "commit": "92be816"
   },
-  "generated_at": "2026-11-12T03:29:40.417377Z",
+  "generated_at": "2026-11-12T09:18:27.793342Z",
   "data": {
-    "count": 18,
+    "count": 16,
     "picks": [
       {
         "id": 41,
@@ -53,10 +53,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-11",
+          "updated_at": "2026-11-12",
           "current": {
-            "close": 1.83,
-            "return_rate": -0.69802
+            "close": 1.81,
+            "return_rate": -0.70132
           },
           "highest": {
             "close": 9.5,
@@ -68,7 +68,7 @@
             "close_date": "2026-05-22",
             "return_rate": 0.0
           },
-          "distance_to_target": 1.69802,
+          "distance_to_target": 1.70132,
           "error_count": 0
         },
         "votes": {
@@ -126,7 +126,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-11",
+          "updated_at": "2026-11-12",
           "current": {
             "close": 14.71,
             "return_rate": -0.908372
@@ -199,7 +199,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-11",
+          "updated_at": "2026-11-12",
           "current": {
             "close": 18.75,
             "return_rate": -0.964912
@@ -564,7 +564,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-11",
+          "updated_at": "2026-11-12",
           "current": {
             "close": 60.44,
             "return_rate": -0.216997
@@ -710,7 +710,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-11",
+          "updated_at": "2026-11-12",
           "current": {
             "close": 811.3,
             "return_rate": -0.168375
@@ -783,7 +783,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-11",
+          "updated_at": "2026-11-12",
           "current": {
             "close": 266.17,
             "return_rate": 0.029154
@@ -856,7 +856,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-11",
+          "updated_at": "2026-11-12",
           "current": {
             "close": 25.86,
             "return_rate": -0.415857
@@ -929,7 +929,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-11",
+          "updated_at": "2026-11-12",
           "current": {
             "close": 70.68,
             "return_rate": -0.081481
@@ -1002,7 +1002,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-11",
+          "updated_at": "2026-11-12",
           "current": {
             "close": 85.72,
             "return_rate": 0.070162
@@ -1148,7 +1148,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-11",
+          "updated_at": "2026-11-12",
           "current": {
             "close": 66.03,
             "return_rate": -0.330664
@@ -1176,152 +1176,6 @@
         },
         "instrument_name": "Direxion Daily Semiconductor Bull 3X ETF",
         "author_note": "Go"
-      },
-      {
-        "id": 85,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-11-04T09:09:42.048383Z",
-        "author": "noru-empty",
-        "issue_number": 148,
-        "ticker": "AEHR",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-11-04",
-          "source": "google_sheets",
-          "price": 60.83
-        },
-        "target": {
-          "return_rate": 0.1,
-          "price": 66.913
-        },
-        "duration": {
-          "days": 7,
-          "deadline": "2026-11-11"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-11-04T09:09:42.048383Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-11-05T02:58:11.085984Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-11-11",
-          "current": {
-            "close": 65.85,
-            "return_rate": 0.082525
-          },
-          "highest": {
-            "close": 65.85,
-            "close_date": "2026-11-11",
-            "return_rate": 0.082525
-          },
-          "lowest": {
-            "close": 60.83,
-            "close_date": "2026-11-04",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.017475,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-11-04T09:09:42.048383Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Aehr Test Systems",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 86,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-11-04T09:10:32.887959Z",
-        "author": "noru-empty",
-        "issue_number": 149,
-        "ticker": "CIFR",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-11-04",
-          "source": "google_sheets",
-          "price": 6.51
-        },
-        "target": {
-          "return_rate": 0.1,
-          "price": 7.161
-        },
-        "duration": {
-          "days": 7,
-          "deadline": "2026-11-11"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-11-04T09:10:32.887959Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-11-05T02:58:11.086034Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-11-11",
-          "current": {
-            "close": 7.11,
-            "return_rate": 0.092166
-          },
-          "highest": {
-            "close": 7.11,
-            "close_date": "2026-11-11",
-            "return_rate": 0.092166
-          },
-          "lowest": {
-            "close": 6.51,
-            "close_date": "2026-11-04",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.007834,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-11-04T09:10:32.887959Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Cipher Digital Inc",
-        "author_note": "_No response_"
       }
     ]
   }
