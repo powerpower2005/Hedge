@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "077cb06"
+    "commit": "72436d4"
   },
-  "generated_at": "2026-11-11T08:56:13.468797Z",
+  "generated_at": "2026-11-12T03:31:07.433000Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "AEHR"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-11-10",
+  "updated_at": "2026-11-11",
   "bars": [
     {
       "date": "2026-10-29",
@@ -85,6 +85,14 @@
       "low": 56.7,
       "close": 59.57,
       "volume": 2722733.0
+    },
+    {
+      "date": "2026-11-11",
+      "open": 65.5,
+      "high": 68.36,
+      "low": 63.27,
+      "close": 65.85,
+      "volume": 2796711.0
     }
   ],
   "finance_symbol": "NASDAQ:AEHR"

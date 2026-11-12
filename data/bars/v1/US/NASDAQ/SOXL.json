@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "077cb06"
+    "commit": "72436d4"
   },
-  "generated_at": "2026-11-11T08:56:13.474724Z",
+  "generated_at": "2026-11-12T03:31:07.437980Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "SOXL"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-11-10",
+  "updated_at": "2026-11-11",
   "bars": [
     {
       "date": "2026-10-13",
@@ -181,6 +181,14 @@
       "low": 52.04,
       "close": 56.06,
       "volume": 212819793.0
+    },
+    {
+      "date": "2026-11-11",
+      "open": 64.2,
+      "high": 69.73,
+      "low": 60.86,
+      "close": 66.03,
+      "volume": 237699593.0
     }
   ],
   "finance_symbol": "NYSEARCA:SOXL"
