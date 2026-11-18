@@ -3,16 +3,16 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "d6c5545"
+    "commit": "22226c9"
   },
-  "generated_at": "2026-11-17T10:17:01.331322Z",
+  "generated_at": "2026-11-18T03:58:57.871569Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
     "ticker": "UBER"
   },
   "source": "google_sheets_googfinance",
-  "updated_at": "2026-11-16",
+  "updated_at": "2026-11-17",
   "bars": [
     {
       "date": "2026-08-21",
@@ -501,6 +501,14 @@
       "low": 69.45,
       "close": 69.99,
       "volume": 14564370.0
+    },
+    {
+      "date": "2026-11-17",
+      "open": 69.6,
+      "high": 70.09,
+      "low": 67.06,
+      "close": 68.81,
+      "volume": 22224730.0
     }
   ],
   "finance_symbol": "NYSE:UBER"
