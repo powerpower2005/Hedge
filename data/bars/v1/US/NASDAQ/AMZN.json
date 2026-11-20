@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "07029ef"
+    "commit": "8ef46aa"
   },
-  "generated_at": "2026-11-20T03:49:12.314396Z",
+  "generated_at": "2026-11-20T09:44:52.716371Z",
   "instrument": {
     "country": "US",
     "market": "NASDAQ",
@@ -548,7 +548,7 @@
       "high": 274.0,
       "low": 256.75,
       "close": 257.37,
-      "volume": 51948529.0
+      "volume": 53117924.0
     }
   ],
   "finance_symbol": "NASDAQ:AMZN"
