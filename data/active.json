@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "dc1945f"
+    "commit": "0eb12fb"
   },
-  "generated_at": "2026-11-21T03:38:47.377454Z",
+  "generated_at": "2026-11-21T09:13:18.486342Z",
   "data": {
-    "count": 14,
+    "count": 13,
     "picks": [
       {
         "id": 43,
@@ -53,7 +53,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-20",
+          "updated_at": "2026-11-21",
           "current": {
             "close": 9.21,
             "return_rate": -0.942631
@@ -126,7 +126,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-20",
+          "updated_at": "2026-11-21",
           "current": {
             "close": 9.64,
             "return_rate": -0.98196
@@ -491,7 +491,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-20",
+          "updated_at": "2026-11-21",
           "current": {
             "close": 41.2,
             "return_rate": -0.466252
@@ -637,7 +637,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-20",
+          "updated_at": "2026-11-21",
           "current": {
             "close": 594.51,
             "return_rate": -0.390596
@@ -665,79 +665,6 @@
         },
         "instrument_name": "Micron Technology Inc",
         "author_note": "마이크론 연말까지 존버(1500달러 목표), 현재 평단 1030"
-      },
-      {
-        "id": 78,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-08-22T12:29:18.527159Z",
-        "author": "soxlsoxl",
-        "issue_number": 128,
-        "ticker": "AMZN",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-08-22",
-          "source": "google_sheets",
-          "price": 258.63
-        },
-        "target": {
-          "return_rate": 0.1,
-          "price": 284.493
-        },
-        "duration": {
-          "days": 90,
-          "deadline": "2026-11-20"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-08-22T12:29:18.527159Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-08-22T22:12:03.234050Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-11-20",
-          "current": {
-            "close": 246.82,
-            "return_rate": -0.045664
-          },
-          "highest": {
-            "close": 270.87,
-            "close_date": "2026-11-10",
-            "return_rate": 0.047326
-          },
-          "lowest": {
-            "close": 258.63,
-            "close_date": "2026-08-22",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.145664,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-08-22T12:29:18.527159Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Amazon.com Inc",
-        "author_note": "_No response_"
       },
       {
         "id": 79,
@@ -783,7 +710,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-20",
+          "updated_at": "2026-11-21",
           "current": {
             "close": 19.85,
             "return_rate": -0.551615
@@ -856,7 +783,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-20",
+          "updated_at": "2026-11-21",
           "current": {
             "close": 63.47,
             "return_rate": -0.175179
@@ -929,7 +856,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-20",
+          "updated_at": "2026-11-21",
           "current": {
             "close": 69.66,
             "return_rate": -0.130337
@@ -1002,7 +929,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-20",
+          "updated_at": "2026-11-21",
           "current": {
             "close": 30.88,
             "return_rate": -0.686974
