@@ -3,158 +3,12 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "1698c70"
+    "commit": "4bc2fe6"
   },
-  "generated_at": "2026-11-23T03:22:44.253821Z",
+  "generated_at": "2026-11-23T10:18:57.442405Z",
   "data": {
-    "count": 13,
+    "count": 11,
     "picks": [
-      {
-        "id": 43,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-05-26T05:24:35.848693Z",
-        "author": "hoky1227",
-        "issue_number": 67,
-        "ticker": "VRTL",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-05-26",
-          "source": "google_sheets",
-          "price": 160.54
-        },
-        "target": {
-          "return_rate": 2.0,
-          "price": 481.62
-        },
-        "duration": {
-          "days": 180,
-          "deadline": "2026-11-22"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-05-26T05:24:35.848693Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-05-26T22:40:38.131533Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-11-22",
-          "current": {
-            "close": 9.21,
-            "return_rate": -0.942631
-          },
-          "highest": {
-            "close": 184.94,
-            "close_date": "2026-06-22",
-            "return_rate": 0.151987
-          },
-          "lowest": {
-            "close": 160.54,
-            "close_date": "2026-05-26",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 2.942631,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-26T05:24:35.848693Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "GraniteShares 2x Long VRT Daily ETF",
-        "author_note": "_No response_"
-      },
-      {
-        "id": 44,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-05-26T05:25:56.857217Z",
-        "author": "hoky1227",
-        "issue_number": 68,
-        "ticker": "MUU",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-05-26",
-          "source": "google_sheets",
-          "price": 534.37
-        },
-        "target": {
-          "return_rate": 2.0,
-          "price": 1603.11
-        },
-        "duration": {
-          "days": 180,
-          "deadline": "2026-11-22"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-05-26T05:25:56.857217Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-05-26T22:40:38.131585Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-11-22",
-          "current": {
-            "close": 9.64,
-            "return_rate": -0.98196
-          },
-          "highest": {
-            "close": 1231.65,
-            "close_date": "2026-06-22",
-            "return_rate": 1.304864
-          },
-          "lowest": {
-            "close": 534.37,
-            "close_date": "2026-05-26",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 2.98196,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-05-26T05:25:56.857217Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Direxion Daily MU Bull 2X ETF",
-        "author_note": "_No response_"
-      },
       {
         "id": 56,
         "schema_version": "1.0.0",
@@ -491,7 +345,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-22",
+          "updated_at": "2026-11-23",
           "current": {
             "close": 41.2,
             "return_rate": -0.466252
@@ -637,7 +491,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-22",
+          "updated_at": "2026-11-23",
           "current": {
             "close": 594.51,
             "return_rate": -0.390596
@@ -710,7 +564,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-22",
+          "updated_at": "2026-11-23",
           "current": {
             "close": 19.85,
             "return_rate": -0.551615
@@ -783,7 +637,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-22",
+          "updated_at": "2026-11-23",
           "current": {
             "close": 63.47,
             "return_rate": -0.175179
@@ -856,7 +710,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-22",
+          "updated_at": "2026-11-23",
           "current": {
             "close": 69.66,
             "return_rate": -0.130337
@@ -929,7 +783,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-22",
+          "updated_at": "2026-11-23",
           "current": {
             "close": 30.88,
             "return_rate": -0.686974
