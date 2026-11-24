@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "1376de8"
+    "commit": "3b853dc"
   },
-  "generated_at": "2026-11-24T00:39:39.476412Z",
+  "generated_at": "2026-11-24T06:35:53.683517Z",
   "data": {
-    "count": 11,
+    "count": 10,
     "picks": [
       {
         "id": 56,
@@ -345,10 +345,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-23",
+          "updated_at": "2026-11-24",
           "current": {
-            "close": 41.2,
-            "return_rate": -0.466252
+            "close": 49.1,
+            "return_rate": -0.363907
           },
           "highest": {
             "close": 84.25,
@@ -360,7 +360,7 @@
             "close_date": "2026-06-30",
             "return_rate": 0.0
           },
-          "distance_to_target": 10.466252,
+          "distance_to_target": 10.363907,
           "error_count": 0
         },
         "votes": {
@@ -491,10 +491,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-23",
+          "updated_at": "2026-11-24",
           "current": {
-            "close": 594.51,
-            "return_rate": -0.390596
+            "close": 707.7,
+            "return_rate": -0.274571
           },
           "highest": {
             "close": 1097.39,
@@ -506,7 +506,7 @@
             "close_date": "2026-07-04",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.890596,
+          "distance_to_target": 0.774571,
           "error_count": 0
         },
         "votes": {
@@ -519,79 +519,6 @@
         },
         "instrument_name": "Micron Technology Inc",
         "author_note": "마이크론 연말까지 존버(1500달러 목표), 현재 평단 1030"
-      },
-      {
-        "id": 79,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-08-25T23:27:03.188290Z",
-        "author": "cieske",
-        "issue_number": 130,
-        "ticker": "OKLO",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-08-25",
-          "source": "google_sheets",
-          "price": 44.27
-        },
-        "target": {
-          "return_rate": 0.2,
-          "price": 53.124
-        },
-        "duration": {
-          "days": 90,
-          "deadline": "2026-11-23"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-08-25T23:27:03.188290Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-08-26T02:23:43.900000Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-11-23",
-          "current": {
-            "close": 19.85,
-            "return_rate": -0.551615
-          },
-          "highest": {
-            "close": 44.27,
-            "close_date": "2026-08-25",
-            "return_rate": 0.0
-          },
-          "lowest": {
-            "close": 44.27,
-            "close_date": "2026-08-25",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.751615,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-08-25T23:27:03.188290Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Oklo Inc",
-        "author_note": "make 원전 great again"
       },
       {
         "id": 81,
@@ -637,10 +564,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-23",
+          "updated_at": "2026-11-24",
           "current": {
-            "close": 63.47,
-            "return_rate": -0.175179
+            "close": 64.07,
+            "return_rate": -0.167381
           },
           "highest": {
             "close": 78.82,
@@ -652,7 +579,7 @@
             "close_date": "2026-08-28",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.275179,
+          "distance_to_target": 0.267381,
           "error_count": 0
         },
         "votes": {
@@ -710,10 +637,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-23",
+          "updated_at": "2026-11-24",
           "current": {
-            "close": 69.66,
-            "return_rate": -0.130337
+            "close": 73.24,
+            "return_rate": -0.085643
           },
           "highest": {
             "close": 88.56,
@@ -725,7 +652,7 @@
             "close_date": "2026-09-09",
             "return_rate": 0.0
           },
-          "distance_to_target": 0.430337,
+          "distance_to_target": 0.385643,
           "error_count": 0
         },
         "votes": {
@@ -783,10 +710,10 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-23",
+          "updated_at": "2026-11-24",
           "current": {
-            "close": 30.88,
-            "return_rate": -0.686974
+            "close": 43.21,
+            "return_rate": -0.561987
           },
           "highest": {
             "close": 107.35,
@@ -798,7 +725,7 @@
             "close_date": "2026-10-19",
             "return_rate": 0.0
           },
-          "distance_to_target": 2.186974,
+          "distance_to_target": 2.061987,
           "error_count": 0
         },
         "votes": {
