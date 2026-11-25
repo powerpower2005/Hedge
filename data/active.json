@@ -3,9 +3,9 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "123943c"
+    "commit": "10f09be"
   },
-  "generated_at": "2026-11-25T19:39:00.328292Z",
+  "generated_at": "2026-11-25T20:17:38.419716Z",
   "data": {
     "count": 10,
     "picks": [
