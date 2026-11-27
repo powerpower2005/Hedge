@@ -3,11 +3,11 @@
   "generator": {
     "name": "called-it",
     "version": "1.0.0",
-    "commit": "8e0430c"
+    "commit": "2f483e9"
   },
-  "generated_at": "2026-11-27T04:39:35.930360Z",
+  "generated_at": "2026-11-27T10:31:28.119171Z",
   "data": {
-    "count": 10,
+    "count": 9,
     "picks": [
       {
         "id": 56,
@@ -345,7 +345,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-26",
+          "updated_at": "2026-11-27",
           "current": {
             "close": 45.28,
             "return_rate": -0.413396
@@ -491,7 +491,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-26",
+          "updated_at": "2026-11-27",
           "current": {
             "close": 601.25,
             "return_rate": -0.383687
@@ -519,79 +519,6 @@
         },
         "instrument_name": "Micron Technology Inc",
         "author_note": "마이크론 연말까지 존버(1500달러 목표), 현재 평단 1030"
-      },
-      {
-        "id": 81,
-        "schema_version": "1.0.0",
-        "created_with": {
-          "engine_version": "1.0.0",
-          "rules_version": "1.0.7"
-        },
-        "created_at": "2026-08-27T11:43:40.250106Z",
-        "author": "soxlsoxl",
-        "issue_number": 132,
-        "ticker": "UBER",
-        "country": "US",
-        "market": "NASDAQ",
-        "entry": {
-          "date": "2026-08-28",
-          "source": "google_sheets",
-          "price": 76.95
-        },
-        "target": {
-          "return_rate": 0.1,
-          "price": 84.645
-        },
-        "duration": {
-          "days": 90,
-          "deadline": "2026-11-26"
-        },
-        "status": {
-          "current": "active",
-          "history": [
-            {
-              "status": "pending_entry",
-              "at": "2026-08-27T11:43:40.250106Z",
-              "engine_version": "1.0.0",
-              "reason": "initial_registration"
-            },
-            {
-              "status": "active",
-              "at": "2026-08-28T05:52:46.928400Z",
-              "engine_version": "1.0.0",
-              "reason": "entry_locked_first_judgment_close"
-            }
-          ]
-        },
-        "progress": {
-          "updated_at": "2026-11-26",
-          "current": {
-            "close": 66.35,
-            "return_rate": -0.137752
-          },
-          "highest": {
-            "close": 78.82,
-            "close_date": "2026-08-28",
-            "return_rate": 0.024301
-          },
-          "lowest": {
-            "close": 76.95,
-            "close_date": "2026-08-28",
-            "return_rate": 0.0
-          },
-          "distance_to_target": 0.237752,
-          "error_count": 0
-        },
-        "votes": {
-          "likes": 0,
-          "dislikes": 0,
-          "last_synced": "2026-08-27T11:43:40.250106Z"
-        },
-        "extensions": {
-          "entry_lock": "first_judgment_close"
-        },
-        "instrument_name": "Uber Technologies Inc",
-        "author_note": "_No response_"
       },
       {
         "id": 82,
@@ -637,7 +564,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-26",
+          "updated_at": "2026-11-27",
           "current": {
             "close": 76.1,
             "return_rate": -0.049938
@@ -710,7 +637,7 @@
           ]
         },
         "progress": {
-          "updated_at": "2026-11-26",
+          "updated_at": "2026-11-27",
           "current": {
             "close": 32.02,
             "return_rate": -0.675418
